@@ -1,23 +1,46 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="min-h-screen bg-background">
+    <header class="border-b">
+      <div class="container mx-auto px-4 py-4">
+        <nav class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <RouterLink to="/" class="text-xl font-bold text-primary">Mabinogi Mobile</RouterLink>
+          </div>
+          <div class="flex items-center space-x-6">
+            <RouterLink 
+              to="/" 
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground"
+            >
+              홈
+            </RouterLink>
+            <RouterLink 
+              to="/trade" 
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground"
+            >
+              물물교환
+            </RouterLink>
+            <RouterLink 
+              to="/about" 
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground"
+            >
+              소개
+            </RouterLink>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <main class="container mx-auto px-4 py-8">
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style scoped>
@@ -81,5 +104,9 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+
+.router-link-active {
+  color: rgb(var(--foreground));
 }
 </style>
