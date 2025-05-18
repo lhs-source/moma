@@ -518,7 +518,7 @@ export const items: Item[] = [
   },
   {
     id: 'tree_sap',
-    name: '나무 수액',
+    name: '나무 진액',
     imageUrl: '/images/items/tree_sap.png',
     description: '나무에서 채취한 수액',
     isCraftable: false,
