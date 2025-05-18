@@ -117,10 +117,10 @@ const disabledRequirements = computed(() => {
 <template>
   <div class="p-2">
     <h2 class="text-xl font-bold mb-2">주간 교환 필요 아이템</h2>
-    <div class="flex flex-wrap gap-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1080px] mx-auto">
       <!-- 활성화된 교환 목록 -->
       <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
-           class="flex items-center px-3 py-1.5 bg-card rounded-full border border-border shadow-sm hover:shadow-md transition-shadow">
+           class="flex items-center p-3 bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
         <h3 class="font-medium text-sm">
           {{ getItemInfo(requirement.itemId)?.name }}
           <span class="text-primary ml-1">{{ requirement.totalQuantity }}개</span>
@@ -134,7 +134,7 @@ const disabledRequirements = computed(() => {
 
       <!-- 비활성화된 교환 목록 -->
       <div v-for="requirement in disabledRequirements" :key="requirement.itemId" 
-           class="flex items-center px-3 py-1.5 bg-card/50 rounded-full border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+           class="flex items-center p-3 bg-card/50 rounded-lg border border-border/50 shadow-sm hover:shadow-md transition-shadow">
         <h3 class="font-medium text-sm text-muted-foreground">
           {{ getItemInfo(requirement.itemId)?.name }}
           <span class="text-muted-foreground ml-1">{{ requirement.totalQuantity }}개</span>
