@@ -152,12 +152,19 @@ onMounted(() => {
                         'text-muted-foreground': disabledTrades.has(trade.id),
                         'font-bold': favoriteTrades.has(trade.id)
                       }">
-                    {{ getItemInfo(trade.itemId)?.name }}
+                    {{ getItemInfo(trade.itemId)?.name }} {{ trade.itemQuantity }}개
                   </h3>
                   <p class="text-sm text-muted-foreground"
                      :class="{'font-semibold': favoriteTrades.has(trade.id)}">
                     {{ trade.npc }} ({{ getNpcLocation(trade.npc) }})<br>
-                    {{ getItemInfo(trade.requiredItemId)?.name }} {{ trade.requiredQuantity }}개
+                    <span class="flex items-center gap-1">
+                      <img 
+                        :src="getItemInfo(trade.requiredItemId)?.imageUrl" 
+                        :alt="getItemInfo(trade.requiredItemId)?.name"
+                        class="w-4 h-4 object-contain"
+                      />
+                      {{ getItemInfo(trade.requiredItemId)?.name }} {{ trade.requiredQuantity }}개
+                    </span>
                     <span v-if="trade.limitType" class="ml-1">
                       ({{ getLimitText(trade) }})
                     </span>
