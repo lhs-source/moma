@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { barterData, barterItems } from '@/data/trade'
+import { items, tradeData } from '@/data/trade'
+import type { TradeData } from '@/data/schemas/trade'
+import type { Item } from '@/data/schemas/item'
 
 interface WeeklyRequirement {
   itemId: string
@@ -22,7 +24,7 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
   // 모든 지역의 교환 목록을 순회
-  Object.values(barterData).forEach(trades => {
+  Object.values(tradeData).forEach(trades => {
     trades.forEach(trade => {
       // 비활성화된 교환은 제외
       if (props.disabledTrades.has(trade.id)) return
@@ -53,8 +55,8 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
   return Object.values(requirements).sort((a, b) => b.totalQuantity - a.totalQuantity)
 }
 
-function getItemInfo(itemId: string) {
-  return barterItems.find(item => item.id === itemId)
+const getItemInfo = (itemId: string): Item | undefined => {
+  return items.find(item => item.id === itemId)
 }
 
 function formatQuantity(quantity: number): string {
@@ -67,7 +69,7 @@ const weeklyRequirements = computed(() => calculateWeeklyRequirements())
 const disabledRequirements = computed(() => {
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
-  Object.values(barterData).forEach(trades => {
+  Object.values(tradeData).forEach(trades => {
     trades.forEach(trade => {
       if (!props.disabledTrades.has(trade.id)) return
 
@@ -93,6 +95,10 @@ const disabledRequirements = computed(() => {
 
   return Object.values(requirements).sort((a, b) => b.totalQuantity - a.totalQuantity)
 })
+
+const getTradesByLocation = (location: string): TradeData[] => {
+  return tradeData[location] || []
+}
 </script>
 
 <template>

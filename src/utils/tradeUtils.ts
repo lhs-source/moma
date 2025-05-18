@@ -1,4 +1,6 @@
-import { barterData, barterItems } from '@/data/trade'
+import { items, tradeData } from '@/data/trade'
+import type { TradeData } from '@/data/schemas/trade'
+import type { Item } from '@/data/schemas/item'
 
 interface WeeklyRequirement {
   itemId: string
@@ -14,8 +16,8 @@ export function calculateWeeklyRequirements(): WeeklyRequirement[] {
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
   // 모든 지역의 교환 목록을 순회
-  Object.values(barterData).forEach(trades => {
-    trades.forEach(trade => {
+  Object.values(tradeData).forEach((trades: TradeData[]) => {
+    trades.forEach((trade: TradeData) => {
       // 필요한 아이템의 수량 계산 (일일 제한이 있는 경우 7일치)
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
       const weeklyQuantity = dailyLimit * 7
@@ -42,8 +44,8 @@ export function calculateWeeklyRequirements(): WeeklyRequirement[] {
   return Object.values(requirements).sort((a, b) => b.totalQuantity - a.totalQuantity)
 }
 
-export function getItemInfo(itemId: string) {
-  return barterItems.find(item => item.id === itemId)
+export function getItemInfo(itemId: string): Item | undefined {
+  return items.find((item: Item) => item.id === itemId)
 }
 
 export function formatQuantity(quantity: number): string {

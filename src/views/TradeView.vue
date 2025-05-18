@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { barterData, barterItems } from '@/data/trade'
+import { useI18n } from 'vue-i18n'
+import { items, tradeData } from '@/data/trade'
+import { npcs } from '@/data/npcs'
+import type { TradeData } from '@/data/schemas/trade'
+import type { Item } from '@/data/schemas/item'
+import type { NPC } from '@/data/schemas/npc'
 import WeeklyRequirements from '@/components/trade/WeeklyRequirements.vue'
 
 // Types
@@ -25,7 +30,7 @@ const favoriteTrades = ref<Set<string>>(new Set())
 const formattedTrades = computed(() => {
   const result: Record<string, Trade[]> = {}
   
-  Object.entries(barterData).forEach(([region, trades]) => {
+  Object.entries(tradeData).forEach(([region, trades]) => {
     result[region] = trades
       .map(trade => ({
         ...trade,
@@ -46,8 +51,8 @@ const formattedTrades = computed(() => {
 })
 
 // Methods
-function getItemInfo(itemId: string) {
-  return barterItems.find(item => item.id === itemId)
+const getItemInfo = (itemId: string): Item | undefined => {
+  return items.find(item => item.id === itemId)
 }
 
 function getLimitText(trade: Trade) {
@@ -85,6 +90,10 @@ function saveDisabledTrades() {
 
 function saveFavoriteTrades() {
   localStorage.setItem('favoriteTrades', JSON.stringify([...favoriteTrades.value]))
+}
+
+const getTradesByLocation = (location: string): TradeData[] => {
+  return tradeData[location] || []
 }
 
 // Lifecycle
