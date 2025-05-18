@@ -5,9 +5,9 @@ export interface RequiredItem {
 
 export interface Recipe {
   id: string
+  name: string
   resultItemId: string
-  resultQuantity: number
   requiredItems: RequiredItem[]
+  category: '간편' | '힘 특화' | '솜씨 특화' | '지력 특화' | '기타' | '쉐어링'
   facilityLevel: number
-  type: '간편' | '힘 특화' | '솜씨 특화' | '지력 특화' | '기타' | '쉐어링'
 } 

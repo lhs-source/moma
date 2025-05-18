@@ -23,10 +23,9 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const weeklyRequirements = ref<WeeklyRequirement[]>([])
-
-const calculateWeeklyRequirements = () => {
-  const requirements: { [key: string]: WeeklyRequirement } = {}
+// weeklyRequirements를 computed로 변경
+const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
+  const requirements = new Map<string, WeeklyRequirement>()
 
   // 모든 지역의 교환 목록을 순회
   Object.values(tradeData).forEach(trades => {
@@ -42,41 +41,35 @@ const calculateWeeklyRequirements = () => {
       const requiredQuantity = Math.ceil((weeklyQuantity * trade.requiredQuantity) / trade.itemQuantity)
 
       // 필요한 아이템 정보 추가
-      if (!requirements[trade.requiredItemId]) {
-        requirements[trade.requiredItemId] = {
+      if (!requirements.has(trade.requiredItemId)) {
+        requirements.set(trade.requiredItemId, {
           itemId: trade.requiredItemId,
-          totalQuantity: 0,
-          trades: []
-        }
-      }
-
-      requirements[trade.requiredItemId].totalQuantity += requiredQuantity
-      if (requirements[trade.requiredItemId].trades) {
-        requirements[trade.requiredItemId].trades.push({
-          id: trade.id,
-          requiredItemId: trade.itemId,
-          requiredQuantity: weeklyQuantity
+          totalQuantity: requiredQuantity,
+          recipe: recipes.find(r => r.resultItemId === trade.requiredItemId),
+          trades: [{
+            id: trade.id,
+            requiredItemId: trade.itemId,
+            requiredQuantity: weeklyQuantity
+          }]
         })
+      } else {
+        const existing = requirements.get(trade.requiredItemId)!
+        existing.totalQuantity += requiredQuantity
+        if (existing.trades) {
+          existing.trades.push({
+            id: trade.id,
+            requiredItemId: trade.itemId,
+            requiredQuantity: weeklyQuantity
+          })
+        }
       }
     })
   })
 
-  // 레시피 정보 추가
-  Object.values(requirements).forEach(req => {
-    const recipe = recipes.find(r => r.resultItemId === req.itemId)
-    if (recipe) {
-      req.recipe = recipe
-    }
-  })
-
-  // 결과를 배열로 변환하고 수량 기준으로 정렬
-  weeklyRequirements.value = Object.values(requirements)
-    .filter(req => !props.disabledTrades.has(req.itemId)) // 비활성화된 아이템 제외
+  // Map을 배열로 변환하고 수량 기준으로 정렬
+  return Array.from(requirements.values())
     .sort((a, b) => b.totalQuantity - a.totalQuantity)
-}
-
-// 초기 계산 실행
-calculateWeeklyRequirements()
+})
 
 const getItemInfo = (itemId: string): Item | undefined => {
   return items.find(item => item.id === itemId)
@@ -86,44 +79,46 @@ function formatQuantity(quantity: number): string {
   return quantity.toString()
 }
 
+// 비활성화된 교환 항목 계산 (주간 교환 필요 제작 아이템에는 포함되지 않음)
 const disabledRequirements = computed<WeeklyRequirement[]>(() => {
-  const requirements: { [key: string]: WeeklyRequirement } = {}
+  const requirements = new Map<string, WeeklyRequirement>()
 
   Object.values(tradeData).forEach(trades => {
     trades.forEach(trade => {
+      // 활성화된 교환은 제외
       if (!props.disabledTrades.has(trade.id)) return
 
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
       const weeklyQuantity = dailyLimit * 7
+      const requiredQuantity = Math.ceil((weeklyQuantity * trade.requiredQuantity) / trade.itemQuantity)
 
-      if (!requirements[trade.requiredItemId]) {
-        requirements[trade.requiredItemId] = {
+      if (!requirements.has(trade.requiredItemId)) {
+        requirements.set(trade.requiredItemId, {
           itemId: trade.requiredItemId,
-          totalQuantity: 0,
-          trades: []
-        }
-      }
-
-      requirements[trade.requiredItemId].totalQuantity += weeklyQuantity
-      if (requirements[trade.requiredItemId].trades) {
-        requirements[trade.requiredItemId].trades.push({
-          id: trade.id,
-          requiredItemId: trade.itemId,
-          requiredQuantity: weeklyQuantity
+          totalQuantity: requiredQuantity,
+          recipe: recipes.find(r => r.resultItemId === trade.requiredItemId),
+          trades: [{
+            id: trade.id,
+            requiredItemId: trade.itemId,
+            requiredQuantity: weeklyQuantity
+          }]
         })
+      } else {
+        const existing = requirements.get(trade.requiredItemId)!
+        existing.totalQuantity += requiredQuantity
+        if (existing.trades) {
+          existing.trades.push({
+            id: trade.id,
+            requiredItemId: trade.itemId,
+            requiredQuantity: weeklyQuantity
+          })
+        }
       }
     })
   })
 
-  // 레시피 정보 추가
-  Object.values(requirements).forEach(req => {
-    const recipe = recipes.find(r => r.resultItemId === req.itemId)
-    if (recipe) {
-      req.recipe = recipe
-    }
-  })
-
-  return Object.values(requirements).sort((a, b) => b.totalQuantity - a.totalQuantity)
+  return Array.from(requirements.values())
+    .sort((a, b) => b.totalQuantity - a.totalQuantity)
 })
 
 const getTradesByLocation = (location: string): TradeData[] => {

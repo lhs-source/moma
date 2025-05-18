@@ -392,6 +392,182 @@ export const items: Item[] = [
     category: '재료'
   },
   {
+    id: 'meat',
+    name: '고기',
+    imageUrl: '/images/items/meat.png',
+    description: '신선한 고기입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'salt',
+    name: '소금',
+    imageUrl: '/images/items/salt.png',
+    description: '소금입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'water_bottle',
+    name: '물이 든 병',
+    imageUrl: '/images/items/water_bottle.png',
+    description: '물이 담긴 병입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'herb',
+    name: '허브',
+    imageUrl: '/images/items/herb.png',
+    description: '향긋한 허브입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'potato',
+    name: '감자',
+    imageUrl: '/images/items/potato.png',
+    description: '신선한 감자입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'sugar',
+    name: '설탕',
+    imageUrl: '/images/items/sugar.png',
+    description: '설탕입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'apple',
+    name: '사과',
+    imageUrl: '/images/items/apple.png',
+    description: '신선한 사과입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'cabbage',
+    name: '양배추',
+    imageUrl: '/images/items/cabbage.png',
+    description: '신선한 양배추입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'mayonnaise',
+    name: '마요네즈',
+    imageUrl: '/images/items/mayonnaise.png',
+    description: '마요네즈입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'onion',
+    name: '양파',
+    imageUrl: '/images/items/onion.png',
+    description: '신선한 양파입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'corn',
+    name: '옥수수',
+    imageUrl: '/images/items/corn.png',
+    description: '신선한 옥수수입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'cheese',
+    name: '치즈',
+    imageUrl: '/images/items/cheese.png',
+    description: '신선한 치즈입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'flour',
+    name: '밀가루',
+    imageUrl: '/images/items/flour.png',
+    description: '밀가루입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'clam',
+    name: '조개',
+    imageUrl: '/images/items/clam.png',
+    description: '신선한 조개입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'lemon',
+    name: '레몬',
+    imageUrl: '/images/items/lemon.png',
+    description: '신선한 레몬입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'pepper',
+    name: '후추',
+    imageUrl: '/images/items/pepper.png',
+    description: '후추입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'ice',
+    name: '얼음',
+    imageUrl: '/images/items/ice.png',
+    description: '얼음입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'strawberry',
+    name: '딸기',
+    imageUrl: '/images/items/strawberry.png',
+    description: '신선한 딸기입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'garlic',
+    name: '마늘',
+    imageUrl: '/images/items/garlic.png',
+    description: '신선한 마늘입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'cream',
+    name: '생크림',
+    imageUrl: '/images/items/cream.png',
+    description: '신선한 생크림입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'noodle',
+    name: '면',
+    imageUrl: '/images/items/noodle.png',
+    description: '면입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'milk',
+    name: '우유',
+    imageUrl: '/images/items/milk.png',
+    description: '신선한 우유입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
     id: 'lavender',
     name: '라벤더 꽃',
     imageUrl: '/images/items/lavender.png',
@@ -408,14 +584,6 @@ export const items: Item[] = [
     craftingRecipe: [
       { itemId: 'wheat', quantity: 2 }
     ],
-    category: '재료'
-  },
-  {
-    id: 'milk',
-    name: '우유',
-    imageUrl: '/images/items/milk.png',
-    description: '신선한 우유입니다.',
-    isCraftable: false,
     category: '재료'
   },
   {
@@ -1418,6 +1586,18 @@ export const trades: Trade[] = [
     scope: 'character',
     maxExchanges: 1,
     isEnabled: true
+  },
+  {
+    id: 'walter_wooden_ornament',
+    npcId: 'walter',
+    giveItemId: 'tracy_wooden_music_box',
+    receiveItemId: 'wooden_ornament',
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
   }
 ]
 
@@ -1809,7 +1989,7 @@ export const tradeData: LocationTrades = {
       npc: '발터',
       itemId: 'superior_wood',
       itemQuantity: 16,
-      requiredItemId: 'stewart_wood_carving',
+      requiredItemId: 'tracy_wood_carving',
       requiredQuantity: 1,
       limitType: 'daily',
       limitCount: 2
