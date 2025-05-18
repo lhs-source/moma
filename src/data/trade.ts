@@ -270,7 +270,7 @@ export const items: Item[] = [
   },
   {
     id: 'alchemy_catalyst',
-    name: '고급 연금술 재연소 촉매',
+    name: '고급 룬합성 촉매',
     imageUrl: '/images/items/alchemy_catalyst.png',
     description: '연금술 실험에 사용되는 촉매',
     isCraftable: false,
@@ -297,7 +297,7 @@ export const items: Item[] = [
   },
   {
     id: 'rare_alchemy_catalyst',
-    name: '레어 연금술 재연소 촉매',
+    name: '레어 룬합성 촉매',
     imageUrl: '/images/items/rare_alchemy_catalyst.png',
     description: '희귀한 연금술 촉매',
     isCraftable: false,
@@ -491,7 +491,7 @@ export const items: Item[] = [
   },
   {
     id: 'superior_leather',
-    name: '상급 가죽',
+    name: '상급 생가죽',
     imageUrl: '/images/items/superior_leather.png',
     description: '고급 가죽',
     isCraftable: false,
@@ -526,7 +526,7 @@ export const items: Item[] = [
   },
   {
     id: 'glenis_cake',
-    name: '글리니스 케이크',
+    name: '글리니스 수제 케이크',
     imageUrl: '/images/items/glenis_cake.png',
     description: '글리니스가 만든 특제 케이크',
     isCraftable: false,
@@ -542,7 +542,7 @@ export const items: Item[] = [
   },
   {
     id: 'glenis_apple_milk_tea',
-    name: '글리니스 특제 사과 밀크티',
+    name: '글리니스의 애플 밀크티',
     imageUrl: '/images/items/glenis_apple_milk_tea.png',
     description: '글리니스가 만든 특제 밀크티',
     isCraftable: false,
@@ -558,7 +558,7 @@ export const items: Item[] = [
   },
   {
     id: 'apple_soup',
-    name: '사과 수프',
+    name: '사과 수플레',
     imageUrl: '/images/items/apple_soup.png',
     description: '사과로 만든 수프',
     isCraftable: false,
@@ -574,7 +574,7 @@ export const items: Item[] = [
   },
   {
     id: 'life_gem',
-    name: '생명의 보석',
+    name: '생명의 마나석',
     imageUrl: '/images/items/life_gem.png',
     description: '생명력을 담은 보석',
     isCraftable: false,
@@ -598,7 +598,7 @@ export const items: Item[] = [
   },
   {
     id: 'love_fish',
-    name: '사랑의 물고기',
+    name: '참사랑어',
     imageUrl: '/images/items/love_fish.png',
     description: '사랑을 상징하는 물고기',
     isCraftable: false,
@@ -606,7 +606,7 @@ export const items: Item[] = [
   },
   {
     id: 'fire_bomb',
-    name: '화염 폭탄',
+    name: '화염 마법 유탄',
     imageUrl: '/images/items/fire_bomb.png',
     description: '화염 속성의 폭탄',
     isCraftable: false,
@@ -614,15 +614,15 @@ export const items: Item[] = [
   },
   {
     id: 'dark_fish',
-    name: '어둠의 물고기',
+    name: '어둠 유령 고기',
     imageUrl: '/images/items/dark_fish.png',
-    description: '어둠의 힘을 가진 물고기',
+    description: '어둠 유령에서 얻은 고기',
     isCraftable: false,
     category: '재료'
   },
   {
     id: 'thunder_bomb',
-    name: '번개 폭탄',
+    name: '번개 마법 유탄',
     imageUrl: '/images/items/thunder_bomb.png',
     description: '번개 속성의 폭탄',
     isCraftable: false,
@@ -630,7 +630,7 @@ export const items: Item[] = [
   },
   {
     id: 'wind_bomb',
-    name: '바람 폭탄',
+    name: '바람 마법 유탄',
     imageUrl: '/images/items/wind_bomb.png',
     description: '바람 속성의 폭탄',
     isCraftable: false,
@@ -638,7 +638,7 @@ export const items: Item[] = [
   },
   {
     id: 'acid_bomb',
-    name: '산성 폭탄',
+    name: '산성 마법 유탄',
     imageUrl: '/images/items/acid_bomb.png',
     description: '산성 속성의 폭탄',
     isCraftable: false,
@@ -646,7 +646,7 @@ export const items: Item[] = [
   },
   {
     id: 'fire_crystal',
-    name: '화염 결정',
+    name: '불꽃의 결정',
     imageUrl: '/images/items/fire_crystal.png',
     description: '화염 속성의 결정',
     isCraftable: false,
@@ -654,7 +654,7 @@ export const items: Item[] = [
   },
   {
     id: 'ice_crystal',
-    name: '얼음 결정',
+    name: '얼음의 결정',
     imageUrl: '/images/items/ice_crystal.png',
     description: '얼음 속성의 결정',
     isCraftable: false,
@@ -662,7 +662,7 @@ export const items: Item[] = [
   },
   {
     id: 'electric_crystal',
-    name: '전기 결정',
+    name: '전기의 결정',
     imageUrl: '/images/items/electric_crystal.png',
     description: '전기 속성의 결정',
     isCraftable: false,
@@ -670,7 +670,7 @@ export const items: Item[] = [
   },
   {
     id: 'light_crystal',
-    name: '빛 결정',
+    name: '광휘의 결정',
     imageUrl: '/images/items/light_crystal.png',
     description: '빛 속성의 결정',
     isCraftable: false,
@@ -678,7 +678,7 @@ export const items: Item[] = [
   },
   {
     id: 'seal_crystal',
-    name: '봉인 결정',
+    name: '봉인의 결정',
     imageUrl: '/images/items/seal_crystal.png',
     description: '봉인 속성의 결정',
     isCraftable: false,
@@ -702,15 +702,15 @@ export const items: Item[] = [
   },
   {
     id: 'silk_fabric',
-    name: '실크 천',
+    name: '옷감 가공 시설 설계도 (3레벨)',
     imageUrl: '/images/items/silk_fabric.png',
-    description: '실크로 만든 천',
+    description: '옷감 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
-    category: '재료'
+    category: '설계도'
   },
   {
     id: 'ghost_lantern',
-    name: '유령 등불',
+    name: '유령 반딧불이',
     imageUrl: '/images/items/ghost_lantern.png',
     description: '유령의 빛을 담은 등불',
     isCraftable: false,
@@ -718,7 +718,7 @@ export const items: Item[] = [
   },
   {
     id: 'armor_blueprint',
-    name: '방어구 설계도',
+    name: '방어구 제작대 설계도 (3레벨)',
     imageUrl: '/images/items/armor_blueprint.png',
     description: '방어구 제작 설계도',
     isCraftable: false,
@@ -726,9 +726,9 @@ export const items: Item[] = [
   },
   {
     id: 'sanded_ferodotS',
-    name: '연마된 페로도트S',
+    name: '세공된 페리도트S',
     imageUrl: '/images/items/sanded_ferodotS.png',
-    description: '연마된 페로도트S',
+    description: '연마된 페리도트S',
     isCraftable: false,
     category: '재료'
   },
@@ -774,7 +774,7 @@ export const items: Item[] = [
   },
   {
     id: 'orphan_novel',
-    name: '고아 소설',
+    name: '주인 없는 소설책',
     imageUrl: '/images/items/orphan_novel.png',
     description: '고아를 주인공으로 한 소설',
     isCraftable: false,
@@ -806,7 +806,7 @@ export const items: Item[] = [
   },
   {
     id: 'superior_fabric',
-    name: '상급 천',
+    name: '상급 옷감',
     imageUrl: '/images/items/superior_fabric.png',
     description: '고급 천',
     isCraftable: false,
@@ -814,7 +814,7 @@ export const items: Item[] = [
   },
   {
     id: 'apple_cream_cake',
-    name: '사과 크림 케이크',
+    name: '사과 생크림 케이크',
     imageUrl: '/images/items/apple_cream_cake.png',
     description: '사과와 크림을 넣은 케이크',
     isCraftable: false,
@@ -822,7 +822,7 @@ export const items: Item[] = [
   },
   {
     id: 'superior_fabric_plus',
-    name: '최상급 천',
+    name: '상급 옷감+',
     imageUrl: '/images/items/superior_fabric_plus.png',
     description: '최고급 천',
     isCraftable: false,
@@ -846,15 +846,15 @@ export const items: Item[] = [
   },
   {
     id: 'metal_processing_blueprint',
-    name: '금속 가공 시설 설계도',
+    name: '금속 가공 시설 설계도 (3레벨)',
     imageUrl: '/images/items/metal_processing_blueprint.png',
-    description: '금속 가공 시설 설계도',
+    description: '금속 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
   },
   {
     id: 'weapon_blueprint',
-    name: '무기 설계도',
+    name: '무기 제작대 설계도 (3레벨)',
     imageUrl: '/images/items/weapon_blueprint.png',
     description: '무기 제작 설계도',
     isCraftable: false,
@@ -862,7 +862,7 @@ export const items: Item[] = [
   },
   {
     id: 'cave_gem',
-    name: '동굴 보석',
+    name: '협곡의 마나석',
     imageUrl: '/images/items/cave_gem.png',
     description: '동굴에서 발견된 보석',
     isCraftable: false,
@@ -870,7 +870,7 @@ export const items: Item[] = [
   },
   {
     id: 'ruin_gem',
-    name: '유적 보석',
+    name: '폐허의 마나석',
     imageUrl: '/images/items/ruin_gem.png',
     description: '유적에서 발견된 보석',
     isCraftable: false,
@@ -886,7 +886,7 @@ export const items: Item[] = [
   },
   {
     id: 'ice_fruit_juice',
-    name: '얼음 과일 주스',
+    name: '얼음 딸기주스',
     imageUrl: '/images/items/ice_fruit_juice.png',
     description: '얼음 속성의 과일로 만든 주스',
     isCraftable: false,
@@ -902,7 +902,7 @@ export const items: Item[] = [
   },
   {
     id: 'chrysanthemum_ear',
-    name: '국화 귀걸이',
+    name: '초롱아귀',
     imageUrl: '/images/items/chrysanthemum_ear.png',
     description: '국화 모양의 귀걸이',
     isCraftable: false,
@@ -910,7 +910,7 @@ export const items: Item[] = [
   },
   {
     id: 'clean_mushroom_spores',
-    name: '정화된 버섯 포자',
+    name: '깔끔 버섯 포자',
     imageUrl: '/images/items/clean_mushroom_spores.png',
     description: '정화된 버섯의 포자',
     isCraftable: false,
@@ -918,7 +918,7 @@ export const items: Item[] = [
   },
   {
     id: 'alrio_orio',
-    name: '알리오 오리오',
+    name: '알리오 올리오',
     imageUrl: '/images/items/alrio_orio.png',
     description: '특별한 오리오 요리',
     isCraftable: false,
@@ -926,9 +926,9 @@ export const items: Item[] = [
   },
   {
     id: 'medicine_processing_blueprint',
-    name: '의약품 가공 시설 설계도',
+    name: '의약품 가공 시설 설계도 (3레벨)',
     imageUrl: '/images/items/medicine_processing_blueprint.png',
-    description: '의약품 가공 시설 설계도',
+    description: '의약품 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
   },
@@ -942,7 +942,7 @@ export const items: Item[] = [
   },
   {
     id: 'medicine_blueprint',
-    name: '의약품 설계도',
+    name: '의약품 제작대 설계도 (3레벨)',
     imageUrl: '/images/items/medicine_blueprint.png',
     description: '의약품 제작 설계도',
     isCraftable: false,
@@ -950,7 +950,7 @@ export const items: Item[] = [
   },
   {
     id: 'sun_butterfly',
-    name: '태양 나비',
+    name: '석양나비',
     imageUrl: '/images/items/sun_butterfly.png',
     description: '태양의 빛을 받은 나비',
     isCraftable: false,
@@ -960,7 +960,15 @@ export const items: Item[] = [
     id: 'superior_wood',
     name: '상급 목재',
     imageUrl: '/images/items/superior_wood.png',
-    description: '고급 목재',
+    description: '고급 가구 제작에 사용되는 상급 목재입니다.',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'superior_wood_plus',
+    name: '상급 목재+',
+    imageUrl: '/images/items/superior_wood_plus.png',
+    description: '최고급 가구 제작에 사용되는 상급 목재입니다.',
     isCraftable: false,
     category: '재료'
   },
@@ -1157,6 +1165,18 @@ export const trades: Trade[] = [
     type: 'daily',
     scope: 'character',
     maxExchanges: 5,
+    isEnabled: true
+  },
+  {
+    id: 'walter_superior_wood',
+    npcId: 'walter',
+    giveItemId: 'log_ornament',
+    receiveItemId: 'superior_wood',
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
     isEnabled: true
   }
 ]
@@ -1777,7 +1797,7 @@ export const tradeData: { [key: string]: TradeData[] } = {
     {
       id: 'kalis_superior_wood',
       npc: '칼릭스',
-      itemId: 'superior_wood',
+      itemId: 'superior_wood_plus',
       itemQuantity: 12,
       requiredItemId: 'glenis_apple_milk_tea',
       requiredQuantity: 3,
