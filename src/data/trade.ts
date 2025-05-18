@@ -1218,7 +1218,7 @@ export const npcLocations: { [key: string]: string } = {
   '킬리언': '치료소'
 }
 
-export const tradeData: { [key: string]: TradeData[] } = {
+export const tradeData: LocationTrades = {
   '티르코네일': [
     {
       id: 'nora_travelers_snack',

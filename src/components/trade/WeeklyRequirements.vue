@@ -109,7 +109,14 @@ const getTradesByLocation = (location: string): TradeData[] => {
       <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
            class="flex items-center p-3 bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
         <h3 class="font-medium text-sm">
-          {{ getItemInfo(requirement.itemId)?.name }}
+          <div class="flex items-center gap-1">
+            <img 
+              :src="getItemInfo(requirement.itemId)?.imageUrl" 
+              :alt="getItemInfo(requirement.itemId)?.name"
+              class="w-4 h-4 object-contain"
+            />
+            <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
+          </div>
           <span class="text-primary ml-1">{{ requirement.totalQuantity }}개</span>
           <span class="text-muted-foreground ml-1">
             ({{ requirement.trades.map(trade => 
@@ -123,7 +130,14 @@ const getTradesByLocation = (location: string): TradeData[] => {
       <div v-for="requirement in disabledRequirements" :key="requirement.itemId" 
            class="flex items-center p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-border/50 shadow-sm hover:shadow-md transition-shadow">
         <h3 class="font-medium text-sm text-muted-foreground">
-          {{ getItemInfo(requirement.itemId)?.name }}
+          <div class="flex items-center gap-1">
+            <img 
+              :src="getItemInfo(requirement.itemId)?.imageUrl" 
+              :alt="getItemInfo(requirement.itemId)?.name"
+              class="w-4 h-4 object-contain"
+            />
+            <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
+          </div>
           <span class="text-muted-foreground ml-1">{{ requirement.totalQuantity }}개</span>
           <span class="text-muted-foreground/70 ml-1">
             ({{ requirement.trades.map(trade => 
