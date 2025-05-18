@@ -1,6 +1,7 @@
-import { items, tradeData } from '@/data/trade'
+import { tradeData } from '@/data/trade'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
+import { items } from '@/data/items'
 
 interface WeeklyRequirement {
   itemId: string

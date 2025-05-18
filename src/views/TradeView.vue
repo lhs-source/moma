@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { items, tradeData } from '@/data/trade'
+import { tradeData } from '@/data/trade'
 import { npcs } from '@/data/npcs'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
-import type { NPC } from '@/data/schemas/npc'
 import WeeklyRequirements from '@/components/trade/WeeklyRequirements.vue'
+import { items } from '@/data/items'
 
 // Types
 interface Trade {

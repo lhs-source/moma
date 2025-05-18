@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { items, tradeData } from '@/data/trade'
+import { tradeData } from '@/data/trade'
 import { recipes } from '@/data/recipes'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
 import type { Recipe } from '@/data/schemas/recipe'
+import { items } from '@/data/items'
 
 interface WeeklyRequirement {
   itemId: string
