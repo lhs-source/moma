@@ -60,7 +60,7 @@ function getLimitText(trade: Trade) {
     case 'daily':
       return `일 ${trade.limitCount}회`
     case 'account':
-      return `계정당 ${trade.limitCount}회`
+      return '계정당 1회'
     default:
       return '제한 없음'
   }
@@ -96,6 +96,11 @@ const getTradesByLocation = (location: string): TradeData[] => {
   return tradeData[location] || []
 }
 
+const getNpcLocation = (npcName: string): string => {
+  const npc = npcs.find(n => n.name === npcName)
+  return npc?.description || ''
+}
+
 // Lifecycle
 onMounted(() => {
   const savedDisabledTrades = localStorage.getItem('disabledTrades')
@@ -117,15 +122,15 @@ onMounted(() => {
     <div class="mt-8">
       <h2 class="text-2xl font-bold mb-4">교환 목록</h2>
       <div class="grid gap-6">
-        <div v-for="(trades, region) in formattedTrades" :key="region" class="bg-card rounded-lg p-2">
-          <h3 class="text-xl font-semibold mb-4">{{ region }}</h3>
+        <div v-for="(trades, location) in formattedTrades" :key="location" class="bg-card rounded-lg p-2">
+          <h3 class="text-xl font-semibold mb-4">{{ location }}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div v-for="trade in trades" :key="trade.id" 
-                 class="flex items-center justify-between p-3 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow"
-                 :class="{
-                   'bg-gray-100 dark:bg-gray-800': disabledTrades.has(trade.id),
-                   'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800': favoriteTrades.has(trade.id)
-                 }">
+              class="flex items-center justify-between p-3 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow"
+              :class="{
+                'bg-gray-100 dark:bg-gray-800': disabledTrades.has(trade.id),
+                'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800': favoriteTrades.has(trade.id)
+              }">
               <div class="flex items-center gap-3">
                 <button 
                   @click="toggleFavorite(trade.id)"
@@ -151,6 +156,7 @@ onMounted(() => {
                   </h3>
                   <p class="text-sm text-muted-foreground"
                      :class="{'font-semibold': favoriteTrades.has(trade.id)}">
+                    {{ trade.npc }} ({{ getNpcLocation(trade.npc) }})<br>
                     {{ getItemInfo(trade.requiredItemId)?.name }} {{ trade.requiredQuantity }}개
                     <span v-if="trade.limitType" class="ml-1">
                       ({{ getLimitText(trade) }})
