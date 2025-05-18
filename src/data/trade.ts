@@ -838,7 +838,7 @@ export const items: Item[] = [
   },
   {
     id: 'white_ore',
-    name: '백금 광석',
+    name: '백동 광석',
     imageUrl: '/images/items/white_ore.png',
     description: '제련이 필요한 백금 광석',
     isCraftable: false,
