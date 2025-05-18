@@ -955,6 +955,62 @@ export const items: Item[] = [
     description: '태양의 빛을 받은 나비',
     isCraftable: false,
     category: '재료'
+  },
+  {
+    id: 'superior_wood',
+    name: '상급 목재',
+    imageUrl: '/images/items/superior_wood.png',
+    description: '고급 목재',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'leather',
+    name: '생가죽',
+    imageUrl: '/images/items/leather.png',
+    description: '기본적인 가죽',
+    isCraftable: false,
+    category: '재료'
+  },
+  {
+    id: 'leather_processing_blueprint',
+    name: '가죽 가공 시설 설계도 (3레벨)',
+    imageUrl: '/images/items/leather_processing_blueprint.png',
+    description: '가죽 가공 시설을 만들 수 있는 설계도',
+    isCraftable: false,
+    category: '설계도'
+  },
+  {
+    id: 'wood_processing_blueprint',
+    name: '목재 가공 시설 설계도 (3레벨)',
+    imageUrl: '/images/items/wood_processing_blueprint.png',
+    description: '목재 가공 시설을 만들 수 있는 설계도',
+    isCraftable: false,
+    category: '설계도'
+  },
+  {
+    id: 'tracy_wood_carving',
+    name: '트레이시의 원목 오르골',
+    imageUrl: '/images/items/tracy_wood_carving.png',
+    description: '트레이시가 만든 나무 오르골',
+    isCraftable: false,
+    category: '장식품'
+  },
+  {
+    id: 'clam_chowder',
+    name: '조개찜',
+    imageUrl: '/images/items/clam_chowder.png',
+    description: '신선한 조개로 만든 찜',
+    isCraftable: false,
+    category: '음식'
+  },
+  {
+    id: 'caterpillar',
+    name: '애벌레',
+    imageUrl: '/images/items/caterpillar.png',
+    description: '나뭇잎을 먹는 애벌레',
+    isCraftable: false,
+    category: '재료'
   }
 ]
 
