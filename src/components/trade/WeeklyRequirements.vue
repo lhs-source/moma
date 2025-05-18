@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import { barterData, barterItems } from '@/data/trade'
 
 interface WeeklyRequirement {
@@ -12,30 +12,11 @@ interface WeeklyRequirement {
   }[]
 }
 
-const disabledTrades = ref<Set<string>>(new Set())
-
-// localStorage에서 비활성화된 교환 목록 로드
-onMounted(() => {
-  const savedDisabledTrades = localStorage.getItem('disabledTrades')
-  if (savedDisabledTrades) {
-    disabledTrades.value = new Set(JSON.parse(savedDisabledTrades))
-  }
-})
-
-// 비활성화된 교환 목록 저장
-function saveDisabledTrades() {
-  localStorage.setItem('disabledTrades', JSON.stringify([...disabledTrades.value]))
+interface Props {
+  disabledTrades: Set<string>
 }
 
-// 교환 항목 토글
-function toggleTrade(tradeId: string) {
-  if (disabledTrades.value.has(tradeId)) {
-    disabledTrades.value.delete(tradeId)
-  } else {
-    disabledTrades.value.add(tradeId)
-  }
-  saveDisabledTrades()
-}
+const props = defineProps<Props>()
 
 function calculateWeeklyRequirements(): WeeklyRequirement[] {
   const requirements: { [key: string]: WeeklyRequirement } = {}
@@ -44,7 +25,7 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
   Object.values(barterData).forEach(trades => {
     trades.forEach(trade => {
       // 비활성화된 교환은 제외
-      if (disabledTrades.value.has(trade.id)) return
+      if (props.disabledTrades.has(trade.id)) return
 
       // 필요한 아이템의 수량 계산 (일일 제한이 있는 경우 7일치)
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
@@ -88,7 +69,7 @@ const disabledRequirements = computed(() => {
 
   Object.values(barterData).forEach(trades => {
     trades.forEach(trade => {
-      if (!disabledTrades.value.has(trade.id)) return
+      if (!props.disabledTrades.has(trade.id)) return
 
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
       const weeklyQuantity = dailyLimit * 7
@@ -134,7 +115,7 @@ const disabledRequirements = computed(() => {
 
       <!-- 비활성화된 교환 목록 -->
       <div v-for="requirement in disabledRequirements" :key="requirement.itemId" 
-           class="flex items-center p-3 bg-card/50 rounded-lg border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+           class="flex items-center p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-border/50 shadow-sm hover:shadow-md transition-shadow">
         <h3 class="font-medium text-sm text-muted-foreground">
           {{ getItemInfo(requirement.itemId)?.name }}
           <span class="text-muted-foreground ml-1">{{ requirement.totalQuantity }}개</span>
