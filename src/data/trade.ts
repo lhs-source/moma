@@ -1795,26 +1795,6 @@ export const tradeData: LocationTrades = {
       limitCount: 1
     },
     {
-      id: 'neris_superior_log',
-      npc: '네리스',
-      itemId: 'superior_log',
-      itemQuantity: 1,
-      requiredItemId: 'iron_ore',
-      requiredQuantity: 1,
-      limitType: 'daily',
-      limitCount: 10
-    },
-    {
-      id: 'neris_special_steel',
-      npc: '네리스',
-      itemId: 'special_steel',
-      itemQuantity: 1,
-      requiredItemId: 'alloy_steel_ingot',
-      requiredQuantity: 2,
-      limitType: 'daily',
-      limitCount: 4
-    },
-    {
       id: 'manus_life_gem',
       npc: '마누스',
       itemId: 'life_gem',
@@ -2073,7 +2053,7 @@ export const tradeData: LocationTrades = {
       npc: '아르미스',
       itemId: 'special_steel',
       itemQuantity: 1,
-      requiredItemId: 'steel_ingot',
+      requiredItemId: 'equipment_parts',
       requiredQuantity: 1,
       limitType: 'daily',
       limitCount: 3

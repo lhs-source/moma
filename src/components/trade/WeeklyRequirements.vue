@@ -36,6 +36,9 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
       const weeklyQuantity = dailyLimit * 7
 
+      // 교환 비율을 고려하여 필요한 아이템 수량 계산
+      const requiredQuantity = Math.ceil((weeklyQuantity * trade.requiredQuantity) / trade.itemQuantity)
+
       // 필요한 아이템 정보 추가
       if (!requirements[trade.requiredItemId]) {
         requirements[trade.requiredItemId] = {
@@ -45,7 +48,7 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
         }
       }
 
-      requirements[trade.requiredItemId].totalQuantity += weeklyQuantity
+      requirements[trade.requiredItemId].totalQuantity += requiredQuantity
       requirements[trade.requiredItemId].trades.push({
         id: trade.id,
         requiredItemId: trade.itemId,
@@ -188,7 +191,7 @@ const calculateTotalRequiredMaterials = computed(() => {
         </div>
       </div>
     </div>
-
+    <h3 class="text-lg font-semibold mb-2">주간 교환 필요 제작 아이템</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1080px] mx-auto">
       <!-- 활성화된 교환 목록 -->
       <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
