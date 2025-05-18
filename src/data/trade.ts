@@ -350,7 +350,7 @@ export const items: Item[] = [
   {
     id: 'workbench_blueprint',
     name: '다목적 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/workbench_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '다목적 제작대를 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -421,7 +421,7 @@ export const items: Item[] = [
   {
     id: 'food_processing_blueprint',
     name: '식재료 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/food_processing_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '식재료 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -534,7 +534,7 @@ export const items: Item[] = [
   },
   {
     id: 'fork_in_milk',
-    name: '우유에 담긴 포크',
+    name: '포크 인 밀크',
     imageUrl: '/images/items/fork_in_milk.png',
     description: '우유에 담긴 포크',
     isCraftable: false,
@@ -550,7 +550,7 @@ export const items: Item[] = [
   },
   {
     id: 'cream',
-    name: '크림',
+    name: '생크림',
     imageUrl: '/images/items/cream.png',
     description: '신선한 크림',
     isCraftable: false,
@@ -703,7 +703,7 @@ export const items: Item[] = [
   {
     id: 'silk_fabric',
     name: '옷감 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/silk_fabric.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '옷감 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -719,7 +719,7 @@ export const items: Item[] = [
   {
     id: 'armor_blueprint',
     name: '방어구 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/armor_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '방어구 제작 설계도',
     isCraftable: false,
     category: '설계도'
@@ -847,7 +847,7 @@ export const items: Item[] = [
   {
     id: 'metal_processing_blueprint',
     name: '금속 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/metal_processing_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '금속 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -855,7 +855,7 @@ export const items: Item[] = [
   {
     id: 'weapon_blueprint',
     name: '무기 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/weapon_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '무기 제작 설계도',
     isCraftable: false,
     category: '설계도'
@@ -927,7 +927,7 @@ export const items: Item[] = [
   {
     id: 'medicine_processing_blueprint',
     name: '의약품 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/medicine_processing_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '의약품 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -943,7 +943,7 @@ export const items: Item[] = [
   {
     id: 'medicine_blueprint',
     name: '의약품 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/medicine_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '의약품 제작 설계도',
     isCraftable: false,
     category: '설계도'
@@ -983,7 +983,7 @@ export const items: Item[] = [
   {
     id: 'leather_processing_blueprint',
     name: '가죽 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/leather_processing_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '가죽 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
@@ -991,7 +991,7 @@ export const items: Item[] = [
   {
     id: 'wood_processing_blueprint',
     name: '목재 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/wood_processing_blueprint.png',
+    imageUrl: '/images/items/blueprint.png',
     description: '목재 가공 시설을 만들 수 있는 설계도',
     isCraftable: false,
     category: '설계도'
