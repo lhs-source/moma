@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { items, tradeData } from '@/data/trade'
 import { recipes } from '@/data/recipes'
 import type { TradeData } from '@/data/schemas/trade'
@@ -9,12 +9,12 @@ import type { Recipe } from '@/data/schemas/recipe'
 interface WeeklyRequirement {
   itemId: string
   totalQuantity: number
-  trades: {
+  recipe?: Recipe
+  trades?: {
     id: string
     requiredItemId: string
     requiredQuantity: number
   }[]
-  recipe?: Recipe
 }
 
 interface Props {
@@ -23,7 +23,9 @@ interface Props {
 
 const props = defineProps<Props>()
 
-function calculateWeeklyRequirements(): WeeklyRequirement[] {
+const weeklyRequirements = ref<WeeklyRequirement[]>([])
+
+const calculateWeeklyRequirements = () => {
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
   // 모든 지역의 교환 목록을 순회
@@ -49,11 +51,13 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
       }
 
       requirements[trade.requiredItemId].totalQuantity += requiredQuantity
-      requirements[trade.requiredItemId].trades.push({
-        id: trade.id,
-        requiredItemId: trade.itemId,
-        requiredQuantity: weeklyQuantity
-      })
+      if (requirements[trade.requiredItemId].trades) {
+        requirements[trade.requiredItemId].trades.push({
+          id: trade.id,
+          requiredItemId: trade.itemId,
+          requiredQuantity: weeklyQuantity
+        })
+      }
     })
   })
 
@@ -66,8 +70,13 @@ function calculateWeeklyRequirements(): WeeklyRequirement[] {
   })
 
   // 결과를 배열로 변환하고 수량 기준으로 정렬
-  return Object.values(requirements).sort((a, b) => b.totalQuantity - a.totalQuantity)
+  weeklyRequirements.value = Object.values(requirements)
+    .filter(req => !props.disabledTrades.has(req.itemId)) // 비활성화된 아이템 제외
+    .sort((a, b) => b.totalQuantity - a.totalQuantity)
 }
+
+// 초기 계산 실행
+calculateWeeklyRequirements()
 
 const getItemInfo = (itemId: string): Item | undefined => {
   return items.find(item => item.id === itemId)
@@ -77,10 +86,7 @@ function formatQuantity(quantity: number): string {
   return quantity.toString()
 }
 
-const weeklyRequirements = computed(() => calculateWeeklyRequirements())
-
-// 비활성화된 교환 목록 계산
-const disabledRequirements = computed(() => {
+const disabledRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
   Object.values(tradeData).forEach(trades => {
@@ -99,11 +105,13 @@ const disabledRequirements = computed(() => {
       }
 
       requirements[trade.requiredItemId].totalQuantity += weeklyQuantity
-      requirements[trade.requiredItemId].trades.push({
-        id: trade.id,
-        requiredItemId: trade.itemId,
-        requiredQuantity: weeklyQuantity
-      })
+      if (requirements[trade.requiredItemId].trades) {
+        requirements[trade.requiredItemId].trades.push({
+          id: trade.id,
+          requiredItemId: trade.itemId,
+          requiredQuantity: weeklyQuantity
+        })
+      }
     })
   })
 
@@ -148,7 +156,7 @@ const calculateTotalRequiredMaterials = computed(() => {
   const materials: { [key: string]: number } = {}
 
   // 활성화된 교환의 재료 집계만 수행
-  weeklyRequirements.value.forEach(requirement => {
+  weeklyRequirements.value.forEach((requirement: WeeklyRequirement) => {
     if (requirement.recipe) {
       // 레시피가 있는 경우 재귀적으로 계산
       const recipeMaterials = calculateRecipeMaterials(requirement.recipe, requirement.totalQuantity)
@@ -191,81 +199,47 @@ const calculateTotalRequiredMaterials = computed(() => {
         </div>
       </div>
     </div>
-    <h3 class="text-lg font-semibold mb-2">주간 교환 필요 제작 아이템</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1080px] mx-auto">
-      <!-- 활성화된 교환 목록 -->
-      <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
-           class="flex flex-col p-3 bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center">
-          <h3 class="font-medium text-sm">
-            <div class="flex items-center gap-1">
-              <img 
-                :src="getItemInfo(requirement.itemId)?.imageUrl" 
-                :alt="getItemInfo(requirement.itemId)?.name"
-                class="w-4 h-4 object-contain"
-              />
-              <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
-            </div>
-            <span class="text-primary ml-1">{{ requirement.totalQuantity }}개</span>
-            <span class="text-muted-foreground ml-1">
-              ({{ requirement.trades.map(trade => 
-                `${getItemInfo(trade.requiredItemId)?.name} ${trade.requiredQuantity}개`
-              ).join(', ') }})
-            </span>
-          </h3>
-        </div>
-        <!-- 레시피 정보 표시 -->
-        <div v-if="requirement.recipe" class="mt-2 text-xs text-muted-foreground">
-          <div class="font-medium mb-1">필요 재료:</div>
-          <div class="grid grid-cols-2 gap-1">
-            <div v-for="item in requirement.recipe.requiredItems" :key="item.itemId" class="flex items-center gap-1">
-              <img 
-                :src="getItemInfo(item.itemId)?.imageUrl" 
-                :alt="getItemInfo(item.itemId)?.name"
-                class="w-3 h-3 object-contain"
-              />
-              <span>{{ getItemInfo(item.itemId)?.name }} x{{ item.quantity }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- 비활성화된 교환 목록 -->
-      <div v-for="requirement in disabledRequirements" :key="requirement.itemId" 
-           class="flex flex-col p-3 bg-gray-100 dark:bg-gray-800 rounded-lg border border-border/50 shadow-sm hover:shadow-md transition-shadow">
-        <div class="flex items-center">
-          <h3 class="font-medium text-sm text-muted-foreground">
-            <div class="flex items-center gap-1">
-              <img 
-                :src="getItemInfo(requirement.itemId)?.imageUrl" 
-                :alt="getItemInfo(requirement.itemId)?.name"
-                class="w-4 h-4 object-contain"
-              />
-              <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
-            </div>
-            <span class="text-muted-foreground ml-1">{{ requirement.totalQuantity }}개</span>
-            <span class="text-muted-foreground/70 ml-1">
-              ({{ requirement.trades.map(trade => 
-                `${getItemInfo(trade.requiredItemId)?.name} ${trade.requiredQuantity}개`
-              ).join(', ') }})
-            </span>
-          </h3>
-        </div>
-        <!-- 레시피 정보 표시 -->
-        <div v-if="requirement.recipe" class="mt-2 text-xs text-muted-foreground/70">
-          <div class="font-medium mb-1">필요 재료:</div>
-          <div class="grid grid-cols-2 gap-1">
-            <div v-for="item in requirement.recipe.requiredItems" :key="item.itemId" class="flex items-center gap-1">
-              <img 
-                :src="getItemInfo(item.itemId)?.imageUrl" 
-                :alt="getItemInfo(item.itemId)?.name"
-                class="w-3 h-3 object-contain"
-              />
-              <span>{{ getItemInfo(item.itemId)?.name }} x{{ item.quantity }}</span>
+    <!-- 활성화된 교환 목록만 표시 -->
+    <template v-if="weeklyRequirements.length > 0">
+      <h3 class="text-lg font-semibold mb-2">주간 교환 필요 제작 아이템</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1080px] mx-auto">
+        <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
+             class="flex flex-col p-3 bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center">
+            <h3 class="font-medium text-sm">
+              <div class="flex items-center gap-1">
+                <img 
+                  :src="getItemInfo(requirement.itemId)?.imageUrl" 
+                  :alt="getItemInfo(requirement.itemId)?.name"
+                  class="w-4 h-4 object-contain"
+                />
+                <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
+              </div>
+              <span class="text-primary ml-1">{{ requirement.totalQuantity }}개</span>
+              <span class="text-muted-foreground ml-1">
+                ({{ requirement.trades?.map(trade => 
+                  `${getItemInfo(trade.requiredItemId)?.name} ${trade.requiredQuantity}개`
+                ).join(', ') }})
+              </span>
+            </h3>
+          </div>
+          <!-- 레시피 정보 표시 -->
+          <div v-if="requirement.recipe" class="mt-2 text-xs text-muted-foreground">
+            <div class="font-medium mb-1">필요 재료:</div>
+            <div class="grid grid-cols-2 gap-1">
+              <div v-for="item in requirement.recipe.requiredItems" :key="item.itemId" class="flex items-center gap-1">
+                <img 
+                  :src="getItemInfo(item.itemId)?.imageUrl" 
+                  :alt="getItemInfo(item.itemId)?.name"
+                  class="w-3 h-3 object-contain"
+                />
+                <span>{{ getItemInfo(item.itemId)?.name }} x{{ item.quantity }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template> 
