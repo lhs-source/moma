@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { tradeData } from '@/data/trade'
+import { useTradeData } from '@/composables/useTradeData'
 import { npcs } from '@/data/npcs'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
@@ -22,6 +22,7 @@ interface Trade {
 }
 
 // State
+const { tradeData } = useTradeData()
 const disabledTrades = ref<Set<string>>(new Set())
 const favoriteTrades = ref<Set<string>>(new Set())
 
@@ -29,14 +30,14 @@ const favoriteTrades = ref<Set<string>>(new Set())
 const formattedTrades = computed(() => {
   const result: Record<string, Trade[]> = {}
   
-  Object.entries(tradeData).forEach(([region, trades]) => {
+  Object.entries(tradeData.value).forEach(([region, trades]) => {
     result[region] = trades
-      .map(trade => ({
+      .map((trade: TradeData) => ({
         ...trade,
         isDisabled: disabledTrades.value.has(trade.id),
         isFavorite: favoriteTrades.value.has(trade.id)
       }))
-      .sort((a, b) => {
+      .sort((a: Trade, b: Trade) => {
         // 즐겨찾기 항목을 가장 앞으로, 비활성화된 항목을 뒤로 정렬
         if (a.isFavorite && !b.isFavorite) return -1
         if (!a.isFavorite && b.isFavorite) return 1
@@ -92,7 +93,7 @@ function saveFavoriteTrades() {
 }
 
 const getTradesByLocation = (location: string): TradeData[] => {
-  return tradeData[location] || []
+  return tradeData.value[location] || []
 }
 
 const getNpcLocation = (npcName: string): string => {

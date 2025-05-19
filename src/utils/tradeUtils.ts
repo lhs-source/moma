@@ -1,4 +1,4 @@
-import { tradeData } from '@/data/trade'
+import { useTradeData } from '@/composables/useTradeData'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
 import { items } from '@/data/items'
@@ -14,10 +14,11 @@ interface WeeklyRequirement {
 }
 
 export function calculateWeeklyRequirements(): WeeklyRequirement[] {
+  const { tradeData } = useTradeData()
   const requirements: { [key: string]: WeeklyRequirement } = {}
 
   // 모든 지역의 교환 목록을 순회
-  Object.values(tradeData).forEach((trades: TradeData[]) => {
+  Object.values(tradeData.value).forEach((trades: TradeData[]) => {
     trades.forEach((trade: TradeData) => {
       // 필요한 아이템의 수량 계산 (일일 제한이 있는 경우 7일치)
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1

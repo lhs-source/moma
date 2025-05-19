@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { tradeData } from '@/data/trade'
+import { useTradeData } from '@/composables/useTradeData'
 import { recipes } from '@/data/recipes'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
@@ -23,14 +23,15 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { tradeData } = useTradeData()
 
 // weeklyRequirements를 computed로 변경
 const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
 
   // 모든 지역의 교환 목록을 순회
-  Object.values(tradeData).forEach(trades => {
-    trades.forEach(trade => {
+  Object.values(tradeData.value).forEach((trades: TradeData[]) => {
+    trades.forEach((trade: TradeData) => {
       // 비활성화된 교환은 제외
       if (props.disabledTrades.has(trade.id)) return
 
@@ -84,8 +85,8 @@ function formatQuantity(quantity: number): string {
 const disabledRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
 
-  Object.values(tradeData).forEach(trades => {
-    trades.forEach(trade => {
+  Object.values(tradeData.value).forEach((trades: TradeData[]) => {
+    trades.forEach((trade: TradeData) => {
       // 활성화된 교환은 제외
       if (!props.disabledTrades.has(trade.id)) return
 
@@ -123,7 +124,7 @@ const disabledRequirements = computed<WeeklyRequirement[]>(() => {
 })
 
 const getTradesByLocation = (location: string): TradeData[] => {
-  return tradeData[location] || []
+  return tradeData.value[location] || []
 }
 
 // 재귀적으로 레시피의 재료를 계산하는 함수
