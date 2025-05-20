@@ -279,7 +279,7 @@ const calculateTotalRequiredMaterials = computed(() => {
               <span v-if="requirement.recipe.category === '교환'" class="text-green-500">교환 방법:</span>
               <span v-else>필요 재료:</span>
             </div>
-            <div class="grid grid-cols-2 gap-1">
+            <div class="grid grid-cols-1 gap-1">
               <div v-for="item in requirement.recipe.requiredItems" :key="item.itemId" 
                    :class="{'bg-green-50 dark:bg-green-900/20 rounded p-1': requirement.recipe.category === '교환'}"
                    class="flex flex-col gap-1">
@@ -296,12 +296,7 @@ const calculateTotalRequiredMaterials = computed(() => {
                 <div v-if="requirement.recipe.category === '교환' && getItemRecipe(item.itemId)" 
                      class="ml-4 mt-1 p-1 bg-blue-50 dark:bg-blue-900/10 rounded-sm border-l-2 border-blue-200 dark:border-blue-800">
                   <div class="flex items-center gap-1 text-blue-700 dark:text-blue-300 font-medium mb-1 text-[10px]">
-                    <template v-if="getItemRecipe(item.itemId)?.id === 'steamed_clams' && item.itemId === 'clam_chowder'">
-                      조개찜 제작 방법
-                    </template>
-                    <template v-else>
-                      {{ getItemRecipe(item.itemId)?.name }} 제작 방법
-                    </template>
+                    {{ getItemRecipe(item.itemId)?.name }} 제작 방법
                   </div>
                   <div class="space-y-1">
                     <div v-for="recipeItem in getItemRecipe(item.itemId)?.requiredItems" :key="recipeItem.itemId"

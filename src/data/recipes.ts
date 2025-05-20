@@ -219,11 +219,10 @@ export const recipes: Recipe[] = [
     ],
     category: '솜씨 특화',
     facilityLevel: 10
-  },
-  {
+  },  {
     id: 'ice_strawberry_juice',
     name: '얼음 딸기주스',
-    resultItemId: 'ice_strawberry_juice',
+    resultItemId: 'ice_fruit_juice',
     requiredItems: [
       { itemId: 'ice', quantity: 10 },
       { itemId: 'strawberry', quantity: 6 },
@@ -269,9 +268,9 @@ export const recipes: Recipe[] = [
     ],
     category: '지력 특화',
     facilityLevel: 10
-  },
-  {
+  },  {
     id: 'white_fish_meuniere',
+    name: '화이트 피시 무니에르',
     resultItemId: 'white_fish_meuniere',
     resultQuantity: 1,
     requiredItems: [
@@ -282,11 +281,11 @@ export const recipes: Recipe[] = [
       { itemId: 'lemon', quantity: 5 },
       { itemId: 'salt', quantity: 3 }
     ],
-    facilityLevel: 15,
-    type: '쉐어링'
-  },
-  {
+    category: '쉐어링',
+    facilityLevel: 15
+  },  {
     id: 'bouillabaisse',
+    name: '부야베스',
     resultItemId: 'bouillabaisse',
     resultQuantity: 1,
     requiredItems: [
@@ -297,11 +296,11 @@ export const recipes: Recipe[] = [
       { itemId: 'onion', quantity: 2 },
       { itemId: 'garlic', quantity: 4 }
     ],
-    facilityLevel: 15,
-    type: '쉐어링'
-  },
-  {
+    category: '쉐어링',
+    facilityLevel: 15
+  },  {
     id: 'mackerel_and_salmon_steak',
+    name: '고등어 연어 스테이크',
     resultItemId: 'mackerel_and_salmon_steak',
     resultQuantity: 1,
     requiredItems: [
@@ -312,11 +311,11 @@ export const recipes: Recipe[] = [
       { itemId: 'salt', quantity: 2 },
       { itemId: 'pepper', quantity: 3 }
     ],
-    facilityLevel: 15,
-    type: '쉐어링'
-  },
-  {
+    category: '쉐어링',
+    facilityLevel: 15
+  },  {
     id: 'catfish_fish_and_chips',
+    name: '메기 피쉬 앤 칩스',
     resultItemId: 'catfish_fish_and_chips',
     resultQuantity: 1,
     requiredItems: [
@@ -327,7 +326,7 @@ export const recipes: Recipe[] = [
       { itemId: 'lemon', quantity: 2 },
       { itemId: 'salt', quantity: 3 }
     ],
-    facilityLevel: 15,
-    type: '쉐어링'
+    category: '쉐어링',
+    facilityLevel: 15
   }
 ] 
