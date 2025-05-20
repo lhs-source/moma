@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useTradeData } from '@/composables/useTradeData'
 import { recipes } from '@/data/recipes'
 import type { TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
 // Recipe 타입을 확장하여 교환 카테고리 추가
 import type { Recipe as OriginalRecipe } from '@/data/schemas/recipe'
+import TotalRequiredMaterials from './TotalRequiredMaterials.vue'
+import WeeklyTradeRequirements from './WeeklyTradeRequirements.vue'
 
 // 커스텀 Recipe 타입
 interface Recipe extends OriginalRecipe {
@@ -75,6 +77,20 @@ const createTradeRecipe = (itemId: string): Recipe | undefined => {
   } as Recipe
 }
 
+// 특수 교환 아이템에 대한 실제 필요 수량 계산 
+// 예: 글리니스의 애플 밀크티는 일주일에 최대 7개 생산 가능하지만 실제 필요한 것은 6개(상급 목재+ 교환용)
+const getActualWeeklyRequirement = (trade: TradeData): number => {
+  // 글리니스의 애플 밀크티 - 상급 목재+ 교환을 위해 필요
+  if (trade.giveItemId === 'glenis_apple_milk_tea' && trade.receiveItemId === 'superior_wood_plus') {
+    // 일주일에 2번 교환 가능 (maxExchanges: 2), 한 번에 3개씩 필요하므로 총 6개
+    return trade.giveQuantity * trade.maxExchanges; // 3 * 2 = 6
+  }
+  
+  // 기본 계산 방식 적용 (일일 한도 * 7)
+  const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1;
+  return dailyLimit * 7 * trade.requiredQuantity;
+}
+
 // weeklyRequirements를 computed로 변경
 const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
@@ -85,16 +101,25 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
       // 비활성화된 교환은 제외
       if (props.disabledTrades.has(trade.id)) return
 
-      // 필요한 아이템의 수량 계산 (일일 제한이 있는 경우 7일치)
-      // 교환 가능 횟수 계산
-      const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
-      const weeklyExchangeCount = dailyLimit * 7
-
-      // 교환 한 번에 필요한 아이템 수량
-      const requiredItemPerExchange = trade.requiredQuantity  
+      // 필요한 아이템의 수량 계산 (특수 교환 아이템 처리 포함)
+      let requiredQuantity = 0;
+      let weeklyExchangeCount = 0;
       
-      // 일주일간 필요한 총 아이템 수량
-      const requiredQuantity = weeklyExchangeCount * requiredItemPerExchange
+      if (trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea') {
+        // 상급 목재+ 교환을 위해 필요한 글리니스의 애플 밀크티 수량: 3개 * 2회 = 6개
+        requiredQuantity = getActualWeeklyRequirement(trade);
+        weeklyExchangeCount = trade.maxExchanges; // 일주일에 2번 교환 가능
+      } else {
+        // 일반적인 경우: 일일 한도 * 7일
+        const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1;
+        weeklyExchangeCount = dailyLimit * 7;
+        
+        // 교환 한 번에 필요한 아이템 수량
+        const requiredItemPerExchange = trade.requiredQuantity;
+        
+        // 일주일간 필요한 총 아이템 수량
+        requiredQuantity = weeklyExchangeCount * requiredItemPerExchange;
+      }
 
       // 필요한 아이템 정보 추가
       if (!requirements.has(trade.requiredItemId)) {
@@ -109,7 +134,9 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           trades: [{
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
+            requiredQuantity: trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea' 
+              ? trade.maxExchanges * trade.itemQuantity // 글리니스의 애플 밀크티 특수 처리
+              : weeklyExchangeCount * trade.itemQuantity
           }]
         })
       } else {
@@ -119,7 +146,9 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           existing.trades.push({
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyExchangeCount * trade.itemQuantity  // 주간 교환 횟수로 수정
+            requiredQuantity: trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea'
+              ? trade.maxExchanges * trade.itemQuantity // 글리니스의 애플 밀크티 특수 처리
+              : weeklyExchangeCount * trade.itemQuantity
           })
         }
       }
@@ -179,142 +208,25 @@ const getItemRecipe = (itemId: string): Recipe | undefined => {
 
 // 비활성화된 교환 항목 관련 계산은 현재 사용되지 않음
 
-// 재귀적으로 레시피의 재료를 계산하는 함수
-function calculateRecipeMaterials(recipe: Recipe, quantity: number): { [key: string]: number } {
-  const materials: { [key: string]: number } = {}
-
-  recipe.requiredItems.forEach(item => {
-    const nestedRecipe = recipes.find(r => r.resultItemId === item.itemId)
-    if (nestedRecipe) {
-      // 중첩된 레시피가 있는 경우 재귀적으로 계산
-      const nestedMaterials = calculateRecipeMaterials(nestedRecipe, item.quantity * quantity)
-      Object.entries(nestedMaterials).forEach(([itemId, qty]) => {
-        materials[itemId] = (materials[itemId] || 0) + qty
-      })
-    } else {
-      // 기본 재료인 경우
-      materials[item.itemId] = (materials[item.itemId] || 0) + (item.quantity * quantity)
-    }
-  })
-
-  return materials
-}
-
-// 최종 필요 재료 계산
-const calculateTotalRequiredMaterials = computed(() => {
-  const materials: { [key: string]: number } = {}
-
-  // 활성화된 교환의 재료 집계만 수행
-  weeklyRequirements.value.forEach((requirement: WeeklyRequirement) => {
-    if (requirement.recipe) {
-      // 레시피가 있는 경우 재귀적으로 계산
-      const recipeMaterials = calculateRecipeMaterials(requirement.recipe, requirement.totalQuantity)
-      Object.entries(recipeMaterials).forEach(([itemId, quantity]) => {
-        materials[itemId] = (materials[itemId] || 0) + quantity
-      })
-    } else {
-      // 레시피가 없는 경우 아이템 자체를 재료로 추가
-      materials[requirement.itemId] = (materials[requirement.itemId] || 0) + requirement.totalQuantity
-    }
-  })
-
-  // 아이템 ID를 기준으로 정렬된 배열로 변환
-  return Object.entries(materials)
-    .map(([itemId, quantity]) => ({
-      itemId,
-      quantity
-    }))
-    .sort((a, b) => b.quantity - a.quantity)
-})
+// 재귀적인 재료 계산은 TotalRequiredMaterials 컴포넌트로 이동
 </script>
 
 <template>
   <div class="p-2">
     <h2 class="text-xl font-bold mb-2">주간 교환 필요 아이템</h2>
     
-    <!-- 최종 필요 재료 섹션 -->
-    <div class="mb-4">
-      <h3 class="text-lg font-semibold mb-2">주간 최종 필요한 아이템</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-        <div v-for="material in calculateTotalRequiredMaterials" :key="material.itemId"
-             class="flex items-center p-2 bg-card/50 rounded-lg border border-border/50">
-          <img 
-            :src="getItemInfo(material.itemId)?.imageUrl" 
-            :alt="getItemInfo(material.itemId)?.name"
-            class="w-4 h-4 object-contain mr-1"
-          />
-          <span class="text-sm">{{ getItemInfo(material.itemId)?.name }}</span>
-          <span class="text-primary ml-1 text-sm">{{ material.quantity }}개</span>
-        </div>
-      </div>
-    </div>
+    <!-- 최종 필요 재료 섹션 - 컴포넌트로 분리 -->
+    <TotalRequiredMaterials 
+      :weeklyRequirements="weeklyRequirements"
+      :recipes="recipes"
+      :getItemInfo="getItemInfo"
+    />
 
-    <!-- 활성화된 교환 목록만 표시 -->
-    <template v-if="weeklyRequirements.length > 0">
-      <h3 class="text-lg font-semibold mb-2">주간 교환 필요 제작 아이템</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-w-[1080px] mx-auto">
-        <div v-for="requirement in weeklyRequirements" :key="requirement.itemId" 
-             class="flex flex-col p-3 bg-card rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center">
-            <h3 class="font-medium text-sm">
-              <div class="flex items-center gap-1">
-                <img 
-                  :src="getItemInfo(requirement.itemId)?.imageUrl" 
-                  :alt="getItemInfo(requirement.itemId)?.name"
-                  class="w-4 h-4 object-contain"
-                />
-                <span>{{ getItemInfo(requirement.itemId)?.name }}</span>
-              </div>
-              <span class="text-primary ml-1">{{ requirement.totalQuantity }}개</span>
-              <span class="text-muted-foreground ml-1">
-                ({{ requirement.trades?.map(trade => 
-                  `${getItemInfo(trade.requiredItemId)?.name} ${trade.requiredQuantity}개`
-                ).join(', ') }})
-              </span>
-            </h3>
-          </div>
-          <!-- 레시피 정보 표시 -->
-          <div v-if="requirement.recipe" class="mt-2 text-xs text-muted-foreground">
-            <div class="font-medium mb-1">
-              <span v-if="requirement.recipe.category === '교환'" class="text-green-500">교환 방법:</span>
-              <span v-else>필요 재료:</span>
-            </div>
-            <div class="grid grid-cols-1 gap-1">
-              <div v-for="item in requirement.recipe.requiredItems" :key="item.itemId" 
-                   :class="{'bg-green-50 dark:bg-green-900/20 rounded p-1': requirement.recipe.category === '교환'}"
-                   class="flex flex-col gap-1">
-                <div class="flex items-center gap-1">
-                  <img 
-                    :src="getItemInfo(item.itemId)?.imageUrl" 
-                    :alt="getItemInfo(item.itemId)?.name"
-                    class="w-3 h-3 object-contain"
-                  />
-                  <span>{{ getItemInfo(item.itemId)?.name }} x{{ item.quantity }}</span>
-                </div>
-                
-                <!-- 교환 레시피인 경우, 필요한 아이템의 레시피 표시 -->
-                <div v-if="requirement.recipe.category === '교환' && getItemRecipe(item.itemId)" 
-                     class="ml-4 mt-1 p-1 bg-blue-50 dark:bg-blue-900/10 rounded-sm border-l-2 border-blue-200 dark:border-blue-800">
-                  <div class="flex items-center gap-1 text-blue-700 dark:text-blue-300 font-medium mb-1 text-[10px]">
-                    {{ getItemRecipe(item.itemId)?.name }} 제작 방법
-                  </div>
-                  <div class="space-y-1">
-                    <div v-for="recipeItem in getItemRecipe(item.itemId)?.requiredItems" :key="recipeItem.itemId"
-                         class="flex items-center gap-1 text-[10px]">
-                      <img 
-                        :src="getItemInfo(recipeItem.itemId)?.imageUrl" 
-                        :alt="getItemInfo(recipeItem.itemId)?.name"
-                        class="w-2 h-2 object-contain"
-                      />
-                      <span>{{ getItemInfo(recipeItem.itemId)?.name }} x{{ recipeItem.quantity }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
+    <!-- 활성화된 교환 목록 컴포넌트 -->
+    <WeeklyTradeRequirements
+      :weeklyRequirements="weeklyRequirements"
+      :getItemInfo="getItemInfo"
+      :getItemRecipe="getItemRecipe"
+    />
   </div>
 </template>

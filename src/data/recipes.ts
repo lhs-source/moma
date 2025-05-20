@@ -328,5 +328,27 @@ export const recipes: Recipe[] = [
     ],
     category: '쉐어링',
     facilityLevel: 15
+  }, {
+    id: 'cream',
+    name: '생크림',
+    resultItemId: 'cream',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'milk', quantity: 12 },
+      { itemId: 'egg', quantity: 6 },
+      { itemId: 'sugar', quantity: 2 }
+    ],
+    category: '기타',
+    facilityLevel: 5
+  }, {
+    id: 'flour',
+    name: '밀가루',
+    resultItemId: 'flour',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'wheat', quantity: 15 },
+    ],
+    category: '기타',
+    facilityLevel: 5
   }
-] 
+]
