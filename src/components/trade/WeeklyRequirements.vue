@@ -36,11 +36,15 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
       if (props.disabledTrades.has(trade.id)) return
 
       // 필요한 아이템의 수량 계산 (일일 제한이 있는 경우 7일치)
+      // 교환 가능 횟수 계산
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
-      const weeklyQuantity = dailyLimit * 7
+      const weeklyExchangeCount = dailyLimit * 7
 
-      // 교환 비율을 고려하여 필요한 아이템 수량 계산
-      const requiredQuantity = Math.ceil((weeklyQuantity * trade.requiredQuantity) / trade.itemQuantity)
+      // 교환 한 번에 필요한 아이템 수량
+      const requiredItemPerExchange = trade.requiredQuantity  
+      
+      // 일주일간 필요한 총 아이템 수량
+      const requiredQuantity = weeklyExchangeCount * requiredItemPerExchange
 
       // 필요한 아이템 정보 추가
       if (!requirements.has(trade.requiredItemId)) {
@@ -51,7 +55,7 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           trades: [{
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyQuantity
+            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
           }]
         })
       } else {
@@ -61,7 +65,7 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           existing.trades.push({
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyQuantity
+            requiredQuantity: weeklyExchangeCount * itemQuantity  // 주간 교환 횟수로 수정
           })
         }
       }
@@ -77,10 +81,6 @@ const getItemInfo = (itemId: string): Item | undefined => {
   return items.find(item => item.id === itemId)
 }
 
-function formatQuantity(quantity: number): string {
-  return quantity.toString()
-}
-
 // 비활성화된 교환 항목 계산 (주간 교환 필요 제작 아이템에는 포함되지 않음)
 const disabledRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
@@ -90,9 +90,15 @@ const disabledRequirements = computed<WeeklyRequirement[]>(() => {
       // 활성화된 교환은 제외
       if (!props.disabledTrades.has(trade.id)) return
 
+      // 교환 가능 횟수 계산
       const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1
       const weeklyQuantity = dailyLimit * 7
-      const requiredQuantity = Math.ceil((weeklyQuantity * trade.requiredQuantity) / trade.itemQuantity)
+      
+      // 교환 한 번에 필요한 아이템 수량
+      const requiredItemPerExchange = trade.requiredQuantity  
+      
+      // 일주일간 필요한 총 아이템 수량
+      const requiredQuantity = weeklyQuantity * requiredItemPerExchange
 
       if (!requirements.has(trade.requiredItemId)) {
         requirements.set(trade.requiredItemId, {
@@ -122,10 +128,6 @@ const disabledRequirements = computed<WeeklyRequirement[]>(() => {
   return Array.from(requirements.values())
     .sort((a, b) => b.totalQuantity - a.totalQuantity)
 })
-
-const getTradesByLocation = (location: string): TradeData[] => {
-  return tradeData.value[location] || []
-}
 
 // 재귀적으로 레시피의 재료를 계산하는 함수
 function calculateRecipeMaterials(recipe: Recipe, quantity: number): { [key: string]: number } {
