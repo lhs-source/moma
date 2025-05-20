@@ -194,11 +194,10 @@ export const recipes: Recipe[] = [
     ],
     category: '지력 특화',
     facilityLevel: 5
-  },
-  {
+  },  {
     id: 'steamed_clams',
     name: '조개찜',
-    resultItemId: 'steamed_clams',
+    resultItemId: 'clam_chowder',
     requiredItems: [
       { itemId: 'clam', quantity: 10 },
       { itemId: 'water_bottle', quantity: 5 },
@@ -246,11 +245,10 @@ export const recipes: Recipe[] = [
     ],
     category: '힘 특화',
     facilityLevel: 10
-  },
-  {
+  },  {
     id: 'aglio_e_olio',
     name: '알리오 올리오',
-    resultItemId: 'aglio_e_olio',
+    resultItemId: 'alrio_orio',
     requiredItems: [
       { itemId: 'garlic', quantity: 7 },
       { itemId: 'noodle', quantity: 2 },
@@ -259,10 +257,9 @@ export const recipes: Recipe[] = [
     ],
     category: '솜씨 특화',
     facilityLevel: 10
-  },
-  {
+  },{
     id: 'apple_cream_cake',
-    name: '사과 생크림케이트',
+    name: '사과 생크림 케이크',
     resultItemId: 'apple_cream_cake',
     requiredItems: [
       { itemId: 'apple', quantity: 12 },
