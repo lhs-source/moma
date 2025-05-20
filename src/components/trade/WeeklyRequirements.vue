@@ -160,6 +160,88 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
     .sort((a, b) => b.totalQuantity - a.totalQuantity)
 })
 
+// 순환 의존성이 없는 필요 아이템만 필터링한 computed 속성
+const filteredWeeklyRequirements = computed<WeeklyRequirement[]>(() => {
+  // 모든 교환에서 필요한(requiredItemId) 아이템과 얻는(itemId) 아이템 목록 생성
+  const requiredItemsSet = new Set<string>()
+  const targetItemsSet = new Set<string>()
+  
+  // 모든 교환 항목을 확인하여 필요 아이템과 대상 아이템 수집
+  Object.values(tradeData.value).forEach((trades: TradeData[]) => {
+    trades.forEach((trade: TradeData) => {
+      if (!props.disabledTrades.has(trade.id)) {
+        requiredItemsSet.add(trade.requiredItemId)
+        targetItemsSet.add(trade.itemId)
+      }
+    })
+  })
+  
+  // 순환 의존성이 있는 아이템 식별 (필요 아이템이면서 동시에 대상 아이템인 경우)
+  const circularDependencyItems = new Set<string>()
+  requiredItemsSet.forEach(itemId => {
+    if (targetItemsSet.has(itemId)) {
+      circularDependencyItems.add(itemId)
+    }
+  })
+
+  // 최종 산출물(end product) 아이템 목록 식별
+  // 최종 산출물은 다른 교환의 재료로 사용되지 않는 아이템
+  const finalProductItems = new Set<string>()
+  targetItemsSet.forEach(itemId => {
+    if (!requiredItemsSet.has(itemId)) {
+      finalProductItems.add(itemId)
+    }
+  })
+  
+  // 특수 케이스 처리: 특정 최종 산출물은 항상 포함 (예: 상급 목재+)
+  const specialFinalProducts = new Set(['superior_wood_plus'])
+  specialFinalProducts.forEach(itemId => {
+    finalProductItems.add(itemId)
+  })
+
+  // 순환 의존성이 있는 아이템을 필터링하되, 최종 산출물인 경우는 포함
+  return weeklyRequirements.value.filter(requirement => {
+    // 1. 해당 아이템이 순환 의존성이 있지만 최종 산출물이면 포함
+    if (circularDependencyItems.has(requirement.itemId)) {
+      // 최종 산출물에 해당하는 trades만 포함하도록 필터링
+      if (requirement.trades) {
+        const filteredTrades = requirement.trades.filter(trade => 
+          finalProductItems.has(trade.requiredItemId)
+        )
+        
+        if (filteredTrades.length > 0) {
+          // 필터링된 trades만 사용하도록 업데이트
+          requirement.trades = filteredTrades
+          return true
+        }
+      }
+      return false
+    }
+    
+    // 2. 교환을 통해 얻는 아이템 중 순환 의존성이 있는 경우, 최종 산출물에만 사용되는지 확인
+    if (requirement.trades) {
+      // 순환 의존성이 있는 trades를 찾기
+      const circularTrades = requirement.trades.filter(trade => 
+        circularDependencyItems.has(trade.requiredItemId) && !finalProductItems.has(trade.requiredItemId)
+      )
+      
+      // 모든 trades가 순환 의존성이 있고 최종 산출물이 아니면 제외
+      if (circularTrades.length === requirement.trades.length) {
+        return false
+      }
+      
+      // 순환 의존성 trades 제거
+      if (circularTrades.length > 0) {
+        requirement.trades = requirement.trades.filter(trade => 
+          !circularDependencyItems.has(trade.requiredItemId) || finalProductItems.has(trade.requiredItemId)
+        )
+      }
+    }
+    
+    return true
+  })
+})
+
 const getItemInfo = (itemId: string): Item | undefined => {
   return items.find(item => item.id === itemId)
 }
@@ -217,14 +299,14 @@ const getItemRecipe = (itemId: string): Recipe | undefined => {
     
     <!-- 최종 필요 재료 섹션 - 컴포넌트로 분리 -->
     <TotalRequiredMaterials 
-      :weeklyRequirements="weeklyRequirements"
+      :weeklyRequirements="filteredWeeklyRequirements"
       :recipes="recipes"
       :getItemInfo="getItemInfo"
     />
 
     <!-- 활성화된 교환 목록 컴포넌트 -->
     <WeeklyTradeRequirements
-      :weeklyRequirements="weeklyRequirements"
+      :weeklyRequirements="filteredWeeklyRequirements"
       :getItemInfo="getItemInfo"
       :getItemRecipe="getItemRecipe"
     />
