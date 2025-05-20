@@ -76,21 +76,6 @@ const createTradeRecipe = (itemId: string): Recipe | undefined => {
     facilityLevel: 0
   } as Recipe
 }
-
-// 특수 교환 아이템에 대한 실제 필요 수량 계산 
-// 예: 글리니스의 애플 밀크티는 일주일에 최대 7개 생산 가능하지만 실제 필요한 것은 6개(상급 목재+ 교환용)
-const getActualWeeklyRequirement = (trade: TradeData): number => {
-  // 글리니스의 애플 밀크티 - 상급 목재+ 교환을 위해 필요
-  if (trade.giveItemId === 'glenis_apple_milk_tea' && trade.receiveItemId === 'superior_wood_plus') {
-    // 일주일에 2번 교환 가능 (maxExchanges: 2), 한 번에 3개씩 필요하므로 총 6개
-    return trade.giveQuantity * trade.maxExchanges; // 3 * 2 = 6
-  }
-  
-  // 기본 계산 방식 적용 (일일 한도 * 7)
-  const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1;
-  return dailyLimit * 7 * trade.requiredQuantity;
-}
-
 // weeklyRequirements를 computed로 변경
 const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
@@ -104,22 +89,16 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
       // 필요한 아이템의 수량 계산 (특수 교환 아이템 처리 포함)
       let requiredQuantity = 0;
       let weeklyExchangeCount = 0;
+    
+      // 일반적인 경우: 일일 한도 * 7일
+      const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1;
+      weeklyExchangeCount = dailyLimit * 7;
       
-      if (trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea') {
-        // 상급 목재+ 교환을 위해 필요한 글리니스의 애플 밀크티 수량: 3개 * 2회 = 6개
-        requiredQuantity = getActualWeeklyRequirement(trade);
-        weeklyExchangeCount = trade.maxExchanges; // 일주일에 2번 교환 가능
-      } else {
-        // 일반적인 경우: 일일 한도 * 7일
-        const dailyLimit = trade.limitType === 'daily' ? trade.limitCount : 1;
-        weeklyExchangeCount = dailyLimit * 7;
-        
-        // 교환 한 번에 필요한 아이템 수량
-        const requiredItemPerExchange = trade.requiredQuantity;
-        
-        // 일주일간 필요한 총 아이템 수량
-        requiredQuantity = weeklyExchangeCount * requiredItemPerExchange;
-      }
+      // 교환 한 번에 필요한 아이템 수량
+      const requiredItemPerExchange = trade.requiredQuantity;
+      
+      // 일주일간 필요한 총 아이템 수량
+      requiredQuantity = weeklyExchangeCount * requiredItemPerExchange;
 
       // 필요한 아이템 정보 추가
       if (!requirements.has(trade.requiredItemId)) {
@@ -134,9 +113,7 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           trades: [{
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea' 
-              ? trade.maxExchanges * trade.itemQuantity // 글리니스의 애플 밀크티 특수 처리
-              : weeklyExchangeCount * trade.itemQuantity
+            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
           }]
         })
       } else {
@@ -146,9 +123,7 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           existing.trades.push({
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: trade.receiveItemId === 'superior_wood_plus' && trade.giveItemId === 'glenis_apple_milk_tea'
-              ? trade.maxExchanges * trade.itemQuantity // 글리니스의 애플 밀크티 특수 처리
-              : weeklyExchangeCount * trade.itemQuantity
+            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
           })
         }
       }

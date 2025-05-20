@@ -7,7 +7,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/travelers_snack.png',
       description: '여행 중에 먹기 좋은 간식',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'malcolms_pillow',
@@ -18,7 +19,8 @@ export const items: Item[] = [
       craftingRecipe: [
         { itemId: 'spider_web', quantity: 5 }
       ],
-      category: '가구'
+      category: '가구',
+      isFromTraded: true
     },
     {
       id: 'superior_wool',
@@ -26,7 +28,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_wool.png',
       description: '고급 양털',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'pet_food',
@@ -34,7 +37,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/pet_food.png',
       description: '펫을 위한 먹이',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'four_leaf_clover',
@@ -42,7 +46,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/four_leaf_clover.png',
       description: '행운을 가져다주는 네잎클로버',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'mushroom',
@@ -50,7 +55,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/mushroom.png',
       description: '자라는 버섯',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'alchemy_catalyst',
@@ -58,7 +64,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/alchemy_catalyst.png',
       description: '연금술 실험에 사용되는 촉매',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'apple_juice',
@@ -69,7 +76,8 @@ export const items: Item[] = [
       craftingRecipe: [
         { itemId: 'apple', quantity: 3 }
       ],
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'alchemy_powder',
@@ -77,7 +85,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/alchemy_powder.png',
       description: '연금술 실험의 부산물',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'rare_alchemy_catalyst',
@@ -85,7 +94,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/rare_alchemy_catalyst.png',
       description: '희귀한 연금술 촉매',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'critical_potion',
@@ -93,7 +103,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/critical_potion.png',
       description: '치명타 확률을 높여주는 비약',
       isCraftable: false,
-      category: '물약'
+      category: '물약',
+      isFromTraded: false
     },
     {
       id: 'mayonnaise_stir_fry',
@@ -105,7 +116,8 @@ export const items: Item[] = [
         { itemId: 'meat', quantity: 2 },
         { itemId: 'mayonnaise', quantity: 1 }
       ],
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'blank_score',
@@ -113,7 +125,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blank_score.png',
       description: '작곡에 사용되는 빈 악보',
       isCraftable: false,
-      category: '음악'
+      category: '음악',
+      isFromTraded: false
     },
     {
       id: 'wool',
@@ -121,7 +134,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/wool.png',
       description: '부드러운 양털',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'spider_web',
@@ -129,7 +143,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/spider_web.png',
       description: '거미가 만든 거미줄',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'workbench_blueprint',
@@ -137,7 +152,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '다목적 제작대를 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'campfire_kit',
@@ -145,7 +161,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/campfire_kit.png',
       description: '전문가용 캠프파이어 키트',
       isCraftable: false,
-      category: '도구'
+      category: '도구',
+      isFromTraded: false
     },
     {
       id: 'holy_water',
@@ -153,7 +170,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/holy_water.png',
       description: '신성한 물',
       isCraftable: false,
-      category: '물약'
+      category: '물약',
+      isFromTraded: false
     },
     {
       id: 'kaitin_bread',
@@ -165,7 +183,8 @@ export const items: Item[] = [
         { itemId: 'wheat_flour', quantity: 2 },
         { itemId: 'milk', quantity: 1 }
       ],
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'egg',
@@ -173,7 +192,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/egg.png',
       description: '신선한 달걀입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'meat',
@@ -181,7 +201,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/meat.png',
       description: '신선한 고기입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'salt',
@@ -189,7 +210,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/salt.png',
       description: '소금입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'water_bottle',
@@ -197,7 +219,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/water_bottle.png',
       description: '물이 담긴 병입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'herb',
@@ -205,7 +228,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/herb.png',
       description: '향긋한 허브입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'potato',
@@ -213,7 +237,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/potato.png',
       description: '신선한 감자입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'sugar',
@@ -221,7 +246,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/sugar.png',
       description: '설탕입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'apple',
@@ -229,7 +255,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/apple.png',
       description: '신선한 사과입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cabbage',
@@ -237,7 +264,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cabbage.png',
       description: '신선한 양배추입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'mayonnaise',
@@ -245,7 +273,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/mayonnaise.png',
       description: '마요네즈입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'onion',
@@ -253,7 +282,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/onion.png',
       description: '신선한 양파입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'corn',
@@ -261,7 +291,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/corn.png',
       description: '신선한 옥수수입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cheese',
@@ -269,7 +300,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cheese.png',
       description: '신선한 치즈입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'flour',
@@ -277,7 +309,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/flour.png',
       description: '밀가루입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'clam',
@@ -285,7 +318,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/clam.png',
       description: '신선한 조개입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'lemon',
@@ -293,7 +327,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/lemon.png',
       description: '신선한 레몬입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'pepper',
@@ -301,7 +336,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/pepper.png',
       description: '후추입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'ice',
@@ -309,7 +345,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ice.png',
       description: '얼음입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'strawberry',
@@ -317,7 +354,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/strawberry.png',
       description: '신선한 딸기입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'garlic',
@@ -325,7 +363,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/garlic.png',
       description: '신선한 마늘입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cream',
@@ -333,7 +372,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cream.png',
       description: '신선한 생크림입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'noodle',
@@ -341,7 +381,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/noodle.png',
       description: '면입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'milk',
@@ -349,7 +390,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/milk.png',
       description: '신선한 우유입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'lavender',
@@ -357,7 +399,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/lavender.png',
       description: '향기로운 라벤더 꽃',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'wheat_flour',
@@ -368,7 +411,8 @@ export const items: Item[] = [
       craftingRecipe: [
         { itemId: 'wheat', quantity: 2 }
       ],
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'food_processing_blueprint',
@@ -376,7 +420,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '식재료 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'iron_ore',
@@ -384,7 +429,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/iron_ore.png',
       description: '제련이 필요한 철 광석',
       isCraftable: false,
-      category: '광물'
+      category: '광물',
+      isFromTraded: false
     },
     {
       id: 'coal',
@@ -392,7 +438,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/coal.png',
       description: '제련에 사용되는 석탄',
       isCraftable: false,
-      category: '광물'
+      category: '광물',
+      isFromTraded: false
     },
     {
       id: 'equipment_parts',
@@ -400,7 +447,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/equipment_parts.png',
       description: '장비를 분해해서 얻은 부품',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'alloy_steel_ingot',
@@ -411,7 +459,8 @@ export const items: Item[] = [
       craftingRecipe: [
         { itemId: 'steel_ingot', quantity: 2 }
       ],
-      category: '금속'
+      category: '금속',
+      isFromTraded: false
     },
     {
       id: 'steel_ingot',
@@ -423,7 +472,8 @@ export const items: Item[] = [
         { itemId: 'iron_ore', quantity: 1 },
         { itemId: 'coal', quantity: 1 }
       ],
-      category: '금속'
+      category: '금속',
+      isFromTraded: false
     },
     {
       id: 'tannin_powder',
@@ -431,7 +481,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/tannin_powder.png',
       description: '가죽 가공에 사용되는 타닌 가루',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'superior_log',
@@ -439,7 +490,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_log.png',
       description: '고급 목재로 사용되는 통나무',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'superior_leather',
@@ -447,7 +499,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_leather.png',
       description: '고급 가죽',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'stir_fried_vegetables',
@@ -458,7 +511,8 @@ export const items: Item[] = [
       craftingRecipe: [
         { itemId: 'vegetable', quantity: 3 }
       ],
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'log',
@@ -466,7 +520,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/log.png',
       description: '기본적인 목재',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'tree_sap',
@@ -474,7 +529,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/tree_sap.png',
       description: '나무에서 채취한 수액',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'glenis_cake',
@@ -482,7 +538,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/glenis_cake.png',
       description: '글리니스가 만든 특제 케이크',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: true
     },
     {
       id: 'fork_in_milk',
@@ -490,7 +547,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/fork_in_milk.png',
       description: '우유에 담긴 포크',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'glenis_apple_milk_tea',
@@ -498,7 +556,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/glenis_apple_milk_tea.png',
       description: '글리니스가 만든 특제 밀크티',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: true,
     },
     {
       id: 'cream',
@@ -506,7 +565,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cream.png',
       description: '부드러운 생크림입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'apple_soup',
@@ -514,7 +574,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/apple_soup.png',
       description: '사과로 만든 수프',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'special_steel',
@@ -522,7 +583,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/special_steel.png',
       description: '특별한 강철괴',
       isCraftable: false,
-      category: '금속'
+      category: '금속',
+      isFromTraded: false
     },
     {
       id: 'life_gem',
@@ -530,15 +592,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/life_gem.png',
       description: '생명력을 담은 보석',
       isCraftable: false,
-      category: '보석'
-    },
-    {
-      id: 'stewart_wood_carving',
-      name: '스튜어트의 나무 조각',
-      imageUrl: '/images/items/stewart_wood_carving.png',
-      description: '스튜어트가 만든 나무 조각',
-      isCraftable: false,
-      category: '장식품'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'heart_token',
@@ -546,7 +601,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/heart_token.png',
       description: '하트 모양의 토큰',
       isCraftable: false,
-      category: '장식품'
+      category: '장식품',
+      isFromTraded: false
     },
     {
       id: 'love_fish',
@@ -554,7 +610,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/love_fish.png',
       description: '사랑을 상징하는 물고기',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'fire_bomb',
@@ -562,7 +619,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/fire_bomb.png',
       description: '화염 속성의 폭탄',
       isCraftable: false,
-      category: '무기'
+      category: '무기',
+      isFromTraded: false
     },
     {
       id: 'dark_fish',
@@ -570,7 +628,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/dark_fish.png',
       description: '어둠 유령에서 얻은 고기',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'thunder_bomb',
@@ -578,7 +637,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/thunder_bomb.png',
       description: '번개 속성의 폭탄',
       isCraftable: false,
-      category: '무기'
+      category: '무기',
+      isFromTraded: false
     },
     {
       id: 'wind_bomb',
@@ -586,7 +646,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/wind_bomb.png',
       description: '바람 속성의 폭탄',
       isCraftable: false,
-      category: '무기'
+      category: '무기',
+      isFromTraded: false
     },
     {
       id: 'acid_bomb',
@@ -594,7 +655,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/acid_bomb.png',
       description: '산성 속성의 폭탄',
       isCraftable: false,
-      category: '무기'
+      category: '무기',
+      isFromTraded: false
     },
     {
       id: 'fire_crystal',
@@ -602,7 +664,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/fire_crystal.png',
       description: '화염 속성의 결정',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'ice_crystal',
@@ -610,7 +673,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ice_crystal.png',
       description: '얼음 속성의 결정',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'electric_crystal',
@@ -618,7 +682,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/electric_crystal.png',
       description: '전기 속성의 결정',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'light_crystal',
@@ -626,7 +691,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/light_crystal.png',
       description: '빛 속성의 결정',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'seal_crystal',
@@ -634,7 +700,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/seal_crystal.png',
       description: '봉인 속성의 결정',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'dye_base',
@@ -642,7 +709,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/dye_base.png',
       description: '염료의 기본 재료',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'superior_silk',
@@ -650,7 +718,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_silk.png',
       description: '고급 실크',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'silk_fabric',
@@ -658,7 +727,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '옷감 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'ghost_lantern',
@@ -666,7 +736,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ghost_lantern.png',
       description: '유령의 빛을 담은 등불',
       isCraftable: false,
-      category: '장식품'
+      category: '장식품',
+      isFromTraded: false
     },
     {
       id: 'armor_blueprint',
@@ -674,7 +745,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '방어구 제작 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'sanded_ferodotS',
@@ -682,7 +754,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/sanded_ferodotS.png',
       description: '연마된 페리도트S',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'ultimate_potion',
@@ -690,7 +763,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ultimate_potion.png',
       description: '최상급 회복 물약',
       isCraftable: false,
-      category: '물약'
+      category: '물약',
+      isFromTraded: false
     },
     {
       id: 'potato_salad',
@@ -698,7 +772,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/potato_salad.png',
       description: '감자로 만든 샐러드',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'spirit_trace',
@@ -706,7 +781,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/spirit_trace.png',
       description: '정령이 남긴 흔적',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'class_master_medal',
@@ -714,7 +790,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/class_master_medal.png',
       description: '클래스 마스터의 증명',
       isCraftable: false,
-      category: '장식품'
+      category: '장식품',
+      isFromTraded: false
     },
     {
       id: 'paper',
@@ -722,7 +799,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/paper.png',
       description: '기본적인 종이',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'orphan_novel',
@@ -730,7 +808,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/orphan_novel.png',
       description: '고아를 주인공으로 한 소설',
       isCraftable: false,
-      category: '책'
+      category: '책',
+      isFromTraded: false
     },
     {
       id: 'silk',
@@ -738,7 +817,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/silk.png',
       description: '기본적인 실크',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'ricotta_cheese_salad',
@@ -746,7 +826,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ricotta_cheese_salad.png',
       description: '리코타 치즈를 넣은 샐러드',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'cream_sauce_steak',
@@ -754,7 +835,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cream_sauce_steak.png',
       description: '크림 소스를 곁들인 스테이크',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'superior_fabric',
@@ -762,7 +844,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_fabric.png',
       description: '고급 천',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'apple_cream_cake',
@@ -770,7 +853,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/apple_cream_cake.png',
       description: '사과와 크림을 넣은 케이크',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'superior_fabric_plus',
@@ -778,7 +862,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_fabric_plus.png',
       description: '최고급 천',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'copper_ore',
@@ -786,7 +871,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/copper_ore.png',
       description: '제련이 필요한 구리 광석',
       isCraftable: false,
-      category: '광물'
+      category: '광물',
+      isFromTraded: false
     },
     {
       id: 'white_ore',
@@ -794,7 +880,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/white_ore.png',
       description: '제련이 필요한 백금 광석',
       isCraftable: false,
-      category: '광물'
+      category: '광물',
+      isFromTraded: false
     },
     {
       id: 'metal_processing_blueprint',
@@ -802,7 +889,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '금속 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'weapon_blueprint',
@@ -810,7 +898,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '무기 제작 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'cave_gem',
@@ -818,7 +907,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cave_gem.png',
       description: '동굴에서 발견된 보석',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'ruin_gem',
@@ -826,7 +916,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ruin_gem.png',
       description: '유적에서 발견된 보석',
       isCraftable: false,
-      category: '보석'
+      category: '보석',
+      isFromTraded: false
     },
     {
       id: 'superior_critical_potion',
@@ -834,7 +925,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_critical_potion.png',
       description: '치명타 확률을 크게 높여주는 비약',
       isCraftable: false,
-      category: '물약'
+      category: '물약',
+      isFromTraded: false
     },
     {
       id: 'ice_fruit_juice',
@@ -842,7 +934,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ice_fruit_juice.png',
       description: '얼음 속성의 과일로 만든 주스',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'healthy_drink',
@@ -850,7 +943,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/healthy_drink.png',
       description: '건강에 좋은 음료',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'chrysanthemum_ear',
@@ -858,7 +952,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/chrysanthemum_ear.png',
       description: '국화 모양의 귀걸이',
       isCraftable: false,
-      category: '장식품'
+      category: '장식품',
+      isFromTraded: false
     },
     {
       id: 'clean_mushroom_spores',
@@ -866,7 +961,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/clean_mushroom_spores.png',
       description: '정화된 버섯의 포자',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'alrio_orio',
@@ -874,7 +970,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/alrio_orio.png',
       description: '특별한 오리오 요리',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'medicine_processing_blueprint',
@@ -882,7 +979,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '의약품 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'poison_bag',
@@ -890,7 +988,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/poison_bag.png',
       description: '독을 담은 주머니',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'medicine_blueprint',
@@ -898,7 +997,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '의약품 제작 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'sun_butterfly',
@@ -906,7 +1006,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/sun_butterfly.png',
       description: '태양의 빛을 받은 나비',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'superior_wood',
@@ -914,7 +1015,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_wood.png',
       description: '고급 가구 제작에 사용되는 상급 목재입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'superior_wood_plus',
@@ -922,7 +1024,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/superior_wood_plus.png',
       description: '최고급 가구 제작에 사용되는 상급 목재입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'leather',
@@ -930,7 +1033,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/leather.png',
       description: '기본적인 가죽',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'leather_processing_blueprint',
@@ -938,7 +1042,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '가죽 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'wood_processing_blueprint',
@@ -946,7 +1051,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/blueprint.png',
       description: '목재 가공 시설을 만들 수 있는 설계도',
       isCraftable: false,
-      category: '설계도'
+      category: '설계도',
+      isFromTraded: false
     },
     {
       id: 'tracy_wood_carving',
@@ -954,7 +1060,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/tracy_wood_carving.png',
       description: '트레이시가 만든 나무 오르골',
       isCraftable: false,
-      category: '장식품'
+      category: '장식품',
+      isFromTraded: true
     },
     {
       id: 'clam_chowder',
@@ -962,7 +1069,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/clam_chowder.png',
       description: '신선한 조개로 만든 찜',
       isCraftable: false,
-      category: '음식'
+      category: '음식',
+      isFromTraded: false
     },
     {
       id: 'caterpillar',
@@ -970,7 +1078,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/caterpillar.png',
       description: '나뭇잎을 먹는 애벌레',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'meat',
@@ -978,7 +1087,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/meat.png',
       description: '신선한 고기입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'salt',
@@ -986,7 +1096,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/salt.png',
       description: '소금입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'water_bottle',
@@ -994,7 +1105,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/water_bottle.png',
       description: '깨끗한 물이 담긴 병입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'herb',
@@ -1002,7 +1114,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/herb.png',
       description: '향긋한 허브입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'potato',
@@ -1010,7 +1123,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/potato.png',
       description: '신선한 감자입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'sugar',
@@ -1018,7 +1132,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/sugar.png',
       description: '설탕입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cabbage',
@@ -1026,7 +1141,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cabbage.png',
       description: '신선한 양배추입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'mayonnaise',
@@ -1034,7 +1150,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/mayonnaise.png',
       description: '크리미한 마요네즈입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'garlic',
@@ -1042,7 +1159,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/garlic.png',
       description: '향긋한 마늘입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'onion',
@@ -1050,7 +1168,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/onion.png',
       description: '신선한 양파입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'corn',
@@ -1058,7 +1177,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/corn.png',
       description: '신선한 옥수수입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cheese',
@@ -1066,7 +1186,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cheese.png',
       description: '부드러운 치즈입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'flour',
@@ -1074,7 +1195,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/flour.png',
       description: '고운 밀가루입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'clam',
@@ -1082,7 +1204,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/clam.png',
       description: '신선한 조개입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'lemon',
@@ -1090,7 +1213,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/lemon.png',
       description: '상큼한 레몬입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'pepper',
@@ -1098,7 +1222,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/pepper.png',
       description: '향긋한 후추입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'ice',
@@ -1106,7 +1231,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/ice.png',
       description: '차가운 얼음입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'strawberry',
@@ -1114,7 +1240,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/strawberry.png',
       description: '달콤한 딸기입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'cream',
@@ -1122,7 +1249,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/cream.png',
       description: '부드러운 생크림입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'noodle',
@@ -1130,7 +1258,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/noodle.png',
       description: '신선한 면입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'bream',
@@ -1138,7 +1267,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/bream.png',
       description: '신선한 브리흐네 잉어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'silver_fish',
@@ -1146,7 +1276,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/silver_fish.png',
       description: '신선한 은붕어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'rainbow_trout',
@@ -1154,7 +1285,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/rainbow_trout.png',
       description: '신선한 무지개 송어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'eel',
@@ -1162,7 +1294,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/eel.png',
       description: '신선한 은어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'tomato',
@@ -1170,7 +1303,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/tomato.png',
       description: '신선한 토마토입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'mackerel',
@@ -1178,7 +1312,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/mackerel.png',
       description: '신선한 고등어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'salmon',
@@ -1186,7 +1321,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/salmon.png',
       description: '신선한 연어입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'asparagus',
@@ -1194,7 +1330,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/asparagus.png',
       description: '신선한 아스파라거스입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'catfish',
@@ -1202,7 +1339,8 @@ export const items: Item[] = [
       imageUrl: '/images/items/catfish.png',
       description: '신선한 메기입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     },
     {
       id: 'pea',
@@ -1210,6 +1348,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/pea.png',
       description: '신선한 완두콩입니다.',
       isCraftable: false,
-      category: '재료'
+      category: '재료',
+      isFromTraded: false
     }
   ]
