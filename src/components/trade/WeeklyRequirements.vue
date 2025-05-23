@@ -2,18 +2,17 @@
 import { computed } from 'vue'
 import { useTradeData } from '@/composables/useTradeData'
 import { recipes } from '@/data/recipes'
-import type { TradeData } from '@/data/schemas/trade'
+import type { Trade, TradeData } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
 // Recipe 타입을 확장하여 교환 카테고리 추가
-import type { Recipe as OriginalRecipe } from '@/data/schemas/recipe'
+import type { Recipe } from '@/data/schemas/recipe'
 import TotalRequiredMaterials from './TotalRequiredMaterials.vue'
 import WeeklyTradeRequirements from './WeeklyTradeRequirements.vue'
 
-// 커스텀 Recipe 타입
-interface Recipe extends OriginalRecipe {
-  category: '간편' | '힘 특화' | '솜씨 특화' | '지력 특화' | '기타' | '쉐어링' | '교환'
-}
 import { items } from '@/data/items'
+import { useTradeStore } from '@/stores/trade'
+import { useNpcStore } from '@/stores/npc'
+import { useItemStore } from '@/stores/item'
 
 interface WeeklyRequirement {
   itemId: string
@@ -23,59 +22,150 @@ interface WeeklyRequirement {
     id: string
     requiredItemId: string
     requiredQuantity: number
+    targetQuantity: number
   }[]
 }
 
-interface Props {
-  disabledTrades: Set<string>
+export interface WeeklyTrade {
+  [key: string]: {
+    itemId: string;
+    totalNeedItemCount: number;
+    recipe?: Recipe;
+    trade?: Recipe;
+    trades: {
+      resultItemId: string;
+      needItemQuantity: number;
+      receiveItemQuantity: number;
+    }[];
+  }
 }
 
-const props = defineProps<Props>()
 const { tradeData } = useTradeData()
+const npcStore = useNpcStore();
+const itemStore = useItemStore();
+const tradeStore = useTradeStore();
 
-// 아이템에 대한 모든 교환 정보를 찾는 함수
-const findTradesForItem = (itemId: string): TradeData[] => {
-  const foundTrades: TradeData[] = []
-  
-  Object.values(tradeData.value).forEach((trades: TradeData[]) => {
-    trades.forEach((trade: TradeData) => {
-      // 활성화된 교환 중에서 아이템을 얻을 수 있는 교환 찾기
-      if (trade.itemId === itemId && !props.disabledTrades.has(trade.id)) {
-        foundTrades.push(trade)
-      }
-    })
+/**
+ * # 아이템 id 가 필요한 아이템인 교환 목록 찾기
+ * @param {number} itemId 필요한 아이템 id
+ */
+const findTradesForItem = (itemId: string): Trade[] => {
+  return tradeStore.filterActiveTradeList.filter((trade: Trade) => {
+    if (trade.receiveItemId === itemId && !tradeStore.disabledTrades.has(trade.id)) {
+      return trade
+    }
   })
-  
-  return foundTrades
 }
 
 // 교환 데이터로부터 가상의 레시피 생성
 const createTradeRecipe = (itemId: string): Recipe | undefined => {
   const trades = findTradesForItem(itemId)
   if (trades.length === 0) return undefined
-  
-  // 가장 유리한 교환 선택 (효율 계산)
-  trades.sort((a, b) => {
-    const ratioA = a.itemQuantity / a.requiredQuantity
-    const ratioB = b.itemQuantity / b.requiredQuantity
-    return ratioB - ratioA // 내림차순 (가장 효율적인 교환이 앞으로)
-  })
-  
   const bestTrade = trades[0]
   
   // 가상 레시피 생성
   return {
     id: `trade_${itemId}`,
-    name: `교환: ${getItemInfo(bestTrade.requiredItemId)?.name}`,
+    name: `교환: ${getItemInfo(bestTrade.giveItemId)?.name}`,
     resultItemId: itemId,
     requiredItems: [{
-      itemId: bestTrade.requiredItemId,
-      quantity: bestTrade.requiredQuantity
+      itemId: bestTrade.giveItemId,
+      quantity: bestTrade.giveQuantity
     }],
     category: '교환',
     facilityLevel: 0
   } as Recipe
 }
+
+/**
+ * # 필요한 아이템 목록
+ * - 교환 목록 배열이 들어 있음
+ * - 교환의 결과가 다른 교환에 필요한 아이템인 경우 제외
+ */
+const totalNeedItemList = computed(() => {
+  return tradeStore.filterActiveTradeList.reduce((acc, trade) => {
+    const needItemId = trade.giveItemId;
+    // 교환의 결과가 다른 교환에 필요한 아이템인 경우 제외
+    if(tradeStore.filterActiveTradeList.some(target => target.giveItemId === trade.receiveItemId)) {
+      return acc;
+    }
+
+    if (!acc[needItemId]) {
+      acc[needItemId] = [];
+    }
+    acc[needItemId].push(trade);
+    return acc;
+  }, {} as {[key: string]: Trade[]});
+})
+
+/**
+ * # 일주일간 교환하는 데 필요한 아이템 목록
+ * - 비활성화 항목 제외
+ * - 횟수를 체크해야 함. 일 1회, 주 2회 등등
+ */
+const weeklyCount = computed(() => {
+  return Object.entries(totalNeedItemList.value).reduce((acc, [needItemId, trades]) => {
+    // 레시피 찾기
+    const recipe = recipes.find(r => r.resultItemId === needItemId);
+    const tradeTarget = createTradeRecipe(needItemId);
+
+    let totalNeedItemCount = 0;
+    const tradeList = trades.map((trade: Trade) => {
+      if(tradeTarget) {
+        const doubleTrade = tradeStore.filterActiveTradeList.find(item => item.receiveItemId === needItemId)
+        let doubleTradeCount = 0;
+        if(doubleTrade) {
+          // 2단계로 계산
+          // doubleTrade 의 일주일 교환 결과 개수
+          const dayTradeCount = doubleTrade.type === 'daily' ? doubleTrade.maxExchanges : 1;
+          const weeklyTradeCount = dayTradeCount * 7;
+          doubleTradeCount = doubleTrade.receiveQuantity * weeklyTradeCount;
+          // 글리니스의 애플 밀크티는 일주일 7개 -> 상급 목재로는 2번 교환 가능 maxCount == 2
+          const maxCount = Math.floor(doubleTradeCount / trade.giveQuantity);
+          const needItemQuantity = maxCount * trade.giveQuantity;
+          totalNeedItemCount += needItemQuantity;
+          return {
+            resultItemId: trade.receiveItemId,
+            needItemQuantity,
+            receiveItemQuantity: maxCount * trade.receiveQuantity,
+          }
+        }
+        return {
+          resultItemId: trade.receiveItemId,
+          needItemQuantity: 0,
+          receiveItemQuantity: 0,
+        }
+      } 
+      const dayTradeCount = trade.type === 'daily' ? trade.maxExchanges : 1;
+      const weeklyTradeCount = dayTradeCount * 7;
+      const needItemQuantity = trade.giveQuantity * weeklyTradeCount;
+      const receiveItemQuantity = trade.receiveQuantity * weeklyTradeCount;
+      totalNeedItemCount += needItemQuantity;
+      return {
+        resultItemId: trade.receiveItemId,
+        needItemQuantity,
+        receiveItemQuantity,
+      }
+    })
+
+
+    if(!acc[needItemId]) {
+      acc[needItemId] = {
+        itemId: needItemId,
+        totalNeedItemCount,
+        recipe,
+        trade: tradeTarget,
+        trades: tradeList,
+      }
+    } else { 
+      acc[needItemId].totalNeedItemCount += totalNeedItemCount;
+      acc[needItemId].trades.push(...tradeList);
+    }
+
+    return acc;
+  }, {} as WeeklyTrade);
+})
+
 // weeklyRequirements를 computed로 변경
 const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
   const requirements = new Map<string, WeeklyRequirement>()
@@ -84,7 +174,7 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
   Object.values(tradeData.value).forEach((trades: TradeData[]) => {
     trades.forEach((trade: TradeData) => {
       // 비활성화된 교환은 제외
-      if (props.disabledTrades.has(trade.id)) return
+      if (tradeStore.disabledTrades.has(trade.id)) return
 
       // 필요한 아이템의 수량 계산 (특수 교환 아이템 처리 포함)
       let requiredQuantity = 0;
@@ -113,7 +203,8 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           trades: [{
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
+            requiredQuantity: weeklyExchangeCount * trade.itemQuantity,
+            targetQuantity: requiredQuantity
           }]
         })
       } else {
@@ -123,7 +214,8 @@ const weeklyRequirements = computed<WeeklyRequirement[]>(() => {
           existing.trades.push({
             id: trade.id,
             requiredItemId: trade.itemId,
-            requiredQuantity: weeklyExchangeCount * trade.itemQuantity
+            requiredQuantity: weeklyExchangeCount * trade.itemQuantity,
+            targetQuantity: requiredQuantity
           })
         }
       }
@@ -144,7 +236,7 @@ const filteredWeeklyRequirements = computed<WeeklyRequirement[]>(() => {
   // 모든 교환 항목을 확인하여 필요 아이템과 대상 아이템 수집
   Object.values(tradeData.value).forEach((trades: TradeData[]) => {
     trades.forEach((trade: TradeData) => {
-      if (!props.disabledTrades.has(trade.id)) {
+      if (!tradeStore.disabledTrades.has(trade.id)) {
         requiredItemsSet.add(trade.requiredItemId)
         targetItemsSet.add(trade.itemId)
       }
@@ -263,9 +355,11 @@ const getItemRecipe = (itemId: string): Recipe | undefined => {
   return createTradeRecipe(itemId)
 }
 
-// 비활성화된 교환 항목 관련 계산은 현재 사용되지 않음
 
-// 재귀적인 재료 계산은 TotalRequiredMaterials 컴포넌트로 이동
+npcStore.fetchNpcList();
+itemStore.fetchItemList();
+tradeStore.fetchTradeList();
+
 </script>
 
 <template>
@@ -281,8 +375,7 @@ const getItemRecipe = (itemId: string): Recipe | undefined => {
 
     <!-- 활성화된 교환 목록 컴포넌트 -->
     <WeeklyTradeRequirements
-      :weeklyRequirements="filteredWeeklyRequirements"
-      :getItemInfo="getItemInfo"
+      :weeklyRequirements="weeklyCount"
       :getItemRecipe="getItemRecipe"
     />
   </div>
