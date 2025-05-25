@@ -1,26 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Item } from '@/data/schemas/item'
-import type { Recipe as OriginalRecipe } from '@/data/schemas/recipe'
-
-interface Recipe extends OriginalRecipe {
-  category: '간편' | '힘 특화' | '솜씨 특화' | '지력 특화' | '기타' | '쉐어링' | '교환'
-}
-
-interface WeeklyRequirement {
-  itemId: string
-  totalQuantity: number
-  recipe?: Recipe
-  trades?: {
-    id: string
-    requiredItemId: string
-    requiredQuantity: number
-  }[]
-}
+import type { Recipe } from '@/data/schemas/recipe'
+import type { WeeklyTrade } from './WeeklyRequirements.vue'
 
 interface Props {
-  weeklyRequirements: WeeklyRequirement[]
-  recipes: OriginalRecipe[]
+  weeklyRequirements: WeeklyTrade
+  recipes: Recipe[]
   getItemInfo: (itemId: string) => Item | undefined
 }
 
@@ -52,16 +38,22 @@ const calculateTotalRequiredMaterials = computed(() => {
   const materials: { [key: string]: number } = {}
 
   // 활성화된 교환의 재료 집계만 수행
-  props.weeklyRequirements.forEach((requirement: WeeklyRequirement) => {
-    if (requirement.recipe) {
+  Object.values(props.weeklyRequirements).forEach((requirement) => {
+    if (requirement.trade) {
       // 레시피가 있는 경우 재귀적으로 계산
-      const recipeMaterials = calculateRecipeMaterials(requirement.recipe, requirement.totalQuantity)
+      const recipeMaterials = calculateRecipeMaterials(requirement.trade, requirement.totalNeedItemCount)
+      Object.entries(recipeMaterials).forEach(([itemId, quantity]) => {
+        materials[itemId] = (materials[itemId] || 0) + quantity
+      })
+    } else if (requirement.recipe) {
+      // 레시피가 있는 경우 재귀적으로 계산
+      const recipeMaterials = calculateRecipeMaterials(requirement.recipe, requirement.totalNeedItemCount)
       Object.entries(recipeMaterials).forEach(([itemId, quantity]) => {
         materials[itemId] = (materials[itemId] || 0) + quantity
       })
     } else {
       // 레시피가 없는 경우 아이템 자체를 재료로 추가
-      materials[requirement.itemId] = (materials[requirement.itemId] || 0) + requirement.totalQuantity
+      materials[requirement.itemId] = (materials[requirement.itemId] || 0) + requirement.totalNeedItemCount
     }
   })
 
