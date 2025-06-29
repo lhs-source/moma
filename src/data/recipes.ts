@@ -1,5 +1,6 @@
 import type { Recipe } from '@/data/schemas/recipe'
 
+// https://www.inven.co.kr/board/mabimo/6366/134
 export const recipes: Recipe[] = [
   {
     id: 'travelers_snack',

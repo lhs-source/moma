@@ -210,5 +210,12 @@ export const npcs: NPC[] = [
     description: '치료소',
     imageUrl: '/images/npcs/killian.png',
     location: '콜헨'
+  },
+  {
+    id: 'dungeon_cat_merchant',
+    name: '던전 고양이 상인',
+    description: '던전 내 상인',
+    imageUrl: '/images/npcs/dungeon_cat_merchant.png',
+    location: '던전'
   }
 ] 

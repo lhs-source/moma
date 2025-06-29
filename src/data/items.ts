@@ -731,10 +731,10 @@ export const items: Item[] = [
       isFromTraded: true,
     },
     {
-      id: 'cream',
-      name: '생크림',
-      imageUrl: '/images/items/cream.png',
-      description: '부드러운 생크림입니다.',
+      id: 'processed_leather',
+      name: '가죽',
+      imageUrl: '/images/items/processed_leather.png',
+      description: '가공된 가죽',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
@@ -938,6 +938,15 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
+      id: 'healing_potion',
+      name: '회복 물약',
+      imageUrl: '/images/items/healing_potion.png',
+      description: '기본적인 회복 물약',
+      isCraftable: false,
+      category: '물약',
+      isFromTraded: false
+    },
+    {
       id: 'potato_salad',
       name: '감자 샐러드',
       imageUrl: '/images/items/potato_salad.png',
@@ -1014,6 +1023,15 @@ export const items: Item[] = [
       name: '상급 옷감',
       imageUrl: '/images/items/superior_fabric.png',
       description: '고급 천',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fabric_plus',
+      name: '옷감+',
+      imageUrl: '/images/items/fabric_plus.png',
+      description: '강화된 옷감',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
@@ -1208,6 +1226,15 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
+      id: 'processed_leather',
+      name: '가죽',
+      imageUrl: '/images/items/processed_leather.png',
+      description: '가공된 가죽',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
       id: 'leather_processing_blueprint',
       name: '가죽 가공 시설 설계도 (3레벨)',
       imageUrl: '/images/items/blueprint.png',
@@ -1329,6 +1356,123 @@ export const items: Item[] = [
       name: '완두콩',
       imageUrl: '/images/items/pea.png',
       description: '신선한 완두콩입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'perfect_bandage',
+      name: '완벽한 붕대',
+      imageUrl: '/images/items/default.webp',
+      description: '완벽하게 만들어진 붕대',
+      isCraftable: false,
+      category: '의료',
+      isFromTraded: false
+    },
+    {
+      id: 'curse_removal_potion_bandage',
+      name: '저주 해제 물약 붕대',
+      imageUrl: '/images/items/default.webp',
+      description: '저주를 해제하는 물약이 스며든 붕대',
+      isCraftable: false,
+      category: '의료',
+      isFromTraded: false
+    },
+    {
+      id: 'immortality_powder',
+      name: '불사의 가루',
+      imageUrl: '/images/items/default.webp',
+      description: '불멸의 힘을 가진 신비로운 가루',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'enhanced_reignition_catalyst',
+      name: '강화 재연소 촉매',
+      imageUrl: '/images/items/default.webp',
+      description: '강화된 재연소 촉매',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'rare_alchemy_reignition_catalyst',
+      name: '레어 연금술 재연소 촉매',
+      imageUrl: '/images/items/default.webp',
+      description: '희귀한 연금술 재연소 촉매',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'raw_gold_ore',
+      name: '미가공 골드 원석',
+      imageUrl: '/images/items/default.webp',
+      description: '가공되지 않은 골드 원석',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'silver_alloy_ingot',
+      name: '은합금괴',
+      imageUrl: '/images/items/default.webp',
+      description: '은으로 만든 합금괴',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'condensed_wind',
+      name: '응축된 바람',
+      imageUrl: '/images/items/default.webp',
+      description: '마법으로 응축된 바람',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'poison_sac',
+      name: '독주머니',
+      imageUrl: '/images/items/default.webp',
+      description: '독이 들어있는 주머니',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'health_drink',
+      name: '건강 드링크',
+      imageUrl: '/images/items/default.webp',
+      description: '건강을 증진시키는 음료',
+      isCraftable: false,
+      category: '음료',
+      isFromTraded: false
+    },
+    {
+      id: 'ore',
+      name: '광석',
+      imageUrl: '/images/items/default.webp',
+      description: '일반적인 광석',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'bandage',
+      name: '붕대',
+      imageUrl: '/images/items/default.webp',
+      description: '상처를 감쌀 때 사용하는 붕대',
+      isCraftable: false,
+      category: '의료',
+      isFromTraded: false
+    },
+    {
+      id: 'leather_plus',
+      name: '가죽+',
+      imageUrl: '/images/items/default.webp',
+      description: '상급 가죽',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
