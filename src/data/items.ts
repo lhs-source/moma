@@ -211,7 +211,8 @@ export const items: Item[] = [
       description: '소금입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 50
     },
     {
       id: 'water_bottle',
@@ -229,7 +230,8 @@ export const items: Item[] = [
       description: '향긋한 허브입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 30
     },
     {
       id: 'potato',
@@ -247,7 +249,8 @@ export const items: Item[] = [
       description: '설탕입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 40
     },
     {
       id: 'apple',
@@ -265,7 +268,8 @@ export const items: Item[] = [
       description: '신선한 양배추입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 25
     },
     {
       id: 'mayonnaise',
@@ -328,7 +332,8 @@ export const items: Item[] = [
       description: '신선한 레몬입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 35
     },
     {
       id: 'pepper',
@@ -337,7 +342,8 @@ export const items: Item[] = [
       description: '후추입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 45
     },
     {
       id: 'ice',
@@ -364,7 +370,8 @@ export const items: Item[] = [
       description: '신선한 마늘입니다.',
       isCraftable: false,
       category: '재료',
-      isFromTraded: false
+      isFromTraded: false,
+      price: 20
     },
     {
       id: 'cream',
@@ -391,6 +398,170 @@ export const items: Item[] = [
       description: '신선한 우유입니다.',
       isCraftable: false,
       category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'tomato',
+      name: '토마토',
+      imageUrl: '/images/items/tomato.png',
+      description: '신선한 토마토입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false,
+      price: 30
+    },
+    {
+      id: 'cooking_oil',
+      name: '식용유',
+      imageUrl: '/images/items/cooking_oil.png',
+      description: '요리에 사용되는 식용유입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false,
+      price: 60
+    },
+    {
+      id: 'lean_meat',
+      name: '담백한 고기',
+      imageUrl: '/images/items/lean_meat.png',
+      description: '지방이 적은 담백한 고기입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'bean',
+      name: '콩',
+      imageUrl: '/images/items/bean.png',
+      description: '신선한 콩입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'wheat',
+      name: '밀',
+      imageUrl: '/images/items/wheat.png',
+      description: '수확된 밀입니다.',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fried_egg',
+      name: '달걀 프라이',
+      imageUrl: '/images/items/fried_egg.png',
+      description: '프라이한 달걀입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'egg', quantity: 1 },
+        { itemId: 'salt', quantity: 1 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'boiled_egg',
+      name: '삶은 달걀',
+      imageUrl: '/images/items/boiled_egg.png',
+      description: '삶은 달걀입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'egg', quantity: 1 },
+        { itemId: 'water_bottle', quantity: 1 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'roasted_meat',
+      name: '구운 고기',
+      imageUrl: '/images/items/roasted_meat.png',
+      description: '구운 고기입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'meat', quantity: 4 },
+        { itemId: 'herb', quantity: 2 },
+        { itemId: 'salt', quantity: 1 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'shawarma',
+      name: '샤와르마',
+      imageUrl: '/images/items/shawarma.png',
+      description: '중동식 고기 요리입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'lean_meat', quantity: 10 },
+        { itemId: 'bean', quantity: 12 },
+        { itemId: 'flour', quantity: 3 },
+        { itemId: 'cabbage', quantity: 5 },
+        { itemId: 'lemon', quantity: 2 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'meat_parmigiana',
+      name: '미트 파르미자나',
+      imageUrl: '/images/items/meat_parmigiana.png',
+      description: '치즈를 곁들인 고기 요리입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'lean_meat', quantity: 10 },
+        { itemId: 'cheese', quantity: 3 },
+        { itemId: 'tomato', quantity: 1 },
+        { itemId: 'pepper', quantity: 1 },
+        { itemId: 'salt', quantity: 1 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'potato_soup',
+      name: '감자수프',
+      imageUrl: '/images/items/potato_soup.png',
+      description: '감자로 만든 수프입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'potato', quantity: 12 },
+        { itemId: 'milk', quantity: 5 },
+        { itemId: 'herb', quantity: 3 },
+        { itemId: 'pepper', quantity: 6 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'corn_cheese',
+      name: '콘치즈',
+      imageUrl: '/images/items/corn_cheese.png',
+      description: '옥수수와 치즈를 넣은 요리입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'corn', quantity: 10 },
+        { itemId: 'cheese', quantity: 2 },
+        { itemId: 'herb', quantity: 2 },
+        { itemId: 'sugar', quantity: 3 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'apple_souffle',
+      name: '사과 수플레',
+      imageUrl: '/images/items/apple_souffle.png',
+      description: '사과를 넣은 수플레입니다.',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'apple', quantity: 8 },
+        { itemId: 'flour', quantity: 2 },
+        { itemId: 'egg', quantity: 4 },
+        { itemId: 'sugar', quantity: 4 }
+      ],
+      category: '음식',
       isFromTraded: false
     },
     {
@@ -1082,186 +1253,6 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
-      id: 'meat',
-      name: '고기',
-      imageUrl: '/images/items/meat.png',
-      description: '신선한 고기입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'salt',
-      name: '소금',
-      imageUrl: '/images/items/salt.png',
-      description: '소금입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'water_bottle',
-      name: '물이 든 병',
-      imageUrl: '/images/items/water_bottle.png',
-      description: '깨끗한 물이 담긴 병입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'herb',
-      name: '허브',
-      imageUrl: '/images/items/herb.png',
-      description: '향긋한 허브입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'potato',
-      name: '감자',
-      imageUrl: '/images/items/potato.png',
-      description: '신선한 감자입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'sugar',
-      name: '설탕',
-      imageUrl: '/images/items/sugar.png',
-      description: '설탕입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'cabbage',
-      name: '양배추',
-      imageUrl: '/images/items/cabbage.png',
-      description: '신선한 양배추입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'mayonnaise',
-      name: '마요네즈',
-      imageUrl: '/images/items/mayonnaise.png',
-      description: '크리미한 마요네즈입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'garlic',
-      name: '마늘',
-      imageUrl: '/images/items/garlic.png',
-      description: '향긋한 마늘입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'onion',
-      name: '양파',
-      imageUrl: '/images/items/onion.png',
-      description: '신선한 양파입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'corn',
-      name: '옥수수',
-      imageUrl: '/images/items/corn.png',
-      description: '신선한 옥수수입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'cheese',
-      name: '치즈',
-      imageUrl: '/images/items/cheese.png',
-      description: '부드러운 치즈입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'flour',
-      name: '밀가루',
-      imageUrl: '/images/items/flour.png',
-      description: '고운 밀가루입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'clam',
-      name: '조개',
-      imageUrl: '/images/items/clam.png',
-      description: '신선한 조개입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'lemon',
-      name: '레몬',
-      imageUrl: '/images/items/lemon.png',
-      description: '상큼한 레몬입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'pepper',
-      name: '후추',
-      imageUrl: '/images/items/pepper.png',
-      description: '향긋한 후추입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'ice',
-      name: '얼음',
-      imageUrl: '/images/items/ice.png',
-      description: '차가운 얼음입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'strawberry',
-      name: '딸기',
-      imageUrl: '/images/items/strawberry.png',
-      description: '달콤한 딸기입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'cream',
-      name: '생크림',
-      imageUrl: '/images/items/cream.png',
-      description: '부드러운 생크림입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'noodle',
-      name: '면',
-      imageUrl: '/images/items/noodle.png',
-      description: '신선한 면입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
       id: 'bream',
       name: '브리흐네 잉어',
       imageUrl: '/images/items/bream.png',
@@ -1293,15 +1284,6 @@ export const items: Item[] = [
       name: '은어',
       imageUrl: '/images/items/eel.png',
       description: '신선한 은어입니다.',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'tomato',
-      name: '토마토',
-      imageUrl: '/images/items/tomato.png',
-      description: '신선한 토마토입니다.',
       isCraftable: false,
       category: '재료',
       isFromTraded: false

@@ -194,7 +194,8 @@ export const recipes: Recipe[] = [
     ],
     category: '지력 특화',
     facilityLevel: 5
-  },  {
+  },
+  {
     id: 'steamed_clams',
     name: '조개찜',
     resultItemId: 'clam_chowder',
@@ -219,7 +220,8 @@ export const recipes: Recipe[] = [
     ],
     category: '솜씨 특화',
     facilityLevel: 10
-  },  {
+  },
+  {
     id: 'ice_strawberry_juice',
     name: '얼음 딸기주스',
     resultItemId: 'ice_fruit_juice',
@@ -244,7 +246,8 @@ export const recipes: Recipe[] = [
     ],
     category: '힘 특화',
     facilityLevel: 10
-  },  {
+  },
+  {
     id: 'aglio_e_olio',
     name: '알리오 올리오',
     resultItemId: 'alrio_orio',
@@ -256,7 +259,8 @@ export const recipes: Recipe[] = [
     ],
     category: '솜씨 특화',
     facilityLevel: 10
-  },{
+  },
+  {
     id: 'apple_cream_cake',
     name: '사과 생크림 케이크',
     resultItemId: 'apple_cream_cake',
@@ -268,7 +272,8 @@ export const recipes: Recipe[] = [
     ],
     category: '지력 특화',
     facilityLevel: 10
-  },  {
+  },
+  {
     id: 'white_fish_meuniere',
     name: '화이트 피시 무니에르',
     resultItemId: 'white_fish_meuniere',
@@ -283,7 +288,8 @@ export const recipes: Recipe[] = [
     ],
     category: '쉐어링',
     facilityLevel: 15
-  },  {
+  },
+  {
     id: 'bouillabaisse',
     name: '부야베스',
     resultItemId: 'bouillabaisse',
@@ -298,7 +304,8 @@ export const recipes: Recipe[] = [
     ],
     category: '쉐어링',
     facilityLevel: 15
-  },  {
+  },
+  {
     id: 'mackerel_and_salmon_steak',
     name: '고등어 연어 스테이크',
     resultItemId: 'mackerel_and_salmon_steak',
@@ -313,7 +320,8 @@ export const recipes: Recipe[] = [
     ],
     category: '쉐어링',
     facilityLevel: 15
-  },  {
+  },
+  {
     id: 'catfish_fish_and_chips',
     name: '메기 피쉬 앤 칩스',
     resultItemId: 'catfish_fish_and_chips',
@@ -328,7 +336,8 @@ export const recipes: Recipe[] = [
     ],
     category: '쉐어링',
     facilityLevel: 15
-  }, {
+  },
+  {
     id: 'cream',
     name: '생크림',
     resultItemId: 'cream',
@@ -340,7 +349,8 @@ export const recipes: Recipe[] = [
     ],
     category: '기타',
     facilityLevel: 5
-  }, {
+  },
+  {
     id: 'flour',
     name: '밀가루',
     resultItemId: 'flour',
@@ -350,5 +360,33 @@ export const recipes: Recipe[] = [
     ],
     category: '기타',
     facilityLevel: 5
+  },
+  {
+    id: 'shawarma',
+    name: '샤와르마',
+    resultItemId: 'shawarma',
+    requiredItems: [
+      { itemId: 'lean_meat', quantity: 10 },
+      { itemId: 'bean', quantity: 12 },
+      { itemId: 'flour', quantity: 3 },
+      { itemId: 'cabbage', quantity: 5 },
+      { itemId: 'lemon', quantity: 2 }
+    ],
+    category: '힘 특화',
+    facilityLevel: 13
+  },
+  {
+    id: 'meat_parmigiana',
+    name: '미트 파르미자나',
+    resultItemId: 'meat_parmigiana',
+    requiredItems: [
+      { itemId: 'lean_meat', quantity: 10 },
+      { itemId: 'cheese', quantity: 3 },
+      { itemId: 'tomato', quantity: 1 },
+      { itemId: 'pepper', quantity: 1 },
+      { itemId: 'salt', quantity: 1 }
+    ],
+    category: '힘 특화',
+    facilityLevel: 13
   }
 ]

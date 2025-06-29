@@ -26,6 +26,13 @@ import { RouterLink, RouterView } from 'vue-router'
               물물교환
             </RouterLink>
             <RouterLink 
+              to="/crafting" 
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground"
+            >
+              제작 시스템
+            </RouterLink>
+            <RouterLink 
               to="/about" 
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               active-class="text-foreground"
