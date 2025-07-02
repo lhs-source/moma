@@ -3,7 +3,7 @@ import { craftingData, type CraftingMaterial } from '@/data/crafting';
 
 interface SelectedItems {
   [category: string]: {
-    [itemName: string]: number;
+    [itemName: string]: number; // 제작 횟수를 저장
   };
 }
 
@@ -22,12 +22,12 @@ export const useCraftingStore = defineStore('crafting', {
       // 각 카테고리별로 선택된 아이템 순회
       for (const category in this.selectedItems) {
         for (const itemName in this.selectedItems[category]) {
-          const quantity = this.selectedItems[category][itemName];
+          const batchCount = this.selectedItems[category][itemName]; // 제작 횟수
           const itemData = craftingData[category][itemName];
           
           // 각 재료별 필요량 계산
           for (const material in itemData.재료) {
-            const neededAmount = Math.ceil((itemData.재료[material] * quantity) / itemData.생산량);
+            const neededAmount = itemData.재료[material] * batchCount;
             
             if (!totalMaterials[material]) {
               totalMaterials[material] = 0;
@@ -48,11 +48,10 @@ export const useCraftingStore = defineStore('crafting', {
         categoryTimes[category] = 0;
         
         for (const itemName in this.selectedItems[category]) {
-          const quantity = this.selectedItems[category][itemName];
+          const batchCount = this.selectedItems[category][itemName]; // 제작 횟수
           const itemData = craftingData[category][itemName];
           
-          // 해당 아이템의 총 제작 시간 (생산량을 고려하여 계산)
-          const batchCount = Math.ceil(quantity / itemData.생산량);
+          // 해당 아이템의 총 제작 시간
           let itemTime = batchCount * itemData.시간;
           
           // 멤버십이 활성화된 경우 시간을 절반으로 줄임

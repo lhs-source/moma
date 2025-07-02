@@ -7,6 +7,28 @@
       <div class="materials">
         <h3 class="text-lg font-semibold mb-2">필요 재료</h3>
         <div v-if="Object.keys(totalMaterials).length > 0" class="p-3 bg-gray-50 rounded-lg">
+          <!-- 제작 횟수 정보 -->
+          <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <h4 class="font-medium text-blue-800 mb-2">제작 횟수 정보</h4>
+            <div class="grid grid-cols-2 gap-2">
+              <div 
+                v-for="(category, categoryKey) in selectedItems" 
+                :key="categoryKey"
+                class="text-sm"
+              >
+                <div class="font-medium text-gray-700 mb-1">{{ categoryKey }}</div>
+                <div 
+                  v-for="(batchCount, itemName) in category" 
+                  :key="itemName"
+                  class="text-xs text-gray-600 ml-2"
+                >
+                  {{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, itemName) }}개 생산)
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 필요 재료 -->
           <div class="grid grid-cols-3 gap-3">
             <div 
               v-for="(amount, material) in totalMaterials" 
@@ -65,6 +87,7 @@
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { formatTime } from '@/utils/timeUtils';
+import { craftingData } from '@/data/crafting';
 
 const craftingStore = useCraftingStore();
 
@@ -93,4 +116,14 @@ const totalTime = computed(() => craftingStore.totalTime);
 
 // 선택된 항목이 있는지 확인
 const hasSelectedItems = computed(() => craftingStore.hasSelectedItems);
+
+// 선택된 항목들
+const selectedItems = computed(() => craftingStore.selectedItems);
+
+// 총 생산 개수를 계산하는 함수
+function getTotalQuantity(category: string, itemName: string): number {
+  const batchCount = selectedItems.value[category][itemName]; // 제작 횟수
+  const itemData = craftingData[category][itemName];
+  return batchCount * itemData.생산량;
+}
 </script>

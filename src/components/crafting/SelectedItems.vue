@@ -21,7 +21,10 @@
           >
             <div>
               <span class="font-medium">{{ itemName }}</span>
-              <span class="text-sm text-gray-600 ml-2">{{ quantity }}개</span>
+              <div class="text-sm text-gray-600 ml-2">
+                <span>{{ quantity }}회</span>
+                <span class="text-gray-400 ml-1">({{ getTotalQuantity(category, itemName) }}개 생산)</span>
+              </div>
             </div>
             
             <div class="flex items-center space-x-1">
@@ -65,6 +68,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
+import { craftingData } from '@/data/crafting';
 
 const craftingStore = useCraftingStore();
 
@@ -105,6 +109,13 @@ function clearCategory(category: string) {
 // 모든 선택 초기화 함수
 function clearAllItems() {
   craftingStore.clearSelectedItems();
+}
+
+// 총 생산 개수를 계산하는 함수
+function getTotalQuantity(category: string, itemName: string): number {
+  const batchCount = selectedItems.value[category][itemName]; // 제작 횟수
+  const itemData = craftingData[category][itemName];
+  return batchCount * itemData.생산량;
 }
 </script>
 
