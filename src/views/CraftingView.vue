@@ -5,20 +5,24 @@
       <MembershipToggle />
     </div>
     
-    <!-- 세로 레이아웃으로 변경 -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="md:col-span-1">
+    <!-- 3열 레이아웃 -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-120px)]">
+      <!-- 첫 번째 열: 가공처 + 제작 항목 -->
+      <div class="flex flex-col space-y-4">
         <CategoryList />
-      </div>
-      <div class="md:col-span-2">
         <ItemList />
       </div>
-      <div class="md:col-span-1">
+      
+      <!-- 두 번째 열: 선택된 항목 -->
+      <div>
         <SelectedItems />
       </div>
+      
+      <!-- 세 번째 열: 제작 결과 -->
+      <div>
+        <CraftingResults />
+      </div>
     </div>
-    
-    <CraftingResults />
   </div>
 </template>
 

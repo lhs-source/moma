@@ -1,7 +1,7 @@
 <template>
   <div class="selected-items">
     <h2 class="text-xl font-bold mb-3">선택된 항목</h2>
-    <div v-if="hasSelectedItems" class="overflow-y-auto h-[calc(100vh-300px)] pr-2">
+    <div v-if="hasSelectedItems" class="overflow-y-auto max-h-96 pr-2">
       <div v-for="category in categories" :key="category" class="mb-4">
         <div v-if="hasItemsInCategory(category)">
           <div class="flex justify-between items-center mb-2">

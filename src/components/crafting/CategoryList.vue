@@ -1,7 +1,7 @@
 <template>
-  <div class="category-list">
+  <div class="category-list h-auto">
     <h2 class="text-xl font-bold mb-3">가공처</h2>
-    <div class="overflow-y-auto h-[calc(100vh-250px)] pr-2">
+    <div class="overflow-y-auto max-h-60 pr-2">
       <div 
         v-for="category in categories" 
         :key="category"

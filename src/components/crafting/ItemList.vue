@@ -1,6 +1,6 @@
-<template>  <div class="item-list">
+<template>  <div class="item-list flex-1 flex flex-col">
     <h2 class="text-xl font-bold mb-3">제작 항목</h2>
-    <div v-if="selectedCategory" class="overflow-y-auto h-[calc(100vh-250px)] pr-2">
+    <div v-if="selectedCategory" class="overflow-y-auto flex-1 pr-2">
       <div 
         v-for="(item, itemName) in categoryItems" 
         :key="itemName"

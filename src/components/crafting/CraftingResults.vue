@@ -1,8 +1,8 @@
 <template>
-  <div class="crafting-results mt-6 p-4 border border-gray-200 rounded-lg">
+  <div class="crafting-results p-4 border border-gray-200 rounded-lg">
     <h2 class="text-xl font-bold mb-4">제작 결과</h2>
     
-    <div class="grid grid-cols-1 gap-6">
+    <div class="grid grid-cols-1 gap-6 max-h-96 overflow-y-auto">
       <!-- 필요 재료 -->
       <div class="materials">
         <h3 class="text-lg font-semibold mb-2">필요 재료</h3>
