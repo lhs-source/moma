@@ -1,4 +1,4 @@
-export type TradeType = 'daily' | 'weekly'
+export type TradeType = 'daily' | 'weekly' | 'account' | 'none' | 'unlimited'
 export type TradeScope = 'character' | 'account'
 
 export interface TradeData {
@@ -8,7 +8,7 @@ export interface TradeData {
   itemQuantity: number
   requiredItemId: string
   requiredQuantity: number
-  limitType: 'daily' | 'account' | 'none'
+  limitType: 'daily' | 'weekly' | 'account' | 'none' | 'unlimited'
   limitCount: number
 }
 
@@ -19,7 +19,7 @@ export interface Trade {
   receiveItemId: string // 받는 아이템 ID
   giveQuantity: number // 주는 아이템 개수
   receiveQuantity: number // 받는 아이템 개수
-  type: 'daily' | 'account' | 'none'
+  type: 'daily' | 'weekly' | 'account' | 'none' | 'unlimited'
   scope: 'character' | 'account'
   maxExchanges: number // 최대 교환 가능 횟수
   resetDay?: number // 주간 교환의 경우 리셋 요일 (0: 일요일, 1: 월요일, ...)

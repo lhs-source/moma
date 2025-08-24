@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import { trades } from '@/data/trade'
 import { npcs } from '@/data/npcs'
+import { locations } from '@/data/locations'
 import type { TradeData } from '@/data/schemas/trade'
 import { useTradeStore } from '@/stores/trade'
 
@@ -14,11 +15,14 @@ export function useTradeData() {
       const npc = npcs.find((n) => n.id === trade.npcId)
       if (!npc) return
 
-      if (!locationTrades[npc.location]) {
-        locationTrades[npc.location] = []
+      const location = locations.find((l) => l.id === npc.locationId)
+      if (!location) return
+
+      if (!locationTrades[location.name]) {
+        locationTrades[location.name] = []
       }
 
-      locationTrades[npc.location].push({
+      locationTrades[location.name].push({
         id: trade.id,
         npc: npc.name,
         itemId: trade.receiveItemId,
