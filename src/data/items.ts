@@ -1476,5 +1476,149 @@ export const items: Item[] = [
       isCraftable: false,
       category: '재료',
       isFromTraded: false
+    },
+    {
+      id: 'blank_score',
+      name: '빈 악보',
+      imageUrl: '/images/items/default.webp',
+      description: '음악을 기록할 수 있는 빈 악보',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: true
+    },
+    {
+      id: 'kaitin_special_bread',
+      name: '케이틴 특제 통밀빵',
+      imageUrl: '/images/items/kaitin_bread.png',
+      description: '케이틴이 만든 특제 통밀빵',
+      isCraftable: false,
+      category: '음식',
+      isFromTraded: true
+    },
+    {
+      id: 'special_steel_ingot',
+      name: '특수강괴',
+      imageUrl: '/images/items/special_steel.png',
+      description: '특수 제련된 강철 괴',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'antique_wrapping_paper',
+      name: '고풍스러운 포장지',
+      imageUrl: '/images/items/default.webp',
+      description: '고풍스러운 디자인의 포장지',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: true
+    },
+    {
+      id: 'water_filled_bottle',
+      name: '물이 든 병',
+      imageUrl: '/images/items/default.webp',
+      description: '깨끗한 물이 담긴 병',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'spicy_bass_soup',
+      name: '농어 매운탕',
+      imageUrl: '/images/items/default.webp',
+      description: '농어로 끓인 매운탕',
+      isCraftable: true,
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'silver_alloy_ingot',
+      name: '은합금괴',
+      imageUrl: '/images/items/default.webp',
+      description: '은으로 만든 합금 괴',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'supreme_silk',
+      name: '최상급 실크',
+      imageUrl: '/images/items/superior_silk.png',
+      description: '최고급 품질의 실크',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'supreme_wood',
+      name: '최상급 목재',
+      imageUrl: '/images/items/superior_wood_plus.png',
+      description: '최고급 품질의 목재',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'scar_flower',
+      name: '생채기꽃',
+      imageUrl: '/images/items/default.webp',
+      description: '상처 자국 같은 무늬가 있는 꽃',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'excellent_healing_potion',
+      name: '뛰어난 회복 물약',
+      imageUrl: '/images/items/default.webp',
+      description: '뛰어난 효과의 회복 물약',
+      isCraftable: true,
+      category: '소모품',
+      isFromTraded: false
+    },
+    {
+      id: 'soy_parsnip_cake',
+      name: '두유 파스닙 케이크',
+      imageUrl: '/images/items/default.webp',
+      description: '두유와 파스닙으로 만든 케이크',
+      isCraftable: true,
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'autumn_leaf_moth',
+      name: '낙엽나방',
+      imageUrl: '/images/items/default.webp',
+      description: '낙엽 색깔의 나방',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'heartfelt_bouquet',
+      name: '정성 담긴 꽃다발',
+      imageUrl: '/images/items/default.webp',
+      description: '정성을 담아 만든 꽃다발',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'light_meat',
+      name: '담백한 고기',
+      imageUrl: '/images/items/default.webp',
+      description: '담백한 맛의 고기',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'beans',
+      name: '콩',
+      imageUrl: '/images/items/default.webp',
+      description: '영양가 높은 콩',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
     }
   ]

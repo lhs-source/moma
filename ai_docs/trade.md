@@ -1,0 +1,112 @@
+# Trade Database
+
+This document contains all trade data from the game database in table format.
+
+| ID | NPC | Give Item | Give Quantity | Receive Item | Receive Quantity | Type | Scope | Max Exchanges | Enabled |
+|----|-----|-----------|---------------|--------------|------------------|------|-------|---------------|---------|
+| nora_travelers_snack | nora | malcolms_pillow | 1 | travelers_snack | 1 | daily | character | 3 | true |
+| deian_superior_wool | deian | pet_food | 1 | superior_wool | 4 | daily | character | 10 | true |
+| dilis_four_leaf_clover | dilis | mushroom | 3 | four_leaf_clover | 1 | daily | character | 1 | true |
+| lasa_alchemy_catalyst_1 | lasa | apple_juice | 1 | alchemy_catalyst | 1 | daily | character | 1 | true |
+| lasa_alchemy_catalyst_2 | lasa | alchemy_powder | 3 | alchemy_catalyst | 1 | none | character | 0 | true |
+| lasa_rare_alchemy_catalyst | lasa | alchemy_catalyst | 15 | rare_alchemy_catalyst | 1 | none | character | 0 | true |
+| reynald_critical_potion | reynald | mayonnaise_stir_fry | 2 | critical_potion | 1 | daily | character | 1 | true |
+| malcolm_blank_score | malcolm | wool | 50 | blank_score | 1 | daily | character | 1 | true |
+| malcolm_pillow | malcolm | spider_web | 5 | malcolms_pillow | 1 | daily | character | 1 | true |
+| malcolm_workbench | malcolm | campfire_kit | 1 | workbench_blueprint | 1 | daily | character | 1 | true |
+| maven_holy_water | maven | kaitin_bread | 1 | holy_water | 1 | account | character | 1 | true |
+| alisa_alchemy_powder_1 | alisa | egg | 10 | alchemy_powder | 1 | daily | character | 1 | true |
+| alisa_alchemy_powder_2 | alisa | lavender | 1 | alchemy_powder | 1 | daily | character | 1 | true |
+| alisa_wheat_flour_1 | alisa | egg | 3 | wheat_flour | 1 | daily | character | 1 | true |
+| alisa_wheat_flour_2 | alisa | lavender | 1 | wheat_flour | 1 | daily | character | 1 | true |
+| endelion_holy_water | endelion | kaitin_bread | 10 | holy_water | 10 | account | character | 1 | true |
+| kaitin_bread_trade | kaitin | milk | 10 | kaitin_bread | 3 | daily | character | 1 | true |
+| kaitin_food_processing | kaitin | wheat_flour | 10 | food_processing_blueprint | 1 | daily | character | 1 | true |
+| fergus_iron_ore | fergus | equipment_parts | 1 | iron_ore | 1 | daily | character | 10 | true |
+| fergus_coal | fergus | equipment_parts | 1 | coal | 3 | daily | character | 10 | true |
+| fergus_alloy_steel | fergus | steel_ingot | 2 | alloy_steel_ingot | 1 | daily | character | 4 | true |
+| elvin_tannin | elvin | leather | 5 | tannin_powder | 5 | daily | character | 10 | true |
+| elvin_superior_log | elvin | superior_leather | 1 | superior_log | 1 | daily | character | 10 | true |
+| elvin_superior_wood | elvin | stir_fried_vegetables | 1 | superior_wood | 4 | daily | character | 2 | true |
+| elvin_leather_processing | elvin | superior_fabric_plus | 5 | leather_processing_blueprint | 1 | daily | character | 1 | true |
+| tracy_leather | tracy | log | 1 | leather | 1 | daily | character | 10 | true |
+| tracy_superior_leather | tracy | log | 10 | superior_leather | 1 | daily | character | 10 | true |
+| tracy_tree_sap | tracy | superior_log | 1 | tree_sap | 4 | daily | character | 5 | true |
+| tracy_wood_carving | tracy | clam_chowder | 2 | tracy_wood_carving | 1 | daily | character | 1 | true |
+| tracy_wood_processing | tracy | caterpillar | 5 | wood_processing_blueprint | 1 | daily | character | 1 | true |
+| glenis_glenis_cake | glenis | fork_in_milk | 1 | glenis_cake | 1 | daily | character | 1 | true |
+| glenis_glenis_apple_milk_tea | glenis | cream | 4 | glenis_apple_milk_tea | 1 | daily | character | 1 | true |
+| glenis_food_processing | glenis | apple_soup | 1 | food_processing_blueprint | 1 | daily | character | 1 | true |
+| manus_life_gem | manus | pet_food | 10 | life_gem | 1 | daily | character | 2 | true |
+| walter_superior_wood | walter | tracy_wood_carving | 1 | processed_leather | 6 | daily | character | 1 | true |
+| walter_heart_token | walter | love_fish | 5 | heart_token | 1 | daily | character | 2 | true |
+| walter_fire_bomb | walter | dark_fish | 5 | fire_bomb | 1 | daily | character | 3 | true |
+| walter_thunder_bomb | walter | dark_fish | 5 | thunder_bomb | 1 | daily | character | 3 | true |
+| walter_wind_bomb | walter | dark_fish | 5 | wind_bomb | 1 | daily | character | 3 | true |
+| walter_acid_bomb | walter | dark_fish | 5 | acid_bomb | 1 | daily | character | 3 | true |
+| stewart_fire_crystal | stewart | alchemy_powder | 1 | fire_crystal | 1 | daily | character | 5 | true |
+| stewart_ice_crystal | stewart | alchemy_powder | 1 | ice_crystal | 1 | daily | character | 5 | true |
+| stewart_electric_crystal | stewart | alchemy_powder | 1 | electric_crystal | 1 | daily | character | 5 | true |
+| stewart_light_crystal | stewart | alchemy_powder | 1 | light_crystal | 1 | daily | character | 5 | true |
+| stewart_seal_crystal | stewart | alchemy_powder | 1 | seal_crystal | 1 | daily | character | 5 | true |
+| simon_dye_base | simon | superior_silk | 10 | dye_base | 3 | daily | character | 1 | true |
+| simon_silk_fabric | simon | ghost_lantern | 2 | silk_fabric | 1 | daily | character | 1 | true |
+| simon_armor_blueprint | simon | sanded_ferodotS | 1 | armor_blueprint | 1 | daily | character | 1 | true |
+| aranwen_ultimate_potion | aranwen | potato_salad | 2 | ultimate_potion | 1 | daily | character | 1 | true |
+| aranwen_spirit_trace | aranwen | class_master_medal | 1 | spirit_trace | 20 | none | character | 0 | true |
+| aira_paper | aira | orphan_novel | 1 | paper | 10 | daily | character | 1 | true |
+| jerome_silk | jerome | ricotta_cheese_salad | 1 | silk | 4 | daily | character | 2 | true |
+| jerome_superior_silk | jerome | cream_sauce_steak | 1 | superior_silk | 4 | daily | character | 1 | true |
+| jamie_superior_fabric | jamie | apple_soup | 1 | superior_fabric | 4 | daily | character | 2 | true |
+| jamie_superior_fabric_plus | jamie | apple_cream_cake | 1 | superior_fabric_plus | 4 | daily | character | 1 | true |
+| calix_superior_wood | calix | glenis_apple_milk_tea | 2 | leather_plus | 10 | daily | character | 2 | true |
+| flora_orphan_novel | flora | glenis_cake | 2 | orphan_novel | 1 | daily | character | 1 | true |
+| karin_pet_food | karin | potato_soup | 3 | pet_food | 10 | daily | character | 1 | true |
+| armis_special_steel | armis | special_steel | 2 | silver_alloy_ingot | 1 | daily | character | 3 | true |
+| armis_copper_ore | armis | white_ore | 1 | copper_ore | 10 | daily | character | 1 | true |
+| armis_metal_processing | armis | coal | 20 | metal_processing_blueprint | 1 | daily | character | 1 | true |
+| armis_weapon_blueprint | armis | fire_bomb | 5 | weapon_blueprint | 1 | daily | character | 1 | true |
+| keaira_cave_gem | keaira | superior_wood_plus | 10 | condensed_wind | 3 | daily | character | 3 | true |
+| keaira_ruin_gem | keaira | superior_wood_plus | 10 | poison_sac | 3 | daily | character | 3 | true |
+| keaira_superior_critical_potion | keaira | ice_fruit_juice | 2 | superior_critical_potion | 1 | daily | character | 1 | true |
+| conor_four_leaf_clover | conner | health_drink | 1 | four_leaf_clover | 3 | daily | character | 3 | true |
+| conor_ruin_gem | conner | chrysanthemum_ear | 5 | ruin_gem | 1 | daily | character | 3 | true |
+| killian_healthy_drink | killian | clean_mushroom_spores | 5 | healthy_drink | 1 | daily | character | 5 | true |
+| killian_four_leaf_clover | killian | alrio_orio | 1 | four_leaf_clover | 8 | daily | character | 1 | true |
+| killian_medicine_processing | killian | poison_bag | 3 | medicine_processing_blueprint | 1 | daily | character | 1 | true |
+| killian_medicine_blueprint | killian | sun_butterfly | 2 | medicine_blueprint | 1 | daily | character | 1 | true |
+| simon_perfect_bandage | simon | perfect_bandage | 100 | fabric_plus | 10 | daily | character | 1 | true |
+| armis_curse_removal_bandage | armis | curse_removal_potion_bandage | 100 | holy_water | 10 | daily | character | 1 | true |
+| keaira_holy_water | keaira | holy_water | 10 | water_bottle | 50 | daily | character | 1 | true |
+| calix_immortality_powder_lemon | calix | immortality_powder | 5 | lemon | 3 | daily | character | 1 | true |
+| calix_immortality_powder_pepper | calix | immortality_powder | 5 | pepper | 2 | daily | character | 1 | true |
+| stewart_enhanced_catalyst | stewart | enhanced_reignition_catalyst | 5 | raw_gold_ore | 7 | daily | character | 1 | true |
+| stewart_rare_catalyst | stewart | rare_alchemy_reignition_catalyst | 50 | raw_gold_ore | 7 | daily | character | 1 | true |
+| fergus_ore | fergus | ore | 100 | equipment_parts | 10 | daily | character | 1 | true |
+| dungeon_cat_travelers_snack | dungeon_cat_merchant | travelers_snack | 100 | salt | 2 | daily | character | 1 | true |
+| dungeon_cat_bandage | dungeon_cat_merchant | bandage | 100 | sugar | 2 | daily | character | 1 | true |
+| dungeon_cat_healing_potion | dungeon_cat_merchant | healing_potion | 100 | cabbage | 2 | daily | character | 1 | true |
+
+## Summary
+
+- **Total Trades**: 67
+- **Trade Types**: 
+  - daily: 62 trades
+  - account: 2 trades
+  - none: 3 trades
+- **Scope**: All trades are character-scoped
+- **Max Exchanges**: Range from 0 to 100, most are 1-10
+
+## Trade Types
+
+- **daily**: Can be traded once per day
+- **account**: Can be traded once per account
+- **none**: No limit on trading (maxExchanges = 0)
+
+## Notes
+
+- Korean text is preserved as in the original data
+- All trades are currently enabled
+- Most trades involve exchanging crafted items for materials or special items
+- Some trades have very high exchange rates (e.g., 100:1 ratios)
+- The dungeon cat merchant offers basic material trades at high quantities

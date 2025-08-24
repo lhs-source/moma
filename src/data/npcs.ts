@@ -217,5 +217,61 @@ export const npcs: NPC[] = [
     description: '던전 내 상인',
     imageUrl: '/images/npcs/dungeon_cat_merchant.png',
     location: '던전'
+  },
+  {
+    id: 'shamus',
+    name: '셰이머스',
+    description: '잡화점',
+    imageUrl: '/images/npcs/default.webp',
+    location: '가이레흐 언덕'
+  },
+  {
+    id: 'aidern',
+    name: '아이데른',
+    description: '대장간',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'eileen',
+    name: '에일렌',
+    description: '대장간',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'gilmore',
+    name: '길모어',
+    description: '의상점',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'sean',
+    name: '숀',
+    description: '잡화점',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'comgan',
+    name: '컴건',
+    description: '치료소',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'evi',
+    name: '이비',
+    description: '잡화점',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
+  },
+  {
+    id: 'jennifer',
+    name: '제니퍼',
+    description: '식료품점',
+    imageUrl: '/images/npcs/default.webp',
+    location: '반호르'
   }
 ] 

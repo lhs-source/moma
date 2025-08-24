@@ -11,46 +11,38 @@ import { RouterLink, RouterView } from 'vue-router'
             <RouterLink to="/" class="text-xl font-bold text-primary">Mabinogi Mobile</RouterLink>
           </div>
           <div class="flex items-center space-x-6">
-            <RouterLink 
-              to="/" 
-              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+            <RouterLink to="/" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground">
               홈
             </RouterLink>
-            <RouterLink 
-              to="/trade" 
+            <RouterLink to="/trade"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+              active-class="text-foreground">
               물물교환
             </RouterLink>
-            <RouterLink 
-              to="/crafting" 
+            <RouterLink to="/crafting"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+              active-class="text-foreground">
               제작 시스템
             </RouterLink>
-            <RouterLink 
-              to="/items" 
+            <RouterLink to="/items"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+              active-class="text-foreground">
               아이템 목록
             </RouterLink>
-            <RouterLink 
-              to="/recipes" 
+            <RouterLink to="/recipes"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+              active-class="text-foreground">
               레시피 목록
             </RouterLink>
-            <RouterLink 
-              to="/about" 
+            <RouterLink to="/gear"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground"
-            >
+              active-class="text-foreground">
+              장비 시뮬레이터
+            </RouterLink>
+            <RouterLink to="/about"
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground">
               소개
             </RouterLink>
           </div>
