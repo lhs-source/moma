@@ -35,6 +35,11 @@ import { RouterLink, RouterView } from 'vue-router'
               active-class="text-foreground">
               레시피 목록
             </RouterLink>
+            <RouterLink to="/cooking"
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground">
+              요리 시뮬레이팅
+            </RouterLink>
             <RouterLink to="/gear"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               active-class="text-foreground">

@@ -1,4 +1,5 @@
 import type { Item } from "./schemas/item";
+import { ITEM_CATEGORY } from "./schemas/item";
 
 export const items: Item[] = [
     {
@@ -210,9 +211,9 @@ export const items: Item[] = [
       imageUrl: '/images/items/salt.png',
       description: '소금입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
-      price: 50
+      price: 1000
     },
     {
       id: 'water_bottle',
@@ -229,7 +230,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/herb.png',
       description: '향긋한 허브입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
       price: 30
     },
@@ -248,9 +249,9 @@ export const items: Item[] = [
       imageUrl: '/images/items/sugar.png',
       description: '설탕입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
-      price: 40
+      price: 1200
     },
     {
       id: 'apple',
@@ -267,9 +268,9 @@ export const items: Item[] = [
       imageUrl: '/images/items/cabbage.png',
       description: '신선한 양배추입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
-      price: 25
+      price: 800
     },
     {
       id: 'mayonnaise',
@@ -331,9 +332,9 @@ export const items: Item[] = [
       imageUrl: '/images/items/lemon.png',
       description: '신선한 레몬입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
-      price: 35
+      price: 3000
     },
     {
       id: 'pepper',
@@ -341,7 +342,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/pepper.png',
       description: '후추입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
       price: 45
     },
@@ -369,7 +370,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/garlic.png',
       description: '신선한 마늘입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
       price: 20
     },
@@ -406,7 +407,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/tomato.png',
       description: '신선한 토마토입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
       price: 30
     },
@@ -416,7 +417,7 @@ export const items: Item[] = [
       imageUrl: '/images/items/cooking_oil.png',
       description: '요리에 사용되는 식용유입니다.',
       isCraftable: false,
-      category: '재료',
+      category: ITEM_CATEGORY.FOOD_INGREDIENT,
       isFromTraded: false,
       price: 60
     },
