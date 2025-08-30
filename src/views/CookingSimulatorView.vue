@@ -31,9 +31,13 @@
 
                   </div>
                   <div class="flex items-center gap-2">
-                    <input type="number" min="0" class="w-20 px-2 py-1 border rounded"
+                    <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
+                      @click="decrementCount(recipe.id)">-</button>
+                    <input type="number" min="0" class="w-16 text-center px-2 py-1 border rounded"
                       :value="selectedCounts[recipe.id] ?? 0"
                       @input="onChangeCount(recipe.id, ($event.target as HTMLInputElement).value)" />
+                    <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
+                      @click="incrementCount(recipe.id)">+</button>
                   </div>
                 </div>
                 <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm">
@@ -64,7 +68,11 @@
                 <div class="text-sm font-medium truncate">{{ recipe.name }}</div>
 
               </div>
-              <div class="text-sm font-semibold text-blue-600">x{{ selectedCounts[recipe.id] ?? 0 }}</div>
+              <div class="flex items-center gap-2">
+                <div class="text-sm font-semibold text-blue-600">x{{ selectedCounts[recipe.id] ?? 0 }}</div>
+                <button type="button" class="text-xs text-red-600 hover:underline"
+                  @click="removeSelected(recipe.id)">삭제</button>
+              </div>
             </div>
             <div v-if="selectedRecipes.length === 0" class="text-sm text-gray-500 text-center py-4">
               선택된 요리가 없습니다
@@ -84,12 +92,23 @@
 
         <div class="mb-4">
           <h3 class="text-sm font-semibold text-gray-700 mb-2">총 필요 식재료</h3>
-          <div class="space-y-1 max-h-64 overflow-auto pr-1">
+          <div class="space-y-1">
             <div v-for="row in totalNeededRows" :key="'direct-' + row.itemId" class="flex items-center gap-2 text-sm">
               <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
                 class="w-5 h-5 rounded object-cover" @error="handleImageError" />
               <span class="truncate">{{ getItemName(row.itemId) }}</span>
               <span class="ml-auto">x{{ row.quantity }}</span>
+              <span v-if="getBuyableCount(row.itemId) > 0"
+                :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
+                class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
+              <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
+                개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
+                  row.quantity) }}
+              </span>
+            </div>
+            <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
+              <span class="text-gray-600">총 골드</span>
+              <span class="font-semibold text-green-700">{{ formatGold(totalGoldDirect) }}</span>
             </div>
             <div v-if="processedNeededRows.length" class="pt-2 mt-2 border-t border-gray-100">
               <div class="text-xs text-gray-500 mb-1">가공 아이템 추가 필요 재료</div>
@@ -99,6 +118,17 @@
                   class="w-5 h-5 rounded object-cover" @error="handleImageError" />
                 <span class="truncate">{{ getItemName(row.itemId) }}</span>
                 <span class="ml-auto">x{{ row.quantity }}</span>
+                <span v-if="getBuyableCount(row.itemId) > 0"
+                  :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
+                  class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
+                <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
+                  개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
+                    row.quantity) }}
+                </span>
+              </div>
+              <div class="flex items-center justify-end gap-2 text-sm mt-2">
+                <span class="text-gray-600">총 골드 (가공 추가)</span>
+                <span class="font-semibold text-green-700">{{ formatGold(totalGoldProcessed) }}</span>
               </div>
               <div class="text-xs text-gray-500 mt-2">총합 (가공 포함)</div>
               <div v-for="row in totalNeededCombinedRows" :key="'all-' + row.itemId"
@@ -107,6 +137,17 @@
                   class="w-5 h-5 rounded object-cover" @error="handleImageError" />
                 <span class="truncate">{{ getItemName(row.itemId) }}</span>
                 <span class="ml-auto font-semibold">x{{ row.quantity }}</span>
+                <span v-if="getBuyableCount(row.itemId) > 0"
+                  :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
+                  class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
+                <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
+                  개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
+                    row.quantity) }}
+                </span>
+              </div>
+              <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
+                <span class="text-gray-600">총 골드</span>
+                <span class="font-semibold text-green-700">{{ formatGold(totalGoldCombined) }}</span>
               </div>
             </div>
           </div>
@@ -274,6 +315,20 @@ function onChangeCount(id: string, val: string) {
   selectedCounts.value[id] = n
 }
 
+function incrementCount(id: string) {
+  const current = selectedCounts.value[id] ?? 0
+  selectedCounts.value[id] = current + 1
+}
+
+function decrementCount(id: string) {
+  const current = selectedCounts.value[id] ?? 0
+  selectedCounts.value[id] = Math.max(0, current - 1)
+}
+
+function removeSelected(id: string) {
+  selectedCounts.value[id] = 0
+}
+
 // 합산된 필요 식재료 계산 (직접 필요 재료)
 const totalNeeded = computed<Record<string, number>>(() => {
   const result: Record<string, number> = {}
@@ -364,6 +419,36 @@ const totalNeededCombinedRows = computed(() => {
     .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
 })
 
+// 총 골드 (직접 필요 기준)
+const totalGoldDirect = computed(() => {
+  let sum = 0
+  for (const [itemId, quantity] of Object.entries(totalNeeded.value)) {
+    const price = getMinBuyPrice(itemId)
+    if (price !== null) sum += price * quantity
+  }
+  return sum
+})
+
+// 총 골드 (가공 추가 필요 기준)
+const totalGoldProcessed = computed(() => {
+  let sum = 0
+  for (const [itemId, quantity] of Object.entries(processedNeeded.value)) {
+    const price = getMinBuyPrice(itemId)
+    if (price !== null) sum += price * quantity
+  }
+  return sum
+})
+
+// 총 골드 (가공 포함 총합 기준, 구매 가능한 항목만 합산)
+const totalGoldCombined = computed(() => {
+  let sum = 0
+  for (const [itemId, quantity] of Object.entries(totalNeededCombined.value)) {
+    const price = getMinBuyPrice(itemId)
+    if (price !== null) sum += price * quantity
+  }
+  return sum
+})
+
 // 주간 한도 비교로 가능한 최대 제작 수 계산
 const maxCraftableCount = computed(() => {
   // 필요한 식재료 중 식재료 카테고리 또는 재료 카테고리인 것만 한도로 제한
@@ -393,6 +478,26 @@ function findRecipeById(id: string): Recipe | undefined {
     if (r) return r
   }
   return undefined
+}
+
+function getBuyableCount(itemId: string): number {
+  const entry = allBuyableFoodIngredients.value.find(b => b.itemId === itemId)
+  return entry ? entry.totalBuyableCount : 0
+}
+
+function getMinBuyPrice(itemId: string): number | null {
+  const prices: number[] = []
+  buyableRecipes.value.forEach(r => {
+    if (r.resultItemId !== itemId) return
+    const gold = r.requiredItems.find(ri => ri.itemId === 'gold')
+    if (gold) prices.push(gold.quantity)
+  })
+  if (prices.length === 0) return null
+  return Math.min(...prices)
+}
+
+function formatGold(v: number): string {
+  return `${v.toLocaleString()}G`
 }
 
 </script>
