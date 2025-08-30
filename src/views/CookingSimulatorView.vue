@@ -18,7 +18,7 @@
           </select>
         </div>
 
-        <div class="space-y-3 max-h-[60vh] overflow-auto pr-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[60vh] overflow-auto pr-1">
           <div v-for="recipe in filteredRecipes" :key="recipe.id"
             class="border border-gray-100 rounded p-3 hover:shadow-sm">
             <div class="flex items-start gap-3">
@@ -28,7 +28,7 @@
                 <div class="flex items-center justify-between">
                   <div class="truncate">
                     <div class="font-semibold">{{ recipe.name }}</div>
-                    <div class="text-xs text-gray-500">요리 Lv.{{ recipe.facilityLevel }}</div>
+
                   </div>
                   <div class="flex items-center gap-2">
                     <input type="number" min="0" class="w-20 px-2 py-1 border rounded"
@@ -62,7 +62,7 @@
                 @error="handleImageError" />
               <div class="flex-1 min-w-0">
                 <div class="text-sm font-medium truncate">{{ recipe.name }}</div>
-                <div class="text-xs text-gray-500">요리 Lv.{{ recipe.facilityLevel }}</div>
+
               </div>
               <div class="text-sm font-semibold text-blue-600">x{{ selectedCounts[recipe.id] ?? 0 }}</div>
             </div>
@@ -96,7 +96,7 @@
 
         <div class="mb-4">
           <h3 class="text-sm font-semibold text-gray-700 mb-2">주간 구매 가능 횟수 및 가격</h3>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div v-for="item in allBuyableFoodIngredients" :key="item.itemId"
               class="border border-gray-200 rounded-lg p-3 bg-gray-50">
               <div class="flex items-center gap-2 mb-2">
