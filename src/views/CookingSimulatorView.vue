@@ -85,11 +85,29 @@
         <div class="mb-4">
           <h3 class="text-sm font-semibold text-gray-700 mb-2">총 필요 식재료</h3>
           <div class="space-y-1 max-h-64 overflow-auto pr-1">
-            <div v-for="row in totalNeededRows" :key="row.itemId" class="flex items-center gap-2 text-sm">
+            <div v-for="row in totalNeededRows" :key="'direct-' + row.itemId" class="flex items-center gap-2 text-sm">
               <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
                 class="w-5 h-5 rounded object-cover" @error="handleImageError" />
               <span class="truncate">{{ getItemName(row.itemId) }}</span>
               <span class="ml-auto">x{{ row.quantity }}</span>
+            </div>
+            <div v-if="processedNeededRows.length" class="pt-2 mt-2 border-t border-gray-100">
+              <div class="text-xs text-gray-500 mb-1">가공 아이템 추가 필요 재료</div>
+              <div v-for="row in processedNeededRows" :key="'proc-' + row.itemId"
+                class="flex items-center gap-2 text-sm">
+                <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
+                  class="w-5 h-5 rounded object-cover" @error="handleImageError" />
+                <span class="truncate">{{ getItemName(row.itemId) }}</span>
+                <span class="ml-auto">x{{ row.quantity }}</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-2">총합 (가공 포함)</div>
+              <div v-for="row in totalNeededCombinedRows" :key="'all-' + row.itemId"
+                class="flex items-center gap-2 text-sm">
+                <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
+                  class="w-5 h-5 rounded object-cover" @error="handleImageError" />
+                <span class="truncate">{{ getItemName(row.itemId) }}</span>
+                <span class="ml-auto font-semibold">x{{ row.quantity }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -256,7 +274,7 @@ function onChangeCount(id: string, val: string) {
   selectedCounts.value[id] = n
 }
 
-// 합산된 필요 식재료 계산
+// 합산된 필요 식재료 계산 (직접 필요 재료)
 const totalNeeded = computed<Record<string, number>>(() => {
   const result: Record<string, number> = {}
   for (const [recipeId, count] of Object.entries(selectedCounts.value)) {
@@ -281,10 +299,75 @@ const totalNeededRows = computed(() => {
     .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
 })
 
+// 가공 레시피 맵 (resultItemId -> 레시피)
+const processRecipeMap = computed(() => {
+  const map: Record<string, Recipe> = {}
+  for (const g of recipesGrouped) {
+    for (const r of g.recipeList) {
+      if (r.category === RECIPE_CATEGORY.PROCESS) {
+        // 여러 가공법이 있다면 첫 번째를 사용
+        if (!map[r.resultItemId]) map[r.resultItemId] = r
+      }
+    }
+  }
+  return map
+})
+
+// 재귀적으로 가공 재료 확장
+function accumulateProcessedNeeds(itemId: string, quantityNeeded: number, into: Record<string, number>, visited: Set<string>) {
+  if (visited.has(itemId)) return
+  const proc = processRecipeMap.value[itemId]
+  if (!proc) return
+  visited.add(itemId)
+  const outQty = proc.resultQuantity && proc.resultQuantity > 0 ? proc.resultQuantity : 1
+  const actions = Math.ceil(quantityNeeded / outQty)
+  for (const ri of proc.requiredItems) {
+    // 하위 재료가 또 가공품이면 재귀 확장
+    if (processRecipeMap.value[ri.itemId]) {
+      accumulateProcessedNeeds(ri.itemId, ri.quantity * actions, into, visited)
+    } else {
+      into[ri.itemId] = (into[ri.itemId] || 0) + ri.quantity * actions
+    }
+  }
+  visited.delete(itemId)
+}
+
+// 가공 아이템 추가 필요 재료 (직접 필요에서 가공품인 것들을 원재료로 풀어 합산)
+const processedNeeded = computed<Record<string, number>>(() => {
+  const result: Record<string, number> = {}
+  for (const [itemId, qty] of Object.entries(totalNeeded.value)) {
+    if (processRecipeMap.value[itemId]) {
+      accumulateProcessedNeeds(itemId, qty, result, new Set())
+    }
+  }
+  return result
+})
+
+const processedNeededRows = computed(() => {
+  return Object.entries(processedNeeded.value)
+    .map(([itemId, quantity]) => ({ itemId, quantity }))
+    .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
+})
+
+// 가공 포함 총합
+const totalNeededCombined = computed<Record<string, number>>(() => {
+  const out: Record<string, number> = { ...totalNeeded.value }
+  for (const [itemId, qty] of Object.entries(processedNeeded.value)) {
+    out[itemId] = (out[itemId] || 0) + qty
+  }
+  return out
+})
+
+const totalNeededCombinedRows = computed(() => {
+  return Object.entries(totalNeededCombined.value)
+    .map(([itemId, quantity]) => ({ itemId, quantity }))
+    .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
+})
+
 // 주간 한도 비교로 가능한 최대 제작 수 계산
 const maxCraftableCount = computed(() => {
   // 필요한 식재료 중 식재료 카테고리 또는 재료 카테고리인 것만 한도로 제한
-  const needs = totalNeeded.value
+  const needs = totalNeededCombined.value
   const ratios: number[] = []
   for (const [itemId, qtyNeeded] of Object.entries(needs)) {
     const it = items.find(i => i.id === itemId)

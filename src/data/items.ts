@@ -1702,5 +1702,41 @@ export const items: Item[] = [
       isCraftable: false,
       category: '재료',
       isFromTraded: false
+    },
+    {
+      id: 'soaked_bean',
+      name: '물에 불린 콩',
+      imageUrl: '/images/items/default.webp',
+      description: '물에 불린 콩',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'tofu',
+      name: '두부',
+      imageUrl: '/images/items/default.webp',
+      description: '두부',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'soy_milk',
+      name: '두유',
+      imageUrl: '/images/items/default.webp',
+      description: '두유',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fabric',
+      name: '옷감',
+      imageUrl: '/images/items/default.webp',
+      description: '직조된 옷감',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
     }
   ]
