@@ -18,5 +18,4 @@ export interface Item {
   isCraftable: boolean // 제작 가능 여부
   category?: string // 아이템 카테고리 (예: 재료, 완성품 등)
   isFromTraded: boolean // 교환을 통해 얻을 수 있는 아이템인지 여부
-  price?: number // 상점에서 구매할 수 있는 아이템의 가격 (골드)
 } 

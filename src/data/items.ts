@@ -212,8 +212,7 @@ export const items: Item[] = [
       description: '소금입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 1000
+      isFromTraded: false
     },
     {
       id: 'water_bottle',
@@ -231,8 +230,7 @@ export const items: Item[] = [
       description: '향긋한 허브입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 30
+      isFromTraded: false
     },
     {
       id: 'potato',
@@ -250,8 +248,7 @@ export const items: Item[] = [
       description: '설탕입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 1200
+      isFromTraded: false
     },
     {
       id: 'apple',
@@ -269,8 +266,7 @@ export const items: Item[] = [
       description: '신선한 양배추입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 800
+      isFromTraded: false
     },
     {
       id: 'mayonnaise',
@@ -333,8 +329,7 @@ export const items: Item[] = [
       description: '신선한 레몬입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 3000
+      isFromTraded: false
     },
     {
       id: 'pepper',
@@ -343,8 +338,7 @@ export const items: Item[] = [
       description: '후추입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 45
+      isFromTraded: false
     },
     {
       id: 'ice',
@@ -371,8 +365,7 @@ export const items: Item[] = [
       description: '신선한 마늘입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 20
+      isFromTraded: false
     },
     {
       id: 'cream',
@@ -408,8 +401,7 @@ export const items: Item[] = [
       description: '신선한 토마토입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 30
+      isFromTraded: false
     },
     {
       id: 'cooking_oil',
@@ -418,8 +410,7 @@ export const items: Item[] = [
       description: '요리에 사용되는 식용유입니다.',
       isCraftable: false,
       category: ITEM_CATEGORY.FOOD_INGREDIENT,
-      isFromTraded: false,
-      price: 60
+      isFromTraded: false
     },
     {
       id: 'lean_meat',
@@ -1620,6 +1611,15 @@ export const items: Item[] = [
       description: '영양가 높은 콩',
       isCraftable: false,
       category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'gold',
+      name: '골드',
+      imageUrl: '/images/items/default.webp',
+      description: '게임 내 통화',
+      isCraftable: false,
+      category: '통화',
       isFromTraded: false
     }
   ]
