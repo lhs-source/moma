@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe, type RecipeGroup } from '@/data/schemas/recipe'
 
 // https://www.inven.co.kr/board/mabimo/6366/134
 export const recipes: Recipe[] = [
@@ -390,107 +390,6 @@ export const recipes: Recipe[] = [
     category: RECIPE_CATEGORY.COOK,
     facilityLevel: 13
   },
-  // 구매 가능한 아이템들
-  {
-    id: 'buy_salt',
-    name: '소금 구매',
-    resultItemId: 'salt',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 1000, buyNpcId: 'kaitin' }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_herb',
-    name: '허브 구매',
-    resultItemId: 'herb',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 30, buyNpcId: 'kaitin' }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_sugar',
-    name: '설탕 구매',
-    resultItemId: 'sugar',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 1200, buyNpcId: 'kaitin' }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_cabbage',
-    name: '양배추 구매',
-    resultItemId: 'cabbage',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 800, buyNpcId: 'kaitin' }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_lemon',
-    name: '레몬 구매',
-    resultItemId: 'lemon',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 3000 }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_pepper',
-    name: '후추 구매',
-    resultItemId: 'pepper',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 45 }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_garlic',
-    name: '마늘 구매',
-    resultItemId: 'garlic',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 20 }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_tomato',
-    name: '토마토 구매',
-    resultItemId: 'tomato',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 30 }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  {
-    id: 'buy_cooking_oil',
-    name: '식용유 구매',
-    resultItemId: 'cooking_oil',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'gold', quantity: 60 }
-    ],
-    category: RECIPE_CATEGORY.BUY,
-    facilityLevel: 1
-  },
-  // 티르코네일 - 케이틴
   {
     id: 'buy_meat_tirchonaill',
     name: '고기 구매 (티르코네일)',
@@ -778,5 +677,161 @@ export const recipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.BUY,
     facilityLevel: 1
+  },
+  {
+    id: 'buy_wax_conner',
+    name: '밀랍 구매 (콜헨)',
+    resultItemId: 'wax',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 3600, buyNpcId: 'conner' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_superior_leather_conner',
+    name: '상급 생가죽 구매 (콜헨)',
+    resultItemId: 'superior_leather',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 600, buyNpcId: 'conner' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_superior_leather_plus_conner',
+    name: '상급 생가죽+ 구매 (콜헨)',
+    resultItemId: 'superior_leather_plus',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 600, buyNpcId: 'conner' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_scythe_conner',
+    name: '장수풍뎅이 구매 (콜헨)',
+    resultItemId: 'scythe',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 500, buyNpcId: 'conner' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_bulbous_conner',
+    name: '뚝딱 반딧불이 구매 (콜헨)',
+    resultItemId: 'bulbous',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 400, buyNpcId: 'conner' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  // 반호르 - 길모어 - 상급 생가죽+, 최상급 생가죽, 최상급 거미줄, 동전무당벌레, 타닌 가루, 나무 진액, 밀랍
+  {
+    id: 'buy_superior_leather_plus_bangor',
+    name: '상급 생가죽+ 구매 (반호르)',
+    resultItemId: 'superior_leather_plus',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 600, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_superior_leather_bangor',
+    name: '상급 생가죽 구매 (반호르)',
+    resultItemId: 'superior_leather',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 600, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_best_leather_bangor',
+    name: '최상급 생가죽 구매 (반호르)',
+    resultItemId: 'best_leather',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 900, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_superior_web_bangor',
+    name: '최상급 거미줄 구매 (반호르)',
+    resultItemId: 'superior_web',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 900, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_coin_bug_bangor',
+    name: '동전무당벌레 구매 (반호르)',
+    resultItemId: 'coin_bug',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 1000, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_tin_powder_bangor',
+    name: '타닌 가루 구매 (반호르)',
+    resultItemId: 'tin_powder',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 500, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    id: 'buy_tree_juice_bangor',
+    name: '나무 진액 구매 (반호르)',
+    resultItemId: 'tree_juice',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 500, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
+  },
+  {
+    // 밀랍
+    id: 'buy_wax_bangor',
+    name: '밀랍 구매 (반호르)',
+    resultItemId: 'wax',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'gold', quantity: 3600, buyNpcId: 'gilmore' }
+    ],
+    category: RECIPE_CATEGORY.BUY,
+    facilityLevel: 1
   }
 ]
+
+// 결과 아이템별 레시피 그룹화 버전 (기존 export 유지)
+export const recipesGrouped: RecipeGroup[] = (() => {
+  const map = new Map<string, Recipe[]>()
+  for (const r of recipes) {
+    const list = map.get(r.resultItemId) ?? []
+    list.push(r)
+    map.set(r.resultItemId, list)
+  }
+  return Array.from(map.entries()).map(([resultItemId, recipeList]) => ({ resultItemId, recipeList }))
+})()

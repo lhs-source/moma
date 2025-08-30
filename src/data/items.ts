@@ -1508,7 +1508,7 @@ export const items: Item[] = [
     {
       id: 'water_filled_bottle',
       name: '물이 든 병',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/water_bottle.png',
       description: '깨끗한 물이 담긴 병',
       isCraftable: false,
       category: '재료',
@@ -1620,6 +1620,87 @@ export const items: Item[] = [
       description: '게임 내 통화',
       isCraftable: false,
       category: '통화',
+      isFromTraded: false
+    },
+    {
+      id: 'wax',
+      name: '밀랍',
+      imageUrl: '/images/items/default.webp',
+      description: '밀랍',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'best_leather',
+      name: '최상급 생가죽',
+      imageUrl: '/images/items/default.webp',
+      description: '최상급 품질의 생가죽',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_leather_plus',
+      name: '상급 생가죽+',
+      imageUrl: '/images/items/default.webp',
+      description: '상급 품질의 생가죽+',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_web',
+      name: '최상급 거미줄',
+      imageUrl: '/images/items/default.webp',
+      description: '최상급 품질의 거미줄',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'coin_bug',
+      name: '동전무당벌레',
+      imageUrl: '/images/items/default.webp',
+      description: '동전 모양 무늬의 무당벌레',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'tin_powder',
+      name: '타닌 가루',
+      imageUrl: '/images/items/tannin_powder.png',
+      description: '가죽 가공에 쓰이는 타닌 가루',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'tree_juice',
+      name: '나무 진액',
+      imageUrl: '/images/items/tree_sap.png',
+      description: '나무에서 얻은 진액',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'scythe',
+      name: '장수풍뎅이',
+      imageUrl: '/images/items/default.webp',
+      description: '장수풍뎅이',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'bulbous',
+      name: '뚝딱 반딧불이',
+      imageUrl: '/images/items/default.webp',
+      description: '뚝딱 반딧불이',
+      isCraftable: false,
+      category: '재료',
       isFromTraded: false
     }
   ]

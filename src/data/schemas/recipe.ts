@@ -38,3 +38,12 @@ export interface Recipe {
   category: RECIPE_CATEGORY;
   facilityLevel: number;
 }
+
+/**
+ * # 결과 아이템별 레시피 그룹
+ * - 같은 결과 아이템(resultItemId)을 만드는 여러 방법(구매/요리/드랍 등)을 하나로 묶음
+ */
+export interface RecipeGroup {
+  resultItemId: string;
+  recipeList: Recipe[];
+}

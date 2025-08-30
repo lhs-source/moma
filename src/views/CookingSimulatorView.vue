@@ -112,7 +112,6 @@
                 </div>
               </div>
               <div class="bg-white rounded p-2 space-y-1">
-                <div class="text-xs font-medium text-gray-700 mb-1">구매 방법:</div>
                 <div v-for="recipe in item.recipes" :key="recipe.id"
                   class="flex items-center justify-between text-xs border-b border-gray-100 pb-1 last:border-b-0">
                   <div class="flex items-center gap-1 min-w-0">
@@ -138,7 +137,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { recipes } from '@/data/recipes'
+import { recipesGrouped } from '@/data/recipes'
 import { items } from '@/data/items'
 import type { Recipe } from '@/data/schemas/recipe'
 import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
@@ -149,17 +148,23 @@ const selectedFacilityLevel = ref('')
 const selectedCounts = ref<Record<string, number>>({})
 const weeklyLimits = ref<Record<string, number>>({})
 
+// 그룹에서 요리 레시피만 평탄화
+const cookRecipesFlat = computed<Recipe[]>(() => {
+  const list: Recipe[] = []
+  recipesGrouped.forEach(g => {
+    g.recipeList.forEach(r => { if (r.category === RECIPE_CATEGORY.COOK) list.push(r) })
+  })
+  return list
+})
+
 const facilityLevels = computed(() => {
   const set = new Set<number>()
-  // 요리 레시피만 필터링
-  recipes.filter(r => r.category === RECIPE_CATEGORY.COOK).forEach(r => set.add(r.facilityLevel))
+  cookRecipesFlat.value.forEach(r => set.add(r.facilityLevel))
   return Array.from(set).sort((a, b) => a - b)
 })
 
 const filteredRecipes = computed<Recipe[]>(() => {
-  // 요리 레시피만 필터링
-  return recipes.filter(r => {
-    if (r.category !== RECIPE_CATEGORY.COOK) return false
+  return cookRecipesFlat.value.filter(r => {
     const matchName = !searchQuery.value || r.name.toLowerCase().includes(searchQuery.value.toLowerCase())
     const matchLevel = !selectedFacilityLevel.value || r.facilityLevel?.toString() === selectedFacilityLevel.value
     return matchName && matchLevel
@@ -167,14 +172,19 @@ const filteredRecipes = computed<Recipe[]>(() => {
 })
 
 const selectedRecipes = computed<Recipe[]>(() => {
-  return recipes.filter(r => selectedCounts.value[r.id] && selectedCounts.value[r.id] > 0)
+  const ids = new Set(Object.keys(selectedCounts.value).filter(id => selectedCounts.value[id] > 0))
+  return cookRecipesFlat.value.filter(r => ids.has(r.id))
 })
 
 
 
 // 구매 가능한 레시피 목록 계산
 const buyableRecipes = computed<Recipe[]>(() => {
-  return recipes.filter(r => r.category === RECIPE_CATEGORY.BUY)
+  const list: Recipe[] = []
+  recipesGrouped.forEach(g => {
+    g.recipeList.forEach(r => { if (r.category === RECIPE_CATEGORY.BUY) list.push(r) })
+  })
+  return list
 })
 
 // 구매 가능한 모든 식재료와 각 NPC별 구매 가능 횟수 계산 (레시피 기반)
@@ -251,7 +261,7 @@ const totalNeeded = computed<Record<string, number>>(() => {
   const result: Record<string, number> = {}
   for (const [recipeId, count] of Object.entries(selectedCounts.value)) {
     if (!count) continue
-    const recipe = recipes.find(r => r.id === recipeId)
+    const recipe = findRecipeById(recipeId)
     if (!recipe) continue
     recipe.requiredItems.forEach(ri => {
       result[ri.itemId] = (result[ri.itemId] || 0) + ri.quantity * count
@@ -294,6 +304,13 @@ const maxCraftableCount = computed(() => {
   return Math.min(...ratios)
 })
 
+function findRecipeById(id: string): Recipe | undefined {
+  for (const g of recipesGrouped) {
+    const r = g.recipeList.find(r => r.id === id)
+    if (r) return r
+  }
+  return undefined
+}
 
 </script>
 
