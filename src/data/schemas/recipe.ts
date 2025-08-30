@@ -6,6 +6,7 @@ export interface RequiredItem {
   itemId: string;
   quantity: number;
   rate?: number; // 드랍률 (RECIPE_CATEGORY.DROP 인 경우에만 사용)
+  buyNpcId?: string; // 구매 레시피인 경우 판매하는 NPC의 ID
 }
 
 /**
