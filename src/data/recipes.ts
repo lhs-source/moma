@@ -919,6 +919,38 @@ export const recipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.BUY,
     facilityLevel: 1
+  },
+  {
+    id: 'soy_parsnip_cake',
+    name: '두유 파스닙 케이크',
+    resultItemId: 'soy_parsnip_cake',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'soy_milk', quantity: 4 },
+      { itemId: 'parsnip', quantity: 6 },
+      { itemId: 'cream', quantity: 2 },
+      { itemId: 'flour', quantity: 4 },
+      { itemId: 'sugar', quantity: 9 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 8
+  },
+  {
+    id: 'taiwanese_beef_bourguignon_eternal',
+    name: '대만찬: 꺼지지 않는 불의 뵈프 부르기뇽',
+    resultItemId: 'taiwanese_beef_bourguignon',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'eternal_flame', quantity: 4 },
+      { itemId: 'aged_large_meat', quantity: 8 },
+      { itemId: 'heavy_potato', quantity: 24 },
+      { itemId: 'tomato', quantity: 16 },
+      { itemId: 'onion', quantity: 16 },
+      { itemId: 'parsnip', quantity: 16 },
+      { itemId: 'salt', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 20
   }
 ]
 
