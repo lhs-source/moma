@@ -18,40 +18,8 @@
           </select>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[60vh] overflow-auto pr-1">
-          <div v-for="recipe in filteredRecipes" :key="recipe.id"
-            class="border border-gray-100 rounded p-3 hover:shadow-sm">
-            <div class="flex items-start gap-3">
-              <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name" class="w-12 h-12 rounded object-cover"
-                @error="handleImageError" />
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center justify-between">
-                  <div class="truncate">
-                    <div class="font-semibold">{{ recipe.name }}</div>
-
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
-                      @click="decrementCount(recipe.id)">-</button>
-                    <input type="number" min="0" class="w-16 text-center px-2 py-1 border rounded"
-                      :value="selectedCounts[recipe.id] ?? 0"
-                      @input="onChangeCount(recipe.id, ($event.target as HTMLInputElement).value)" />
-                    <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
-                      @click="incrementCount(recipe.id)">+</button>
-                  </div>
-                </div>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm">
-                  <div v-for="ri in recipe.requiredItems" :key="ri.itemId" class="flex items-center gap-2">
-                    <img :src="getItemImageUrl(ri.itemId)" :alt="getItemName(ri.itemId)"
-                      class="w-5 h-5 rounded object-cover" @error="handleImageError" />
-                    <span class="text-gray-700 truncate">{{ getItemName(ri.itemId) }}</span>
-                    <span class="ml-auto text-gray-500">x{{ ri.quantity }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <RecipeGrid :recipes="filteredRecipes" :selected-counts="selectedCounts" :get-item-name="getItemName"
+          :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @change-count="onChangeCount" />
       </div>
 
       <div class="border border-gray-200 rounded-lg p-4 bg-white">
@@ -59,136 +27,14 @@
 
         <div class="mb-4">
           <h3 class="text-sm font-semibold text-gray-700 mb-1">선택한 총 제작 요리 목록</h3>
-          <div class="space-y-2 max-h-64 overflow-auto pr-1">
-            <div v-for="recipe in selectedRecipes" :key="recipe.id"
-              class="flex items-center gap-2 p-2 border border-gray-100 rounded">
-              <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name" class="w-8 h-8 rounded object-cover"
-                @error="handleImageError" />
-              <div class="flex-1 min-w-0">
-                <div class="text-sm font-medium truncate">{{ recipe.name }}</div>
-
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="text-sm font-semibold text-blue-600">x{{ selectedCounts[recipe.id] ?? 0 }}</div>
-                <button type="button" class="text-xs text-red-600 hover:underline"
-                  @click="removeSelected(recipe.id)">삭제</button>
-              </div>
-            </div>
-            <div v-if="selectedRecipes.length === 0" class="text-sm text-gray-500 text-center py-4">
-              선택된 요리가 없습니다
-            </div>
-          </div>
+          <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
+            :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @remove="removeSelected" />
         </div>
 
+        <MaterialsSummary :selected-counts="selectedCounts" :recipes-grouped="recipesGrouped" :items="items" />
 
-
-        <div class="mb-4">
-          <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-600">주간 한도로 제작 가능한 최대 수량</div>
-            <div class="font-bold">{{ maxCraftableCount }}</div>
-          </div>
-          <div class="text-xs text-gray-500 mt-1">현재 선택한 요리 수량에 필요한 식재료 총합을 주간 한도와 비교하여 계산</div>
-        </div>
-
-        <div class="mb-4">
-          <h3 class="text-sm font-semibold text-gray-700 mb-2">총 필요 식재료</h3>
-          <div class="space-y-1">
-            <div v-for="row in totalNeededRows" :key="'direct-' + row.itemId" class="flex items-center gap-2 text-sm">
-              <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
-                class="w-5 h-5 rounded object-cover" @error="handleImageError" />
-              <span class="truncate">{{ getItemName(row.itemId) }}</span>
-              <span class="ml-auto">x{{ row.quantity }}</span>
-              <span v-if="getBuyableCount(row.itemId) > 0"
-                :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
-                class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-              <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
-                개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
-                  row.quantity) }}
-              </span>
-            </div>
-            <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
-              <span class="text-gray-600">총 골드</span>
-              <span class="font-semibold text-green-700">{{ formatGold(totalGoldDirect) }}</span>
-            </div>
-            <div v-if="processedNeededRows.length" class="pt-2 mt-2 border-t border-gray-100">
-              <div class="text-xs text-gray-500 mb-1">가공 아이템 추가 필요 재료</div>
-              <div v-for="row in processedNeededRows" :key="'proc-' + row.itemId"
-                class="flex items-center gap-2 text-sm">
-                <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
-                  class="w-5 h-5 rounded object-cover" @error="handleImageError" />
-                <span class="truncate">{{ getItemName(row.itemId) }}</span>
-                <span class="ml-auto">x{{ row.quantity }}</span>
-                <span v-if="getBuyableCount(row.itemId) > 0"
-                  :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
-                  class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-                <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
-                  개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
-                    row.quantity) }}
-                </span>
-              </div>
-              <div class="flex items-center justify-end gap-2 text-sm mt-2">
-                <span class="text-gray-600">총 골드 (가공 추가)</span>
-                <span class="font-semibold text-green-700">{{ formatGold(totalGoldProcessed) }}</span>
-              </div>
-              <div class="text-xs text-gray-500 mt-2">총합 (가공 포함)</div>
-              <div v-for="row in totalNeededCombinedRows" :key="'all-' + row.itemId"
-                class="flex items-center gap-2 text-sm">
-                <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)"
-                  class="w-5 h-5 rounded object-cover" @error="handleImageError" />
-                <span class="truncate">{{ getItemName(row.itemId) }}</span>
-                <span class="ml-auto font-semibold">x{{ row.quantity }}</span>
-                <span v-if="getBuyableCount(row.itemId) > 0"
-                  :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
-                  class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-                <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">
-                  개당 {{ formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! *
-                    row.quantity) }}
-                </span>
-              </div>
-              <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
-                <span class="text-gray-600">총 골드</span>
-                <span class="font-semibold text-green-700">{{ formatGold(totalGoldCombined) }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <h3 class="text-sm font-semibold text-gray-700 mb-2">주간 구매 가능 횟수 및 가격</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div v-for="item in allBuyableFoodIngredients" :key="item.itemId"
-              class="border border-gray-200 rounded-lg p-3 bg-gray-50">
-              <div class="flex items-center gap-2 mb-2">
-                <img :src="getItemImageUrl(item.itemId)" :alt="getItemName(item.itemId)"
-                  class="w-6 h-6 rounded object-cover" @error="handleImageError" />
-                <div class="flex-1 min-w-0">
-                  <div class="font-semibold text-gray-800 text-sm truncate">{{ getItemName(item.itemId) }}</div>
-                  <div class="text-xs text-gray-600">총 {{ item.totalBuyableCount }}개 구매 가능</div>
-                </div>
-                <div class="text-right">
-                  <div class="text-sm font-bold text-blue-600">{{ item.totalBuyableCount }}개</div>
-                  <div class="text-xs text-gray-500">주간</div>
-                </div>
-              </div>
-              <div class="bg-white rounded p-2 space-y-1">
-                <div v-for="recipe in item.recipes" :key="recipe.id"
-                  class="flex items-center justify-between text-xs border-b border-gray-100 pb-1 last:border-b-0">
-                  <div class="flex items-center gap-1 min-w-0">
-                    <span class="font-medium truncate">{{ recipe.name }}</span>
-                    <span class="text-gray-500">({{ recipe.npcId }})</span>
-                  </div>
-                  <div class="text-right ml-2">
-                    <div class="font-semibold text-green-600">{{ recipe.price }}G</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-if="allBuyableFoodIngredients.length === 0"
-              class="col-span-2 text-sm text-gray-500 text-center py-4">
-              구매 가능한 식재료가 없습니다
-            </div>
-          </div>
-        </div>
+        <WeeklyBuyableGrid :items="allBuyableFoodIngredients" :get-item-name="getItemName"
+          :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" />
       </div>
     </div>
   </div>
@@ -196,6 +42,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import RecipeGrid from '@/components/cooking/RecipeGrid.vue'
+import SelectedRecipeList from '@/components/cooking/SelectedRecipeList.vue'
+import MaterialsSummary from '@/components/cooking/MaterialsSummary.vue'
+import WeeklyBuyableGrid from '@/components/cooking/WeeklyBuyableGrid.vue'
 import { recipesGrouped } from '@/data/recipes'
 import { items } from '@/data/items'
 import type { Recipe } from '@/data/schemas/recipe'
@@ -205,7 +55,6 @@ import { ITEM_CATEGORY } from '@/data/schemas/item'
 const searchQuery = ref('')
 const selectedFacilityLevel = ref('')
 const selectedCounts = ref<Record<string, number>>({})
-const weeklyLimits = ref<Record<string, number>>({})
 
 // 그룹에서 요리 레시피만 평탄화
 const cookRecipesFlat = computed<Recipe[]>(() => {
@@ -234,8 +83,6 @@ const selectedRecipes = computed<Recipe[]>(() => {
   const ids = new Set(Object.keys(selectedCounts.value).filter(id => selectedCounts.value[id] > 0))
   return cookRecipesFlat.value.filter(r => ids.has(r.id))
 })
-
-
 
 // 구매 가능한 레시피 목록 계산
 const buyableRecipes = computed<Recipe[]>(() => {
@@ -310,196 +157,20 @@ function handleImageError(e: Event) {
   t.src = '/images/items/default.webp'
 }
 
-function onChangeCount(id: string, val: string) {
-  const n = Math.max(0, Number(val) || 0)
+function onChangeCount(id: string, count: number) {
+  const n = Math.max(0, Number(count) || 0)
   selectedCounts.value[id] = n
-}
-
-function incrementCount(id: string) {
-  const current = selectedCounts.value[id] ?? 0
-  selectedCounts.value[id] = current + 1
-}
-
-function decrementCount(id: string) {
-  const current = selectedCounts.value[id] ?? 0
-  selectedCounts.value[id] = Math.max(0, current - 1)
 }
 
 function removeSelected(id: string) {
   selectedCounts.value[id] = 0
 }
 
-// 합산된 필요 식재료 계산 (직접 필요 재료)
-const totalNeeded = computed<Record<string, number>>(() => {
-  const result: Record<string, number> = {}
-  for (const [recipeId, count] of Object.entries(selectedCounts.value)) {
-    if (!count) continue
-    const recipe = findRecipeById(recipeId)
-    if (!recipe) continue
-    recipe.requiredItems.forEach(ri => {
-      result[ri.itemId] = (result[ri.itemId] || 0) + ri.quantity * count
-    })
-  }
-  return result
-})
+// 합산 계산은 MaterialsSummary 컴포넌트로 이동
 
-const totalNeededRows = computed(() => {
-  return Object.entries(totalNeeded.value)
-    .map(([itemId, quantity]) => {
-      return {
-        itemId,
-        quantity
-      }
-    })
-    .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
-})
+// findRecipeById: 세부 합산 로직은 MaterialsSummary 컴포넌트에서 처리
 
-// 가공 레시피 맵 (resultItemId -> 레시피)
-const processRecipeMap = computed(() => {
-  const map: Record<string, Recipe> = {}
-  for (const g of recipesGrouped) {
-    for (const r of g.recipeList) {
-      if (r.category === RECIPE_CATEGORY.PROCESS) {
-        // 여러 가공법이 있다면 첫 번째를 사용
-        if (!map[r.resultItemId]) map[r.resultItemId] = r
-      }
-    }
-  }
-  return map
-})
-
-// 재귀적으로 가공 재료 확장
-function accumulateProcessedNeeds(itemId: string, quantityNeeded: number, into: Record<string, number>, visited: Set<string>) {
-  if (visited.has(itemId)) return
-  const proc = processRecipeMap.value[itemId]
-  if (!proc) return
-  visited.add(itemId)
-  const outQty = proc.resultQuantity && proc.resultQuantity > 0 ? proc.resultQuantity : 1
-  const actions = Math.ceil(quantityNeeded / outQty)
-  for (const ri of proc.requiredItems) {
-    // 하위 재료가 또 가공품이면 재귀 확장
-    if (processRecipeMap.value[ri.itemId]) {
-      accumulateProcessedNeeds(ri.itemId, ri.quantity * actions, into, visited)
-    } else {
-      into[ri.itemId] = (into[ri.itemId] || 0) + ri.quantity * actions
-    }
-  }
-  visited.delete(itemId)
-}
-
-// 가공 아이템 추가 필요 재료 (직접 필요에서 가공품인 것들을 원재료로 풀어 합산)
-const processedNeeded = computed<Record<string, number>>(() => {
-  const result: Record<string, number> = {}
-  for (const [itemId, qty] of Object.entries(totalNeeded.value)) {
-    if (processRecipeMap.value[itemId]) {
-      accumulateProcessedNeeds(itemId, qty, result, new Set())
-    }
-  }
-  return result
-})
-
-const processedNeededRows = computed(() => {
-  return Object.entries(processedNeeded.value)
-    .map(([itemId, quantity]) => ({ itemId, quantity }))
-    .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
-})
-
-// 가공 포함 총합
-const totalNeededCombined = computed<Record<string, number>>(() => {
-  const out: Record<string, number> = { ...totalNeeded.value }
-  for (const [itemId, qty] of Object.entries(processedNeeded.value)) {
-    out[itemId] = (out[itemId] || 0) + qty
-  }
-  return out
-})
-
-const totalNeededCombinedRows = computed(() => {
-  return Object.entries(totalNeededCombined.value)
-    .map(([itemId, quantity]) => ({ itemId, quantity }))
-    .sort((a, b) => (getItemName(a.itemId) || '').localeCompare(getItemName(b.itemId) || ''))
-})
-
-// 총 골드 (직접 필요 기준)
-const totalGoldDirect = computed(() => {
-  let sum = 0
-  for (const [itemId, quantity] of Object.entries(totalNeeded.value)) {
-    const price = getMinBuyPrice(itemId)
-    if (price !== null) sum += price * quantity
-  }
-  return sum
-})
-
-// 총 골드 (가공 추가 필요 기준)
-const totalGoldProcessed = computed(() => {
-  let sum = 0
-  for (const [itemId, quantity] of Object.entries(processedNeeded.value)) {
-    const price = getMinBuyPrice(itemId)
-    if (price !== null) sum += price * quantity
-  }
-  return sum
-})
-
-// 총 골드 (가공 포함 총합 기준, 구매 가능한 항목만 합산)
-const totalGoldCombined = computed(() => {
-  let sum = 0
-  for (const [itemId, quantity] of Object.entries(totalNeededCombined.value)) {
-    const price = getMinBuyPrice(itemId)
-    if (price !== null) sum += price * quantity
-  }
-  return sum
-})
-
-// 주간 한도 비교로 가능한 최대 제작 수 계산
-const maxCraftableCount = computed(() => {
-  // 필요한 식재료 중 식재료 카테고리 또는 재료 카테고리인 것만 한도로 제한
-  const needs = totalNeededCombined.value
-  const ratios: number[] = []
-  for (const [itemId, qtyNeeded] of Object.entries(needs)) {
-    const it = items.find(i => i.id === itemId)
-    if (!it || (it.category !== ITEM_CATEGORY.FOOD_INGREDIENT && it.category !== '재료')) continue
-
-    // 구매 가능한 횟수와 주간 한도를 비교
-    const buyableItem = allBuyableFoodIngredients.value.find(b => b.itemId === itemId)
-    const buyableCount = buyableItem ? buyableItem.totalBuyableCount : 0
-    const weeklyLimit = weeklyLimits.value[itemId] ?? 0
-    const totalAvailable = buyableCount + weeklyLimit
-
-    if (qtyNeeded > 0) {
-      ratios.push(Math.floor(totalAvailable / qtyNeeded))
-    }
-  }
-  if (ratios.length === 0) return Infinity
-  return Math.min(...ratios)
-})
-
-function findRecipeById(id: string): Recipe | undefined {
-  for (const g of recipesGrouped) {
-    const r = g.recipeList.find(r => r.id === id)
-    if (r) return r
-  }
-  return undefined
-}
-
-function getBuyableCount(itemId: string): number {
-  const entry = allBuyableFoodIngredients.value.find(b => b.itemId === itemId)
-  return entry ? entry.totalBuyableCount : 0
-}
-
-function getMinBuyPrice(itemId: string): number | null {
-  const prices: number[] = []
-  buyableRecipes.value.forEach(r => {
-    if (r.resultItemId !== itemId) return
-    const gold = r.requiredItems.find(ri => ri.itemId === 'gold')
-    if (gold) prices.push(gold.quantity)
-  })
-  if (prices.length === 0) return null
-  return Math.min(...prices)
-}
-
-function formatGold(v: number): string {
-  return `${v.toLocaleString()}G`
-}
-
+// 통화 포맷 등 표시 로직은 MaterialsSummary 쪽으로 이동
 </script>
 
 <style scoped></style>

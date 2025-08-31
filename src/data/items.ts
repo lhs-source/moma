@@ -557,6 +557,20 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
+      id: 'apple_salad',
+      name: '사과 샐러드',
+      imageUrl: '/images/items/apple_salad.png',
+      description: '사과와 양배추로 만든 샐러드',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'apple', quantity: 4 },
+        { itemId: 'cabbage', quantity: 2 },
+        { itemId: 'mayonnaise', quantity: 1 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
       id: 'lavender',
       name: '라벤더 꽃',
       imageUrl: '/images/items/lavender.png',
@@ -948,6 +962,35 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
+      id: 'roasted_potato',
+      name: '통감자 구이',
+      imageUrl: '/images/items/roasted_potato.png',
+      description: '감자를 구워서 만든 요리',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'potato', quantity: 4 },
+        { itemId: 'herb', quantity: 2 },
+        { itemId: 'sugar', quantity: 2 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'potato_soup',
+      name: '감자 수프',
+      imageUrl: '/images/items/potato_soup.png',
+      description: '감자로 만든 수프',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'potato', quantity: 12 },
+        { itemId: 'milk', quantity: 5 },
+        { itemId: 'herb', quantity: 3 },
+        { itemId: 'pepper', quantity: 6 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
       id: 'spirit_trace',
       name: '정령의 흔적',
       imageUrl: '/images/items/spirit_trace.png',
@@ -998,6 +1041,21 @@ export const items: Item[] = [
       imageUrl: '/images/items/ricotta_cheese_salad.png',
       description: '리코타 치즈를 넣은 샐러드',
       isCraftable: false,
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'cheese_fondue',
+      name: '치즈 퐁뒤',
+      imageUrl: '/images/items/cheese_fondue.png',
+      description: '치즈를 녹여서 만든 요리',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'meat', quantity: 8 },
+        { itemId: 'cheese', quantity: 2 },
+        { itemId: 'potato', quantity: 4 },
+        { itemId: 'salt', quantity: 2 }
+      ],
       category: '음식',
       isFromTraded: false
     },
@@ -1737,6 +1795,107 @@ export const items: Item[] = [
       description: '직조된 옷감',
       isCraftable: false,
       category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'white_fish_meuniere',
+      name: '흰살생선 뫼니에르',
+      imageUrl: '/images/items/white_fish_meuniere.png',
+      description: '흰살생선을 밀가루를 묻혀서 만든 요리',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'bream', quantity: 5 },
+        { itemId: 'silver_fish', quantity: 3 },
+        { itemId: 'potato', quantity: 5 },
+        { itemId: 'flour', quantity: 3 },
+        { itemId: 'lemon', quantity: 5 },
+        { itemId: 'salt', quantity: 3 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'bouillabaisse',
+      name: '부야베스',
+      imageUrl: '/images/items/bouillabaisse.png',
+      description: '프랑스 남부 지방의 생선 수프',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'rainbow_trout', quantity: 4 },
+        { itemId: 'eel', quantity: 4 },
+        { itemId: 'tomato', quantity: 6 },
+        { itemId: 'clam', quantity: 5 },
+        { itemId: 'onion', quantity: 2 },
+        { itemId: 'garlic', quantity: 4 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'mackerel_and_salmon_steak',
+      name: '고등어와 연어 스테이크',
+      imageUrl: '/images/items/mackerel_and_salmon_steak.png',
+      description: '고등어와 연어를 함께 구운 스테이크',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'mackerel', quantity: 5 },
+        { itemId: 'salmon', quantity: 3 },
+        { itemId: 'mayonnaise', quantity: 2 },
+        { itemId: 'asparagus', quantity: 4 },
+        { itemId: 'salt', quantity: 2 },
+        { itemId: 'pepper', quantity: 3 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'catfish_fish_and_chips',
+      name: '메기 피시 앤 칩스',
+      imageUrl: '/images/items/catfish_fish_and_chips.png',
+      description: '메기를 튀겨서 만든 영국식 요리',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'catfish', quantity: 6 },
+        { itemId: 'potato', quantity: 6 },
+        { itemId: 'flour', quantity: 3 },
+        { itemId: 'pea', quantity: 4 },
+        { itemId: 'lemon', quantity: 2 },
+        { itemId: 'salt', quantity: 3 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'perch_spicy_soup',
+      name: '농어 매운탕',
+      imageUrl: '/images/items/perch_spicy_soup.png',
+      description: '농어로 만든 매운탕',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'perch', quantity: 8 },
+        { itemId: 'water_bottle', quantity: 6 },
+        { itemId: 'garlic', quantity: 4 },
+        { itemId: 'pepper', quantity: 5 },
+        { itemId: 'herb', quantity: 3 }
+      ],
+      category: '음식',
+      isFromTraded: false
+    },
+    {
+      id: 'taiwanese_beef_bourguignon',
+      name: '대만찬: 꺼지지 않는 불의 뵈프 부르기뇽',
+      imageUrl: '/images/items/taiwanese_beef_bourguignon.png',
+      description: '대만식으로 만든 소고기 부르기뇽',
+      isCraftable: true,
+      craftingRecipe: [
+        { itemId: 'lean_meat', quantity: 12 },
+        { itemId: 'wine', quantity: 4 },
+        { itemId: 'mushroom', quantity: 6 },
+        { itemId: 'onion', quantity: 4 },
+        { itemId: 'garlic', quantity: 5 },
+        { itemId: 'herb', quantity: 4 }
+      ],
+      category: '음식',
       isFromTraded: false
     }
   ]
