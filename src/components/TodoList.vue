@@ -20,7 +20,9 @@ const todos = ref<TodoItem[]>([
   { id: 'abyss_reward', text: '어비스 보상 받기', completed: false, category: 'daily' },
   { id: 'blackhole', text: '검은 구멍', completed: false, category: 'daily' },
   { id: 'silvercoin', text: '은동전 소모', completed: false, category: 'daily' },
-  { id: 'tribute', text: '공물 소모', completed: false, category: 'daily' }
+  { id: 'tribute', text: '공물 소모', completed: false, category: 'daily' },
+  { id: 'daily_job', text: '일일 아르바이트', completed: false, category: 'daily' },
+  { id: 'abyss_blackhole', text: '어비스 검은 구멍', completed: false, category: 'daily' },
 ])
 
 // 로컬 스토리지에서 TODO 상태 로드

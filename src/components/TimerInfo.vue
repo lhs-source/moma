@@ -5,12 +5,14 @@ interface TimerEvent {
   name: string
   times: string[]
   days?: string[]
+  duration?: number // 분 단위
 }
 
 const timerEvents: TimerEvent[] = [
   {
     name: '필드보스',
-    times: ['12:00', '18:00', '20:00', '22:00']
+    times: ['12:00', '18:00', '20:00', '22:00'],
+    duration: 30
   },
   {
     name: '콜헨 불꽃놀이',
@@ -21,13 +23,13 @@ const timerEvents: TimerEvent[] = [
 
 const now = ref(new Date())
 
-// 1분마다 시간 업데이트
+// 1초마다 시간 업데이트
 let timer: number | null = null
 
 onMounted(() => {
   timer = setInterval(() => {
     now.value = new Date()
-  }, 60000) // 1분마다 업데이트
+  }, 1000) // 1초마다 업데이트
 })
 
 onUnmounted(() => {
@@ -38,7 +40,8 @@ onUnmounted(() => {
 const currentTime = computed(() => {
   const hours = now.value.getHours().toString().padStart(2, '0')
   const minutes = now.value.getMinutes().toString().padStart(2, '0')
-  return `${hours}:${minutes}`
+  const seconds = now.value.getSeconds().toString().padStart(2, '0')
+  return `${hours}:${minutes}:${seconds}`
 })
 
 const currentDay = computed(() => {
@@ -79,8 +82,71 @@ const getTimeUntil = (timeStr: string) => {
   const diff = targetTime.getTime() - now.value.getTime()
   const hoursDiff = Math.floor(diff / (1000 * 60 * 60))
   const minutesDiff = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+  const secondsDiff = Math.floor((diff % (1000 * 60)) / 1000)
 
-  return `${hoursDiff}시간 ${minutesDiff}분`
+  return `${hoursDiff}시간 ${minutesDiff}분 ${secondsDiff}초`
+}
+
+const getCurrentEventTimeRemaining = (times: string[], days?: string[], duration?: number) => {
+  const currentTimeStr = currentTime.value
+  const currentDayStr = currentDay.value
+
+  // 특정 요일에만 실행되는 이벤트인 경우
+  if (days && !days.includes(currentDayStr)) {
+    return null
+  }
+
+  // 현재 진행 중인 이벤트 찾기
+  for (const time of times) {
+    const [hours, minutes] = time.split(':').map(Number)
+    const eventStart = new Date()
+    eventStart.setHours(hours, minutes, 0, 0)
+
+    const eventEnd = new Date(eventStart)
+    eventEnd.setMinutes(eventEnd.getMinutes() + (duration || 0))
+
+    const currentTime = new Date()
+    currentTime.setHours(parseInt(currentTimeStr.split(':')[0]), parseInt(currentTimeStr.split(':')[1]), parseInt(currentTimeStr.split(':')[2]), 0)
+
+    if (currentTime >= eventStart && currentTime < eventEnd) {
+      const remainingTime = eventEnd.getTime() - currentTime.getTime()
+      const hoursRemaining = Math.floor(remainingTime / (1000 * 60 * 60))
+      const minutesRemaining = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60))
+      const secondsRemaining = Math.floor((remainingTime % (1000 * 60)) / 1000)
+
+      return `${hoursRemaining}시간 ${minutesRemaining}분 ${secondsRemaining}초`
+    }
+  }
+
+  return null
+}
+const isCurrentlyActive = (times: string[], days?: string[], duration?: number) => {
+  const currentTimeStr = currentTime.value
+  const currentDayStr = currentDay.value
+
+  // 특정 요일에만 실행되는 이벤트인 경우
+  if (days && !days.includes(currentDayStr)) {
+    return false
+  }
+
+  // 현재 시간이 이벤트 시간 범위 내에 있는지 확인
+  for (const time of times) {
+    const [hours, minutes] = time.split(':').map(Number)
+    const eventStart = new Date()
+    eventStart.setHours(hours, minutes, 0, 0)
+
+    const eventEnd = new Date(eventStart)
+    eventEnd.setMinutes(eventEnd.getMinutes() + (duration || 0))
+
+    const currentTime = new Date()
+    currentTime.setHours(parseInt(currentTimeStr.split(':')[0]), parseInt(currentTimeStr.split(':')[1]), parseInt(currentTimeStr.split(':')[2]), 0)
+
+    if (currentTime >= eventStart && currentTime < eventEnd) {
+      return true
+    }
+  }
+
+  return false
 }
 </script>
 
@@ -88,21 +154,33 @@ const getTimeUntil = (timeStr: string) => {
   <div class="timer-info">
     <h2 class="text-xl font-bold mb-4">타이머 정보</h2>
     <div class="space-y-3">
-      <div v-for="event in timerEvents" :key="event.name" class="bg-gray-100 p-3 rounded-lg">
+      <div v-for="event in timerEvents" :key="event.name" :class="[
+        'p-3 rounded-lg',
+        isCurrentlyActive(event.times, event.days, event.duration)
+          ? 'bg-red-100 border-2 border-red-300'
+          : 'bg-gray-100'
+      ]">
         <div class="flex justify-between items-center">
           <div>
             <h3 class="font-semibold">{{ event.name }}</h3>
             <p class="text-sm text-gray-600">
               {{ event.times.join(', ') }}
               <span v-if="event.days" class="ml-2">({{ event.days.join(', ') }})</span>
+              <span v-if="event.duration" class="ml-2">({{ event.duration }}분)</span>
             </p>
           </div>
           <div class="text-right">
-            <div v-if="getNextTime(event.times, event.days)" class="text-blue-600 font-medium">
+            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-red-600 font-bold">
+              등장 중!
+            </div>
+            <div v-else-if="getNextTime(event.times, event.days)" class="text-blue-600 font-medium">
               다음: {{ getNextTime(event.times, event.days) }}
             </div>
             <div v-else class="text-gray-500">
               오늘 없음
+            </div>
+            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-sm text-red-500">
+              남은 시간: {{ getCurrentEventTimeRemaining(event.times, event.days, event.duration) }}
             </div>
             <div v-if="getNextTime(event.times, event.days)" class="text-sm text-gray-500">
               {{ getTimeUntil(getNextTime(event.times, event.days)!) }}
