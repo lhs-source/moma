@@ -22,7 +22,7 @@ defineProps<Props>()
     </div>
     <div class="grid grid-cols-1 gap-1">
       <div v-for="item in recipe.requiredItems" :key="item.itemId"
-        :class="{ 'bg-green-50 dark:bg-green-900/20 rounded p-1': recipe.category === RECIPE_CATEGORY.TRADE}"
+        :class="{ 'bg-green-50 dark:bg-green-900/20 rounded p-1': recipe.category === RECIPE_CATEGORY.TRADE }"
         class="flex flex-col gap-1">
         <div class="flex items-center gap-1">
           <img :src="itemStore.getItemById(item.itemId)?.imageUrl" :alt="itemStore.getItemById(item.itemId)?.name"
