@@ -25,15 +25,10 @@ import { RouterLink, RouterView } from 'vue-router'
               active-class="text-foreground">
               제작 시스템
             </RouterLink>
-            <RouterLink to="/items"
+            <RouterLink to="/data"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               active-class="text-foreground">
-              아이템 목록
-            </RouterLink>
-            <RouterLink to="/recipes"
-              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              active-class="text-foreground">
-              레시피 목록
+              데이터 목록
             </RouterLink>
             <RouterLink to="/cooking"
               class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"

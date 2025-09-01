@@ -34,14 +34,9 @@ const router = createRouter({
       component: () => import('../views/CraftingView.vue'),
     },
     {
-      path: '/items',
-      name: 'items',
-      component: () => import('../views/ItemsView.vue'),
-    },
-    {
-      path: '/recipes',
-      name: 'recipes',
-      component: () => import('../views/RecipesView.vue'),
+      path: '/data',
+      name: 'data',
+      component: () => import('../views/DataView.vue'),
     },
     {
       path: '/gear',
