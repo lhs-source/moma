@@ -13,12 +13,14 @@ export interface RequiredItem {
  * # 레시피 카테고리
  * - 요리: 요리 레시피
  * - 구매: 구매. 골드로
+ * - 채집: 채집. 몬스터 채집
  * - 드랍: 몬스터 드랍
  */
 export enum RECIPE_CATEGORY {
   COOK = '요리',
   PROCESS = '가공',
   BUY = '구매',
+  GATHER = '채집',
   DROP = '드랍',
 }
 

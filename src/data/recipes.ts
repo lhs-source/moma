@@ -487,6 +487,62 @@ export const recipes: Recipe[] = [
     category: RECIPE_CATEGORY.COOK,
     facilityLevel: 13
   },
+  // 채집 레시피 추가
+  {
+    id: 'gather_meat',
+    name: '고기 채집',
+    resultItemId: 'meat',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'wolf', quantity: 1, rate: 0.8 } // 늑대 사냥으로 고기 획득 (80% 확률)
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_strawberry',
+    name: '딸기 채집',
+    resultItemId: 'strawberry',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'strawberry_bush', quantity: 1, rate: 0.6 } // 딸기 수풀에서 딸기 획득 (60% 확률)
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_apple',
+    name: '사과 채집',
+    resultItemId: 'apple',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'apple_tree', quantity: 1, rate: 0.7 } // 사과나무에서 사과 획득 (70% 확률)
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_ice',
+    name: '얼음 채집',
+    resultItemId: 'ice',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'ice_crystal', quantity: 1, rate: 0.5 } // 얼음 결정에서 얼음 획득 (50% 확률)
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_clam',
+    name: '조개 채집',
+    resultItemId: 'clam',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'clam_bed', quantity: 1, rate: 0.4 } // 조개 바닥에서 조개 획득 (40% 확률)
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
   {
     id: 'buy_meat_tirchonaill',
     name: '고기 구매 (티르코네일)',
@@ -951,6 +1007,61 @@ export const recipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.COOK,
     facilityLevel: 20
+  },
+  {
+    id: 'gather_meat',
+    name: '고기 채집',
+    resultItemId: 'meat',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'wolf', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.DROP,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_strawberry',
+    name: '딸기 채집',
+    resultItemId: 'strawberry',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'strawberry_bush', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_apple',
+    name: '사과 채집',
+    resultItemId: 'apple',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'apple_tree', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_ice',
+    name: '얼음 채집',
+    resultItemId: 'ice',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'ice_crystal', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
+  },
+  {
+    id: 'gather_clam',
+    name: '조개 채집',
+    resultItemId: 'clam',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'clam_bed', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.GATHER,
+    facilityLevel: 1
   }
 ]
 
