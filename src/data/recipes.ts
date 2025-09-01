@@ -464,7 +464,7 @@ export const recipes: Recipe[] = [
     name: '샤와르마',
     resultItemId: 'shawarma',
     requiredItems: [
-      { itemId: 'lean_meat', quantity: 10 },
+      { itemId: 'light_meat', quantity: 10 },
       { itemId: 'bean', quantity: 12 },
       { itemId: 'flour', quantity: 3 },
       { itemId: 'cabbage', quantity: 5 },
@@ -478,7 +478,7 @@ export const recipes: Recipe[] = [
     name: '미트 파르미자나',
     resultItemId: 'meat_parmigiana',
     requiredItems: [
-      { itemId: 'lean_meat', quantity: 10 },
+      { itemId: 'light_meat', quantity: 10 },
       { itemId: 'cheese', quantity: 3 },
       { itemId: 'tomato', quantity: 1 },
       { itemId: 'pepper', quantity: 1 },

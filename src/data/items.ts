@@ -355,14 +355,6 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
-      id: 'lean_meat',
-      name: '담백한 고기',
-      imageUrl: '/images/items/lean_meat.png',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
       id: 'bean',
       name: '콩',
       imageUrl: '/images/items/bean.png',
@@ -1389,7 +1381,7 @@ export const items: Item[] = [
     {
       id: 'light_meat',
       name: '담백한 고기',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/light_meat.png',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
