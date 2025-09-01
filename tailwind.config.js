@@ -46,6 +46,11 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      maxHeight: {
+        'screen-80': 'calc(100vh - 80px)',
+        'screen-100': 'calc(100vh - 100px)',
+        'screen-120': 'calc(100vh - 120px)',
+      },
     },
   },
   plugins: [],

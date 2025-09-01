@@ -1,6 +1,6 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[60vh] overflow-auto pr-1">
-    <div v-for="recipe in recipes" :key="recipe.id" class="border border-gray-100 rounded p-3 hover:shadow-sm">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div v-for="recipe in recipes" :key="recipe.id" class="border border-gray-100 rounded p-3 hover:shadow-sm bg-white">
       <div class="flex items-start gap-3">
         <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name" class="w-12 h-12 rounded object-cover"
           @error="handleImageError" />

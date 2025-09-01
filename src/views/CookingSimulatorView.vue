@@ -1,47 +1,59 @@
 <template>
-  <div class="space-y-6">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-      <h1 class="text-3xl font-bold">요리 시뮬레이팅</h1>
-      <div class="flex flex-col sm:flex-row gap-2 items-center">
-        <label class="text-sm text-gray-600">주간 획득 한도 입력</label>
+  <div class="h-screen flex flex-col overflow-hidden bg-gray-50 wrapper">
+    <div
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-white border-b flex-shrink-0 shadow-sm">
+      <h1 class="text-lg font-bold">요리 시뮬레이팅</h1>
+      <div class="flex flex-col sm:flex-row gap-1 items-center">
+        <label class="text-xs text-gray-600">주간 획득 한도 입력</label>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="border border-gray-200 rounded-lg p-4 bg-white">
-        <div class="flex gap-2 items-center mb-4">
-          <input v-model="searchQuery" type="text" placeholder="요리 이름 검색..."
-            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full" />
-          <select v-model="selectedFacilityLevel" class="px-3 py-2 border border-gray-300 rounded-md">
-            <option value="">모든 레벨</option>
-            <option v-for="level in facilityLevels" :key="level" :value="level">Lv.{{ level }}</option>
-          </select>
+    <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 overflow-hidden main-container">
+      <!-- 왼쪽 열: 요리 목록 -->
+      <div class="border border-gray-200 rounded bg-white flex flex-col overflow-hidden shadow-sm column-container">
+        <div class="p-1 border-b border-gray-200 flex-shrink-0 bg-gray-50">
+          <div class="flex gap-1 items-center">
+            <input v-model="searchQuery" type="text" placeholder="요리 이름 검색..."
+              class="px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent w-full text-xs" />
+            <select v-model="selectedFacilityLevel" class="px-1 py-1 border border-gray-300 rounded text-xs">
+              <option value="">모든 레벨</option>
+              <option v-for="level in facilityLevels" :key="level" :value="level">Lv.{{ level }}</option>
+            </select>
+          </div>
         </div>
 
-        <RecipeGrid :recipes="filteredRecipes" :selected-counts="selectedCounts" :get-item-name="getItemName"
-          :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @change-count="onChangeCount" />
+        <div class="flex-1 overflow-y-auto p-1 min-h-0 scroll-container">
+          <RecipeGrid :recipes="filteredRecipes" :selected-counts="selectedCounts" :get-item-name="getItemName"
+            :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError"
+            @change-count="onChangeCount" />
+        </div>
       </div>
 
-      <div class="border border-gray-200 rounded-lg p-4 bg-white">
-        <h2 class="text-xl font-bold mb-3">필요 재료 및 비용</h2>
-
-        <div class="mb-4">
-          <h3 class="text-sm font-semibold text-gray-700 mb-1">선택한 총 제작 요리 목록</h3>
-          <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
-            :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @remove="removeSelected" />
+      <!-- 오른쪽 열: 필요 재료 및 비용 -->
+      <div class="border border-gray-200 rounded bg-white flex flex-col overflow-hidden shadow-sm column-container">
+        <div class="p-1 border-b border-gray-200 flex-shrink-0 bg-gray-50">
+          <h2 class="text-sm font-bold">필요 재료 및 비용</h2>
         </div>
 
-        <MaterialsSummary :selected-counts="selectedCounts" :recipes-grouped="recipesGrouped" :items="items" />
+        <div class="flex-1 overflow-y-auto p-1 space-y-1 min-h-0 scroll-container">
+          <div>
+            <h3 class="text-xs font-semibold text-gray-700 mb-1">선택한 총 제작 요리 목록</h3>
+            <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
+              :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @remove="removeSelected" />
+          </div>
 
-        <WeeklyBuyableGrid :items="allBuyableFoodIngredients" :get-item-name="getItemName"
-          :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" />
+          <MaterialsSummary :selected-counts="selectedCounts" :recipes-grouped="recipesGrouped" :items="items" />
+
+          <WeeklyBuyableGrid :items="allBuyableFoodIngredients" :get-item-name="getItemName"
+            :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import RecipeGrid from '@/components/cooking/RecipeGrid.vue'
 import SelectedRecipeList from '@/components/cooking/SelectedRecipeList.vue'
 import MaterialsSummary from '@/components/cooking/MaterialsSummary.vue'
@@ -158,19 +170,77 @@ function handleImageError(e: Event) {
 }
 
 function onChangeCount(id: string, count: number) {
-  const n = Math.max(0, Number(count) || 0)
-  selectedCounts.value[id] = n
+  selectedCounts.value[id] = count
 }
 
-function removeSelected(id: string) {
-  selectedCounts.value[id] = 0
+function removeSelected(recipeId: string) {
+  selectedCounts.value[recipeId] = 0
 }
 
-// 합산 계산은 MaterialsSummary 컴포넌트로 이동
+// 페이지 스크롤 방지
+onMounted(() => {
+  document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
+})
 
-// findRecipeById: 세부 합산 로직은 MaterialsSummary 컴포넌트에서 처리
-
-// 통화 포맷 등 표시 로직은 MaterialsSummary 쪽으로 이동
+onUnmounted(() => {
+  document.body.style.overflow = ''
+  document.documentElement.style.overflow = ''
+})
 </script>
 
-<style scoped></style>
+<style scoped>
+/* CSS 변수 정의 */
+:root {}
+
+.wrapper {
+  --header-height: 120px;
+  --column-header-height: 100px;
+  --padding: 16px;
+  --main-max-height: calc(100vh - var(--header-height) - var(--padding));
+  --scroll-max-height: calc(100vh - var(--header-height) - var(--column-header-height) - var(--padding));
+}
+
+/* 메인 컨테이너 */
+.main-container {
+  max-height: var(--main-max-height);
+}
+
+/* 각 열 컨테이너 */
+.column-container {
+  max-height: var(--main-max-height);
+}
+
+/* 스크롤 컨테이너 */
+.scroll-container {
+  max-height: var(--scroll-max-height);
+}
+
+/* 스크롤바 스타일링 */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 전체 페이지 스크롤 방지 */
+:deep(body) {
+  overflow: hidden !important;
+}
+
+:deep(html) {
+  overflow: hidden !important;
+}
+</style>
