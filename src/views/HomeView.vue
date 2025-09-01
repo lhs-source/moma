@@ -1,9 +1,22 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import TimerInfo from '../components/TimerInfo.vue'
+import TodoList from '../components/TodoList.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8 text-center">마비노기 모바일 도우미</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- 타이머 정보 -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <TimerInfo />
+      </div>
+
+      <!-- TODO 목록 -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <TodoList />
+      </div>
+    </div>
   </main>
 </template>
