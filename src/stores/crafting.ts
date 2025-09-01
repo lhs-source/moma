@@ -3,7 +3,7 @@ import { craftingData, type CraftingMaterial } from '@/data/crafting';
 
 interface SelectedItems {
   [category: string]: {
-    [itemName: string]: number; // 제작 횟수를 저장
+    [itemName: string | number]: number; // 제작 횟수를 저장
   };
 }
 
@@ -83,7 +83,7 @@ export const useCraftingStore = defineStore('crafting', {
   
   actions: {
     // 아이템 선택 액션
-    selectItem(category: string, itemName: string, quantity: number) {
+    selectItem(category: string, itemName: string | number, quantity: number) {
       if (!this.selectedItems[category]) {
         this.selectedItems[category] = {};
       }

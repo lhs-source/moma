@@ -22,6 +22,7 @@ export enum RECIPE_CATEGORY {
   BUY = '구매',
   GATHER = '채집',
   DROP = '드랍',
+  TRADE = '교환',
 }
 
 /**

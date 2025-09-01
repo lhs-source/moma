@@ -1,7 +1,7 @@
 <template>
   <div class="crafting-results p-4 border border-gray-200 rounded-lg">
     <h2 class="text-xl font-bold mb-4">제작 결과</h2>
-    
+
     <div class="grid grid-cols-1 gap-6">
       <!-- 필요 재료 -->
       <div class="materials">
@@ -11,30 +11,19 @@
           <div class="mb-4 p-3 bg-blue-50 rounded-lg">
             <h4 class="font-medium text-blue-800 mb-2">제작 횟수 정보</h4>
             <div class="grid grid-cols-2 gap-2">
-              <div 
-                v-for="(category, categoryKey) in selectedItems" 
-                :key="categoryKey"
-                class="text-sm"
-              >
+              <div v-for="(category, categoryKey) in selectedItems" :key="categoryKey" class="text-sm">
                 <div class="font-medium text-gray-700 mb-1">{{ categoryKey }}</div>
-                <div 
-                  v-for="(batchCount, itemName) in category" 
-                  :key="itemName"
-                  class="text-xs text-gray-600 ml-2"
-                >
-                  {{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, itemName) }}개 생산)
+                <div v-for="(batchCount, itemName) in category" :key="itemName" class="text-xs text-gray-600 ml-2">
+                  {{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, String(itemName)) }}개 생산)
                 </div>
               </div>
             </div>
           </div>
-          
+
           <!-- 필요 재료 -->
           <div class="grid grid-cols-3 gap-3">
-            <div 
-              v-for="(amount, material) in totalMaterials" 
-              :key="material"
-              class="p-2 border border-gray-200 rounded-lg bg-white"
-            >
+            <div v-for="(amount, material) in totalMaterials" :key="material"
+              class="p-2 border border-gray-200 rounded-lg bg-white">
               <div class="font-medium">{{ material }}</div>
               <div class="text-right text-sm text-blue-600">{{ amount }}개</div>
             </div>
@@ -44,32 +33,32 @@
           선택된 항목이 없습니다
         </div>
       </div>
-      
+
       <!-- 제작 시간 -->
       <div class="crafting-time">
         <h3 class="text-lg font-semibold mb-2">제작 시간</h3>
         <div v-if="hasSelectedItems" class="p-3 bg-gray-50 rounded-lg">
           <div class="grid grid-cols-1 gap-2">
-            <div 
-              v-for="(time, category) in filteredCategoryTimes" 
-              :key="category"
-              class="p-2 border border-gray-200 rounded-lg bg-white flex justify-between items-center"            >
+            <div v-for="(time, category) in filteredCategoryTimes" :key="category"
+              class="p-2 border border-gray-200 rounded-lg bg-white flex justify-between items-center">
               <span class="font-medium">{{ category }}</span>
               <span>{{ formatTime(time) }}</span>
             </div>
           </div>
-          
+
           <div class="mt-3 pt-3 border-t border-gray-200">
             <div class="flex justify-between font-semibold">
               <span>총 제작 시간</span>
               <span>{{ formatTime(totalTime) }}</span>
             </div>
-            
+
             <!-- 멤버십 상태 정보 -->
             <div v-if="isMembershipEnabled" class="mt-2 text-sm text-blue-600">
               <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
                 </svg>
                 <span>멤버십 혜택 적용됨 (제작 시간 50% 단축)</span>
               </div>
@@ -78,7 +67,8 @@
         </div>
         <div v-else class="text-center py-4 text-gray-500">
           선택된 항목이 없습니다
-        </div>      </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -121,7 +111,7 @@ const hasSelectedItems = computed(() => craftingStore.hasSelectedItems);
 const selectedItems = computed(() => craftingStore.selectedItems);
 
 // 총 생산 개수를 계산하는 함수
-function getTotalQuantity(category: string, itemName: string): number {
+function getTotalQuantity(category: string | number, itemName: string | number): number {
   const batchCount = selectedItems.value[category][itemName]; // 제작 횟수
   const itemData = craftingData[category][itemName];
   return batchCount * itemData.생산량;
