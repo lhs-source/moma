@@ -1620,7 +1620,7 @@ export const items: Item[] = [
     {
       id: 'fresh_mushroom_spores',
       name: '새록 버섯 포자',
-      imageUrl: '/images/items/mushroom_spores.png',
+      imageUrl: '/images/items/fresh_mushroom_spores.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1628,7 +1628,7 @@ export const items: Item[] = [
     {
       id: 'fresh_mushroom_juice',
       name: '새록 버섯 진액',
-      imageUrl: '/images/items/mushroom_juice.png',
+      imageUrl: '/images/items/fresh_mushroom_juice.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1636,7 +1636,7 @@ export const items: Item[] = [
     {
       id: 'sturdy_mushroom_powder',
       name: '튼튼 버섯 가루',
-      imageUrl: '/images/items/mushroom_powder.png',
+      imageUrl: '/images/items/sturdy_mushroom_powder.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1644,7 +1644,7 @@ export const items: Item[] = [
     {
       id: 'sturdy_mushroom_spores',
       name: '튼튼 버섯 포자',
-      imageUrl: '/images/items/mushroom_spores.png',
+      imageUrl: '/images/items/sturdy_mushroom_spores.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1652,7 +1652,7 @@ export const items: Item[] = [
     {
       id: 'sturdy_mushroom_juice',
       name: '튼튼 버섯 진액',
-      imageUrl: '/images/items/mushroom_juice.png',
+      imageUrl: '/images/items/sturdy_mushroom_juice.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1660,7 +1660,7 @@ export const items: Item[] = [
     {
       id: 'growing_mushroom_spores',
       name: '쑥쑥 버섯 포자',
-      imageUrl: '/images/items/mushroom_spores.png',
+      imageUrl: '/images/items/growing_mushroom_spores.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1668,7 +1668,15 @@ export const items: Item[] = [
     {
       id: 'growing_mushroom_juice',
       name: '쑥쑥 버섯 진액',
-      imageUrl: '/images/items/mushroom_juice.png',
+      imageUrl: '/images/items/growing_mushroom_juice.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'clean_mushroom_spores',
+      name: '깔끔 버섯 포자',
+      imageUrl: '/images/items/clean_mushroom_spores.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1676,7 +1684,7 @@ export const items: Item[] = [
     {
       id: 'clean_mushroom_juice',
       name: '깔끔 버섯 진액',
-      imageUrl: '/images/items/mushroom_juice.png',
+      imageUrl: '/images/items/clean_mushroom_juice.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1692,7 +1700,7 @@ export const items: Item[] = [
     {
       id: 'scar_flower_powder',
       name: '생채기꽃 가루',
-      imageUrl: '/images/items/flower_powder.png',
+      imageUrl: '/images/items/scar_flower_powder.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
