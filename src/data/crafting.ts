@@ -19,14 +19,7 @@ export interface CraftingData {
 
 export const craftingData: CraftingData = {
   "금속 가공": {
-    "철괴(광석)": {
-      생산량: 3,
-      시간: 60,
-      재료: {
-        "광석": 20
-      }
-    },
-    "철괴(철광석)": {
+    "철괴": {
       생산량: 3,
       시간: 60,
       재료: {
@@ -103,7 +96,7 @@ export const craftingData: CraftingData = {
         "나무 진액": 12
       }
     },
-    "부드로운 목재": {
+    "부드러운 목재": {
       생산량: 3,
       시간: 28800,
       재료: {

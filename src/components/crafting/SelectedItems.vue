@@ -13,11 +13,15 @@
 
           <div v-for="(quantity, itemName) in selectedItems[category]" :key="itemName"
             class="selected-item-card p-2 mb-2 rounded border border-gray-200 flex justify-between items-center">
-            <div>
-              <span class="font-medium">{{ itemName }}</span>
-              <div class="text-sm text-gray-600 ml-2">
-                <span>{{ quantity }}회</span>
-                <span class="text-gray-400 ml-1">({{ getTotalQuantity(category, itemName) }}개 생산)</span>
+            <div class="flex items-center gap-2">
+              <img :src="getItemImageUrl(String(itemName))" :alt="String(itemName)"
+                class="w-8 h-8 object-cover rounded border border-gray-200">
+              <div>
+                <span class="font-medium">{{ itemName }}</span>
+                <div class="text-sm text-gray-600 ml-2">
+                  <span>{{ quantity }}회</span>
+                  <span class="text-gray-400 ml-1">({{ getTotalQuantity(category, itemName) }}개 생산)</span>
+                </div>
               </div>
             </div>
 
@@ -54,6 +58,7 @@
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { craftingData } from '@/data/crafting';
+import { getItemImageUrl } from '@/utils/itemUtils';
 
 const craftingStore = useCraftingStore();
 

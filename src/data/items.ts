@@ -450,14 +450,7 @@ export const items: Item[] = [
       category: '재료',
       isFromTraded: false
     },
-    {
-      id: 'wheat_flour',
-      name: '밀가루',
-      imageUrl: '/images/items/wheat_flour.png',
-      isCraftable: true,
-      category: '재료',
-      isFromTraded: false
-    },
+
     {
       id: 'food_processing_blueprint',
       name: '식재료 가공 시설 설계도 (3레벨)',
@@ -577,22 +570,6 @@ export const items: Item[] = [
       isCraftable: false,
       category: '음식',
       isFromTraded: true,
-    },
-    {
-      id: 'processed_leather',
-      name: '가죽',
-      imageUrl: '/images/items/processed_leather.png',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'apple_soup',
-      name: '사과 수플레',
-      imageUrl: '/images/items/apple_soup.png',
-      isCraftable: false,
-      category: '음식',
-      isFromTraded: false
     },
     {
       id: 'special_steel',
@@ -867,27 +844,11 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
-      id: 'fabric_plus',
-      name: '옷감+',
-      imageUrl: '/images/items/fabric_plus.png',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
       id: 'apple_cream_cake',
       name: '사과 생크림 케이크',
       imageUrl: '/images/items/apple_cream_cake.png',
       isCraftable: false,
       category: '음식',
-      isFromTraded: false
-    },
-    {
-      id: 'superior_fabric_plus',
-      name: '상급 옷감+',
-      imageUrl: '/images/items/superior_fabric_plus.png',
-      isCraftable: false,
-      category: '재료',
       isFromTraded: false
     },
     {
@@ -1210,14 +1171,7 @@ export const items: Item[] = [
       category: '재료',
       isFromTraded: false
     },
-    {
-      id: 'silver_alloy_ingot',
-      name: '은합금괴',
-      imageUrl: '/images/items/default.webp',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
+
     {
       id: 'condensed_wind',
       name: '응축된 바람',
@@ -1261,32 +1215,8 @@ export const items: Item[] = [
     {
       id: 'leather_plus',
       name: '가죽+',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/leather_plus.png',
       isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'blank_score',
-      name: '빈 악보',
-      imageUrl: '/images/items/default.webp',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: true
-    },
-    {
-      id: 'kaitin_special_bread',
-      name: '케이틴 특제 통밀빵',
-      imageUrl: '/images/items/kaitin_bread.png',
-      isCraftable: false,
-      category: '음식',
-      isFromTraded: true
-    },
-    {
-      id: 'special_steel_ingot',
-      name: '특수강괴',
-      imageUrl: '/images/items/special_steel.png',
-      isCraftable: true,
       category: '재료',
       isFromTraded: false
     },
@@ -1299,14 +1229,6 @@ export const items: Item[] = [
       isFromTraded: true
     },
     {
-      id: 'water_filled_bottle',
-      name: '물이 든 병',
-      imageUrl: '/images/items/water_bottle.png',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
       id: 'spicy_bass_soup',
       name: '농어 매운탕',
       imageUrl: '/images/items/default.webp',
@@ -1317,7 +1239,7 @@ export const items: Item[] = [
     {
       id: 'silver_alloy_ingot',
       name: '은합금괴',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/silver_alloy_ingot.png',
       isCraftable: true,
       category: '재료',
       isFromTraded: false
@@ -1386,14 +1308,7 @@ export const items: Item[] = [
       category: '재료',
       isFromTraded: false
     },
-    {
-      id: 'beans',
-      name: '콩',
-      imageUrl: '/images/items/default.webp',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
+
     {
       id: 'gold',
       name: '골드',
@@ -1413,7 +1328,7 @@ export const items: Item[] = [
     {
       id: 'best_leather',
       name: '최상급 생가죽',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/best_leather.png',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
@@ -1421,7 +1336,7 @@ export const items: Item[] = [
     {
       id: 'superior_leather_plus',
       name: '상급 생가죽+',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/superior_leather_plus.png',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
@@ -1438,22 +1353,6 @@ export const items: Item[] = [
       id: 'coin_bug',
       name: '동전무당벌레',
       imageUrl: '/images/items/default.webp',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'tin_powder',
-      name: '타닌 가루',
-      imageUrl: '/images/items/tannin_powder.png',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
-      id: 'tree_juice',
-      name: '나무 진액',
-      imageUrl: '/images/items/tree_sap.png',
       isCraftable: false,
       category: '재료',
       isFromTraded: false
@@ -1499,14 +1398,6 @@ export const items: Item[] = [
       isFromTraded: false
     },
     {
-      id: 'fabric',
-      name: '옷감',
-      imageUrl: '/images/items/default.webp',
-      isCraftable: false,
-      category: '재료',
-      isFromTraded: false
-    },
-    {
       id: 'white_fish_meuniere',
       name: '흰살생선 뫼니에르',
       imageUrl: '/images/items/white_fish_meuniere.png',
@@ -1538,14 +1429,7 @@ export const items: Item[] = [
       category: '음식',
       isFromTraded: false
     },
-    {
-      id: 'perch_spicy_soup',
-      name: '농어 매운탕',
-      imageUrl: '/images/items/perch_spicy_soup.png',
-      isCraftable: true,
-      category: '음식',
-      isFromTraded: false
-    },
+
     {
       id: 'taiwanese_beef_bourguignon',
       name: '대만찬: 꺼지지 않는 불의 뵈프 부르기뇽',
@@ -1626,5 +1510,337 @@ export const items: Item[] = [
       isCraftable: false,
       category: '재료',
       isFromTraded: false
-    }
+    },
+    // 제작 결과 아이템들
+    {
+      id: 'iron_ingot',
+      name: '철괴',
+      imageUrl: '/images/items/iron_ingot.png',
+      isCraftable: true,
+      category: '금속',
+      isFromTraded: false
+    },
+    {
+      id: 'wood',
+      name: '목재',
+      imageUrl: '/images/items/wood.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'wood_plus',
+      name: '목재+',
+      imageUrl: '/images/items/wood_plus.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'leather_processed',
+      name: '가죽',
+      imageUrl: '/images/items/leather_processed.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'leather_plus_processed',
+      name: '가죽+',
+      imageUrl: '/images/items/leather_plus.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_leather_processed',
+      name: '상급 가죽',
+      imageUrl: '/images/items/superior_leather_processed.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_leather_plus_processed',
+      name: '상급 가죽+',
+      imageUrl: '/images/items/superior_leather_plus_processed.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'best_leather_processed',
+      name: '최상급 가죽',
+      imageUrl: '/images/items/best_leather_processed.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fabric_processed',
+      name: '옷감',
+      imageUrl: '/images/items/fabric.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fabric_plus_processed',
+      name: '옷감+',
+      imageUrl: '/images/items/fabric_plus_processed.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_fabric_plus_processed',
+      name: '상급 옷감+',
+      imageUrl: '/images/items/superior_fabric_plus.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'supreme_fabric',
+      name: '최상급 옷감',
+      imageUrl: '/images/items/supreme_fabric.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'smooth_wood',
+      name: '부드러운 목재',
+      imageUrl: '/images/items/smooth_wood.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    // 약품 가공 결과물들
+    {
+      id: 'fresh_mushroom_spores',
+      name: '새록 버섯 포자',
+      imageUrl: '/images/items/mushroom_spores.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fresh_mushroom_juice',
+      name: '새록 버섯 진액',
+      imageUrl: '/images/items/mushroom_juice.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'sturdy_mushroom_powder',
+      name: '튼튼 버섯 가루',
+      imageUrl: '/images/items/mushroom_powder.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'sturdy_mushroom_spores',
+      name: '튼튼 버섯 포자',
+      imageUrl: '/images/items/mushroom_spores.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'sturdy_mushroom_juice',
+      name: '튼튼 버섯 진액',
+      imageUrl: '/images/items/mushroom_juice.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'growing_mushroom_spores',
+      name: '쑥쑥 버섯 포자',
+      imageUrl: '/images/items/mushroom_spores.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'growing_mushroom_juice',
+      name: '쑥쑥 버섯 진액',
+      imageUrl: '/images/items/mushroom_juice.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'clean_mushroom_juice',
+      name: '깔끔 버섯 진액',
+      imageUrl: '/images/items/mushroom_juice.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'hidden_flower_powder',
+      name: '숨숨꽃 가루',
+      imageUrl: '/images/items/flower_powder.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'scar_flower_powder',
+      name: '생채기꽃 가루',
+      imageUrl: '/images/items/flower_powder.png',
+      isCraftable: true,
+      category: '재료',
+      isFromTraded: false
+    },
+    // 누락된 재료 아이템들
+    {
+      id: 'copper_ore',
+      name: '동광석',
+      imageUrl: '/images/items/copper_ore.png',
+      isCraftable: false,
+      category: '광물',
+      isFromTraded: false
+    },
+    {
+      id: 'silver_ore',
+      name: '은광석',
+      imageUrl: '/images/items/silver_ore.png',
+      isCraftable: false,
+      category: '광물',
+      isFromTraded: false
+    },
+    {
+      id: 'tree_sap_processed',
+      name: '나무진액',
+      imageUrl: '/images/items/tree_sap.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_log_plus',
+      name: '상급 통나무+',
+      imageUrl: '/images/items/superior_log_plus.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'smooth_log',
+      name: '부드러운 통나무',
+      imageUrl: '/images/items/smooth_log.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'supreme_log',
+      name: '최상급 통나무',
+      imageUrl: '/images/items/supreme_log.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_leather_plus_raw',
+      name: '상급 생가죽+',
+      imageUrl: '/images/items/superior_leather_plus.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_wool_processed',
+      name: '상급 양털',
+      imageUrl: '/images/items/superior_wool.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'superior_wool_plus',
+      name: '상급 양털+',
+      imageUrl: '/images/items/superior_wool_plus.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'supreme_wool',
+      name: '최상급 양털',
+      imageUrl: '/images/items/supreme_wool.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'water_bottle_processed',
+      name: '물병',
+      imageUrl: '/images/items/water_bottle.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'fresh_mushroom',
+      name: '새록 버섯',
+      imageUrl: '/images/items/fresh_mushroom.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'sturdy_mushroom',
+      name: '튼튼 버섯',
+      imageUrl: '/images/items/sturdy_mushroom.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'clean_mushroom',
+      name: '깔끔 버섯',
+      imageUrl: '/images/items/clean_mushroom.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'mana_herb',
+      name: '마나 허브',
+      imageUrl: '/images/items/mana_herb.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'clay',
+      name: '점토',
+      imageUrl: '/images/items/clay.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'white_ice_beetle',
+      name: '흰얼음풍뎅이',
+      imageUrl: '/images/items/white_ice_beetle.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+    {
+      id: 'hidden_flower',
+      name: '숨숨꽃',
+      imageUrl: '/images/items/hidden_flower.png',
+      isCraftable: false,
+      category: '재료',
+      isFromTraded: false
+    },
+
   ]

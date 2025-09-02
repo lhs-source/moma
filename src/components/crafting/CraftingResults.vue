@@ -13,8 +13,12 @@
             <div class="grid grid-cols-2 gap-2">
               <div v-for="(category, categoryKey) in selectedItems" :key="categoryKey" class="text-sm">
                 <div class="font-medium text-gray-700 mb-1">{{ categoryKey }}</div>
-                <div v-for="(batchCount, itemName) in category" :key="itemName" class="text-xs text-gray-600 ml-2">
-                  {{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, String(itemName)) }}개 생산)
+                <div v-for="(batchCount, itemName) in category" :key="itemName"
+                  class="text-xs text-gray-600 ml-2 flex items-center gap-1">
+                  <img :src="getItemImageUrl(String(itemName))" :alt="String(itemName)"
+                    class="w-3 h-3 object-cover rounded">
+                  <span>{{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, String(itemName)) }}개
+                    생산)</span>
                 </div>
               </div>
             </div>
@@ -23,9 +27,13 @@
           <!-- 필요 재료 -->
           <div class="grid grid-cols-3 gap-3">
             <div v-for="(amount, material) in totalMaterials" :key="material"
-              class="p-2 border border-gray-200 rounded-lg bg-white">
-              <div class="font-medium">{{ material }}</div>
-              <div class="text-right text-sm text-blue-600">{{ amount }}개</div>
+              class="p-2 border border-gray-200 rounded-lg bg-white flex items-center gap-2">
+              <img :src="getItemImageUrl(String(material))" :alt="String(material)"
+                class="w-6 h-6 object-cover rounded">
+              <div class="flex-1">
+                <div class="font-medium text-sm">{{ material }}</div>
+                <div class="text-right text-sm text-blue-600">{{ amount }}개</div>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +86,7 @@ import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { formatTime } from '@/utils/timeUtils';
 import { craftingData } from '@/data/crafting';
+import { getItemImageUrl } from '@/utils/itemUtils';
 
 const craftingStore = useCraftingStore();
 
