@@ -7,6 +7,11 @@ export interface CraftingMaterial {
 // 최소 변경을 위해 현재는 식재료만 정의하고, 나머지는 기존 문자열 값을 유지합니다.
 export enum ITEM_CATEGORY {
   FOOD_INGREDIENT = '식재료',
+  MATERIAL = '재료',
+  FOOD = '음식',
+  POTION = '물약',
+  CURRENCY = '통화',
+  OTHER = '기타',
 }
 
 export interface Item {

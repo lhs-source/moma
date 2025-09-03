@@ -29,78 +29,86 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
       <div v-for="item in filteredItems" :key="item.id"
         class="border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow bg-white">
-        <div class="flex items-start gap-3">
-          <img :src="item.imageUrl" :alt="item.name" class="w-12 h-12 object-cover rounded flex-shrink-0"
+        <!-- 상단: 이미지와 이름 정보 -->
+        <div class="flex items-start gap-3 mb-4">
+          <img :src="item.imageUrl" :alt="item.name" class="w-16 h-16 object-cover rounded flex-shrink-0"
             @error="handleImageError" />
           <div class="flex-1 min-w-0">
-            <h3 class="font-medium text-sm text-gray-900 truncate">{{ item.name }}</h3>
-            <p class="text-xs text-gray-500 mt-1">ID: {{ item.id }}</p>
-            <div class="flex flex-wrap gap-1 mt-2">
-              <span v-if="item.category" class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
-                {{ item.category }}
-              </span>
+            <div v-if="item.category" class="text-xs text-gray-500 mb-1">
+              {{ item.category }}
             </div>
-            <p v-if="item.description" class="text-xs text-gray-600 mt-2 line-clamp-2">
+            <h3 class="font-medium text-base text-gray-900">{{ item.name }}</h3>
+            <p class="text-xs text-gray-500 mt-1">ID: {{ item.id }}</p>
+            <p v-if="item.description" class="text-xs text-gray-600 mt-1 line-clamp-2">
               {{ item.description }}
             </p>
-            <!-- 사용처 정보 -->
-            <div v-if="getUsageTypes(item.id).length > 0" class="mt-2">
-              <p class="text-xs font-medium text-gray-700">사용처:</p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span v-for="usageType in getUsageTypes(item.id)" :key="usageType" :class="{
-                  'inline-block px-2 py-1 text-xs rounded': true,
-                  'bg-purple-100 text-purple-800': usageType === '레시피',
-                  'bg-indigo-100 text-indigo-800': usageType === '교환',
-                  'bg-emerald-100 text-emerald-800': usageType === '구매'
-                }">
-                  {{ usageType }}
-                </span>
-              </div>
-
-              <!-- 레시피 사용처 상세 -->
-              <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length" class="mt-2">
-                <p class="text-xs font-medium text-gray-700">재료로 사용되는 레시피:</p>
-                <div class="text-xs text-gray-600 mt-1 max-h-32 overflow-y-auto">
-                  <div v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId"
-                    class="flex items-center gap-1 mb-1">
-                    <span class="font-medium">{{ recipeUsage.recipeName }}</span>
-                    <span class="text-gray-500">x{{ recipeUsage.quantity }}</span>
-                    <span class="text-gray-400">→ {{ recipeUsage.resultItemName }} {{ recipeUsage.resultQuantity
-                    }}개</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 교환 사용처 상세 -->
-              <div v-if="getItemUsage(item.id)?.usageTypes.trades.length" class="mt-2">
-                <p class="text-xs font-medium text-gray-700">교환에 사용:</p>
-                <div class="text-xs text-gray-600 mt-1 max-h-24 overflow-y-auto">
-                  <div v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId"
-                    class="flex items-center gap-1 mb-1">
-                    <span class="font-medium">{{ tradeUsage.npcName }}</span>
-                    <span class="text-gray-500">({{ tradeUsage.locationName }})</span>
-                    <span class="text-gray-400">→ {{ tradeUsage.receiveItemName }} {{ tradeUsage.receiveQuantity
-                    }}개</span>
-                  </div>
-                </div>
-              </div>
+          </div>
+        </div>
+        <!-- 하단: 사용처 정보 -->
+        <div class="space-y-3">
+          <!-- 사용처 태그 -->
+          <div v-if="getUsageTypes(item.id).length > 0">
+            <div class="flex flex-wrap gap-1">
+              <span v-for="usageType in getUsageTypes(item.id)" :key="usageType" :class="{
+                'inline-block px-2 py-1 text-xs rounded': true,
+                'bg-purple-100 text-purple-800': usageType === '레시피',
+                'bg-indigo-100 text-indigo-800': usageType === '교환',
+                'bg-emerald-100 text-emerald-800': usageType === '구매'
+              }">
+                {{ usageType }}
+              </span>
             </div>
+          </div>
 
-            <!-- 제작 레시피 (결과물로 만들어지는 레시피) -->
-            <div v-if="getItemRecipes(item.id).length > 0" class="mt-2">
-              <p class="text-xs font-medium text-gray-700">제작 레시피:</p>
-              <div v-for="recipe in getItemRecipes(item.id)" :key="recipe.id" class="text-xs text-gray-600 mt-1">
-                <div class="flex items-center gap-1">
-                  <span class="font-medium">{{ recipe.name }}</span>
-                  <span class="text-gray-500">(Lv.{{ recipe.facilityLevel }})</span>
-                </div>
-                <div class="ml-2">
-                  <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
-                    {{ getItemName(material.itemId) }} x{{ material.quantity }}{{ index < recipe.requiredItems.length -
-                      1 ? ', ' : '' }} </span>
-                </div>
-              </div>
-            </div>
+          <!-- 레시피 사용처 -->
+          <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length"
+            class="bg-purple-50 rounded-lg p-3 border border-purple-200">
+            <p class="text-xs font-medium text-purple-800 mb-2 text-center">재료로 사용되는 레시피</p>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId"
+                  class="text-gray-700">
+                  <td class="font-medium text-left pr-2">{{ recipeUsage.resultItemName }} {{ recipeUsage.resultQuantity
+                  }}개</td>
+                  <td class="text-gray-600 text-left w-20">{{ recipeUsage.quantity }}개 필요</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 교환 사용처 -->
+          <div v-if="getItemUsage(item.id)?.usageTypes.trades.length"
+            class="bg-indigo-50 rounded-lg p-3 border border-indigo-200">
+            <p class="text-xs font-medium text-indigo-800 mb-2 text-center">교환에 사용</p>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId"
+                  class="text-gray-700">
+                  <td class="font-medium text-left pr-2 w-30">{{ tradeUsage.npcName }} ({{ tradeUsage.locationName }})
+                  </td>
+                  <td class="text-gray-600 text-left pr-2 flex-1">{{ tradeUsage.receiveItemName }} {{
+                    tradeUsage.receiveQuantity }}개</td>
+                  <td class="text-gray-600 text-left w-20">{{ tradeUsage.giveQuantity }}개 필요</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 제작 레시피 -->
+          <div v-if="getItemRecipes(item.id).length > 0" class="bg-green-50 rounded-lg p-3 border border-green-200">
+            <p class="text-xs font-medium text-green-800 mb-2 text-center">제작 레시피</p>
+            <table class="w-full text-xs">
+              <tbody>
+                <tr v-for="recipe in getItemRecipes(item.id)" :key="recipe.id" class="text-gray-700">
+                  <td class="font-medium text-left pr-2 whitespace-nowrap">{{ recipe.name }}</td>
+                  <td class="text-gray-600 text-left">
+                    <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
+                      {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length
+                        - 1 ? ', ' : '' }} </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
