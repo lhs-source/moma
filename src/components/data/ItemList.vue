@@ -11,6 +11,14 @@
           {{ category }}
         </option>
       </select>
+      <select v-model="selectedUsageType"
+        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <option value="">모든 사용처</option>
+        <option value="레시피">레시피 재료</option>
+        <option value="교환">교환 아이템</option>
+        <option value="구매">구매 가능</option>
+        <option value="제작">제작 가능</option>
+      </select>
     </div>
 
     <div class="text-sm text-gray-600">
@@ -45,6 +53,50 @@
             <p v-if="item.description" class="text-xs text-gray-600 mt-2 line-clamp-2">
               {{ item.description }}
             </p>
+            <!-- 사용처 정보 -->
+            <div v-if="getUsageTypes(item.id).length > 0" class="mt-2">
+              <p class="text-xs font-medium text-gray-700">사용처:</p>
+              <div class="flex flex-wrap gap-1 mt-1">
+                <span v-for="usageType in getUsageTypes(item.id)" :key="usageType" :class="{
+                  'inline-block px-2 py-1 text-xs rounded': true,
+                  'bg-purple-100 text-purple-800': usageType === '레시피',
+                  'bg-indigo-100 text-indigo-800': usageType === '교환',
+                  'bg-emerald-100 text-emerald-800': usageType === '구매'
+                }">
+                  {{ usageType }}
+                </span>
+              </div>
+
+              <!-- 레시피 사용처 상세 -->
+              <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length" class="mt-2">
+                <p class="text-xs font-medium text-gray-700">재료로 사용되는 레시피:</p>
+                <div class="text-xs text-gray-600 mt-1 max-h-32 overflow-y-auto">
+                  <div v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId"
+                    class="flex items-center gap-1 mb-1">
+                    <span class="font-medium">{{ recipeUsage.recipeName }}</span>
+                    <span class="text-gray-500">x{{ recipeUsage.quantity }}</span>
+                    <span class="text-gray-400">→ {{ recipeUsage.resultItemName }} {{ recipeUsage.resultQuantity
+                    }}개</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 교환 사용처 상세 -->
+              <div v-if="getItemUsage(item.id)?.usageTypes.trades.length" class="mt-2">
+                <p class="text-xs font-medium text-gray-700">교환에 사용:</p>
+                <div class="text-xs text-gray-600 mt-1 max-h-24 overflow-y-auto">
+                  <div v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId"
+                    class="flex items-center gap-1 mb-1">
+                    <span class="font-medium">{{ tradeUsage.npcName }}</span>
+                    <span class="text-gray-500">({{ tradeUsage.locationName }})</span>
+                    <span class="text-gray-400">→ {{ tradeUsage.receiveItemName }} {{ tradeUsage.receiveQuantity
+                    }}개</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 제작 레시피 (결과물로 만들어지는 레시피) -->
             <div v-if="getItemRecipes(item.id).length > 0" class="mt-2">
               <p class="text-xs font-medium text-gray-700">제작 레시피:</p>
               <div v-for="recipe in getItemRecipes(item.id)" :key="recipe.id" class="text-xs text-gray-600 mt-1">
@@ -74,9 +126,11 @@
 import { ref, computed } from 'vue'
 import { items } from '@/data/items'
 import { recipes } from '@/data/recipes'
+import { itemUsageIndex } from '@/utils/itemUsageIndex'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
+const selectedUsageType = ref('')
 
 const categories = computed(() => {
   const categorySet = new Set<string>()
@@ -96,7 +150,22 @@ const filteredItems = computed(() => {
 
     const matchesCategory = !selectedCategory.value || item.category === selectedCategory.value
 
-    return matchesSearch && matchesCategory
+    const matchesUsageType = !selectedUsageType.value || (() => {
+      switch (selectedUsageType.value) {
+        case '레시피':
+          return getUsageTypes(item.id).includes('레시피')
+        case '교환':
+          return getUsageTypes(item.id).includes('교환')
+        case '구매':
+          return getUsageTypes(item.id).includes('구매')
+        case '제작':
+          return getItemRecipes(item.id).length > 0
+        default:
+          return true
+      }
+    })()
+
+    return matchesSearch && matchesCategory && matchesUsageType
   })
 })
 
@@ -107,6 +176,14 @@ function getItemName(itemId: string) {
 
 function getItemRecipes(itemId: string) {
   return recipes.filter(recipe => recipe.resultItemId === itemId)
+}
+
+function getItemUsage(itemId: string) {
+  return itemUsageIndex.getItemUsage(itemId)
+}
+
+function getUsageTypes(itemId: string) {
+  return itemUsageIndex.getUsageTypes(itemId)
 }
 
 function handleImageError(event: Event) {
