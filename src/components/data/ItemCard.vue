@@ -67,7 +67,11 @@
         <table class="w-full text-xs">
           <tbody>
             <tr v-for="recipe in craftableRecipes" :key="recipe.id" class="text-gray-700">
-              <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">{{ recipe.name }}</td>
+              <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">
+                <div>{{ recipe.name }}</div>
+                <div v-if="calculateRecipeCost(recipe) > 0" class="text-orange-600 font-medium">{{
+                  calculateRecipeCost(recipe).toLocaleString() }}G</div>
+              </td>
               <td class="text-gray-600 text-left">
                 <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
                   {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
@@ -86,6 +90,7 @@ import { computed } from 'vue'
 import type { Item } from '@/data/schemas/item'
 import { items } from '@/data/items'
 import { recipes } from '@/data/recipes'
+import { purchaseData } from '@/data/purchase'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
 
 const props = defineProps<{
@@ -106,6 +111,22 @@ const usageTypes = computed(() => {
 const craftableRecipes = computed(() => {
   return recipes.filter(recipe => recipe.resultItemId === props.item.id)
 })
+
+// 제작 비용 계산 (purchaseData에서 가격 찾기)
+function calculateRecipeCost(recipe: any): number {
+  return recipe.requiredItems.reduce((total: number, material: any) => {
+    // purchaseData에서 해당 아이템의 가격 찾기
+    let itemPrice = 0
+    for (const npc of purchaseData.npcs) {
+      const purchaseItem = npc.items.find(item => item.itemId === material.itemId)
+      if (purchaseItem) {
+        itemPrice = purchaseItem.price
+        break // 첫 번째로 찾은 가격 사용
+      }
+    }
+    return total + (itemPrice * material.quantity)
+  }, 0)
+}
 
 function getItemName(itemId: string) {
   const item = items.find(i => i.id === itemId)
