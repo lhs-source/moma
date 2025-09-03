@@ -1230,7 +1230,7 @@ export const items: Item[] = [
     {
       id: 'spicy_bass_soup',
       name: '농어 매운탕',
-      imageUrl: '/images/items/default.webp',
+      imageUrl: '/images/items/spicy_bass_soup.png',
       
       category: ITEM_CATEGORY.FOOD,
       

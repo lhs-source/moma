@@ -487,6 +487,48 @@ export const recipes: Recipe[] = [
     category: RECIPE_CATEGORY.COOK,
     facilityLevel: 13
   },
+  {
+    id: 'tofu_noodles',
+    name: '두부 국수',
+    resultItemId: 'tofu_noodles',
+    requiredItems: [
+      { itemId: 'tofu', quantity: 5 },
+      { itemId: 'water_bottle', quantity: 5 },
+      { itemId: 'onion', quantity: 5 },
+      { itemId: 'radish', quantity: 1 },
+      { itemId: 'salt', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 13
+  },
+  {
+    id: 'soy_milk_bingsu',
+    name: '두유 빙수',
+    resultItemId: 'soy_milk_bingsu',
+    requiredItems: [
+      { itemId: 'soy_milk', quantity: 4 },
+      { itemId: 'ice', quantity: 10 },
+      { itemId: 'lemon', quantity: 2 },
+      { itemId: 'sugar', quantity: 6 },
+      { itemId: 'herb', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 13
+  },
+  {
+    id: 'tofu_steak',
+    name: '두부 스테이크',
+    resultItemId: 'tofu_steak',
+    requiredItems: [
+      { itemId: 'tofu', quantity: 5 },
+      { itemId: 'parsnip', quantity: 6 },
+      { itemId: 'garlic', quantity: 4 },
+      { itemId: 'pepper', quantity: 3 },
+      { itemId: 'cooking_oil', quantity: 2 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 13
+  },
   // 채집 레시피 추가
   {
     id: 'gather_meat',
