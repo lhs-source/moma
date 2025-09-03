@@ -19,7 +19,7 @@
     <!-- 하단: 사용처 정보 -->
     <div class="space-y-3">
       <!-- 사용처 태그 -->
-      <div v-if="usageTypes.length > 0">
+      <div v-if="usageTypes.length > 0 || processingRecipes.length > 0">
         <div class="flex flex-wrap gap-1">
           <span v-for="usageType in usageTypes" :key="usageType" :class="{
             'inline-block px-2 py-1 text-xs rounded': true,
@@ -28,6 +28,10 @@
             'bg-emerald-100 text-emerald-800': usageType === '구매'
           }">
             {{ usageType }}
+          </span>
+          <span v-if="processingRecipes.length > 0"
+            class="inline-block px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-800">
+            가공
           </span>
         </div>
       </div>
@@ -61,6 +65,53 @@
         </table>
       </div>
 
+      <!-- 가공 레시피 -->
+      <div v-if="processingRecipes.length > 0" class="bg-yellow-50 rounded-lg p-3 border border-yellow-200">
+        <p class="text-xs font-medium text-yellow-800 mb-2 text-center">가공 레시피</p>
+        <table class="w-full text-xs">
+          <tbody>
+            <tr v-for="recipe in processingRecipes" :key="recipe.id" class="text-gray-700">
+              <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">
+                <div>{{ recipe.name }}</div>
+                <div v-if="recipe.craftingTime" class="text-blue-600 font-medium">
+                  {{ formatTime(recipe.craftingTime) }}
+                </div>
+                <div v-if="recipe.craftingCategory" class="text-gray-500 text-xs">
+                  {{ recipe.craftingCategory }}
+                </div>
+              </td>
+              <td class="text-gray-600 text-left">
+                <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
+                  {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
+                    ? ', ' : '' }} </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 재귀적 가공 의존성 -->
+      <div v-if="recursiveProcessingDependencies.size > 0" class="bg-orange-50 rounded-lg p-3 border border-orange-200">
+        <p class="text-xs font-medium text-orange-800 mb-2 text-center">가공 의존성</p>
+        <div class="space-y-2">
+          <div v-for="(recipes, itemId) in recursiveProcessingDependencies" :key="String(itemId)" class="text-xs">
+            <div class="font-medium text-gray-800 mb-1">{{ getItemName(itemId) }} ({{ recipes.length }}개 레시피)</div>
+            <div v-for="recipe in recipes" :key="recipe.id" class="ml-2 text-gray-600">
+              <div class="font-medium">{{ recipe.name }} ({{ recipe.resultQuantity || 1 }}개)</div>
+              <div v-if="recipe.craftingTime" class="text-gray-500">
+                시간: {{ formatTime(recipe.craftingTime) }}
+              </div>
+              <div class="text-gray-500">
+                재료:
+                <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
+                  {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
+                    ? ', ' : '' }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- 제작 레시피 -->
       <div v-if="craftableRecipes.length > 0" class="bg-green-50 rounded-lg p-3 border border-green-200">
         <p class="text-xs font-medium text-green-800 mb-2 text-center">제작 레시피</p>
@@ -92,6 +143,8 @@ import { items } from '@/data/items'
 import { recipes } from '@/data/recipes'
 import { purchaseData } from '@/data/purchase'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
+import { findProcessingRecipesForItem, findAllRequiredProcessingRecipes } from '@/utils/recipeDependencyUtils'
+import { formatTime } from '@/utils/timeUtils'
 
 const props = defineProps<{
   item: Item
@@ -107,14 +160,26 @@ const usageTypes = computed(() => {
   return itemUsageIndex.getUsageTypes(props.item.id)
 })
 
+// 가공 레시피들 - 한 번만 계산하고 캐시
+const processingRecipes = computed(() => {
+  return findProcessingRecipesForItem(props.item.id)
+})
+
+// 재귀적 가공 레시피 의존성들 (가공 레시피의 재료들도 가공 레시피로 만들 수 있는지 확인)
+const recursiveProcessingDependencies = computed(() => {
+  if (processingRecipes.value.length === 0) return new Map()
+
+  return findAllRequiredProcessingRecipes(processingRecipes.value)
+})
+
 // 제작 레시피들 - 한 번만 계산하고 캐시
 const craftableRecipes = computed(() => {
   return recipes.filter(recipe => recipe.resultItemId === props.item.id)
 })
 
 // 제작 비용 계산 (purchaseData에서 가격 찾기)
-function calculateRecipeCost(recipe: any): number {
-  return recipe.requiredItems.reduce((total: number, material: any) => {
+function calculateRecipeCost(recipe: { requiredItems: Array<{ itemId: string; quantity: number }> }): number {
+  return recipe.requiredItems.reduce((total: number, material: { itemId: string; quantity: number }) => {
     // purchaseData에서 해당 아이템의 가격 찾기
     let itemPrice = 0
     for (const npc of purchaseData.npcs) {
@@ -143,6 +208,7 @@ function handleImageError(event: Event) {
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
