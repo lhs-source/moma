@@ -39,16 +39,6 @@
               <span v-if="item.category" class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
                 {{ item.category }}
               </span>
-              <span v-if="item.isCraftable" class="inline-block px-2 py-1 text-xs bg-green-100 text-green-800 rounded">
-                제작 가능
-              </span>
-              <span v-if="item.isFromTraded"
-                class="inline-block px-2 py-1 text-xs bg-orange-100 text-orange-800 rounded">
-                교환 아이템
-              </span>
-              <span v-if="item.price" class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">
-                {{ item.price }}G
-              </span>
             </div>
             <p v-if="item.description" class="text-xs text-gray-600 mt-2 line-clamp-2">
               {{ item.description }}
