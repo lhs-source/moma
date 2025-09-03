@@ -27,10 +27,11 @@ export enum RECIPE_CATEGORY {
 
 /**
  * # 레시피
- * - 요리, 구매, 드랍
+ * - 요리, 구매, 드랍, 가공
  * - 요리는 requiredItems 에 필요 아이템을 가짐
  * - 구매는 requiredItems 에 골드와 가격을 가짐
  * - 드랍은 requiredItems 에 몬스터 아이디와 개수를 가짐
+ * - 가공은 requiredItems 에 필요 재료를 가짐
  */
 export interface Recipe {
   id: string;
@@ -40,6 +41,9 @@ export interface Recipe {
   requiredItems: RequiredItem[];
   category: RECIPE_CATEGORY;
   facilityLevel: number;
+  // 제작 시스템 전용 필드
+  craftingTime?: number; // 제작 시간 (초)
+  craftingCategory?: string; // 제작 카테고리 (금속 가공, 목재 가공 등)
 }
 
 /**

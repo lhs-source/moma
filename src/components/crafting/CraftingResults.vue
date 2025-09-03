@@ -11,14 +11,14 @@
           <div class="mb-4 p-3 bg-blue-50 rounded-lg">
             <h4 class="font-medium text-blue-800 mb-2">제작 횟수 정보</h4>
             <div class="grid grid-cols-2 gap-2">
-              <div v-for="(category, categoryKey) in selectedItems" :key="categoryKey" class="text-sm">
-                <div class="font-medium text-gray-700 mb-1">{{ categoryKey }}</div>
-                <div v-for="(batchCount, itemName) in category" :key="itemName"
+              <div v-for="(categoryItems, category) in selectedItemsByCategory" :key="category" class="text-sm">
+                <div class="font-medium text-gray-700 mb-1">{{ category }}</div>
+                <div v-for="selectedItem in categoryItems" :key="selectedItem.recipe.id"
                   class="text-xs text-gray-600 ml-2 flex items-center gap-1">
-                  <img :src="getItemImageUrl(String(itemName))" :alt="String(itemName)"
+                  <img :src="getItemImageUrl(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
                     class="w-3 h-3 object-cover rounded">
-                  <span>{{ itemName }}: {{ batchCount }}회 ({{ getTotalQuantity(categoryKey, String(itemName)) }}개
-                    생산)</span>
+                  <span>{{ selectedItem.recipe.name }}: {{ selectedItem.quantity }}회 ({{ getTotalQuantity(selectedItem)
+                  }}개 생산)</span>
                 </div>
               </div>
             </div>
@@ -85,7 +85,6 @@
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { formatTime } from '@/utils/timeUtils';
-import { craftingData } from '@/data/crafting';
 import { getItemImageUrl } from '@/utils/itemUtils';
 
 const craftingStore = useCraftingStore();
@@ -116,13 +115,11 @@ const totalTime = computed(() => craftingStore.totalTime);
 // 선택된 항목이 있는지 확인
 const hasSelectedItems = computed(() => craftingStore.hasSelectedItems);
 
-// 선택된 항목들
-const selectedItems = computed(() => craftingStore.selectedItems);
+// 카테고리별로 그룹화된 선택된 항목들
+const selectedItemsByCategory = computed(() => craftingStore.selectedItemsByCategory);
 
 // 총 생산 개수를 계산하는 함수
-function getTotalQuantity(category: string | number, itemName: string | number): number {
-  const batchCount = selectedItems.value[category][itemName]; // 제작 횟수
-  const itemData = craftingData[category][itemName];
-  return batchCount * itemData.생산량;
+function getTotalQuantity(selectedItem: { recipe: any; quantity: number }): number {
+  return selectedItem.quantity * (selectedItem.recipe.resultQuantity || 1);
 }
 </script>
