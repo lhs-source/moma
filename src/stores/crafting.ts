@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { craftingRecipes, craftingRecipesByCategory, craftingCategories, type Recipe } from '@/data/crafting'
+import { craftingRecipesByCategory, craftingCategories } from '@/data/crafting'
+import type { Recipe } from '@/data/schemas/recipe'
 
 interface SelectedItem {
   recipe: Recipe

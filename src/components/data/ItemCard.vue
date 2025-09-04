@@ -95,7 +95,8 @@
         <p class="text-xs font-medium text-orange-800 mb-2 text-center">가공 의존성</p>
         <div class="space-y-2">
           <div v-for="(recipes, itemId) in recursiveProcessingDependencies" :key="String(itemId)" class="text-xs">
-            <div class="font-medium text-gray-800 mb-1">{{ getItemName(itemId) }} ({{ recipes.length }}개 레시피)</div>
+            <div class="font-medium text-gray-800 mb-1">{{ getItemName(String(itemId)) }} ({{ recipes.length }}개 레시피)
+            </div>
             <div v-for="recipe in recipes" :key="recipe.id" class="ml-2 text-gray-600">
               <div class="font-medium">{{ recipe.name }} ({{ recipe.resultQuantity || 1 }}개)</div>
               <div v-if="recipe.craftingTime" class="text-gray-500">

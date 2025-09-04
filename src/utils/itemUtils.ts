@@ -25,11 +25,10 @@ export function getItemImageUrl(itemName: string): string {
  * @param itemName 아이템 이름
  * @returns 아이템 정보 객체
  */
-export function getItemInfo(itemName: string): { name: string; imageUrl: string; isCraftable?: boolean } {
+export function getItemInfo(itemName: string): { name: string; imageUrl: string; } {
   const item = findItemByName(itemName);
   return {
     name: itemName,
     imageUrl: item?.imageUrl || '/images/items/default.webp',
-    isCraftable: item?.isCraftable
   };
 }
