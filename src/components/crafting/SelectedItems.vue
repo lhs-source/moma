@@ -13,7 +13,7 @@
         <div v-for="selectedItem in categoryItems" :key="selectedItem.recipe.id"
           class="selected-item-card p-2 mb-2 rounded border border-gray-200 flex justify-between items-center">
           <div class="flex items-center gap-2">
-            <img :src="getItemImageUrl(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
+            <img :src="getItemImageUrlById(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
               class="w-8 h-8 object-cover rounded border border-gray-200">
             <div>
               <span class="font-medium">{{ selectedItem.recipe.name }}</span>
@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
-import { getItemImageUrl } from '@/utils/itemUtils';
+import { getItemImageUrlById } from '@/utils/itemUtils';
 import type { Recipe } from '@/data/schemas/recipe';
 
 const craftingStore = useCraftingStore();

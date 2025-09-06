@@ -15,7 +15,7 @@
                 <div class="font-medium text-gray-700 mb-1">{{ category }}</div>
                 <div v-for="selectedItem in categoryItems" :key="selectedItem.recipe.id"
                   class="text-xs text-gray-600 ml-2 flex items-center gap-1">
-                  <img :src="getItemImageUrl(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
+                  <img :src="getItemImageUrlById(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
                     class="w-3 h-3 object-cover rounded">
                   <span>{{ selectedItem.recipe.name }}: {{ selectedItem.quantity }}회 ({{ getTotalQuantity(selectedItem)
                   }}개 생산)</span>
@@ -28,10 +28,10 @@
           <div class="grid grid-cols-3 gap-3">
             <div v-for="(amount, material) in totalMaterials" :key="material"
               class="p-2 border border-gray-200 rounded-lg bg-white flex items-center gap-2">
-              <img :src="getItemImageUrl(String(material))" :alt="String(material)"
+              <img :src="getItemImageUrlById(String(material))" :alt="getItemInfoById(String(material)).name"
                 class="w-6 h-6 object-cover rounded">
               <div class="flex-1">
-                <div class="font-medium text-sm">{{ material }}</div>
+                <div class="font-medium text-sm">{{ getItemInfoById(String(material)).name }}</div>
                 <div class="text-right text-sm text-blue-600">{{ amount }}개</div>
               </div>
             </div>
@@ -85,7 +85,7 @@
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { formatTime } from '@/utils/timeUtils';
-import { getItemImageUrl } from '@/utils/itemUtils';
+import { getItemImageUrlById, getItemInfoById } from '@/utils/itemUtils';
 
 const craftingStore = useCraftingStore();
 

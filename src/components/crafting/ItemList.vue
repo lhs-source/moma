@@ -5,7 +5,7 @@
       <div v-for="recipe in categoryRecipes" :key="recipe.id"
         class="item-card p-3 mb-3 rounded border border-gray-200 hover:border-gray-300">
         <div class="flex items-start gap-3 mb-3">
-          <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name"
+          <img :src="getItemImageUrlById(recipe.resultItemId)" :alt="recipe.name"
             class="w-12 h-12 object-cover rounded border border-gray-200">
           <div class="flex-1">
             <div class="font-medium text-lg">{{ recipe.name }}</div>
@@ -24,9 +24,9 @@
             <ul class="pl-2">
               <li v-for="requiredItem in recipe.requiredItems" :key="requiredItem.itemId"
                 class="mb-1 flex items-center gap-2">
-                <img :src="getItemImageUrl(requiredItem.itemId)" :alt="requiredItem.itemId"
+                <img :src="getItemImageUrlById(requiredItem.itemId)" :alt="getItemInfoById(requiredItem.itemId).name"
                   class="w-4 h-4 object-cover rounded">
-                <span>{{ requiredItem.itemId }}: {{ requiredItem.quantity }}개</span>
+                <span>{{ getItemInfoById(requiredItem.itemId).name }}: {{ requiredItem.quantity }}개</span>
               </li>
             </ul>
           </div>
@@ -49,7 +49,7 @@
 import { computed } from 'vue';
 import { useCraftingStore } from '@/stores/crafting';
 import { formatTime } from '@/utils/timeUtils';
-import { getItemImageUrl } from '@/utils/itemUtils';
+import { getItemImageUrlById, getItemInfoById } from '@/utils/itemUtils';
 import type { Recipe } from '@/data/schemas/recipe';
 
 const craftingStore = useCraftingStore();

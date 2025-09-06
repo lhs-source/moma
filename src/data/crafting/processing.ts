@@ -46,13 +46,13 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '금속 가공'
   },
   {
-    id: 'craft_special_steel_ingot',
+    id: 'craft_special_steel',
     name: '특수강괴',
-    resultItemId: 'special_steel_ingot',
+    resultItemId: 'special_steel',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'alloy_steel_ingot', quantity: 4 },
-      { itemId: 'white_copper_ore', quantity: 20 },
+      { itemId: 'white_ore', quantity: 20 },
       { itemId: 'coal', quantity: 12 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -66,7 +66,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'silver_alloy_ingot',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'special_steel_ingot', quantity: 5 },
+      { itemId: 'special_steel', quantity: 5 },
       { itemId: 'silver_ore', quantity: 20 },
       { itemId: 'coal', quantity: 16 }
     ],
@@ -137,11 +137,11 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_soft_wood',
     name: '부드러운 목재',
-    resultItemId: 'soft_wood',
+    resultItemId: 'smooth_wood',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'superior_wood_plus', quantity: 15 },
-      { itemId: 'soft_log', quantity: 30 },
+      { itemId: 'smooth_log', quantity: 30 },
       { itemId: 'tree_sap', quantity: 30 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -152,11 +152,11 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_finest_wood',
     name: '최상급 목재',
-    resultItemId: 'finest_wood',
+    resultItemId: 'superior_wood_plus',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'superior_wood_plus', quantity: 5 },
-      { itemId: 'finest_log', quantity: 20 },
+      { itemId: 'supreme_log', quantity: 20 },
       { itemId: 'tree_sap', quantity: 16 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -169,10 +169,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_leather',
     name: '가죽',
-    resultItemId: 'leather',
+    resultItemId: 'processed_leather',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'raw_leather', quantity: 10 }
+      { itemId: 'leather', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 1,
@@ -180,12 +180,12 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '가죽 가공'
   },
   {
-    id: 'craft_leather_plus',
+    id: 'craft_leather_plus_processed',
     name: '가죽+',
-    resultItemId: 'leather_plus',
+    resultItemId: 'leather_plus_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'leather', quantity: 3 },
+      { itemId: 'processed_leather', quantity: 3 },
       { itemId: 'tannin_powder', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -194,13 +194,13 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '가죽 가공'
   },
   {
-    id: 'craft_superior_leather',
+    id: 'craft_superior_leather_processed',
     name: '상급 가죽',
-    resultItemId: 'superior_leather',
+    resultItemId: 'superior_leather_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'leather_plus', quantity: 3 },
-      { itemId: 'superior_raw_leather', quantity: 15 },
+      { itemId: 'leather_plus_processed', quantity: 3 },
+      { itemId: 'superior_leather', quantity: 15 },
       { itemId: 'tannin_powder', quantity: 8 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -209,13 +209,13 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '가죽 가공'
   },
   {
-    id: 'craft_superior_leather_plus',
+    id: 'craft_superior_leather_plus_processed',
     name: '상급 가죽+',
-    resultItemId: 'superior_leather_plus',
+    resultItemId: 'superior_leather_plus_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'superior_leather', quantity: 4 },
-      { itemId: 'superior_raw_leather_plus', quantity: 20 },
+      { itemId: 'superior_leather_processed', quantity: 4 },
+      { itemId: 'superior_leather_plus', quantity: 20 },
       { itemId: 'tannin_powder', quantity: 12 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -224,13 +224,13 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '가죽 가공'
   },
   {
-    id: 'craft_finest_leather',
+    id: 'craft_best_leather_processed',
     name: '최상급 가죽',
-    resultItemId: 'finest_leather',
+    resultItemId: 'best_leather_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'superior_leather_plus', quantity: 5 },
-      { itemId: 'finest_raw_leather', quantity: 30 },
+      { itemId: 'superior_leather_plus_processed', quantity: 5 },
+      { itemId: 'best_leather', quantity: 30 },
       { itemId: 'tannin_powder', quantity: 16 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -241,9 +241,9 @@ export const craftingProcessingRecipes: Recipe[] = [
 
   // 옷감 가공
   {
-    id: 'craft_fabric',
+    id: 'craft_fabric_processed',
     name: '옷감',
-    resultItemId: 'fabric',
+    resultItemId: 'fabric_processed',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'wool', quantity: 10 }
@@ -254,12 +254,12 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '옷감 가공'
   },
   {
-    id: 'craft_fabric_plus',
+    id: 'craft_fabric_plus_processed',
     name: '옷감+',
-    resultItemId: 'fabric_plus',
+    resultItemId: 'fabric_plus_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'fabric', quantity: 3 }
+      { itemId: 'fabric_processed', quantity: 3 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 2,
@@ -272,7 +272,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'superior_fabric',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'fabric_plus', quantity: 3 },
+      { itemId: 'fabric_plus_processed', quantity: 3 },
       { itemId: 'superior_wool', quantity: 15 },
       { itemId: 'wool', quantity: 8 }
     ],
@@ -282,9 +282,9 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '옷감 가공'
   },
   {
-    id: 'craft_superior_fabric_plus',
+    id: 'craft_superior_fabric_plus_processed',
     name: '상급 옷감+',
-    resultItemId: 'superior_fabric_plus',
+    resultItemId: 'superior_fabric_plus_processed',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'superior_fabric', quantity: 4 },
@@ -302,7 +302,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'silk',
     resultQuantity: 2,
     requiredItems: [
-      { itemId: 'spider_silk', quantity: 10 }
+      { itemId: 'spider_web', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 2,
@@ -316,7 +316,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultQuantity: 2,
     requiredItems: [
       { itemId: 'silk', quantity: 4 },
-      { itemId: 'sturdy_mushroom_extract', quantity: 8 }
+      { itemId: 'sturdy_mushroom_juice', quantity: 8 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 4,
@@ -324,13 +324,13 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '옷감 가공'
   },
   {
-    id: 'craft_finest_fabric',
+    id: 'craft_supreme_fabric',
     name: '최상급 옷감',
-    resultItemId: 'finest_fabric',
+    resultItemId: 'supreme_fabric',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'superior_fabric_plus', quantity: 5 },
-      { itemId: 'finest_wool', quantity: 20 },
+      { itemId: 'superior_fabric_plus_processed', quantity: 5 },
+      { itemId: 'supreme_wool', quantity: 20 },
       { itemId: 'wool', quantity: 16 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -339,14 +339,14 @@ export const craftingProcessingRecipes: Recipe[] = [
     craftingCategory: '옷감 가공'
   },
   {
-    id: 'craft_finest_silk',
+    id: 'craft_supreme_silk',
     name: '최상급 실크',
-    resultItemId: 'finest_silk',
+    resultItemId: 'supreme_silk',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'superior_silk', quantity: 4 },
-      { itemId: 'finest_spider_silk', quantity: 30 },
-      { itemId: 'sturdy_mushroom_extract', quantity: 16 }
+      { itemId: 'superior_web', quantity: 30 },
+      { itemId: 'sturdy_mushroom_juice', quantity: 16 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 5,
@@ -431,7 +431,7 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_fresh_mushroom_spore',
     name: '새록 버섯 포자',
-    resultItemId: 'fresh_mushroom_spore',
+    resultItemId: 'fresh_mushroom_spores',
     resultQuantity: 15,
     requiredItems: [
       { itemId: 'fresh_mushroom', quantity: 30 },
@@ -445,10 +445,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_fresh_mushroom_extract',
     name: '새록 버섯 진액',
-    resultItemId: 'fresh_mushroom_extract',
+    resultItemId: 'fresh_mushroom_juice',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'fresh_mushroom_spore', quantity: 10 },
+      { itemId: 'fresh_mushroom_spores', quantity: 10 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -472,7 +472,7 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_sturdy_mushroom_spore',
     name: '튼튼 버섯 포자',
-    resultItemId: 'sturdy_mushroom_spore',
+    resultItemId: 'sturdy_mushroom_spores',
     resultQuantity: 15,
     requiredItems: [
       { itemId: 'sturdy_mushroom', quantity: 30 },
@@ -486,10 +486,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_sturdy_mushroom_extract',
     name: '튼튼 버섯 진액',
-    resultItemId: 'sturdy_mushroom_extract',
+    resultItemId: 'sturdy_mushroom_juice',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'sturdy_mushroom_spore', quantity: 10 },
+      { itemId: 'sturdy_mushroom_spores', quantity: 10 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -500,10 +500,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_growing_mushroom_spore',
     name: '쑥쑥 버섯 포자',
-    resultItemId: 'growing_mushroom_spore',
+    resultItemId: 'growing_mushroom_spores',
     resultQuantity: 15,
     requiredItems: [
-      { itemId: 'growing_mushroom', quantity: 30 },
+      { itemId: 'mushroom', quantity: 30 },
       { itemId: 'paper', quantity: 3 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -514,10 +514,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_growing_mushroom_extract',
     name: '쑥쑥 버섯 진액',
-    resultItemId: 'growing_mushroom_extract',
+    resultItemId: 'growing_mushroom_juice',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'growing_mushroom_spore', quantity: 10 },
+      { itemId: 'growing_mushroom_spores', quantity: 10 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -528,7 +528,7 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_clean_mushroom_spore',
     name: '깔끔 버섯 포자',
-    resultItemId: 'clean_mushroom_spore',
+    resultItemId: 'clean_mushroom_spores',
     resultQuantity: 15,
     requiredItems: [
       { itemId: 'clean_mushroom', quantity: 30 },
@@ -542,10 +542,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_clean_mushroom_extract',
     name: '깔끔 버섯 진액',
-    resultItemId: 'clean_mushroom_extract',
+    resultItemId: 'clean_mushroom_juice',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'clean_mushroom_spore', quantity: 10 },
+      { itemId: 'clean_mushroom_spores', quantity: 10 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -559,7 +559,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'light_crystal',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'ghost_firefly', quantity: 3 },
+      { itemId: 'ghost_lantern', quantity: 3 },
       { itemId: 'mana_herb', quantity: 10 },
       { itemId: 'clay', quantity: 3 }
     ],
@@ -574,7 +574,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'fire_crystal',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'sunset_butterfly', quantity: 3 },
+      { itemId: 'sun_butterfly', quantity: 3 },
       { itemId: 'mana_herb', quantity: 10 },
       { itemId: 'clay', quantity: 3 }
     ],
@@ -601,10 +601,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_hiding_flower_powder',
     name: '숨숨꽃 가루',
-    resultItemId: 'hiding_flower_powder',
+    resultItemId: 'hidden_flower_powder',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'hiding_flower', quantity: 20 }
+      { itemId: 'hidden_flower', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 3,
@@ -614,10 +614,10 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_wound_flower_powder',
     name: '생채기꽃 가루',
-    resultItemId: 'wound_flower_powder',
+    resultItemId: 'scar_flower_powder',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'wound_flower', quantity: 20 }
+      { itemId: 'scar_flower', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
     facilityLevel: 5,
