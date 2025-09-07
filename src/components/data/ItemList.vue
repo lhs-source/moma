@@ -2,23 +2,32 @@
   <div class="space-y-4">
     <!-- 검색 및 필터 -->
     <div class="flex flex-col sm:flex-row gap-2">
-      <input v-model="searchQuery" type="text" placeholder="아이템 이름 또는 ID로 검색..."
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-      <select v-model="selectedCategory"
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value="">모든 카테고리</option>
-        <option v-for="category in categories" :key="category" :value="category">
-          {{ category }}
-        </option>
-      </select>
-      <select v-model="selectedUsageType"
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value="">모든 사용처</option>
-        <option value="레시피">레시피 재료</option>
-        <option value="교환">교환 아이템</option>
-        <option value="구매">구매 가능</option>
-        <option value="제작">제작 가능</option>
-      </select>
+      <Input v-model="searchQuery" type="text" placeholder="아이템 이름 또는 ID로 검색..." />
+
+      <Select v-model="selectedCategory" default-value="">
+        <SelectTrigger class="w-full sm:w-[200px]">
+          <SelectValue placeholder="모든 카테고리" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="">모든 카테고리</SelectItem>
+          <SelectItem v-for="category in categories" :key="category" :value="category">
+            {{ category }}
+          </SelectItem>
+        </SelectContent>
+      </Select>
+
+      <Select v-model="selectedUsageType" default-value="">
+        <SelectTrigger class="w-full sm:w-[200px]">
+          <SelectValue placeholder="모든 사용처" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="">모든 사용처</SelectItem>
+          <SelectItem value="레시피">레시피 재료</SelectItem>
+          <SelectItem value="교환">교환 아이템</SelectItem>
+          <SelectItem value="구매">구매 가능</SelectItem>
+          <SelectItem value="제작">제작 가능</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
 
     <div class="text-sm text-gray-600">
@@ -42,6 +51,12 @@ import { items } from '@/data/items'
 import { recipes } from '@/data/recipes'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
 import ItemCard from './ItemCard.vue'
+import Input from '@/components/ui/input.vue'
+import Select from '@/components/ui/select.vue'
+import SelectContent from '@/components/ui/select-content.vue'
+import SelectItem from '@/components/ui/select-item.vue'
+import SelectTrigger from '@/components/ui/select-trigger.vue'
+import SelectValue from '@/components/ui/select-value.vue'
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
