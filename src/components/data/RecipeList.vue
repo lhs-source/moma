@@ -25,7 +25,7 @@
     </div>
 
     <!-- 레시피 그리드 -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       <div v-for="recipe in filteredRecipes" :key="recipe.id"
         class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white">
         <div class="flex items-start gap-4">

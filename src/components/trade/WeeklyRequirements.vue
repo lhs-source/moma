@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useTradeData } from '@/composables/useTradeData'
 import { recipes } from '@/data/recipes'
-import type { Trade, TradeData } from '@/data/schemas/trade'
+import type { Trade } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
 // Recipe 타입을 확장하여 교환 카테고리 추가
 import type { Recipe } from '@/data/schemas/recipe'
@@ -14,18 +13,6 @@ import { items } from '@/data/items'
 import { useTradeStore } from '@/stores/trade'
 import { useNpcStore } from '@/stores/npc'
 import { useItemStore } from '@/stores/item'
-
-interface WeeklyRequirement {
-  itemId: string
-  totalQuantity: number
-  recipe?: Recipe
-  trades?: {
-    id: string
-    requiredItemId: string
-    requiredQuantity: number
-    targetQuantity: number
-  }[]
-}
 
 export interface WeeklyTrade {
   [key: string]: {
@@ -41,7 +28,6 @@ export interface WeeklyTrade {
   }
 }
 
-const { tradeData } = useTradeData()
 const npcStore = useNpcStore();
 const itemStore = useItemStore();
 const tradeStore = useTradeStore();
