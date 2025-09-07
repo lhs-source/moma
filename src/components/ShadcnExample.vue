@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import Button from './ui/button.vue'
+import Button from './ui/Button.vue'
 import Card from './ui/card.vue'
 import CardHeader from './ui/card-header.vue'
 import CardTitle from './ui/card-title.vue'
