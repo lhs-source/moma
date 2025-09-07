@@ -2,22 +2,31 @@
   <div class="space-y-4">
     <!-- 검색 및 필터 -->
     <div class="flex flex-col sm:flex-row gap-2">
-      <input v-model="searchQuery" type="text" placeholder="레시피 이름 또는 ID로 검색..."
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-      <select v-model="selectedCategory"
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value="">모든 카테고리</option>
-        <option v-for="category in categories" :key="category" :value="category">
-          {{ category }}
-        </option>
-      </select>
-      <select v-model="selectedFacilityLevel"
-        class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option value="">모든 레벨</option>
-        <option v-for="level in facilityLevels" :key="level" :value="level">
-          Lv.{{ level }}
-        </option>
-      </select>
+      <Input v-model="searchQuery" type="text" placeholder="레시피 이름 또는 ID로 검색..." />
+
+      <Select v-model="selectedCategory" default-value="">
+        <SelectTrigger class="w-full sm:w-[200px]">
+          <SelectValue placeholder="모든 카테고리" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="">모든 카테고리</SelectItem>
+          <SelectItem v-for="category in recipesStore.categories" :key="category" :value="category">
+            {{ category }}
+          </SelectItem>
+        </SelectContent>
+      </Select>
+
+      <Select v-model="selectedFacilityLevel" default-value="">
+        <SelectTrigger class="w-full sm:w-[200px]">
+          <SelectValue placeholder="모든 레벨" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="">모든 레벨</SelectItem>
+          <SelectItem v-for="level in facilityLevels" :key="level" :value="level.toString()">
+            Lv.{{ level }}
+          </SelectItem>
+        </SelectContent>
+      </Select>
     </div>
 
     <div class="text-sm text-gray-600">
@@ -81,27 +90,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { items } from '@/data/items'
-import { recipes } from '@/data/recipes'
+import { ref, computed, onMounted } from 'vue'
+import { useRecipesStore } from '@/stores/recipes'
+import { useItemStore } from '@/stores/item'
+import Input from '@/components/ui/input.vue'
+import Select from '@/components/ui/select.vue'
+import SelectContent from '@/components/ui/select-content.vue'
+import SelectItem from '@/components/ui/select-item.vue'
+import SelectTrigger from '@/components/ui/select-trigger.vue'
+import SelectValue from '@/components/ui/select-value.vue'
+
+const recipesStore = useRecipesStore()
+const itemStore = useItemStore()
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
 const selectedFacilityLevel = ref('')
 
-const categories = computed(() => {
-  const categorySet = new Set<string>()
-  recipes.forEach(recipe => {
-    if (recipe.category) {
-      categorySet.add(recipe.category)
-    }
-  })
-  return Array.from(categorySet).sort()
+// Store에서 데이터 로드
+onMounted(() => {
+  recipesStore.fetchRecipeList()
+  itemStore.fetchItemList()
 })
 
 const facilityLevels = computed(() => {
   const levelSet = new Set<number>()
-  recipes.forEach(recipe => {
+  recipesStore.recipeList.forEach(recipe => {
     if (recipe.facilityLevel) {
       levelSet.add(recipe.facilityLevel)
     }
@@ -110,7 +124,7 @@ const facilityLevels = computed(() => {
 })
 
 const filteredRecipes = computed(() => {
-  return recipes.filter(recipe => {
+  return recipesStore.recipeList.filter(recipe => {
     const matchesSearch = !searchQuery.value ||
       recipe.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       recipe.id.toLowerCase().includes(searchQuery.value.toLowerCase())
@@ -125,12 +139,12 @@ const filteredRecipes = computed(() => {
 })
 
 function getItemName(itemId: string) {
-  const item = items.find(i => i.id === itemId)
+  const item = itemStore.getItemById(itemId)
   return item ? item.name : itemId
 }
 
 function getItemImageUrl(itemId: string) {
-  const item = items.find(i => i.id === itemId)
+  const item = itemStore.getItemById(itemId)
   return item ? item.imageUrl : '/images/items/default.webp'
 }
 

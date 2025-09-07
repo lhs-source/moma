@@ -10,7 +10,7 @@
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="">모든 카테고리</SelectItem>
-          <SelectItem v-for="category in categories" :key="category" :value="category">
+          <SelectItem v-for="category in itemStore.categories" :key="category" :value="category">
             {{ category }}
           </SelectItem>
         </SelectContent>
@@ -46,9 +46,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { items } from '@/data/items'
-import { recipes } from '@/data/recipes'
+import { ref, computed, onMounted } from 'vue'
+import { useItemStore } from '@/stores/item'
+import { useRecipesStore } from '@/stores/recipes'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
 import ItemCard from './ItemCard.vue'
 import Input from '@/components/ui/input.vue'
@@ -58,51 +58,46 @@ import SelectItem from '@/components/ui/select-item.vue'
 import SelectTrigger from '@/components/ui/select-trigger.vue'
 import SelectValue from '@/components/ui/select-value.vue'
 
+const itemStore = useItemStore()
+const recipesStore = useRecipesStore()
+
 const searchQuery = ref('')
 const selectedCategory = ref('')
 const selectedUsageType = ref('')
 
-const categories = computed(() => {
-  const categorySet = new Set<string>()
-  items.forEach(item => {
-    if (item.category) {
-      categorySet.add(item.category)
-    }
-  })
-  return Array.from(categorySet).sort()
+// Store에서 데이터 로드
+onMounted(() => {
+  itemStore.fetchItemList()
+  recipesStore.fetchRecipeList()
 })
 
 const filteredItems = computed(() => {
-  return items.filter(item => {
-    const matchesSearch = !searchQuery.value ||
-      item.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      item.id.toLowerCase().includes(searchQuery.value.toLowerCase())
+  return itemStore.getFilteredItems({
+    searchQuery: searchQuery.value,
+    category: selectedCategory.value,
+    usageType: selectedUsageType.value
+  }).filter(item => {
+    // 사용처 필터링 로직
+    if (!selectedUsageType.value) return true
 
-    const matchesCategory = !selectedCategory.value || item.category === selectedCategory.value
+    const usageTypes = []
+    const usage = itemUsageIndex.getItemUsage(item.id)
+    if (usage?.usageTypes.recipes.length) usageTypes.push('레시피')
+    if (usage?.usageTypes.trades.length) usageTypes.push('교환')
+    if (usage?.usageTypes.purchases.length) usageTypes.push('구매')
 
-    const matchesUsageType = !selectedUsageType.value || (() => {
-      // ItemCard에서 계산된 값을 사용하지 않고 직접 계산 (필터링용)
-      const usageTypes = []
-      const usage = itemUsageIndex.getItemUsage(item.id)
-      if (usage?.usageTypes.recipes.length) usageTypes.push('레시피')
-      if (usage?.usageTypes.trades.length) usageTypes.push('교환')
-      if (usage?.usageTypes.purchases.length) usageTypes.push('구매')
-
-      switch (selectedUsageType.value) {
-        case '레시피':
-          return usageTypes.includes('레시피')
-        case '교환':
-          return usageTypes.includes('교환')
-        case '구매':
-          return usageTypes.includes('구매')
-        case '제작':
-          return recipes.some(recipe => recipe.resultItemId === item.id)
-        default:
-          return true
-      }
-    })()
-
-    return matchesSearch && matchesCategory && matchesUsageType
+    switch (selectedUsageType.value) {
+      case '레시피':
+        return usageTypes.includes('레시피')
+      case '교환':
+        return usageTypes.includes('교환')
+      case '구매':
+        return usageTypes.includes('구매')
+      case '제작':
+        return recipesStore.recipeList.some(recipe => recipe.resultItemId === item.id)
+      default:
+        return true
+    }
   })
 })
 </script>
