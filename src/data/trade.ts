@@ -28,7 +28,7 @@ export const trades: Trade[] = [
   {
     id: 'dilis_four_leaf_clover',
     npcId: 'dilis',
-    giveItemId: 'mushroom',
+    giveItemId: 'growing_mushroom',
     receiveItemId: 'four_leaf_clover', // 네잎클로버
     giveQuantity: 3,
     receiveQuantity: 1,

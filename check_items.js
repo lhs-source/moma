@@ -89,7 +89,7 @@ const differentIds = [
   { processing: 'sunset_butterfly', items: 'sun_butterfly' },
   { processing: 'hiding_flower', items: 'hidden_flower' },
   { processing: 'wound_flower', items: 'scar_flower' },
-  { processing: 'growing_mushroom', items: 'mushroom' }
+  { processing: 'growing_mushroom', items: 'growing_mushroom' }
 ];
 
 console.log('ID가 다른 아이템들:');

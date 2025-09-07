@@ -8,11 +8,8 @@
         <div v-if="item.category" class="text-xs text-gray-500 mb-1">
           {{ item.category }}
         </div>
-        <h3 class="font-medium text-base text-gray-900">{{ item.name }}</h3>
+        <h3 class="font-bold text-base text-gray-900">{{ item.name }}</h3>
         <p class="text-xs text-gray-500 mt-1">ID: {{ item.id }}</p>
-        <p v-if="item.description" class="text-xs text-gray-600 mt-1 line-clamp-2">
-          {{ item.description }}
-        </p>
       </div>
     </div>
 

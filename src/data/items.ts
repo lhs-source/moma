@@ -43,9 +43,9 @@ export const items: Item[] = [
       
     },
     {
-      id: 'mushroom',
+      id: 'growing_mushroom',
       name: '쑥쑥 버섯',
-      imageUrl: '/images/items/mushroom.png',
+      imageUrl: '/images/items/growing_mushroom.png',
       
       category: ITEM_CATEGORY.MATERIAL,
       
@@ -1003,14 +1003,6 @@ export const items: Item[] = [
       
     },
     {
-      id: 'processed_leather',
-      name: '가죽',
-      imageUrl: '/images/items/processed_leather.png',
-      
-      category: ITEM_CATEGORY.MATERIAL,
-      
-    },
-    {
       id: 'leather_processing_blueprint',
       name: '가죽 가공 시설 설계도 (3레벨)',
       imageUrl: '/images/items/blueprint.png',
@@ -1813,6 +1805,30 @@ export const items: Item[] = [
       id: 'clean_mushroom',
       name: '깔끔 버섯',
       imageUrl: '/images/items/clean_mushroom.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'amplifying_mushroom',
+      name: '증폭 버섯',
+      imageUrl: '/images/items/amplifying_mushroom.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'amplifying_mushroom_juice',
+      name: '증폭 버섯 진액',
+      imageUrl: '/images/items/amplifying_mushroom_juice.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'amplifying_mushroom_spores',
+      name: '증폭 버섯 포자',
+      imageUrl: '/images/items/amplifying_mushroom_spores.png',
       
       category: ITEM_CATEGORY.MATERIAL,
       

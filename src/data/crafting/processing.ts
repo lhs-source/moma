@@ -169,7 +169,7 @@ export const craftingProcessingRecipes: Recipe[] = [
   {
     id: 'craft_leather',
     name: '가죽',
-    resultItemId: 'processed_leather',
+    resultItemId: 'leather_processed',
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'leather', quantity: 10 }
@@ -185,7 +185,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'leather_plus_processed',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'processed_leather', quantity: 3 },
+      { itemId: 'leather_processed', quantity: 3 },
       { itemId: 'tannin_powder', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
@@ -503,7 +503,7 @@ export const craftingProcessingRecipes: Recipe[] = [
     resultItemId: 'growing_mushroom_spores',
     resultQuantity: 15,
     requiredItems: [
-      { itemId: 'mushroom', quantity: 30 },
+      { itemId: 'growing_mushroom', quantity: 30 },
       { itemId: 'paper', quantity: 3 }
     ],
     category: RECIPE_CATEGORY.PROCESS,
