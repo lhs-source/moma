@@ -136,8 +136,6 @@ import { itemUsageIndex } from '@/utils/itemUsageIndex'
 import { findProcessingRecipesForItem } from '@/utils/recipeDependencyUtils'
 import { formatTime } from '@/utils/timeUtils'
 import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
-import { craftingProcessingRecipes } from '@/data/crafting/processing'
-import { craftingItemRecipes } from '@/data/crafting/crafting_item'
 
 const props = defineProps<{
   item: Item
@@ -160,8 +158,7 @@ const processingRecipes = computed(() => {
 
 // 제작 레시피들 - 한 번만 계산하고 캐시
 const craftableRecipes = computed(() => {
-  const allRecipes = [...recipes, ...craftingProcessingRecipes, ...craftingItemRecipes]
-  return allRecipes.filter(recipe => recipe.resultItemId === props.item.id)
+  return recipes.filter(recipe => recipe.resultItemId === props.item.id)
 })
 
 // 모든 제작 레시피들을 카테고리별로 그룹화
@@ -215,8 +212,7 @@ const getCategoryColors = (category: string) => {
 
 // 가공 레시피에서 재료로 사용되는 레시피들
 const processingRecipeUsage = computed(() => {
-  const allProcessingRecipes = [...craftingProcessingRecipes, ...craftingItemRecipes]
-  return allProcessingRecipes.filter(recipe =>
+  return recipes.filter(recipe =>
     (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
       recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
       recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||

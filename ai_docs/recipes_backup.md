@@ -113,56 +113,10 @@ src/data/recipes/
 
 ## 아이템 제작 (Item Crafting)
 
-| ID | Item Name | Production Amount | Time (seconds) | Materials | Facility Level |
-|----|-----------|-------------------|----------------|-----------|----------------|
-| craft_healing_potion_5 | 회복 물약 x5 | 5 | 60 | 피의 허브 x2, 새록 버섯 x2 | 1 |
-| craft_bandage_10 | 붕대 x10 | 10 | 30 | 옷감 x2 | 1 |
-| craft_auto_healing_potion_5 | 자동회복 물약 x5 | 5 | 120 | 회복 물약 x5, 분해된 장비 부품 x2 | 1 |
-| craft_high_healing_potion_5 | 상급 회복 물약 x5 | 5 | 180 | 피의 허브 x6, 새록 버섯 진액 x5, 새싹 버섯 x2 | 1 |
-| craft_high_auto_healing_potion_5 | 상급 자동회복 물약 x5 | 5 | 300 | 상급 회복 물약 x5, 분해된 장비 부품 x10 | 1 |
-| craft_heat_resistant_bandage_5 | 내열 붕대 x5 | 5 | 300 | 붕대 x5, 튼튼 버섯 가루 x3, 화염의 결정 x1 | 1 |
-| craft_cold_resistant_bandage_5 | 방한 붕대 x5 | 5 | 300 | 붕대 x5, 튼튼 버섯 가루 x3, 얼음의 결정 x1 | 1 |
-| craft_insulation_bandage_5 | 절연 붕대 x5 | 5 | 300 | 붕대 x5, 튼튼 버섯 가루 x3, 번개의 결정 x1 | 1 |
-| craft_blessing_bandage_5 | 축복의 붕대 x5 | 5 | 300 | 붕대 x5, 튼튼 버섯 가루 x3, 광휘의 결정 x1 | 1 |
-| craft_seal_bandage_5 | 봉인의 붕대 x5 | 5 | 480 | 붕대 x5, 튼튼 버섯 가루 x3, 봉인의 결정 x1 | 2 |
-| craft_supreme_healing_potion_5 | 최상급 회복 물약 x5 | 5 | 480 | 피의 허브 x12, 깔끔 버섯 x6, 숨숨꽃 x6 | 2 |
-| craft_high_bandage_10 | 상급 붕대 x10 | 10 | 480 | 상급 옷감 x2 | 2 |
-| craft_supreme_auto_healing_potion_5 | 최상급 자동회복 물약 x5 | 5 | 780 | 최상급 회복 물약 x5, 분해된 장비 부품 x60 | 2 |
-| craft_high_heat_resistant_bandage_5 | 상급 내열 붕대 x5 | 5 | 780 | 상급 붕대 x5, 숨숨꽃 가루 x6, 화염의 결정 x2 | 2 |
-| craft_high_cold_resistant_bandage_5 | 상급 방한 붕대 x5 | 5 | 780 | 상급 붕대 x5, 숨숨꽃 가루 x6, 얼음의 결정 x2 | 2 |
-| craft_high_insulation_bandage_5 | 상급 절연 붕대 x5 | 5 | 780 | 상급 붕대 x5, 숨숨꽃 가루 x6, 번개의 결정 x2 | 2 |
-| craft_high_blessing_bandage_5 | 상급 축복의 붕대 x5 | 5 | 780 | 상급 붕대 x5, 숨숨꽃 가루 x6, 광휘의 결정 x2 | 2 |
-| craft_high_seal_bandage_5 | 상급 봉인의 붕대 x5 | 5 | 780 | 상급 붕대 x5, 숨숨꽃 가루 x6, 봉인의 결정 x2 | 2 |
-| craft_weapon_enchant_stone | 무기 강화석 | 1 | 120 | 철 광석 x5, 석탄 x3 | 1 |
-| craft_armor_enchant_stone | 방어구 강화석 | 1 | 90 | 철 광석 x3, 석탄 x2 | 1 |
-| craft_accessory_enchant_stone | 악세사리 강화석 | 1 | 60 | 철 광석 x2, 석탄 x1 | 1 |
-| craft_fire_magic_bullet | 화염 마법유탄 | 5 | 60 | 화염의 결정 x1, 철 광석 x2 | 1 |
-| craft_ice_magic_bullet | 얼음 마법유탄 | 5 | 60 | 얼음의 결정 x1, 철 광석 x2 | 1 |
-| craft_lightning_magic_bullet | 전기 마법유탄 | 5 | 60 | 번개의 결정 x1, 철 광석 x2 | 1 |
-| craft_red_dye | 빨간 염색약 | 1 | 30 | 빨간 꽃 x3, 물병 x1 | 1 |
-| craft_blue_dye | 파란 염색약 | 1 | 30 | 파란 꽃 x3, 물병 x1 | 1 |
-| craft_yellow_dye | 노란 염색약 | 1 | 30 | 노란 꽃 x3, 물병 x1 | 1 |
-| craft_green_dye | 초록 염색약 | 1 | 30 | 초록 꽃 x3, 물병 x1 | 1 |
-| craft_bread | 빵 | 1 | 60 | 밀가루 x2, 물병 x1 | 1 |
-| craft_cheese | 치즈 | 1 | 120 | 우유 x3 | 1 |
-| craft_high_fabric | 상급 옷감 | 1 | 180 | 옷감 x3, 실크 실 x1 | 2 |
-| craft_silk_thread | 실크 실 | 1 | 90 | 실크 고치 x2 | 1 |
-| craft_tough_mushroom_powder | 튼튼 버섯 가루 | 1 | 30 | 튼튼 버섯 x3 | 1 |
-| craft_hidden_flower_powder | 숨숨꽃 가루 | 1 | 60 | 숨숨꽃 x3 | 2 |
-| craft_campfire_kit | 캠프파이어 키트 | 1 | 30 | 통나무 x2 | 1 |
-| craft_skilled_campfire_kit | 숙련 캠프파이어 키트 | 1 | 180 | 나뭇가지 x5, 상급 통나무 x4, 돌 x10 | 1 |
-| craft_professional_campfire_kit | 전문 캠프파이어 키트 | 1 | 360 | 나뭇가지 x5, 상급 통나무+ x4, 돌 x10 | 2 |
-| craft_bellows | 풀무 | 1 | 480 | 설비 업그레이드 부품 x15, 상급 목재 x3, 금속 가공 설비 설계도 3 x1 | 2 |
-| craft_wooden_pulley | 목공용 도르레 | 1 | 480 | 설비 업그레이드 부품 x15, 합금강괴 x3, 목재 가공 설비 설계도 3 x1 | 2 |
-| craft_flat_knife | 납작칼 | 1 | 480 | 설비 업그레이드 부품 x15, 합금강괴 x3, 가죽 가공 설비 설계도 3 x1 | 2 |
-| craft_thread_making_rod | 실짜기 막대 | 1 | 480 | 설비 업그레이드 부품 x15, 상급 목재 x3, 옷감 가공 설비 설계도 3 x1 | 2 |
-| craft_pottery_wheel | 돌림통 | 1 | 480 | 설비 업그레이드 부품 x15, 상급 목재 x3, 약품 가공 설비 설계도 3 x1 | 2 |
-| craft_food_input_port | 식재료 투입구 | 1 | 480 | 설비 업그레이드 부품 x15, 상급 목재 x3, 식재료 가공 설비 설계도 3 x1 | 2 |
-| craft_iron_anvil | 쇠 모루 | 1 | 600 | 설비 업그레이드 부품 x20, 특수강괴 x5, 무기 작업대 설계도 3 x1 | 2 |
-| craft_tailoring_scissors | 재단 가위 | 1 | 600 | 설비 업그레이드 부품 x20, 특수강괴 x5, 방어구 작업대 설계도 3 x1 | 2 |
-| craft_medicine_bowl | 약사발 | 1 | 600 | 설비 업그레이드 부품 x20, 특수강괴 x5, 약품 작업대 설계도 3 x1 | 2 |
-| craft_iron_furnace | 쇠 화로 | 1 | 600 | 설비 업그레이드 부품 x20, 특수강괴 x5, 음식 작업대 설계도 3 x1 | 2 |
-| craft_rotary_grinder | 회전 연마기 | 1 | 600 | 설비 업그레이드 부품 x20, 상급 목재+ x5, 다목적 작업대 설계도 3 x1 | 2 |
+아이템 제작 레시피는 `src/data/recipes/crafting/crafting_item.ts`에 정의되어 있습니다.
+
+
+
 
 
 ## 음식 제작
@@ -214,12 +168,12 @@ This document contains all recipes from the game database in table format.
 
 ### 제작 레시피 (Crafting Recipes)
 - **요리 레시피**: 25개 레시피 (간편 → 쉐어링)
-- **아이템 제작**: 47개 레시피 (회복 아이템, 특수 붕대, 강화 아이템, 마법유탄, 염색약, 기타 음식, 재료, 캠프파이어, 설비 제작 도구)
+- **아이템 제작**: 50개 레시피 (회복 아이템, 특수 붕대, 강화 아이템, 마법유탄, 염색약, 기타 음식, 재료, 캠프파이어, 설비 제작 도구)
 
 ### 총 레시피 수
 - **가공 레시피**: 43개
 - **요리 레시피**: 25개
-- **아이템 제작 레시피**: 47개
+- **아이템 제작 레시피**: 50개
 - **기타 레시피**: 구매, 드롭, 수집 등
 
 ## Notes

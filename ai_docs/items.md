@@ -159,17 +159,3 @@ This document contains all items from the game database in table format.
 | ore | 광석 | /images/items/default.webp | 일반적인 광석 | false | 재료 | false | - | - |
 | bandage | 붕대 | /images/items/default.webp | 상처를 감쌀 때 사용하는 붕대 | false | 의료 | false | - | - |
 | leather_plus | 가죽+ | /images/items/default.webp | 상급 가죽 | false | 재료 | false | - | - |
-
-## Summary
-
-- **Total Items**: 148
-- **Craftable Items**: 15
-- **Trade Items**: 4
-- **Categories**: 음식, 재료, 가구, 물약, 음악, 설계도, 도구, 광물, 금속, 보석, 장식품, 무기, 책, 의료, 음료
-
-## Notes
-
-- Items marked with `-` in the Price column have no price set
-- Items marked with `-` in the Crafting Recipe column cannot be crafted
-- Some items use default.webp as placeholder images
-- Korean text is preserved as in the original data

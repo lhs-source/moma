@@ -1,21 +1,25 @@
 import { type Recipe } from '@/data/schemas/recipe'
-import { craftingProcessingRecipes } from './crafting/processing'
+import { recipes } from './recipes'
 
-// 모든 제작 레시피
-export const craftingRecipes: Recipe[] = [
-  ...craftingProcessingRecipes
-]
+// 모든 제작 레시피 (PROCESS_* 카테고리만 필터링)
+export const craftingRecipes: Recipe[] = recipes.filter(recipe => 
+  recipe.category === '금속 가공' ||
+  recipe.category === '목재 가공' ||
+  recipe.category === '가죽 가공' ||
+  recipe.category === '옷감 가공' ||
+  recipe.category === '아이템 제작'
+)
 
 // 제작 카테고리별로 그룹화
 export const craftingRecipesByCategory = () => {
   const categoryMap = new Map<string, Recipe[]>()
   
   for (const recipe of craftingRecipes) {
-    if (!recipe.craftingCategory) continue
+    if (!recipe.category) continue
     
-    const categoryRecipes = categoryMap.get(recipe.craftingCategory) || []
+    const categoryRecipes = categoryMap.get(recipe.category) || []
     categoryRecipes.push(recipe)
-    categoryMap.set(recipe.craftingCategory, categoryRecipes)
+    categoryMap.set(recipe.category, categoryRecipes)
   }
   
   return Object.fromEntries(categoryMap)
@@ -27,8 +31,7 @@ export const craftingCategories = [
   '목재 가공', 
   '가죽 가공',
   '옷감 가공',
-  '식재료 가공',
-  '약품 가공'
+  '아이템 제작'
 ]
 
 // 레거시 인터페이스 (기존 코드와의 호환성을 위해)
@@ -55,10 +58,10 @@ export const getCraftingDataLegacy = (): CraftingData => {
   const legacyData: CraftingData = {}
   
   for (const recipe of craftingRecipes) {
-    if (!recipe.craftingCategory) continue
+    if (!recipe.category) continue
     
-    if (!legacyData[recipe.craftingCategory]) {
-      legacyData[recipe.craftingCategory] = {}
+    if (!legacyData[recipe.category]) {
+      legacyData[recipe.category] = {}
     }
     
     const materials: CraftingMaterial = {}
@@ -66,7 +69,7 @@ export const getCraftingDataLegacy = (): CraftingData => {
       materials[item.itemId] = item.quantity
     }
     
-    legacyData[recipe.craftingCategory][recipe.name] = {
+    legacyData[recipe.category][recipe.name] = {
       생산량: recipe.resultQuantity || 1,
       시간: recipe.craftingTime || 0,
       재료: materials

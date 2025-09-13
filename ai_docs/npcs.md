@@ -35,20 +35,3 @@ This document contains all NPCs from the game database in table format.
 | conner | 코너 | 잡화점 | /images/npcs/conner.png | 콜헨 |
 | killian | 킬리언 | 치료소 | /images/npcs/killian.png | 콜헨 |
 | dungeon_cat_merchant | 던전 고양이 상인 | 던전 내 상인 | /images/npcs/dungeon_cat_merchant.png | 던전 |
-
-## Summary
-
-- **Total NPCs**: 33
-- **Locations**: 
-  - 티르코네일: 11 NPCs
-  - 던바튼: 13 NPCs
-  - 두갈드아일: 2 NPCs
-  - 콜헨: 4 NPCs
-  - 얼음 협곡: 1 NPC
-  - 던전: 1 NPC
-
-## Notes
-
-- Korean text is preserved as in the original data
-- All NPCs have unique IDs and are located in specific game areas
-- Each NPC has a specific role/description (shop type, service, etc.)

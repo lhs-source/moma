@@ -1,12 +1,12 @@
 import { type Recipe, type RecipeGroup } from '@/data/schemas/recipe'
 
 // 분리된 레시피 파일들 import
-import { cookingRecipes } from './recipes/cooking'
+import { cookingRecipes } from './recipes/crafting/cooking'
 import { processingRecipes } from './recipes/processing'
 import { gatheringRecipes } from './recipes/gathering'
 import { buyingRecipes } from './recipes/buying'
 import { dropRecipes } from './recipes/drops'
-import { craftingItemRecipes } from './crafting/crafting_item'
+import { craftingItemRecipes } from './recipes/crafting/crafting_item'
 
 // https://www.inven.co.kr/board/mabimo/6366/134
 // 모든 레시피를 통합하여 export
@@ -31,7 +31,7 @@ export const recipesGrouped: RecipeGroup[] = (() => {
 })()
 
 // 개별 카테고리별 export (필요한 경우 사용)
-export { cookingRecipes } from './recipes/cooking'
+export { cookingRecipes } from './recipes/crafting/cooking'
 export { processingRecipes } from './recipes/processing'
 export { gatheringRecipes } from './recipes/gathering'
 export { buyingRecipes } from './recipes/buying'

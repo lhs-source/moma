@@ -86,27 +86,3 @@ This document contains all trade data from the game database in table format.
 | dungeon_cat_travelers_snack | dungeon_cat_merchant | travelers_snack | 100 | salt | 2 | daily | character | 1 | true |
 | dungeon_cat_bandage | dungeon_cat_merchant | bandage | 100 | sugar | 2 | daily | character | 1 | true |
 | dungeon_cat_healing_potion | dungeon_cat_merchant | healing_potion | 100 | cabbage | 2 | daily | character | 1 | true |
-
-## Summary
-
-- **Total Trades**: 67
-- **Trade Types**: 
-  - daily: 62 trades
-  - account: 2 trades
-  - none: 3 trades
-- **Scope**: All trades are character-scoped
-- **Max Exchanges**: Range from 0 to 100, most are 1-10
-
-## Trade Types
-
-- **daily**: Can be traded once per day
-- **account**: Can be traded once per account
-- **none**: No limit on trading (maxExchanges = 0)
-
-## Notes
-
-- Korean text is preserved as in the original data
-- All trades are currently enabled
-- Most trades involve exchanging crafted items for materials or special items
-- Some trades have very high exchange rates (e.g., 100:1 ratios)
-- The dungeon cat merchant offers basic material trades at high quantities
