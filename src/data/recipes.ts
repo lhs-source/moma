@@ -6,6 +6,7 @@ import { processingRecipes } from './recipes/processing'
 import { gatheringRecipes } from './recipes/gathering'
 import { buyingRecipes } from './recipes/buying'
 import { dropRecipes } from './recipes/drops'
+import { craftingItemRecipes } from './crafting/crafting_item'
 
 // https://www.inven.co.kr/board/mabimo/6366/134
 // 모든 레시피를 통합하여 export
@@ -14,7 +15,8 @@ export const recipes: Recipe[] = [
   ...processingRecipes,
   ...gatheringRecipes,
   ...buyingRecipes,
-  ...dropRecipes
+  ...dropRecipes,
+  ...craftingItemRecipes
 ]
 
 // 결과 아이템별 레시피 그룹화 버전 (기존 export 유지)

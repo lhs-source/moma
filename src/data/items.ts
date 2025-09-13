@@ -1866,4 +1866,640 @@ export const items: Item[] = [
       
     },
 
+    // 아이템 제작 레시피 결과물들
+    {
+      id: 'healing_potion_5',
+      name: '회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'bandage_10',
+      name: '붕대 x10',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'auto_healing_potion_5',
+      name: '자동회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_healing_potion_5',
+      name: '상급 회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_auto_healing_potion_5',
+      name: '상급 자동회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'heat_resistant_bandage_5',
+      name: '내열 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'cold_resistant_bandage_5',
+      name: '방한 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'insulation_bandage_5',
+      name: '절연 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'blessing_bandage_5',
+      name: '축복의 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'seal_bandage_5',
+      name: '봉인의 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'supreme_healing_potion_5',
+      name: '최상급 회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_bandage_10',
+      name: '상급 붕대 x10',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'supreme_auto_healing_potion_5',
+      name: '최상급 자동회복 물약 x5',
+      imageUrl: '/images/items/healing_potion.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_heat_resistant_bandage_5',
+      name: '상급 내열 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_cold_resistant_bandage_5',
+      name: '상급 방한 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_insulation_bandage_5',
+      name: '상급 절연 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_blessing_bandage_5',
+      name: '상급 축복의 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_seal_bandage_5',
+      name: '상급 봉인의 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'weapon_enchant_stone',
+      name: '무기 강화석',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'armor_enchant_stone',
+      name: '방어구 강화석',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'accessory_enchant_stone',
+      name: '악세사리 강화석',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'fire_magic_bullet',
+      name: '화염 마법유탄',
+      imageUrl: '/images/items/fire_bomb.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'ice_magic_bullet',
+      name: '얼음 마법유탄',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'lightning_magic_bullet',
+      name: '전기 마법유탄',
+      imageUrl: '/images/items/thunder_bomb.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'red_dye',
+      name: '빨간 염색약',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'blue_dye',
+      name: '파란 염색약',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'yellow_dye',
+      name: '노란 염색약',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'green_dye',
+      name: '초록 염색약',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'bread',
+      name: '빵',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.FOOD,
+      
+    },
+    {
+      id: 'high_fabric',
+      name: '상급 옷감',
+      imageUrl: '/images/items/superior_fabric.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'silk_thread',
+      name: '실크 실',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'tough_mushroom_powder',
+      name: '튼튼 버섯 가루',
+      imageUrl: '/images/items/sturdy_mushroom_powder.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'skilled_campfire_kit',
+      name: '숙련 캠프파이어 키트',
+      imageUrl: '/images/items/campfire_kit.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'professional_campfire_kit',
+      name: '전문 캠프파이어 키트',
+      imageUrl: '/images/items/campfire_kit.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'bellows',
+      name: '풀무',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'wooden_pulley',
+      name: '목공용 도르레',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'flat_knife',
+      name: '납작칼',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'thread_making_rod',
+      name: '실짜기 막대',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'pottery_wheel',
+      name: '돌림통',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'food_input_port',
+      name: '식재료 투입구',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'iron_anvil',
+      name: '쇠 모루',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'tailoring_scissors',
+      name: '재단 가위',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'medicine_bowl',
+      name: '약사발',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'iron_furnace',
+      name: '쇠 화로',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'rotary_grinder',
+      name: '회전 연마기',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+
+    // 아이템 제작 레시피 재료들
+    {
+      id: 'bloody_herb',
+      name: '블러디 허브',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'saelok_mushroom',
+      name: '새록 버섯',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'saelok_mushroom_essence',
+      name: '새록 버섯 진액',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'sprout_mushroom',
+      name: '쑥쑥 버섯',
+      imageUrl: '/images/items/growing_mushroom.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'disassembled_equipment_part',
+      name: '분해된 장비 부품',
+      imageUrl: '/images/items/equipment_parts.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'bandage_5',
+      name: '붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'high_bandage_5',
+      name: '상급 붕대 x5',
+      imageUrl: '/images/items/bandage.png',
+      
+      category: ITEM_CATEGORY.POTION,
+      
+    },
+    {
+      id: 'flame_crystal',
+      name: '불꽃의 결정',
+      imageUrl: '/images/items/fire_crystal.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'lightning_crystal',
+      name: '전기의 결정',
+      imageUrl: '/images/items/electric_crystal.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'radiance_crystal',
+      name: '광휘의 결정',
+      imageUrl: '/images/items/light_crystal.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'red_flower',
+      name: '빨간 꽃',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'blue_flower',
+      name: '파란 꽃',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'yellow_flower',
+      name: '노란 꽃',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'green_flower',
+      name: '초록 꽃',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'silk_cocoon',
+      name: '실크 고치',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'tough_mushroom',
+      name: '튼튼 버섯',
+      imageUrl: '/images/items/sturdy_mushroom.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'branch',
+      name: '나뭇가지',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'high_log',
+      name: '상급 통나무',
+      imageUrl: '/images/items/superior_log.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'high_log_plus',
+      name: '상급 통나무+',
+      imageUrl: '/images/items/superior_log_plus.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'stone',
+      name: '돌멩이',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'facility_upgrade_part',
+      name: '설비 개조 부품',
+      imageUrl: '/images/items/default.webp',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'high_wood',
+      name: '상급 목재',
+      imageUrl: '/images/items/superior_wood.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'high_wood_plus',
+      name: '상급 목재+',
+      imageUrl: '/images/items/superior_wood_plus.png',
+      
+      category: ITEM_CATEGORY.MATERIAL,
+      
+    },
+    {
+      id: 'metal_processing_facility_design_3',
+      name: '금속 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'wood_processing_facility_design_3',
+      name: '목재 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'leather_processing_facility_design_3',
+      name: '가죽 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'fabric_processing_facility_design_3',
+      name: '옷감 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'medicine_processing_facility_design_3',
+      name: '약품 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'food_processing_facility_design_3',
+      name: '식재료 가공 시설 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'weapon_workbench_design_3',
+      name: '무기 제작대 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'armor_workbench_design_3',
+      name: '방어구 제작대 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'medicine_workbench_design_3',
+      name: '약품 제작대 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'food_workbench_design_3',
+      name: '음식 제작대 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+    {
+      id: 'multi_purpose_workbench_design_3',
+      name: '다목적 제작대 설계도 (3레벨)',
+      imageUrl: '/images/items/blueprint.png',
+      
+      category: ITEM_CATEGORY.OTHER,
+      
+    },
+
   ]

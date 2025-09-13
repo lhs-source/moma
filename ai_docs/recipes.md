@@ -1,5 +1,33 @@
 # Recipes Database
 
+## 금속 가공
+
+
+## 목재 가공
+
+
+## 가죽 가공
+
+
+## 옷감 가공
+
+
+## 약품 가공
+
+
+## 식재료 가공
+
+
+
+
+## 아이템 제작 
+
+
+
+
+
+## 음식 제작
+
 This document contains all recipes from the game database in table format.
 
 | ID | Name | Result Item | Required Items | Category | Facility Level |
@@ -34,18 +62,6 @@ This document contains all recipes from the game database in table format.
 | flour | 밀가루 | flour | wheat x15 | 기타 | 5 |
 | shawarma | 샤와르마 | shawarma | lean_meat x10, bean x12, flour x3, cabbage x5, lemon x2 | 힘 특화 | 13 |
 | meat_parmigiana | 미트 파르미자나 | meat_parmigiana | lean_meat x10, cheese x3, tomato x1, pepper x1, salt x1 | 힘 특화 | 13 |
-
-## Summary
-
-- **Total Recipes**: 30
-- **Categories**: 
-  - 힘 특화: 8 recipes
-  - 솜씨 특화: 6 recipes
-  - 지력 특화: 6 recipes
-  - 쉐어링: 4 recipes
-  - 간편: 3 recipes
-  - 기타: 3 recipes
-- **Facility Levels**: 1, 3, 5, 10, 13, 15
 
 ## Notes
 
