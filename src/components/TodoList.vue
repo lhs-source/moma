@@ -105,21 +105,22 @@ const resetDailyTodos = () => {
 
 <template>
   <div class="todo-list">
-    <h2 class="text-xl font-bold mb-4">TODO 목록</h2>
+    <h2 class="text-xl font-bold mb-4 text-foreground">TODO 목록</h2>
 
     <!-- 월요일 리셋 -->
     <div class="mb-6">
       <div class="flex justify-between items-center mb-3">
-        <h3 class="text-lg font-semibold text-blue-600">월요일 리셋</h3>
-        <button @click="resetWeeklyTodos" class="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">
+        <h3 class="text-lg font-semibold text-primary">월요일 리셋</h3>
+        <button @click="resetWeeklyTodos"
+          class="px-3 py-1 bg-primary text-primary-foreground rounded text-sm hover:bg-primary/90">
           리셋
         </button>
       </div>
       <div class="space-y-2">
         <div v-for="todo in weeklyTodos" :key="todo.id"
-          class="flex items-center p-2 bg-white border rounded-lg hover:bg-gray-50">
-          <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo.id)" class="mr-3" />
-          <span :class="{ 'line-through text-gray-500': todo.completed }">
+          class="flex items-center p-2 bg-card border border-border rounded-lg hover:bg-accent">
+          <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo.id)" class="mr-3 accent-primary" />
+          <span :class="{ 'line-through text-muted-foreground': todo.completed }" class="text-foreground">
             {{ todo.text }}
           </span>
         </div>
@@ -129,16 +130,17 @@ const resetDailyTodos = () => {
     <!-- 일일 -->
     <div>
       <div class="flex justify-between items-center mb-3">
-        <h3 class="text-lg font-semibold text-green-600">일일</h3>
-        <button @click="resetDailyTodos" class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600">
+        <h3 class="text-lg font-semibold text-green-600 dark:text-green-400">일일</h3>
+        <button @click="resetDailyTodos"
+          class="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600">
           리셋
         </button>
       </div>
       <div class="space-y-2">
         <div v-for="todo in dailyTodos" :key="todo.id"
-          class="flex items-center p-2 bg-white border rounded-lg hover:bg-gray-50">
-          <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo.id)" class="mr-3" />
-          <span :class="{ 'line-through text-gray-500': todo.completed }">
+          class="flex items-center p-2 bg-card border border-border rounded-lg hover:bg-accent">
+          <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo.id)" class="mr-3 accent-primary" />
+          <span :class="{ 'line-through text-muted-foreground': todo.completed }" class="text-foreground">
             {{ todo.text }}
           </span>
         </div>

@@ -1,20 +1,13 @@
 <template>
   <div class="membership-toggle flex items-center space-x-2 py-2">
-    <span class="text-sm font-medium">멤버십 혜택</span>
-    <button 
-      @click="toggleMembership" 
+    <span class="text-sm font-medium text-foreground">멤버십 혜택</span>
+    <button @click="toggleMembership"
       class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none"
-      :class="isMembershipEnabled ? 'bg-blue-600' : 'bg-gray-200'"
-    >
-      <span
-        class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
-        :class="isMembershipEnabled ? 'translate-x-6' : 'translate-x-1'"
-      />
+      :class="isMembershipEnabled ? 'bg-foreground' : 'bg-muted'">
+      <span class="inline-block h-4 w-4 transform rounded-full bg-background transition-transform"
+        :class="isMembershipEnabled ? 'translate-x-6' : 'translate-x-1'" />
     </button>
-    <span 
-      class="text-sm"
-      :class="isMembershipEnabled ? 'text-blue-600 font-medium' : 'text-gray-500'"
-    >
+    <span class="text-sm" :class="isMembershipEnabled ? 'text-foreground font-medium' : 'text-muted-foreground'">
       {{ isMembershipEnabled ? '활성화' : '비활성화' }}
     </span>
   </div>

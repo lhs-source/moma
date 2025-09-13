@@ -72,14 +72,11 @@ const calculateTotalRequiredMaterials = computed(() => {
     <h3 class="text-lg font-semibold mb-2">주간 최종 필요한 아이템</h3>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
       <div v-for="material in calculateTotalRequiredMaterials" :key="material.itemId"
-           class="flex items-center p-2 bg-card/50 rounded-lg border border-border/50">
-        <img 
-          :src="getItemInfo(material.itemId)?.imageUrl" 
-          :alt="getItemInfo(material.itemId)?.name"
-          class="w-4 h-4 object-contain mr-1"
-        />
+        class="flex items-center p-2 bg-card/50 rounded-lg border border-border/50">
+        <img :src="getItemInfo(material.itemId)?.imageUrl" :alt="getItemInfo(material.itemId)?.name"
+          class="w-4 h-4 object-contain mr-1" />
         <span class="text-sm">{{ getItemInfo(material.itemId)?.name }}</span>
-        <span class="text-primary ml-1 text-sm">{{ material.quantity }}개</span>
+        <span class="text-foreground ml-1 text-sm">{{ material.quantity }}개</span>
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 <template>
   <div class="p-4 space-y-4">
-    <h3 class="text-lg font-semibold">Select 테스트</h3>
+    <h3 class="text-lg font-semibold text-foreground">Select 테스트</h3>
 
     <div class="space-y-2">
-      <label class="text-sm font-medium">카테고리 선택:</label>
+      <label class="text-sm font-medium text-foreground">카테고리 선택:</label>
       <Select v-model="testValue" default-value="">
         <SelectTrigger class="w-[200px]">
           <SelectValue placeholder="선택하세요" />
@@ -15,7 +15,7 @@
           <SelectItem value="소모품">소모품</SelectItem>
         </SelectContent>
       </Select>
-      <p class="text-sm text-gray-600">선택된 값: {{ testValue || '없음' }}</p>
+      <p class="text-sm text-muted-foreground">선택된 값: {{ testValue || '없음' }}</p>
     </div>
   </div>
 </template>

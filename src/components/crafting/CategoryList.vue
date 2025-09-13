@@ -1,11 +1,12 @@
 <template>
   <div class="category-list h-auto">
-    <h2 class="text-xl font-bold mb-3">가공처</h2>
+    <h2 class="text-xl font-bold mb-3 text-foreground">가공처</h2>
     <div class="overflow-y-auto max-h-60 pr-2">
-      <div v-for="category in categories" :key="category" :class="['category-item p-2 mb-2 rounded cursor-pointer border hover:bg-gray-100',
-        selectedCategory === category ? 'bg-blue-50 border-blue-300' : 'border-gray-200']"
+      <div v-for="category in categories" :key="category" :class="[
+        'category-item p-2 mb-2 rounded cursor-pointer border hover:bg-accent',
+        selectedCategory === category ? 'bg-accent border-foreground' : 'border-border']"
         @click="selectCategory(category)">
-        {{ category }}
+        <span class="text-foreground">{{ category }}</span>
       </div>
     </div>
   </div>

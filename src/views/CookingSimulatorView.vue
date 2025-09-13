@@ -1,21 +1,22 @@
 <template>
-  <div class="h-screen flex flex-col overflow-hidden bg-gray-50 wrapper">
+  <div class="h-screen flex flex-col overflow-hidden bg-background wrapper">
     <div
-      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-white border-b flex-shrink-0 shadow-sm">
-      <h1 class="text-lg font-bold">요리 시뮬레이팅</h1>
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-card border-b border-border flex-shrink-0 shadow-sm">
+      <h1 class="text-lg font-bold text-foreground">요리 시뮬레이팅</h1>
       <div class="flex flex-col sm:flex-row gap-1 items-center">
-        <label class="text-xs text-gray-600">주간 획득 한도 입력</label>
+        <label class="text-xs text-muted-foreground">주간 획득 한도 입력</label>
       </div>
     </div>
 
     <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 overflow-hidden main-container">
       <!-- 왼쪽 열: 요리 목록 -->
-      <div class="border border-gray-200 rounded bg-white flex flex-col overflow-hidden shadow-sm column-container">
-        <div class="p-1 border-b border-gray-200 flex-shrink-0 bg-gray-50">
+      <div class="border border-border rounded bg-card flex flex-col overflow-hidden shadow-sm column-container">
+        <div class="p-1 border-b border-border flex-shrink-0 bg-muted/50">
           <div class="flex gap-1 items-center">
             <input v-model="searchQuery" type="text" placeholder="요리 이름 검색..."
-              class="px-1 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent w-full text-xs" />
-            <select v-model="selectedFacilityLevel" class="px-1 py-1 border border-gray-300 rounded text-xs">
+              class="px-1 py-1 border border-input rounded focus:outline-none focus:ring-1 focus:ring-ring focus:border-transparent w-full text-xs bg-background text-foreground" />
+            <select v-model="selectedFacilityLevel"
+              class="px-1 py-1 border border-input rounded text-xs bg-background text-foreground">
               <option value="">모든 레벨</option>
               <option v-for="level in facilityLevels" :key="level" :value="level">Lv.{{ level }}</option>
             </select>
@@ -30,14 +31,14 @@
       </div>
 
       <!-- 오른쪽 열: 필요 재료 및 비용 -->
-      <div class="border border-gray-200 rounded bg-white flex flex-col overflow-hidden shadow-sm column-container">
-        <div class="p-1 border-b border-gray-200 flex-shrink-0 bg-gray-50">
-          <h2 class="text-sm font-bold">필요 재료 및 비용</h2>
+      <div class="border border-border rounded bg-card flex flex-col overflow-hidden shadow-sm column-container">
+        <div class="p-1 border-b border-border flex-shrink-0 bg-muted/50">
+          <h2 class="text-sm font-bold text-foreground">필요 재료 및 비용</h2>
         </div>
 
         <div class="flex-1 overflow-y-auto p-1 space-y-1 min-h-0 scroll-container">
           <div>
-            <h3 class="text-xs font-semibold text-gray-700 mb-1">선택한 총 제작 요리 목록</h3>
+            <h3 class="text-xs font-semibold text-muted-foreground mb-1">선택한 총 제작 요리 목록</h3>
             <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
               :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @remove="removeSelected" />
           </div>
@@ -222,17 +223,17 @@ onUnmounted(() => {
 }
 
 .overflow-y-auto::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: hsl(var(--muted));
   border-radius: 2px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 2px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: hsl(var(--muted-foreground) / 0.5);
 }
 
 /* 전체 페이지 스크롤 방지 */

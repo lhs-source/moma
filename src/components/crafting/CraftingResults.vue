@@ -1,20 +1,20 @@
 <template>
-  <div class="crafting-results p-4 border border-gray-200 rounded-lg">
-    <h2 class="text-xl font-bold mb-4">제작 결과</h2>
+  <div class="crafting-results p-4 border border-border rounded-lg bg-card">
+    <h2 class="text-xl font-bold mb-4 text-foreground">제작 결과</h2>
 
     <div class="grid grid-cols-1 gap-6">
       <!-- 필요 재료 -->
       <div class="materials">
-        <h3 class="text-lg font-semibold mb-2">필요 재료</h3>
-        <div v-if="Object.keys(totalMaterials).length > 0" class="p-3 bg-gray-50 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 text-foreground">필요 재료</h3>
+        <div v-if="Object.keys(totalMaterials).length > 0" class="p-3 bg-muted/50 rounded-lg">
           <!-- 제작 횟수 정보 -->
-          <div class="mb-4 p-3 bg-blue-50 rounded-lg">
-            <h4 class="font-medium text-blue-800 mb-2">제작 횟수 정보</h4>
+          <div class="mb-4 p-3 bg-accent rounded-lg">
+            <h4 class="font-medium text-foreground mb-2">제작 횟수 정보</h4>
             <div class="grid grid-cols-2 gap-2">
               <div v-for="(categoryItems, category) in selectedItemsByCategory" :key="category" class="text-sm">
-                <div class="font-medium text-gray-700 mb-1">{{ category }}</div>
+                <div class="font-medium text-foreground mb-1">{{ category }}</div>
                 <div v-for="selectedItem in categoryItems" :key="selectedItem.recipe.id"
-                  class="text-xs text-gray-600 ml-2 flex items-center gap-1">
+                  class="text-xs text-muted-foreground ml-2 flex items-center gap-1">
                   <img :src="getItemImageUrlById(selectedItem.recipe.resultItemId)" :alt="selectedItem.recipe.name"
                     class="w-3 h-3 object-cover rounded">
                   <span>{{ selectedItem.recipe.name }}: {{ selectedItem.quantity }}회 ({{ getTotalQuantity(selectedItem)
@@ -27,41 +27,41 @@
           <!-- 필요 재료 -->
           <div class="grid grid-cols-3 gap-3">
             <div v-for="(amount, material) in totalMaterials" :key="material"
-              class="p-2 border border-gray-200 rounded-lg bg-white flex items-center gap-2">
+              class="p-2 border border-border rounded-lg bg-card flex items-center gap-2">
               <img :src="getItemImageUrlById(String(material))" :alt="getItemInfoById(String(material)).name"
                 class="w-6 h-6 object-cover rounded">
               <div class="flex-1">
-                <div class="font-medium text-sm">{{ getItemInfoById(String(material)).name }}</div>
-                <div class="text-right text-sm text-blue-600">{{ amount }}개</div>
+                <div class="font-medium text-sm text-foreground">{{ getItemInfoById(String(material)).name }}</div>
+                <div class="text-right text-sm text-foreground">{{ amount }}개</div>
               </div>
             </div>
           </div>
         </div>
-        <div v-else class="text-center py-4 text-gray-500">
+        <div v-else class="text-center py-4 text-muted-foreground">
           선택된 항목이 없습니다
         </div>
       </div>
 
       <!-- 제작 시간 -->
       <div class="crafting-time">
-        <h3 class="text-lg font-semibold mb-2">제작 시간</h3>
-        <div v-if="hasSelectedItems" class="p-3 bg-gray-50 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 text-foreground">제작 시간</h3>
+        <div v-if="hasSelectedItems" class="p-3 bg-muted/50 rounded-lg">
           <div class="grid grid-cols-1 gap-2">
             <div v-for="(time, category) in filteredCategoryTimes" :key="category"
-              class="p-2 border border-gray-200 rounded-lg bg-white flex justify-between items-center">
-              <span class="font-medium">{{ category }}</span>
-              <span>{{ formatTime(time) }}</span>
+              class="p-2 border border-border rounded-lg bg-card flex justify-between items-center">
+              <span class="font-medium text-foreground">{{ category }}</span>
+              <span class="text-foreground">{{ formatTime(time) }}</span>
             </div>
           </div>
 
-          <div class="mt-3 pt-3 border-t border-gray-200">
-            <div class="flex justify-between font-semibold">
+          <div class="mt-3 pt-3 border-t border-border">
+            <div class="flex justify-between font-semibold text-foreground">
               <span>총 제작 시간</span>
               <span>{{ formatTime(totalTime) }}</span>
             </div>
 
             <!-- 멤버십 상태 정보 -->
-            <div v-if="isMembershipEnabled" class="mt-2 text-sm text-blue-600">
+            <div v-if="isMembershipEnabled" class="mt-2 text-sm text-foreground">
               <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
@@ -73,7 +73,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="text-center py-4 text-gray-500">
+        <div v-else class="text-center py-4 text-muted-foreground">
           선택된 항목이 없습니다
         </div>
       </div>

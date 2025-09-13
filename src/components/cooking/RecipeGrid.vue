@@ -1,21 +1,24 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <div v-for="recipe in recipes" :key="recipe.id" class="border border-gray-100 rounded p-3 hover:shadow-sm bg-white">
+    <div v-for="recipe in recipes" :key="recipe.id" class="border border-border rounded p-3 hover:shadow-sm bg-card">
       <div class="flex items-start gap-3">
         <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name" class="w-12 h-12 rounded object-cover"
           @error="handleImageError" />
         <div class="flex-1 min-w-0">
           <div class="flex items-center justify-between">
             <div class="truncate">
-              <div class="font-semibold">{{ recipe.name }}</div>
+              <div class="font-semibold text-foreground">{{ recipe.name }}</div>
             </div>
             <div class="flex items-center gap-2">
-              <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
+              <button type="button"
+                class="px-2 py-1 border border-border rounded text-foreground hover:bg-accent bg-background"
                 @click="decrementCount(recipe.id)">-</button>
-              <input type="number" min="0" class="w-16 text-center px-2 py-1 border rounded"
+              <input type="number" min="0"
+                class="w-16 text-center px-2 py-1 border border-border rounded bg-background text-foreground"
                 :value="selectedCounts[recipe.id] ?? 0"
                 @input="onChange(recipe.id, ($event.target as HTMLInputElement).value)" />
-              <button type="button" class="px-2 py-1 border rounded text-gray-700 hover:bg-gray-50"
+              <button type="button"
+                class="px-2 py-1 border border-border rounded text-foreground hover:bg-accent bg-background"
                 @click="incrementCount(recipe.id)">+</button>
             </div>
           </div>
@@ -23,8 +26,8 @@
             <div v-for="ri in recipe.requiredItems" :key="ri.itemId" class="flex items-center gap-2">
               <img :src="getItemImageUrl(ri.itemId)" :alt="getItemName(ri.itemId)" class="w-5 h-5 rounded object-cover"
                 @error="handleImageError" />
-              <span class="text-gray-700 truncate">{{ getItemName(ri.itemId) }}</span>
-              <span class="ml-auto text-gray-500">x{{ ri.quantity }}</span>
+              <span class="text-foreground truncate">{{ getItemName(ri.itemId) }}</span>
+              <span class="ml-auto text-muted-foreground">x{{ ri.quantity }}</span>
             </div>
           </div>
         </div>

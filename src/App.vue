@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import ThemeToggle from '@/components/ui/theme-toggle.vue'
 </script>
 
 <template>
@@ -45,6 +46,7 @@ import { RouterLink, RouterView } from 'vue-router'
               active-class="text-foreground">
               소개
             </RouterLink>
+            <ThemeToggle />
           </div>
         </nav>
       </div>

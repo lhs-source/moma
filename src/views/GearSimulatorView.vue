@@ -4,25 +4,22 @@
 
     <!-- 장비 부위 선택 -->
     <div class="flex flex-wrap gap-2">
-      <button
-        v-for="part in parts"
-        :key="part.value"
-        class="px-3 py-1.5 rounded border"
-        :class="selectedPart === part.value ? 'bg-primary text-primary-foreground' : 'bg-card'"
-        @click="selectPart(part.value)"
-      >
+      <button v-for="part in parts" :key="part.value" class="px-3 py-1.5 rounded border border-border"
+        :class="selectedPart === part.value ? 'bg-primary text-primary-foreground' : 'bg-card hover:bg-accent'"
+        @click="selectPart(part.value)">
         {{ part.label }}
       </button>
     </div>
 
     <!-- 룬 목록 -->
     <div v-if="selectedPart" class="space-y-2">
-      <h2 class="text-lg font-semibold">{{ partLabel }} 룬 선택</h2>
+      <h2 class="text-lg font-semibold text-foreground">{{ partLabel }} 룬 선택</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        <label v-for="rune in runesForPart" :key="rune.id" class="p-3 border rounded flex items-center gap-2 cursor-pointer">
+        <label v-for="rune in runesForPart" :key="rune.id"
+          class="p-3 border border-border rounded bg-card hover:bg-accent flex items-center gap-2 cursor-pointer">
           <input type="checkbox" :value="rune.id" v-model="selectedRuneIds" class="accent-primary" />
-          <span>{{ rune.name }}</span>
-          <span class="text-xs ml-auto" :class="rune.source === 'raid' ? 'text-red-600' : 'text-purple-600'">
+          <span class="text-foreground">{{ rune.name }}</span>
+          <span class="text-xs ml-auto" :class="rune.source === 'raid' ? 'text-destructive' : 'text-purple-500'">
             {{ rune.source.toUpperCase() }}
           </span>
         </label>
@@ -30,10 +27,10 @@
     </div>
 
     <!-- 결과 -->
-    <div v-if="selectedRuneIds.length" class="mt-6 p-4 border rounded bg-card/50">
-      <h2 class="text-lg font-semibold mb-2">결과</h2>
+    <div v-if="selectedRuneIds.length" class="mt-6 p-4 border border-border rounded bg-card">
+      <h2 class="text-lg font-semibold mb-2 text-foreground">결과</h2>
       <div class="space-y-1 text-sm">
-        <div v-for="item in resultList" :key="item.id" class="flex justify-between">
+        <div v-for="item in resultList" :key="item.id" class="flex justify-between text-foreground">
           <span>{{ item.name }}</span>
           <span>
             {{ item.cost }}
@@ -41,8 +38,8 @@
           </span>
         </div>
       </div>
-      <hr class="my-2" />
-      <div class="font-medium flex justify-between">
+      <hr class="my-2 border-border" />
+      <div class="font-medium flex justify-between text-foreground">
         <span>총 예상 소요</span>
         <span>{{ totalWeeks }}주</span>
       </div>
@@ -105,4 +102,4 @@ const partLabel = computed(() => {
 
 <style scoped>
 /* 기본 색상 변수 등이 Tailwind를 통해 설정되어 있다고 가정 */
-</style> 
+</style>

@@ -1,15 +1,15 @@
 <template>
-  <div class="border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow bg-white">
+  <div class="border border-border rounded-lg p-3 hover:shadow-md transition-shadow bg-card">
     <!-- 상단: 이미지와 이름 정보 -->
     <div class="flex items-start gap-3 mb-4">
       <img :src="item.imageUrl" :alt="item.name" class="w-16 h-16 object-cover rounded flex-shrink-0"
         @error="handleImageError" />
       <div class="flex-1 min-w-0">
-        <div v-if="item.category" class="text-xs text-gray-500 mb-1">
+        <div v-if="item.category" class="text-xs text-muted-foreground mb-1">
           {{ item.category }}
         </div>
-        <h3 class="font-bold text-base text-gray-900">{{ item.name }}</h3>
-        <p class="text-xs text-gray-500 mt-1">ID: {{ item.id }}</p>
+        <h3 class="font-bold text-base text-foreground">{{ item.name }}</h3>
+        <p class="text-xs text-muted-foreground mt-1">ID: {{ item.id }}</p>
       </div>
     </div>
 
@@ -20,53 +20,53 @@
         <div class="flex flex-wrap gap-1">
           <span v-for="usageType in usageTypes" :key="usageType" :class="{
             'inline-block px-2 py-1 text-xs rounded': true,
-            'bg-purple-100 text-purple-800': usageType === '레시피',
-            'bg-indigo-100 text-indigo-800': usageType === '교환',
-            'bg-emerald-100 text-emerald-800': usageType === '구매'
+            'bg-accent text-foreground': usageType === '레시피',
+            'bg-muted text-foreground': usageType === '교환',
+            'bg-secondary text-foreground': usageType === '구매'
           }">
             {{ usageType }}
           </span>
           <span v-if="processingRecipes.length > 0"
-            class="inline-block px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-800">
+            class="inline-block px-2 py-1 text-xs rounded bg-muted text-foreground">
             가공
           </span>
           <span v-if="processingRecipeUsage.length > 0"
-            class="inline-block px-2 py-1 text-xs rounded bg-purple-100 text-purple-800">
+            class="inline-block px-2 py-1 text-xs rounded bg-accent text-foreground">
             가공 재료
           </span>
         </div>
       </div>
 
       <!-- 레시피 사용처 -->
-      <div v-if="itemUsage?.usageTypes.recipes.length" class="bg-purple-50 rounded-lg p-3 border border-purple-200">
-        <p class="text-xs font-medium text-purple-800 mb-2 text-center">재료로 사용되는 레시피</p>
+      <div v-if="itemUsage?.usageTypes.recipes.length" class="bg-muted rounded-lg p-3 border border-border">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">재료로 사용되는 레시피</p>
         <table class="w-full text-xs">
           <tbody>
-            <tr v-for="recipeUsage in itemUsage.usageTypes.recipes" :key="recipeUsage.recipeId" class="text-gray-700">
+            <tr v-for="recipeUsage in itemUsage.usageTypes.recipes" :key="recipeUsage.recipeId" class="text-foreground">
               <td class="font-medium text-left pr-2">{{ recipeUsage.resultItemName }} {{ recipeUsage.resultQuantity }}개
               </td>
-              <td class="text-gray-600 text-left w-20">{{ recipeUsage.quantity }}개 필요</td>
+              <td class="text-muted-foreground text-left w-20">{{ recipeUsage.quantity }}개 필요</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- 가공 레시피 사용처 -->
-      <div v-if="processingRecipeUsage.length > 0" class="bg-purple-50 rounded-lg p-3 border border-purple-200">
-        <p class="text-xs font-medium text-purple-800 mb-2 text-center">재료로 사용되는 가공 레시피</p>
+      <div v-if="processingRecipeUsage.length > 0" class="bg-muted rounded-lg p-3 border border-border">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">재료로 사용되는 가공 레시피</p>
         <table class="w-full text-xs">
           <tbody>
-            <tr v-for="recipe in processingRecipeUsage" :key="recipe.id" class="text-gray-700">
+            <tr v-for="recipe in processingRecipeUsage" :key="recipe.id" class="text-foreground">
               <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">
                 <div>{{ recipe.name }} {{ recipe.resultQuantity || 1 }}개</div>
-                <div v-if="recipe.craftingTime" class="text-blue-600 font-medium">
+                <div v-if="recipe.craftingTime" class="text-foreground font-medium">
                   {{ formatTime(recipe.craftingTime) }}
                 </div>
-                <div v-if="recipe.craftingCategory" class="text-gray-500 text-xs">
+                <div v-if="recipe.craftingCategory" class="text-muted-foreground text-xs">
                   {{ recipe.craftingCategory }}
                 </div>
               </td>
-              <td class="text-gray-600 text-left">
+              <td class="text-muted-foreground text-left">
                 <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
                   {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
                     ? ', ' : '' }} </span>
@@ -77,36 +77,36 @@
       </div>
 
       <!-- 교환 사용처 -->
-      <div v-if="itemUsage?.usageTypes.trades.length" class="bg-indigo-50 rounded-lg p-3 border border-indigo-200">
-        <p class="text-xs font-medium text-indigo-800 mb-2 text-center">교환에 사용</p>
+      <div v-if="itemUsage?.usageTypes.trades.length" class="bg-muted rounded-lg p-3 border border-border">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">교환에 사용</p>
         <table class="w-full text-xs">
           <tbody>
-            <tr v-for="tradeUsage in itemUsage.usageTypes.trades" :key="tradeUsage.tradeId" class="text-gray-700">
+            <tr v-for="tradeUsage in itemUsage.usageTypes.trades" :key="tradeUsage.tradeId" class="text-foreground">
               <td class="font-medium text-left pr-2 w-30">{{ tradeUsage.npcName }} ({{ tradeUsage.locationName }})</td>
-              <td class="text-gray-600 text-left pr-2 flex-1">{{ tradeUsage.receiveItemName }} {{
+              <td class="text-muted-foreground text-left pr-2 flex-1">{{ tradeUsage.receiveItemName }} {{
                 tradeUsage.receiveQuantity }}개</td>
-              <td class="text-gray-600 text-left w-20">{{ tradeUsage.giveQuantity }}개 필요</td>
+              <td class="text-muted-foreground text-left w-20">{{ tradeUsage.giveQuantity }}개 필요</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- 가공 레시피 -->
-      <div v-if="processingRecipes.length > 0" class="bg-yellow-50 rounded-lg p-3 border border-yellow-200">
-        <p class="text-xs font-medium text-yellow-800 mb-2 text-center">가공 레시피</p>
+      <div v-if="processingRecipes.length > 0" class="bg-muted rounded-lg p-3 border border-border">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">가공 레시피</p>
         <table class="w-full text-xs">
           <tbody>
-            <tr v-for="recipe in processingRecipes" :key="recipe.id" class="text-gray-700">
+            <tr v-for="recipe in processingRecipes" :key="recipe.id" class="text-foreground">
               <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">
                 <div>{{ recipe.name }}</div>
-                <div v-if="recipe.craftingTime" class="text-blue-600 font-medium">
+                <div v-if="recipe.craftingTime" class="text-foreground font-medium">
                   {{ formatTime(recipe.craftingTime) }}
                 </div>
-                <div v-if="recipe.craftingCategory" class="text-gray-500 text-xs">
+                <div v-if="recipe.craftingCategory" class="text-muted-foreground text-xs">
                   {{ recipe.craftingCategory }}
                 </div>
               </td>
-              <td class="text-gray-600 text-left">
+              <td class="text-muted-foreground text-left">
                 <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
                   {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
                     ? ', ' : '' }} </span>
@@ -117,23 +117,23 @@
       </div>
 
       <!-- 제작 레시피 -->
-      <div v-if="craftableRecipes.length > 0" class="bg-green-50 rounded-lg p-3 border border-green-200">
-        <p class="text-xs font-medium text-green-800 mb-2 text-center">제작 레시피</p>
+      <div v-if="craftableRecipes.length > 0" class="bg-muted rounded-lg p-3 border border-border">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">제작 레시피</p>
         <table class="w-full text-xs">
           <tbody>
-            <tr v-for="recipe in craftableRecipes" :key="recipe.id" class="text-gray-700">
+            <tr v-for="recipe in craftableRecipes" :key="recipe.id" class="text-foreground">
               <td class="font-medium text-left pr-2 min-w-24 max-w-1/2">
                 <div>{{ recipe.name }}</div>
-                <div v-if="recipe.craftingTime" class="text-blue-600 font-medium">
+                <div v-if="recipe.craftingTime" class="text-foreground font-medium">
                   {{ formatTime(recipe.craftingTime) }}
                 </div>
-                <div v-if="recipe.craftingCategory" class="text-gray-500 text-xs">
+                <div v-if="recipe.craftingCategory" class="text-muted-foreground text-xs">
                   {{ recipe.craftingCategory }}
                 </div>
-                <div v-if="calculateRecipeCost(recipe) > 0" class="text-orange-600 font-medium">{{
+                <div v-if="calculateRecipeCost(recipe) > 0" class="text-foreground font-medium">{{
                   calculateRecipeCost(recipe).toLocaleString() }}G</div>
               </td>
-              <td class="text-gray-600 text-left">
+              <td class="text-muted-foreground text-left">
                 <span v-for="(material, index) in recipe.requiredItems" :key="material.itemId">
                   {{ getItemName(material.itemId) }} {{ material.quantity }}개{{ index < recipe.requiredItems.length - 1
                     ? ', ' : '' }} </span>

@@ -208,7 +208,7 @@ tradeStore.fetchTradeList();
 
 <template>
   <div class="p-2">
-    <h2 class="text-xl font-bold mb-2">주간 교환 필요 아이템</h2>
+    <h2 class="text-xl font-bold mb-2 text-foreground">주간 교환 필요 아이템</h2>
 
     <!-- 최종 필요 재료 섹션 - 컴포넌트로 분리 -->
     <TotalRequiredMaterials :weeklyRequirements="weeklyCount" :recipes="recipes" :getItemInfo="getItemInfo" />

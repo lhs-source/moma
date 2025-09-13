@@ -30,7 +30,7 @@
       </Select>
     </div>
 
-    <div class="text-sm text-gray-600">
+    <div class="text-sm text-muted-foreground">
       총 {{ filteredItems.length }}개의 아이템
     </div>
 
@@ -40,7 +40,7 @@
     </div>
 
     <div v-if="filteredItems.length === 0" class="text-center py-12">
-      <p class="text-gray-500">검색 조건에 맞는 아이템이 없습니다.</p>
+      <p class="text-muted-foreground">검색 조건에 맞는 아이템이 없습니다.</p>
     </div>
   </div>
 </template>

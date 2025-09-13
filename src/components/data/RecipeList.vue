@@ -29,52 +29,51 @@
       </Select>
     </div>
 
-    <div class="text-sm text-gray-600">
+    <div class="text-sm text-muted-foreground">
       총 {{ filteredRecipes.length }}개의 레시피
     </div>
 
     <!-- 레시피 그리드 -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       <div v-for="recipe in filteredRecipes" :key="recipe.id"
-        class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow bg-white">
+        class="border border-border rounded-lg p-4 hover:shadow-md transition-shadow bg-card">
         <div class="flex items-start gap-4">
           <img :src="getItemImageUrl(recipe.resultItemId)" :alt="recipe.name"
             class="w-16 h-16 object-cover rounded flex-shrink-0" @error="handleImageError" />
           <div class="flex-1 min-w-0">
             <div class="flex items-start justify-between">
               <div>
-                <h3 class="font-medium text-lg text-gray-900">{{ recipe.name }}</h3>
-                <p class="text-sm text-gray-500 mt-1">ID: {{ recipe.id }}</p>
+                <h3 class="font-medium text-lg text-foreground">{{ recipe.name }}</h3>
+                <p class="text-sm text-muted-foreground mt-1">ID: {{ recipe.id }}</p>
               </div>
               <div class="text-right flex-shrink-0">
                 <span v-if="recipe.resultQuantity && recipe.resultQuantity > 1"
-                  class="text-sm font-medium text-green-600">
+                  class="text-sm font-medium text-foreground">
                   x{{ recipe.resultQuantity }}
                 </span>
               </div>
             </div>
 
             <div class="flex flex-wrap gap-2 mt-3">
-              <span v-if="recipe.category" class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+              <span v-if="recipe.category" class="inline-block px-2 py-1 text-xs bg-accent text-foreground rounded">
                 {{ recipe.category }}
               </span>
-              <span v-if="recipe.facilityLevel"
-                class="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded">
+              <span v-if="recipe.facilityLevel" class="inline-block px-2 py-1 text-xs bg-muted text-foreground rounded">
                 요리 Lv.{{ recipe.facilityLevel }}
               </span>
             </div>
 
             <div class="mt-4">
-              <p class="text-sm font-medium text-gray-700 mb-2">필요 재료:</p>
+              <p class="text-sm font-medium text-foreground mb-2">필요 재료:</p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div v-for="material in recipe.requiredItems" :key="material.itemId"
                   class="flex items-center gap-2 text-sm">
                   <img :src="getItemImageUrl(material.itemId)" :alt="getItemName(material.itemId)"
                     class="w-6 h-6 object-cover rounded flex-shrink-0" @error="handleImageError" />
-                  <span class="text-gray-700">
+                  <span class="text-foreground">
                     {{ getItemName(material.itemId) }}
                   </span>
-                  <span class="text-gray-500 ml-auto">x{{ material.quantity }}</span>
+                  <span class="text-muted-foreground ml-auto">x{{ material.quantity }}</span>
                 </div>
               </div>
             </div>
@@ -84,7 +83,7 @@
     </div>
 
     <div v-if="filteredRecipes.length === 0" class="text-center py-12">
-      <p class="text-gray-500">검색 조건에 맞는 레시피가 없습니다.</p>
+      <p class="text-muted-foreground">검색 조건에 맞는 레시피가 없습니다.</p>
     </div>
   </div>
 </template>

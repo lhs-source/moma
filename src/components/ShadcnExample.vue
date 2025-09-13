@@ -1,10 +1,10 @@
 <template>
   <div class="p-6 space-y-4">
-    <h2 class="text-2xl font-bold">shadcn/vue 컴포넌트 예제</h2>
+    <h2 class="text-2xl font-bold text-foreground">shadcn/vue 컴포넌트 예제</h2>
 
     <!-- Button 예제 -->
     <div class="space-y-2">
-      <h3 class="text-lg font-semibold">Button 컴포넌트</h3>
+      <h3 class="text-lg font-semibold text-foreground">Button 컴포넌트</h3>
       <div class="flex gap-2 flex-wrap">
         <Button>기본 버튼</Button>
         <Button variant="secondary">Secondary</Button>
@@ -20,7 +20,7 @@
 
     <!-- Card 예제 -->
     <div class="space-y-2">
-      <h3 class="text-lg font-semibold">Card 컴포넌트</h3>
+      <h3 class="text-lg font-semibold text-foreground">Card 컴포넌트</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>

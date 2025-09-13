@@ -11,23 +11,23 @@ import SelectTest from '../components/SelectTest.vue'
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       <!-- 타이머 정보 -->
-      <div class="bg-gray-50 p-6 rounded-lg">
+      <div class="bg-card border border-border p-6 rounded-lg">
         <TimerInfo />
       </div>
 
       <!-- TODO 목록 -->
-      <div class="bg-gray-50 p-6 rounded-lg">
+      <div class="bg-card border border-border p-6 rounded-lg">
         <TodoList />
       </div>
     </div>
 
     <!-- shadcn/vue 예제 -->
-    <div class="bg-white border rounded-lg p-6">
+    <div class="bg-card border border-border rounded-lg p-6">
       <ShadcnExample />
     </div>
 
     <!-- Select 테스트 -->
-    <div class="bg-white border rounded-lg p-6">
+    <div class="bg-card border border-border rounded-lg p-6">
       <SelectTest />
     </div>
   </main>

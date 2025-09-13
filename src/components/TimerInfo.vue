@@ -152,37 +152,37 @@ const isCurrentlyActive = (times: string[], days?: string[], duration?: number) 
 
 <template>
   <div class="timer-info">
-    <h2 class="text-xl font-bold mb-4">타이머 정보</h2>
+    <h2 class="text-xl font-bold mb-4 text-foreground">타이머 정보</h2>
     <div class="space-y-3">
       <div v-for="event in timerEvents" :key="event.name" :class="[
-        'p-3 rounded-lg',
+        'p-3 rounded-lg border',
         isCurrentlyActive(event.times, event.days, event.duration)
-          ? 'bg-red-100 border-2 border-red-300'
-          : 'bg-gray-100'
+          ? 'bg-destructive/10 border-destructive/30'
+          : 'bg-card border-border'
       ]">
         <div class="flex justify-between items-center">
           <div>
-            <h3 class="font-semibold">{{ event.name }}</h3>
-            <p class="text-sm text-gray-600">
+            <h3 class="font-semibold text-foreground">{{ event.name }}</h3>
+            <p class="text-sm text-muted-foreground">
               {{ event.times.join(', ') }}
               <span v-if="event.days" class="ml-2">({{ event.days.join(', ') }})</span>
               <span v-if="event.duration" class="ml-2">({{ event.duration }}분)</span>
             </p>
           </div>
           <div class="text-right">
-            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-red-600 font-bold">
+            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-destructive font-bold">
               등장 중!
             </div>
-            <div v-else-if="getNextTime(event.times, event.days)" class="text-blue-600 font-medium">
+            <div v-else-if="getNextTime(event.times, event.days)" class="text-primary font-medium">
               다음: {{ getNextTime(event.times, event.days) }}
             </div>
-            <div v-else class="text-gray-500">
+            <div v-else class="text-muted-foreground">
               오늘 없음
             </div>
-            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-sm text-red-500">
+            <div v-if="isCurrentlyActive(event.times, event.days, event.duration)" class="text-sm text-destructive">
               남은 시간: {{ getCurrentEventTimeRemaining(event.times, event.days, event.duration) }}
             </div>
-            <div v-if="getNextTime(event.times, event.days)" class="text-sm text-gray-500">
+            <div v-if="getNextTime(event.times, event.days)" class="text-sm text-muted-foreground">
               {{ getTimeUntil(getNextTime(event.times, event.days)!) }}
             </div>
           </div>

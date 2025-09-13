@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="text-sm font-semibold text-gray-700 mb-2">총 필요 재료</h3>
+    <h3 class="text-sm font-semibold text-foreground mb-2">총 필요 재료</h3>
 
     <div class="space-y-1">
       <div v-for="row in totalNeededRows" :key="'direct-' + row.itemId" class="space-y-1">
@@ -8,27 +8,29 @@
         <div class="flex items-center gap-2 text-sm">
           <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)" class="w-5 h-5 rounded object-cover"
             @error="handleImageError" />
-          <span class="truncate">{{ getItemName(row.itemId) }}</span>
-          <span class="ml-auto">x{{ row.quantity }}</span>
+          <span class="truncate text-foreground">{{ getItemName(row.itemId) }}</span>
+          <span class="ml-auto text-foreground">x{{ row.quantity }}</span>
           <span v-if="getBuyableCount(row.itemId) > 0"
-            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
+            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-destructive font-semibold' : 'text-muted-foreground']"
             class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-          <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">개당 {{
-            formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
+          <span v-if="getMinBuyPrice(row.itemId) !== null"
+            class="ml-2 text-xs text-muted-foreground whitespace-nowrap">개당 {{
+              formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
             }}</span>
         </div>
 
         <!-- 가공 레시피가 있는 경우 하위에 표시 -->
         <div v-if="getProcessedRecipe(row.itemId)" class="ml-7 space-y-1">
           <div v-for="ingredient in getProcessedRecipe(row.itemId)!.requiredItems" :key="ingredient.itemId"
-            class="flex items-center gap-2 text-xs text-gray-600">
+            class="flex items-center gap-2 text-xs text-muted-foreground">
             <img :src="getItemImageUrl(ingredient.itemId)" :alt="getItemName(ingredient.itemId)"
               class="w-4 h-4 rounded object-cover" @error="handleImageError" />
             <span class="truncate">{{ getItemName(ingredient.itemId) }}</span>
             <span class="ml-auto">x{{ ingredient.quantity * Math.ceil(row.quantity /
               (getProcessedRecipe(row.itemId)!.resultQuantity || 1)) }}</span>
-            <span v-if="getMinBuyPrice(ingredient.itemId) !== null" class="ml-2 text-gray-500 whitespace-nowrap">개당 {{
-              formatGold(getMinBuyPrice(ingredient.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(ingredient.itemId)! *
+            <span v-if="getMinBuyPrice(ingredient.itemId) !== null"
+              class="ml-2 text-muted-foreground whitespace-nowrap">개당 {{
+                formatGold(getMinBuyPrice(ingredient.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(ingredient.itemId)! *
                 ingredient.quantity * Math.ceil(row.quantity / (getProcessedRecipe(row.itemId)!.resultQuantity || 1)))
               }}</span>
           </div>
@@ -36,29 +38,30 @@
       </div>
 
       <!-- 총 필요 식재료 집계 -->
-      <div v-if="totalRawMaterialsRows.length" class="pt-2 mt-2 border-t border-gray-100">
-        <div class="text-xs text-gray-500 mb-1">총 필요 식재료</div>
+      <div v-if="totalRawMaterialsRows.length" class="pt-2 mt-2 border-t border-border">
+        <div class="text-xs text-muted-foreground mb-1">총 필요 식재료</div>
         <div v-for="row in totalRawMaterialsRows" :key="'raw-' + row.itemId" class="flex items-center gap-2 text-sm">
           <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)" class="w-5 h-5 rounded object-cover"
             @error="handleImageError" />
-          <span class="truncate">{{ getItemName(row.itemId) }}</span>
-          <span class="ml-auto font-semibold">x{{ row.quantity }}</span>
+          <span class="truncate text-foreground">{{ getItemName(row.itemId) }}</span>
+          <span class="ml-auto font-semibold text-foreground">x{{ row.quantity }}</span>
           <span v-if="getBuyableCount(row.itemId) > 0"
-            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-red-600 font-semibold' : 'text-gray-500']"
+            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-destructive font-semibold' : 'text-muted-foreground']"
             class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-          <span v-if="getMinBuyPrice(row.itemId) !== null" class="ml-2 text-xs text-gray-500 whitespace-nowrap">개당 {{
-            formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
+          <span v-if="getMinBuyPrice(row.itemId) !== null"
+            class="ml-2 text-xs text-muted-foreground whitespace-nowrap">개당 {{
+              formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
             }}</span>
         </div>
-        <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
-          <span class="text-gray-600">총 골드 (식재료)</span>
-          <span class="font-semibold text-green-700">{{ formatGold(totalRawMaterialsGold) }}</span>
+        <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-border">
+          <span class="text-foreground">총 골드 (식재료)</span>
+          <span class="font-semibold text-foreground">{{ formatGold(totalRawMaterialsGold) }}</span>
         </div>
       </div>
 
-      <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-gray-100">
-        <span class="text-gray-600">총 골드</span>
-        <span class="font-semibold text-green-700">{{ formatGold(totalGoldCombined) }}</span>
+      <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-border">
+        <span class="text-foreground">총 골드</span>
+        <span class="font-semibold text-foreground">{{ formatGold(totalGoldCombined) }}</span>
       </div>
     </div>
   </div>
