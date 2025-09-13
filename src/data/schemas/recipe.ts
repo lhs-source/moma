@@ -15,10 +15,15 @@ export interface RequiredItem {
  * - 구매: 구매. 골드로
  * - 채집: 채집. 몬스터 채집
  * - 드랍: 몬스터 드랍
+ * - 가공: 제작 레시피 (세분화)
  */
 export enum RECIPE_CATEGORY {
   COOK = '요리',
-  PROCESS = '가공',
+  PROCESS_METAL = '금속 가공',
+  PROCESS_WOOD = '목재 가공',
+  PROCESS_LEATHER = '가죽 가공',
+  PROCESS_FABRIC = '옷감 가공',
+  PROCESS_ITEM = '아이템 제작',
   BUY = '구매',
   GATHER = '채집',
   DROP = '드랍',
@@ -43,7 +48,6 @@ export interface Recipe {
   facilityLevel: number;
   // 제작 시스템 전용 필드
   craftingTime?: number; // 제작 시간 (초)
-  craftingCategory?: string; // 제작 카테고리 (금속 가공, 목재 가공 등)
 }
 
 /**

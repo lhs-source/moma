@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-      <h1 class="text-3xl font-bold">데이터 목록</h1>
+      <h1 class="text-3xl font-bold text-foreground">데이터 목록</h1>
     </div>
 
     <!-- 탭 컴포넌트 -->
