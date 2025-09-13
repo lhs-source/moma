@@ -19,11 +19,13 @@ export interface RequiredItem {
  */
 export enum RECIPE_CATEGORY {
   COOK = '요리',
+  CRAFTING_ITEM = '아이템 제작',
   PROCESS_METAL = '금속 가공',
   PROCESS_WOOD = '목재 가공',
   PROCESS_LEATHER = '가죽 가공',
   PROCESS_FABRIC = '옷감 가공',
-  PROCESS_ITEM = '아이템 제작',
+  PROCESS_MEDICINE = '약품 가공',
+  PROCESS_FOOD = '식재료 가공',
   BUY = '구매',
   GATHER = '채집',
   DROP = '드랍',

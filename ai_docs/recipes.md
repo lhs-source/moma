@@ -28,7 +28,7 @@ src/data/recipes/
 - **PROCESS_WOOD**: 목재 가공
 - **PROCESS_LEATHER**: 가죽 가공
 - **PROCESS_FABRIC**: 옷감 가공
-- **PROCESS_ITEM**: 약품/식재료 가공
+- **CRAFTING_ITEM**: 약품/식재료 가공
 - **COOKING**: 요리
 - **CRAFTING**: 아이템 제작
 - **GATHERING**: 수집

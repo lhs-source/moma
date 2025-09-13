@@ -7,7 +7,8 @@ export const craftingRecipes: Recipe[] = recipes.filter(recipe =>
   recipe.category === '목재 가공' ||
   recipe.category === '가죽 가공' ||
   recipe.category === '옷감 가공' ||
-  recipe.category === '아이템 제작'
+  recipe.category === '아이템 제작' ||
+  recipe.category === '약품'
 )
 
 // 제작 카테고리별로 그룹화
@@ -31,7 +32,8 @@ export const craftingCategories = [
   '목재 가공', 
   '가죽 가공',
   '옷감 가공',
-  '아이템 제작'
+  '아이템 제작',
+  '약품'
 ]
 
 // 레거시 인터페이스 (기존 코드와의 호환성을 위해)

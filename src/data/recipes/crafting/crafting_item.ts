@@ -12,7 +12,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'bloody_herb', quantity: 2 },
       { itemId: 'saelok_mushroom', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -24,7 +24,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'fabric', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -37,7 +37,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'healing_potion_5', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 120
   },
@@ -51,7 +51,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'saelok_mushroom_essence', quantity: 5 },
       { itemId: 'sprout_mushroom', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 180
   },
@@ -64,7 +64,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_healing_potion_5', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 10 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 300
   },
@@ -78,7 +78,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'tough_mushroom_powder', quantity: 3 },
       { itemId: 'flame_crystal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 300
   },
@@ -92,7 +92,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'tough_mushroom_powder', quantity: 3 },
       { itemId: 'ice_crystal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 300
   },
@@ -106,7 +106,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'tough_mushroom_powder', quantity: 3 },
       { itemId: 'lightning_crystal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 300
   },
@@ -120,7 +120,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'tough_mushroom_powder', quantity: 3 },
       { itemId: 'radiance_crystal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 300
   },
@@ -134,7 +134,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'tough_mushroom_powder', quantity: 3 },
       { itemId: 'seal_crystal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -148,7 +148,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'clean_mushroom', quantity: 6 },
       { itemId: 'hidden_flower', quantity: 6 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -160,7 +160,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'high_fabric', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -173,7 +173,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'supreme_healing_potion_5', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 60 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -187,7 +187,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'flame_crystal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -201,7 +201,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'ice_crystal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -215,7 +215,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'lightning_crystal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -229,7 +229,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'radiance_crystal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -243,7 +243,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'seal_crystal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 780
   },
@@ -258,7 +258,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'iron_ore', quantity: 5 },
       { itemId: 'coal', quantity: 3 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 120
   },
@@ -271,7 +271,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'iron_ore', quantity: 3 },
       { itemId: 'coal', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 90
   },
@@ -284,7 +284,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'iron_ore', quantity: 2 },
       { itemId: 'coal', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -299,7 +299,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'flame_crystal', quantity: 1 },
       { itemId: 'iron_ore', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -312,7 +312,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'ice_crystal', quantity: 1 },
       { itemId: 'iron_ore', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -325,7 +325,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'lightning_crystal', quantity: 1 },
       { itemId: 'iron_ore', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -340,7 +340,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'red_flower', quantity: 3 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -353,7 +353,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'blue_flower', quantity: 3 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -366,7 +366,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'yellow_flower', quantity: 3 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -379,7 +379,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'green_flower', quantity: 3 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -394,7 +394,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'flour', quantity: 2 },
       { itemId: 'water_bottle', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 60
   },
@@ -406,7 +406,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'milk', quantity: 3 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 120
   },
@@ -445,7 +445,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'tough_mushroom', quantity: 3 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -457,7 +457,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'hidden_flower', quantity: 3 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 60
   },
@@ -471,7 +471,7 @@ export const craftingItemRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'log', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 30
   },
@@ -485,7 +485,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_log', quantity: 4 },
       { itemId: 'stone', quantity: 10 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
     craftingTime: 180
   },
@@ -499,7 +499,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_log_plus', quantity: 4 },
       { itemId: 'stone', quantity: 10 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 360
   },
@@ -515,7 +515,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_wood', quantity: 3 },
       { itemId: 'metal_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -529,7 +529,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'alloy_steel_ingot', quantity: 3 },
       { itemId: 'wood_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -543,7 +543,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'alloy_steel_ingot', quantity: 3 },
       { itemId: 'leather_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -557,7 +557,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_wood', quantity: 3 },
       { itemId: 'fabric_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -571,7 +571,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_wood', quantity: 3 },
       { itemId: 'medicine_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -585,7 +585,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_wood', quantity: 3 },
       { itemId: 'food_processing_facility_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 480
   },
@@ -599,7 +599,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'special_steel', quantity: 5 },
       { itemId: 'weapon_workbench_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 600
   },
@@ -613,7 +613,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'special_steel', quantity: 5 },
       { itemId: 'armor_workbench_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 600
   },
@@ -627,7 +627,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'special_steel', quantity: 5 },
       { itemId: 'medicine_workbench_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 600
   },
@@ -641,7 +641,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'special_steel', quantity: 5 },
       { itemId: 'food_workbench_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 600
   },
@@ -655,7 +655,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'high_wood_plus', quantity: 5 },
       { itemId: 'multi_purpose_workbench_design_3', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.PROCESS_ITEM,
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
     craftingTime: 600
   }

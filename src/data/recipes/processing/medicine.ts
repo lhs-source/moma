@@ -13,7 +13,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 1,
     craftingTime: 600,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_fresh_mushroom_extract',
@@ -26,7 +26,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 1,
     craftingTime: 60,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_sturdy_mushroom_powder',
@@ -38,7 +38,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 2,
     craftingTime: 300,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_sturdy_mushroom_spore',
@@ -51,7 +51,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 2,
     craftingTime: 600,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_sturdy_mushroom_extract',
@@ -64,7 +64,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 2,
     craftingTime: 600,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_growing_mushroom_spore',
@@ -77,7 +77,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 720,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_growing_mushroom_extract',
@@ -90,7 +90,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 3600,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_clean_mushroom_spore',
@@ -103,7 +103,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 4,
     craftingTime: 3000,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_clean_mushroom_extract',
@@ -116,7 +116,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 4,
     craftingTime: 7200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_light_crystal',
@@ -130,7 +130,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 1200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_fire_crystal',
@@ -144,7 +144,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 1200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_ice_crystal',
@@ -158,7 +158,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 1200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_hiding_flower_powder',
@@ -170,7 +170,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 1800,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
     id: 'craft_wound_flower_powder',
@@ -182,6 +182,6 @@ export const medicineProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 5,
     craftingTime: 30000,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   }
 ]

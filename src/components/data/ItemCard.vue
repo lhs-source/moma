@@ -200,6 +200,7 @@ const getCategoryColors = (category: string) => {
     '가죽 가공': 'bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800',
     '옷감 가공': 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800',
     '아이템 제작': 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
+    '약품': 'bg-pink-50 dark:bg-pink-900/20 border-pink-200 dark:border-pink-800',
     '요리': 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800',
     '구매': 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800',
     '채집': 'bg-teal-50 dark:bg-teal-900/20 border-teal-200 dark:border-teal-800',
@@ -217,7 +218,8 @@ const processingRecipeUsage = computed(() => {
       recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
       recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
       recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
-      recipe.category === RECIPE_CATEGORY.PROCESS_ITEM) &&
+      recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM ||
+      recipe.category === RECIPE_CATEGORY.MEDICINE) &&
     recipe.requiredItems.some(material => material.itemId === props.item.id)
   )
 })

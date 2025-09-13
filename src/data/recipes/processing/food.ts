@@ -13,7 +13,7 @@ export const foodProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 1,
     craftingTime: 90,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_FOOD
   },
   {
     id: 'craft_flour_process',
@@ -25,7 +25,7 @@ export const foodProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 2,
     craftingTime: 1200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_FOOD
   },
   {
     id: 'craft_cheese_process',
@@ -38,7 +38,7 @@ export const foodProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 2,
     craftingTime: 1200,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_FOOD
   },
   {
     id: 'craft_noodle_process',
@@ -52,7 +52,7 @@ export const foodProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 3000,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_FOOD
   },
   {
     id: 'craft_cream_process',
@@ -66,6 +66,6 @@ export const foodProcessingRecipes: Recipe[] = [
     ],
     facilityLevel: 3,
     craftingTime: 3000,
-    category: RECIPE_CATEGORY.PROCESS_ITEM
+    category: RECIPE_CATEGORY.PROCESS_FOOD
   }
 ]
