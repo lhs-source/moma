@@ -1,14 +1,14 @@
-import { type Recipe } from '@/data/schemas/recipe'
+import { type Recipe, RECIPE_CATEGORY } from '@/data/schemas/recipe'
 import { recipes } from './recipes'
 
 // 모든 제작 레시피 (PROCESS_* 카테고리만 필터링)
 export const craftingRecipes: Recipe[] = recipes.filter(recipe => 
-  recipe.category === '금속 가공' ||
-  recipe.category === '목재 가공' ||
-  recipe.category === '가죽 가공' ||
-  recipe.category === '옷감 가공' ||
-  recipe.category === '아이템 제작' ||
-  recipe.category === '약품'
+  recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
+  recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
+  recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
+  recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
+  recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM ||
+  recipe.category === RECIPE_CATEGORY.MEDICINE
 )
 
 // 제작 카테고리별로 그룹화
@@ -28,12 +28,12 @@ export const craftingRecipesByCategory = () => {
 
 // 제작 카테고리 목록
 export const craftingCategories = [
-  '금속 가공',
-  '목재 가공', 
-  '가죽 가공',
-  '옷감 가공',
-  '아이템 제작',
-  '약품'
+  RECIPE_CATEGORY.PROCESS_METAL,
+  RECIPE_CATEGORY.PROCESS_WOOD, 
+  RECIPE_CATEGORY.PROCESS_LEATHER,
+  RECIPE_CATEGORY.PROCESS_FABRIC,
+  RECIPE_CATEGORY.CRAFTING_ITEM,
+  RECIPE_CATEGORY.MEDICINE
 ]
 
 // 레거시 인터페이스 (기존 코드와의 호환성을 위해)

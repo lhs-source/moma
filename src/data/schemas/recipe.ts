@@ -26,6 +26,8 @@ export enum RECIPE_CATEGORY {
   PROCESS_FABRIC = '옷감 가공',
   PROCESS_MEDICINE = '약품 가공',
   PROCESS_FOOD = '식재료 가공',
+  PROCESS = '가공',
+  MEDICINE = '약품',
   BUY = '구매',
   GATHER = '채집',
   DROP = '드랍',
@@ -50,6 +52,7 @@ export interface Recipe {
   facilityLevel: number;
   // 제작 시스템 전용 필드
   craftingTime?: number; // 제작 시간 (초)
+  craftingCategory?: string; // 제작 카테고리 (레거시 호환성)
 }
 
 /**

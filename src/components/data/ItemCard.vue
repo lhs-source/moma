@@ -219,7 +219,7 @@ const processingRecipeUsage = computed(() => {
       recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
       recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
       recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM ||
-      recipe.category === RECIPE_CATEGORY.MEDICINE) &&
+      recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE) &&
     recipe.requiredItems.some(material => material.itemId === props.item.id)
   )
 })

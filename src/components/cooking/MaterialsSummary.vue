@@ -70,6 +70,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Recipe, RecipeGroup } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 
 const props = withDefaults(defineProps<{
   selectedCounts: Record<string, number>
@@ -126,7 +127,7 @@ const processRecipeMap = computed(() => {
   const map: Record<string, Recipe> = {}
   for (const g of props.recipesGrouped) {
     for (const r of g.recipeList) {
-      if (r.category === '가공') {
+      if (r.category === RECIPE_CATEGORY.PROCESS) {
         if (!map[r.resultItemId]) map[r.resultItemId] = r
       }
     }
@@ -188,7 +189,7 @@ function getMinBuyPrice(itemId: string): number | null {
   props.recipesGrouped.forEach(g => {
     g.recipeList.forEach(r => {
       if (r.resultItemId !== itemId) return
-      if (r.category !== '구매') return
+      if (r.category !== RECIPE_CATEGORY.BUY) return
       const gold = r.requiredItems.find(ri => ri.itemId === 'gold')
       if (gold) prices.push(gold.quantity)
     })
@@ -203,7 +204,7 @@ function getBuyableCount(itemId: string): number {
   props.recipesGrouped.forEach(g => {
     g.recipeList.forEach(r => {
       if (r.resultItemId !== itemId) return
-      if (r.category !== '구매') return
+      if (r.category !== RECIPE_CATEGORY.BUY) return
       const gold = r.requiredItems.find(ri => ri.itemId === 'gold' && ri.buyNpcId)
       if (gold && gold.buyNpcId) npcSet.add(gold.buyNpcId)
     })

@@ -59,7 +59,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     // 각 선택된 아이템별로 제작 시간 계산
     for (const selectedItem of Object.values(selectedItems.value)) {
       const { recipe, quantity } = selectedItem
-      const category = recipe.craftingCategory || 'Unknown'
+      const category = recipe.craftingCategory || recipe.category || 'Unknown'
       
       if (!categoryTimes[category]) {
         categoryTimes[category] = 0
@@ -92,7 +92,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     const grouped: Record<string, SelectedItem[]> = {}
     
     for (const selectedItem of Object.values(selectedItems.value)) {
-      const category = selectedItem.recipe.craftingCategory || 'Unknown'
+      const category = selectedItem.recipe.craftingCategory || selectedItem.recipe.category || 'Unknown'
       
       if (!grouped[category]) {
         grouped[category] = []
@@ -158,7 +158,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     const itemsToRemove: string[] = []
     
     for (const [recipeId, selectedItem] of Object.entries(selectedItems.value)) {
-      if (selectedItem.recipe.craftingCategory === category) {
+      if ((selectedItem.recipe.craftingCategory || selectedItem.recipe.category) === category) {
         itemsToRemove.push(recipeId)
       }
     }

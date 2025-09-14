@@ -18,7 +18,12 @@ export function findProcessingRecipesForItem(itemId: string): Recipe[] {
   
   return allRecipes.filter(recipe => 
     recipe.resultItemId === itemId && 
-    recipe.category === RECIPE_CATEGORY.PROCESS
+    (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
+     recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
+     recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
+     recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
+     recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE ||
+     recipe.category === RECIPE_CATEGORY.PROCESS_FOOD)
   )
 }
 

@@ -34,7 +34,7 @@ export const useRecipesStore = defineStore('recipes', () => {
     const grouped: Record<string, Recipe[]> = {}
     
     recipeList.value.forEach(recipe => {
-      const category = recipe.craftingCategory || '기타'
+      const category = recipe.craftingCategory || recipe.category || '기타'
       if (!grouped[category]) {
         grouped[category] = []
       }
