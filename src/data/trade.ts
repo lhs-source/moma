@@ -708,7 +708,7 @@ export const trades: Trade[] = [
     receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
-    maxExchanges: 3,
+    maxExchanges: 1,
     isEnabled: true
   },
   {
@@ -738,7 +738,7 @@ export const trades: Trade[] = [
   {
     id: 'armis_weapon_blueprint',
     npcId: 'armis',
-    giveItemId: 'fire_bomb',
+    giveItemId: 'heat_resistant_bandage',
     receiveItemId: 'weapon_blueprint', // 무기 제작대 설계도 (3레벨)
     giveQuantity: 5,
     receiveQuantity: 1,
@@ -868,12 +868,12 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'armis_curse_removal_bandage',
+    id: 'armis_curse_removal_potion',
     npcId: 'armis',
-    giveItemId: 'curse_removal_potion_bandage',
+    giveItemId: 'curse_removal_potion',
     receiveItemId: 'holy_water', // 성수
-    giveQuantity: 100,
-    receiveQuantity: 10,
+    giveQuantity: 1,
+    receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
     maxExchanges: 1,
@@ -885,7 +885,7 @@ export const trades: Trade[] = [
     giveItemId: 'holy_water',
     receiveItemId: 'water_bottle', // 물이 든 병
     giveQuantity: 10,
-    receiveQuantity: 50,
+    receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
     maxExchanges: 1,
@@ -1036,6 +1036,7 @@ export const trades: Trade[] = [
     maxExchanges: 4,
     isEnabled: true
   },
+  // 반호르, 가이레흐
   {
     id: 'shamus_wrapping_paper',
     npcId: 'shamus',

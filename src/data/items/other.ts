@@ -179,7 +179,19 @@ export const otherItems: Item[] = [
   {
     id: 'heartfelt_bouquet',
     name: '정성 담긴 꽃다발',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/heartfelt_bouquet.png',
     category: ITEM_CATEGORY.OTHER,
+  },
+  {
+    id: 'antique_wrapping_paper',
+    name: '고풍스러운 포장지',
+    imageUrl: '/images/items/antique_wrapping_paper.png',
+    category: ITEM_CATEGORY.OTHER,
+  },
+  {
+    id: 'healthy_drink',
+    name: '건강 드링크',
+    imageUrl: '/images/items/healthy_drink.png',
+    category: ITEM_CATEGORY.FOOD,
   },
 ];

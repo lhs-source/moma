@@ -77,12 +77,24 @@ export const potionItems: Item[] = [
   {
     id: 'excellent_healing_potion',
     name: '뛰어난 회복 물약',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/excellent_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'excellent_bandage',
     name: '뛰어난 붕대',
+    imageUrl: '/images/items/excellent_bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'heat_resistant_bandage',
+    name: '내열 붕대',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'curse_removal_potion',
+    name: '저주 해제 물약',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.POTION,
   },

@@ -497,13 +497,13 @@ export const materialItems: Item[] = [
   {
     id: 'condensed_wind',
     name: '응축된 바람',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/condensed_wind.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'poison_sac',
     name: '독주머니',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/poison_sac.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -516,12 +516,6 @@ export const materialItems: Item[] = [
     id: 'leather_plus',
     name: '가죽+',
     imageUrl: '/images/items/leather_plus.png',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'antique_wrapping_paper',
-    name: '고풍스러운 포장지',
-    imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -1179,7 +1173,7 @@ export const materialItems: Item[] = [
   {
     id: 'autumn_leaf_moth',
     name: '낙엽나방',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/autumn_leaf_moth.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

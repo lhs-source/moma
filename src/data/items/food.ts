@@ -153,12 +153,6 @@ export const foodItems: Item[] = [
     category: ITEM_CATEGORY.FOOD,
   },
   {
-    id: 'healthy_drink',
-    name: '건강 음료',
-    imageUrl: '/images/items/healthy_drink.png',
-    category: ITEM_CATEGORY.FOOD,
-  },
-  {
     id: 'alrio_orio',
     name: '알리오 올리오',
     imageUrl: '/images/items/alrio_orio.png',
