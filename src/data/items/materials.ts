@@ -1176,4 +1176,16 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/autumn_leaf_moth.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  {
+    id: 'gold_ingot_pile',
+    name: '황금 주괴 더미',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'dream_reflecting_mirror_fragment',
+    name: '꿈을 비추는 거울 조각',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];

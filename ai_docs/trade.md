@@ -38,7 +38,7 @@ This document contains all trade data from the game database in table format.
 | glenis_glenis_apple_milk_tea | glenis | cream | 4 | glenis_apple_milk_tea | 1 | daily | character | 1 | true |
 | glenis_food_processing | glenis | apple_soup | 1 | food_processing_blueprint | 1 | daily | character | 1 | true |
 | manus_life_gem | manus | pet_food | 10 | life_gem | 1 | daily | character | 2 | true |
-| walter_superior_wood | walter | tracy_wood_carving | 1 | processed_leather | 6 | daily | character | 1 | true |
+| walter_superior_wood | walter | tracy_wood_carving | 1 | leather_processed | 6 | daily | character | 1 | true |
 | walter_heart_token | walter | love_fish | 5 | heart_token | 1 | daily | character | 2 | true |
 | walter_fire_bomb | walter | dark_fish | 5 | fire_bomb | 1 | daily | character | 3 | true |
 | walter_thunder_bomb | walter | dark_fish | 5 | thunder_bomb | 1 | daily | character | 3 | true |

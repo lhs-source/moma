@@ -161,7 +161,7 @@ export const trades: Trade[] = [
     id: 'alisa_wheat_flour_1',
     npcId: 'alisa',
     giveItemId: 'egg',
-    receiveItemId: 'wheat_flour', // 밀가루
+    receiveItemId: 'flour', // 밀가루
     giveQuantity: 3,
     receiveQuantity: 1,
     type: 'daily',
@@ -173,7 +173,7 @@ export const trades: Trade[] = [
     id: 'alisa_wheat_flour_2',
     npcId: 'alisa',
     giveItemId: 'lavender',
-    receiveItemId: 'wheat_flour', // 밀가루
+    receiveItemId: 'flour', // 밀가루
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -364,10 +364,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'glenis_glenis_cake',
+    id: 'glenis_cake_to_fork_in_milk',
     npcId: 'glenis',
-    giveItemId: 'fork_in_milk',
-    receiveItemId: 'glenis_cake', // 글리니스 수제 케이크
+    giveItemId: 'fork_in_milk', // 포크 인 밀크
+    receiveItemId: 'glenis_cake',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -376,10 +376,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'glenis_glenis_apple_milk_tea',
+    id: 'glenis_apple_milk_tea_to_cream',
     npcId: 'glenis',
-    giveItemId: 'cream',
-    receiveItemId: 'glenis_apple_milk_tea', // 글리니스의 애플 밀크티
+    giveItemId: 'cream', // 생크림
+    receiveItemId: 'glenis_apple_milk_tea',
     giveQuantity: 4,
     receiveQuantity: 1,
     type: 'daily',
@@ -388,10 +388,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'glenis_food_processing',
+    id: 'glenis_food_blueprint_to_apple_souffle',
     npcId: 'glenis',
-    giveItemId: 'apple_soup',
-    receiveItemId: 'food_processing_blueprint', // 식재료 가공 시설 설계도 (3레벨)
+    giveItemId: 'apple_souffle', // 사과 수플레
+    receiveItemId: 'food_processing_blueprint',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -400,10 +400,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'manus_life_gem',
+    id: 'manus_life_gem_to_pet_food',
     npcId: 'manus',
-    giveItemId: 'pet_food',
-    receiveItemId: 'life_gem', // 생명의 마나석
+    giveItemId: 'pet_food', // 펫 먹이
+    receiveItemId: 'life_gem',
     giveQuantity: 10,
     receiveQuantity: 1,
     type: 'daily',
@@ -412,22 +412,22 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_superior_wood',
+    id: 'walter_leather_to_wood_carving',
     npcId: 'walter',
-    giveItemId: 'tracy_wood_carving',
-    receiveItemId: 'processed_leather', // 가죽
+    giveItemId: 'tracy_wood_carving', // 트레이시의 원목 오르골
+    receiveItemId: 'leather_processed',
     giveQuantity: 1,
     receiveQuantity: 6,
     type: 'daily',
     scope: 'character',
-    maxExchanges: 1,
+    maxExchanges: 2,
     isEnabled: true
   },
   {
-    id: 'walter_heart_token',
+    id: 'walter_heart_token_to_love_fish',
     npcId: 'walter',
-    giveItemId: 'love_fish',
-    receiveItemId: 'heart_token', // 하트 토큰
+    giveItemId: 'love_fish', // 참사랑어
+    receiveItemId: 'heart_token',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -436,10 +436,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_fire_bomb',
+    id: 'walter_fire_bomb_to_dark_fish',
     npcId: 'walter',
-    giveItemId: 'dark_fish',
-    receiveItemId: 'fire_bomb', // 화염 마법 유탄
+    giveItemId: 'dark_fish', // 어둠유령고기
+    receiveItemId: 'fire_bomb',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -448,10 +448,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_thunder_bomb',
+    id: 'walter_thunder_bomb_to_dark_fish',
     npcId: 'walter',
-    giveItemId: 'dark_fish',
-    receiveItemId: 'thunder_bomb', // 번개 마법 유탄
+    giveItemId: 'dark_fish', // 어둠유령고기
+    receiveItemId: 'thunder_bomb',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -460,10 +460,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_wind_bomb',
+    id: 'walter_wind_bomb_to_dark_fish',
     npcId: 'walter',
-    giveItemId: 'dark_fish',
-    receiveItemId: 'wind_bomb', // 바람 마법 유탄
+    giveItemId: 'dark_fish', // 어둠유령고기
+    receiveItemId: 'wind_bomb',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -472,10 +472,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_acid_bomb',
+    id: 'walter_acid_bomb_to_dark_fish',
     npcId: 'walter',
-    giveItemId: 'dark_fish',
-    receiveItemId: 'acid_bomb', // 산성 마법 유탄
+    giveItemId: 'dark_fish', // 어둠유령고기
+    receiveItemId: 'acid_bomb',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -546,10 +546,10 @@ export const trades: Trade[] = [
   {
     id: 'simon_dye_base',
     npcId: 'simon',
-    giveItemId: 'superior_silk',
-    receiveItemId: 'dye_base', // 염료 기본재
+    giveItemId: 'superior_silk', // 상급 실크
+    receiveItemId: 'dye_base',
     giveQuantity: 10,
-    receiveQuantity: 3,
+    receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
     maxExchanges: 1,
@@ -558,8 +558,8 @@ export const trades: Trade[] = [
   {
     id: 'simon_silk_fabric',
     npcId: 'simon',
-    giveItemId: 'ghost_lantern',
-    receiveItemId: 'silk_fabric', // 옷감 가공 시설 설계도 (3레벨)
+    giveItemId: 'ghost_lantern', // 유령 반딧불이
+    receiveItemId: 'silk_fabric',
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -570,8 +570,8 @@ export const trades: Trade[] = [
   {
     id: 'simon_armor_blueprint',
     npcId: 'simon',
-    giveItemId: 'sanded_ferodotS',
-    receiveItemId: 'armor_blueprint', // 방어구 제작대 설계도 (3레벨)
+    giveItemId: 'sanded_ferodotS', // 세공된 페리도트S
+    receiveItemId: 'armor_blueprint',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -582,8 +582,8 @@ export const trades: Trade[] = [
   {
     id: 'aranwen_ultimate_potion',
     npcId: 'aranwen',
-    giveItemId: 'potato_salad',
-    receiveItemId: 'ultimate_potion', // 궁극의 물약
+    giveItemId: 'potato_salad', // 감자 샐러드
+    receiveItemId: 'ultimate_potion',
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -594,20 +594,20 @@ export const trades: Trade[] = [
   {
     id: 'aranwen_spirit_trace',
     npcId: 'aranwen',
-    giveItemId: 'class_master_medal',
-    receiveItemId: 'spirit_trace', // 정령의 흔적
+    giveItemId: 'class_master_medal', // 클래스 마스터 메달
+    receiveItemId: 'spirit_trace',
     giveQuantity: 1,
     receiveQuantity: 20,
-    type: 'none',
+    type: 'daily',
     scope: 'character',
-    maxExchanges: 0,
+    maxExchanges: 20,
     isEnabled: true
   },
   {
     id: 'aira_paper',
     npcId: 'aira',
-    giveItemId: 'orphan_novel',
-    receiveItemId: 'paper', // 종이
+    giveItemId: 'orphan_novel', // 주인 없는 소설책
+    receiveItemId: 'paper',
     giveQuantity: 1,
     receiveQuantity: 10,
     type: 'daily',
@@ -618,8 +618,8 @@ export const trades: Trade[] = [
   {
     id: 'jerome_silk',
     npcId: 'jerome',
-    giveItemId: 'ricotta_cheese_salad',
-    receiveItemId: 'silk', // 실크
+    giveItemId: 'ricotta_cheese_salad', // 리코타 치즈 샐러드
+    receiveItemId: 'silk',
     giveQuantity: 1,
     receiveQuantity: 4,
     type: 'daily',
@@ -630,8 +630,8 @@ export const trades: Trade[] = [
   {
     id: 'jerome_superior_silk',
     npcId: 'jerome',
-    giveItemId: 'cream_sauce_steak',
-    receiveItemId: 'superior_silk', // 상급 실크
+    giveItemId: 'cream_sauce_steak', // 크림소스 스테이크
+    receiveItemId: 'superior_silk',
     giveQuantity: 1,
     receiveQuantity: 4,
     type: 'daily',
@@ -642,8 +642,8 @@ export const trades: Trade[] = [
   {
     id: 'jamie_superior_fabric',
     npcId: 'jamie',
-    giveItemId: 'apple_soup',
-    receiveItemId: 'superior_fabric', // 상급 옷감
+    giveItemId: 'apple_souffle', // 사과 수플레
+    receiveItemId: 'superior_fabric',
     giveQuantity: 1,
     receiveQuantity: 4,
     type: 'daily',
@@ -654,8 +654,8 @@ export const trades: Trade[] = [
   {
     id: 'jamie_superior_fabric_plus',
     npcId: 'jamie',
-    giveItemId: 'apple_cream_cake',
-    receiveItemId: 'superior_fabric_plus', // 상급 옷감+
+    giveItemId: 'apple_cream_cake', // 사과 생크림케이크
+    receiveItemId: 'superior_fabric_plus_processed',
     giveQuantity: 1,
     receiveQuantity: 4,
     type: 'daily',
@@ -664,22 +664,22 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'calix_superior_wood',
+    id: 'calix_leather_plus_to_milk_tea',
     npcId: 'calix',
-    giveItemId: 'glenis_apple_milk_tea',
-    receiveItemId: 'leather_plus', // 가죽+
+    giveItemId: 'glenis_apple_milk_tea', // 글리니스의 애플 밀크티
+    receiveItemId: 'leather_plus',
     giveQuantity: 2,
     receiveQuantity: 10,
     type: 'daily',
     scope: 'character',
-    maxExchanges: 2,
+    maxExchanges: 1,
     isEnabled: true
   },
   {
     id: 'flora_orphan_novel',
     npcId: 'flora',
-    giveItemId: 'glenis_cake',
-    receiveItemId: 'orphan_novel', // 주인 없는 소설책
+    giveItemId: 'glenis_cake', // 글리니스 수제 케이크
+    receiveItemId: 'orphan_novel',
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -858,13 +858,25 @@ export const trades: Trade[] = [
   {
     id: 'simon_perfect_bandage',
     npcId: 'simon',
-    giveItemId: 'perfect_bandage',
-    receiveItemId: 'fabric_plus', // 옷감+
+    giveItemId: 'perfect_bandage', // 완벽한 붕대
+    receiveItemId: 'fabric_plus_processed',
     giveQuantity: 100,
     receiveQuantity: 10,
     type: 'daily',
     scope: 'character',
     maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'simon_gold_ingot_pile',
+    npcId: 'simon',
+    giveItemId: 'dream_reflecting_mirror_fragment', // 꿈을 비추는 거울 조각
+    receiveItemId: 'gold_ingot_pile',
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'none',
+    scope: 'character',
+    maxExchanges: 0,
     isEnabled: true
   },
   {
@@ -892,10 +904,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'calix_immortality_powder_lemon',
+    id: 'calix_lemon_to_immortality_powder',
     npcId: 'calix',
-    giveItemId: 'immortality_powder',
-    receiveItemId: 'lemon', // 레몬
+    giveItemId: 'immortality_powder', // 불사의 가루
+    receiveItemId: 'lemon',
     giveQuantity: 5,
     receiveQuantity: 3,
     type: 'daily',
@@ -904,10 +916,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'calix_immortality_powder_pepper',
+    id: 'calix_pepper_to_immortality_powder',
     npcId: 'calix',
-    giveItemId: 'immortality_powder',
-    receiveItemId: 'pepper', // 후추
+    giveItemId: 'immortality_powder', // 불사의 가루
+    receiveItemId: 'pepper',
     giveQuantity: 5,
     receiveQuantity: 2,
     type: 'daily',
@@ -1016,7 +1028,7 @@ export const trades: Trade[] = [
     id: 'kaitin_special_bread',
     npcId: 'kaitin',
     giveItemId: 'milk',
-    receiveItemId: 'kaitin_special_bread', // 케이틴 특제 통밀빵
+    receiveItemId: 'kaitin_bread', // 케이틴 특제 통밀빵
     giveQuantity: 10,
     receiveQuantity: 3,
     type: 'daily',
@@ -1025,10 +1037,22 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
+    id: 'neris_superior_leather_to_copper',
+    npcId: 'neris',
+    giveItemId: 'copper_ore',
+    receiveItemId: 'superior_leather', // 상급 생가죽
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 10,
+    isEnabled: true
+  },
+  {
     id: 'neris_special_steel',
     npcId: 'neris',
     giveItemId: 'alloy_steel_ingot',
-    receiveItemId: 'special_steel_ingot', // 특수강괴
+    receiveItemId: 'special_steel', // 특수강괴
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -1148,8 +1172,8 @@ export const trades: Trade[] = [
   {
     id: 'sean_wrapping_paper_to_bouquet',
     npcId: 'sean',
-    giveItemId: 'antique_wrapping_paper',
-    receiveItemId: 'heartfelt_bouquet', // 정성 담긴 꽃다발
+    giveItemId: 'heartfelt_bouquet', // 정성 담긴 꽃다발
+    receiveItemId: 'antique_wrapping_paper',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -1160,10 +1184,10 @@ export const trades: Trade[] = [
   {
     id: 'shamus_shawarma_to_bandage',
     npcId: 'shamus',
-    giveItemId: 'shawarma',
-    receiveItemId: 'excellent_bandage', // 뛰어난 붕대
-    giveQuantity: 1,
-    receiveQuantity: 3,
+    giveItemId: 'excellent_bandage', // 뛰어난 붕대
+    receiveItemId: 'shawarma',
+    giveQuantity: 3,
+    receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
     maxExchanges: 3,

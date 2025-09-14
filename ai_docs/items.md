@@ -76,7 +76,7 @@ This document contains all items from the game database in table format.
 | glenis_cake | 글리니스 수제 케이크 | /images/items/glenis_cake.png | 글리니스가 만든 특제 케이크 | false | 음식 | true | - | - |
 | fork_in_milk | 포크 인 밀크 | /images/items/fork_in_milk.png | 우유에 담긴 포크 | false | 재료 | false | - | - |
 | glenis_apple_milk_tea | 글리니스의 애플 밀크티 | /images/items/glenis_apple_milk_tea.png | 글리니스가 만든 특제 밀크티 | false | 음식 | true | - | - |
-| processed_leather | 가죽 | /images/items/processed_leather.png | 가공된 가죽 | false | 재료 | false | - | - |
+| leather_processed | 가죽 | /images/items/leather_processed.png | 가공된 가죽 | false | 재료 | false | - | - |
 | apple_soup | 사과 수플레 | /images/items/apple_soup.png | 사과로 만든 수프 | false | 음식 | false | - | - |
 | special_steel | 특수강괴 | /images/items/special_steel.png | 특별한 강철괴 | false | 금속 | false | - | - |
 | life_gem | 생명의 마나석 | /images/items/life_gem.png | 생명력을 담은 보석 | false | 보석 | false | - | - |
@@ -131,7 +131,7 @@ This document contains all items from the game database in table format.
 | superior_wood | 상급 목재 | /images/items/superior_wood.png | 고급 가구 제작에 사용되는 상급 목재입니다. | false | 재료 | false | - | - |
 | superior_wood_plus | 상급 목재+ | /images/items/superior_wood_plus.png | 최고급 가구 제작에 사용되는 상급 목재입니다. | false | 재료 | false | - | - |
 | leather | 생가죽 | /images/items/leather.png | 기본적인 가죽 | false | 재료 | false | - | - |
-| processed_leather | 가죽 | /images/items/processed_leather.png | 가공된 가죽 | false | 재료 | false | - | - |
+| leather_processed | 가죽 | /images/items/leather_processed.png | 가공된 가죽 | false | 재료 | false | - | - |
 | leather_processing_blueprint | 가죽 가공 시설 설계도 (3레벨) | /images/items/blueprint.png | 가죽 가공 시설을 만들 수 있는 설계도 | false | 설계도 | false | - | - |
 | wood_processing_blueprint | 목재 가공 시설 설계도 (3레벨) | /images/items/blueprint.png | 목재 가공 시설을 만들 수 있는 설계도 | false | 설계도 | false | - | - |
 | tracy_wood_carving | 트레이시의 원목 오르골 | /images/items/tracy_wood_carving.png | 트레이시가 만든 나무 오르골 | false | 장식품 | true | - | - |
