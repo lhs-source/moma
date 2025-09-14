@@ -1176,4 +1176,10 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  {
+    id: 'autumn_leaf_moth',
+    name: '낙엽나방',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];

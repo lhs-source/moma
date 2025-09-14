@@ -80,6 +80,12 @@ export const potionItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.POTION,
   },
+  {
+    id: 'excellent_bandage',
+    name: '뛰어난 붕대',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.POTION,
+  },
   // 아이템 제작 레시피 결과물들
   {
     id: 'healing_potion_5',

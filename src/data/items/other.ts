@@ -176,4 +176,10 @@ export const otherItems: Item[] = [
     imageUrl: '/images/items/blueprint.png',
     category: ITEM_CATEGORY.OTHER,
   },
+  {
+    id: 'heartfelt_bouquet',
+    name: '정성 담긴 꽃다발',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.OTHER,
+  },
 ];

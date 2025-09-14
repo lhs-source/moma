@@ -183,5 +183,19 @@ export const medicineProcessingRecipes: Recipe[] = [
     facilityLevel: 5,
     craftingTime: 30000,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_excellent_bandage',
+    name: '뛰어난 붕대',
+    resultItemId: 'excellent_bandage',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'bandage', quantity: 10 },
+      { itemId: 'fresh_mushroom_spores', quantity: 5 },
+      { itemId: 'clean_mushroom_spores', quantity: 3 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 1800,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   }
 ]

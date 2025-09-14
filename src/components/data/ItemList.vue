@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useItemStore } from '@/stores/item'
 import { useRecipesStore } from '@/stores/recipes'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
@@ -62,6 +62,7 @@ const itemStore = useItemStore()
 const recipesStore = useRecipesStore()
 
 const searchQuery = ref('')
+const debouncedSearchQuery = ref('')
 const selectedCategory = ref('')
 const selectedUsageType = ref('')
 
@@ -71,9 +72,20 @@ onMounted(() => {
   recipesStore.fetchRecipeList()
 })
 
+// 검색어 디바운싱 (300ms)
+let searchTimeout: number | null = null
+watch(searchQuery, (newValue) => {
+  if (searchTimeout) {
+    clearTimeout(searchTimeout)
+  }
+  searchTimeout = setTimeout(() => {
+    debouncedSearchQuery.value = newValue
+  }, 300)
+})
+
 const filteredItems = computed(() => {
   return itemStore.getFilteredItems({
-    searchQuery: searchQuery.value,
+    searchQuery: debouncedSearchQuery.value,
     category: selectedCategory.value,
     usageType: selectedUsageType.value
   }).filter(item => {

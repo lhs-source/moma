@@ -1039,7 +1039,7 @@ export const trades: Trade[] = [
   {
     id: 'shamus_wrapping_paper',
     npcId: 'shamus',
-    giveItemId: 'water_filled_bottle',
+    giveItemId: 'water_bottle',
     receiveItemId: 'antique_wrapping_paper', // 고풍스러운 포장지
     giveQuantity: 10,
     receiveQuantity: 1,
@@ -1063,9 +1063,21 @@ export const trades: Trade[] = [
   {
     id: 'eileen_silver_ingot',
     npcId: 'eileen',
-    giveItemId: 'special_steel_ingot',
+    giveItemId: 'special_steel',
     receiveItemId: 'silver_alloy_ingot', // 은합금괴
     giveQuantity: 3,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'eileen_silver_ingot_2',
+    npcId: 'eileen',
+    giveItemId: 'alloy_steel_ingot',
+    receiveItemId: 'silver_alloy_ingot', // 은합금괴
+    giveQuantity: 30,
     receiveQuantity: 1,
     type: 'daily',
     scope: 'character',
@@ -1088,7 +1100,7 @@ export const trades: Trade[] = [
     id: 'sean_water_bottle',
     npcId: 'sean',
     giveItemId: 'scar_flower',
-    receiveItemId: 'water_filled_bottle', // 물이 든 병
+    receiveItemId: 'water_bottle', // 물이 든 병
     giveQuantity: 10,
     receiveQuantity: 10,
     type: 'daily',
@@ -1123,13 +1135,37 @@ export const trades: Trade[] = [
   {
     id: 'jennifer_light_meat',
     npcId: 'jennifer',
-    giveItemId: 'beans',
+    giveItemId: 'bean',
     receiveItemId: 'light_meat', // 담백한 고기
     giveQuantity: 10,
     receiveQuantity: 15,
     type: 'daily',
     scope: 'character',
     maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'sean_wrapping_paper_to_bouquet',
+    npcId: 'sean',
+    giveItemId: 'antique_wrapping_paper',
+    receiveItemId: 'heartfelt_bouquet', // 정성 담긴 꽃다발
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'shamus_shawarma_to_bandage',
+    npcId: 'shamus',
+    giveItemId: 'shawarma',
+    receiveItemId: 'excellent_bandage', // 뛰어난 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 3,
     isEnabled: true
   }
 ] 
