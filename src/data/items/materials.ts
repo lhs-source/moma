@@ -1188,4 +1188,28 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  {
+    id: 'supreme_fabric_plus',
+    name: '최상급 옷감+',
+    imageUrl: '/images/items/supreme_fabric_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_leather_plus',
+    name: '최상급 가죽+',
+    imageUrl: '/images/items/supreme_leather_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_wood_plus',
+    name: '최상급 목재+',
+    imageUrl: '/images/items/supreme_wood_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'cloud_steel_ingot',
+    name: '운철괴',
+    imageUrl: '/images/items/cloud_steel_ingot.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];
