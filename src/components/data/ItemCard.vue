@@ -23,7 +23,8 @@
             'inline-block px-2 py-1 text-xs rounded': true,
             'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200': usageType === '레시피',
             'bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200': usageType === '교환',
-            'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200': usageType === '구매'
+            'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200': usageType === '구매',
+            'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200': usageType === '교환으로 얻을 수 있음'
           }">
             {{ usageType }}
           </span>
@@ -95,6 +96,22 @@
         </table>
       </div>
 
+      <!-- 교환으로 얻을 수 있는 경우 -->
+      <div v-if="obtainableTrades.length > 0"
+        class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-800">
+        <p class="text-xs font-medium text-foreground mb-2 text-center">교환으로 얻을 수 있음</p>
+        <table class="w-full text-xs">
+          <tbody>
+            <tr v-for="trade in obtainableTrades" :key="trade.id" class="text-foreground">
+              <td class="font-medium text-left pr-2 w-30">{{ trade.npcName }} ({{ trade.locationName }})</td>
+              <td class="text-muted-foreground text-left pr-2 flex-1">{{ trade.giveItemName }} {{ trade.giveQuantity }}개
+                필요</td>
+              <td class="text-muted-foreground text-left w-20">{{ trade.receiveQuantity }}개 획득</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- 제작 레시피 (카테고리별) -->
       <div v-for="[category, recipes] in craftingCategories" :key="category" :class="getCategoryColors(category)"
         class="rounded-lg p-3 border">
@@ -132,6 +149,9 @@ import type { Item } from '@/data/schemas/item'
 import { items } from '@/data/items'
 import { recipes } from '@/data/recipes'
 import { purchaseData } from '@/data/purchase'
+import { trades } from '@/data/trade'
+import { npcs } from '@/data/npcs'
+import { locations } from '@/data/locations'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
 import { findProcessingRecipesForItem } from '@/utils/recipeDependencyUtils'
 import { formatTime } from '@/utils/timeUtils'
@@ -148,7 +168,12 @@ const itemUsage = computed(() => {
 
 // 사용처 타입들 - 한 번만 계산하고 캐시
 const usageTypes = computed(() => {
-  return itemUsageIndex.getUsageTypes(props.item.id)
+  const types = itemUsageIndex.getUsageTypes(props.item.id)
+  // 교환으로 얻을 수 있는 경우 추가
+  if (obtainableTrades.value.length > 0) {
+    types.push('교환으로 얻을 수 있음')
+  }
+  return types
 })
 
 // 가공 레시피들 - 한 번만 계산하고 캐시
@@ -222,6 +247,28 @@ const processingRecipeUsage = computed(() => {
       recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE) &&
     recipe.requiredItems.some(material => material.itemId === props.item.id)
   )
+})
+
+// 교환으로 얻을 수 있는 아이템들
+const obtainableTrades = computed(() => {
+  return trades
+    .filter(trade => trade.receiveItemId === props.item.id && trade.isEnabled)
+    .map(trade => {
+      const npc = npcs.find(n => n.id === trade.npcId)
+      const location = locations.find(l => l.id === npc?.locationId)
+      const giveItem = items.find(i => i.id === trade.giveItemId)
+
+      return {
+        id: trade.id,
+        npcName: npc?.name || '알 수 없음',
+        locationName: location?.name || '알 수 없음',
+        giveItemName: giveItem?.name || trade.giveItemId,
+        giveQuantity: trade.giveQuantity,
+        receiveQuantity: trade.receiveQuantity,
+        type: trade.type,
+        maxExchanges: trade.maxExchanges
+      }
+    })
 })
 
 // 제작 비용 계산 (purchaseData에서 가격 찾기)

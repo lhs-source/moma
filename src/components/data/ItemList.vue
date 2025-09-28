@@ -26,6 +26,7 @@
           <SelectItem value="교환">교환 아이템</SelectItem>
           <SelectItem value="구매">구매 가능</SelectItem>
           <SelectItem value="제작">제작 가능</SelectItem>
+          <SelectItem value="교환으로 얻을 수 있음">교환으로 얻을 수 있음</SelectItem>
         </SelectContent>
       </Select>
     </div>
@@ -49,6 +50,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useItemStore } from '@/stores/item'
 import { useRecipesStore } from '@/stores/recipes'
+import { useTradeStore } from '@/stores/trade'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
 import ItemCard from './ItemCard.vue'
 import Input from '@/components/ui/input.vue'
@@ -60,6 +62,7 @@ import SelectValue from '@/components/ui/select-value.vue'
 
 const itemStore = useItemStore()
 const recipesStore = useRecipesStore()
+const tradeStore = useTradeStore()
 
 const searchQuery = ref('')
 const debouncedSearchQuery = ref('')
@@ -70,6 +73,7 @@ const selectedUsageType = ref('')
 onMounted(() => {
   itemStore.fetchItemList()
   recipesStore.fetchRecipeList()
+  tradeStore.fetchTradeList()
 })
 
 // 검색어 디바운싱 (300ms)
@@ -98,6 +102,10 @@ const filteredItems = computed(() => {
     if (usage?.usageTypes.trades.length) usageTypes.push('교환')
     if (usage?.usageTypes.purchases.length) usageTypes.push('구매')
 
+    // 교환으로 얻을 수 있는지 확인
+    const obtainableTrades = tradeStore.tradeList.filter(trade => trade.receiveItemId === item.id && trade.isEnabled)
+    if (obtainableTrades.length > 0) usageTypes.push('교환으로 얻을 수 있음')
+
     switch (selectedUsageType.value) {
       case '레시피':
         return usageTypes.includes('레시피')
@@ -107,6 +115,8 @@ const filteredItems = computed(() => {
         return usageTypes.includes('구매')
       case '제작':
         return recipesStore.recipeList.some(recipe => recipe.resultItemId === item.id)
+      case '교환으로 얻을 수 있음':
+        return usageTypes.includes('교환으로 얻을 수 있음')
       default:
         return true
     }
