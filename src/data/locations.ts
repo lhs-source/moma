@@ -32,5 +32,9 @@ export const locations: Location[] = [
   {
     id: 'bangor',
     name: '반호르'
+  },
+  {
+    id: 'emain_maha',
+    name: '이멘 마하'
   }
 ]

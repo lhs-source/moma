@@ -273,5 +273,62 @@ export const npcs: NPC[] = [
     description: '식료품점',
     imageUrl: '/images/npcs/default.webp',
     locationId: 'bangor'
+  },
+  // 이멘 마하 NPC들
+  {
+    id: 'donna',
+    name: '도나',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'dell',
+    name: '델',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'dellen',
+    name: '델렌',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'eleanor',
+    name: '엘레노아',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'galvin',
+    name: '갈빈',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'osla',
+    name: '오슬라',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'gordon',
+    name: '고든',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
+  },
+  {
+    id: 'craig',
+    name: '크레이그',
+    description: '물물교환',
+    imageUrl: '/images/npcs/default.webp',
+    locationId: 'emain_maha'
   }
 ] 

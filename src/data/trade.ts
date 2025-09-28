@@ -1192,5 +1192,254 @@ export const trades: Trade[] = [
     scope: 'character',
     maxExchanges: 3,
     isEnabled: true
+  },
+  // 이멘 마하 물물교환
+  // 1. 도나
+  {
+    id: 'donna_holy_water_bundle',
+    npcId: 'donna',
+    giveItemId: 'pumpkin_pie', // 호박 파이
+    receiveItemId: 'holy_water_bundle', // 성수 묶음
+    giveQuantity: 3,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'donna_holy_water',
+    npcId: 'donna',
+    giveItemId: 'gift_bouquet', // 선물용 꽃다발
+    receiveItemId: 'holy_water', // 성수
+    giveQuantity: 1,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  // 2. 델
+  {
+    id: 'dell_arrow_flower',
+    npcId: 'dell',
+    giveItemId: 'blue_hydrangea', // 파란 수국
+    receiveItemId: 'arrow_flower', // 화살꽃
+    giveQuantity: 10,
+    receiveQuantity: 10,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 3,
+    isEnabled: true
+  },
+  {
+    id: 'dell_hidden_flower',
+    npcId: 'dell',
+    giveItemId: 'blue_hydrangea', // 파란 수국
+    receiveItemId: 'hidden_flower', // 숨숨꽃
+    giveQuantity: 10,
+    receiveQuantity: 10,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 3,
+    isEnabled: true
+  },
+  {
+    id: 'dell_scar_flower',
+    npcId: 'dell',
+    giveItemId: 'blue_hydrangea', // 파란 수국
+    receiveItemId: 'scar_flower', // 생채기꽃
+    giveQuantity: 10,
+    receiveQuantity: 10,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 3,
+    isEnabled: true
+  },
+  {
+    id: 'dell_calming_herb',
+    npcId: 'dell',
+    giveItemId: 'blue_hydrangea', // 파란 수국
+    receiveItemId: 'calming_herb', // 진정초
+    giveQuantity: 10,
+    receiveQuantity: 10,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 3,
+    isEnabled: true
+  },
+  {
+    id: 'dell_gift_bouquet',
+    npcId: 'dell',
+    giveItemId: 'clay', // 점토
+    receiveItemId: 'gift_bouquet', // 선물용 꽃다발
+    giveQuantity: 100,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  // 3. 델렌
+  {
+    id: 'dellen_supreme_leather_plus',
+    npcId: 'dellen',
+    giveItemId: 'pumpkin_soup', // 호박 수프
+    receiveItemId: 'supreme_leather_plus', // 최상급 가죽+
+    giveQuantity: 2,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 2,
+    isEnabled: true
+  },
+  {
+    id: 'dellen_supreme_wood_plus',
+    npcId: 'dellen',
+    giveItemId: 'pumpkin_soup', // 호박 수프
+    receiveItemId: 'supreme_wood_plus', // 최상급 목재+
+    giveQuantity: 2,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 2,
+    isEnabled: true
+  },
+  // 4. 엘레노아
+  {
+    id: 'eleanor_supreme_fabric_plus',
+    npcId: 'eleanor',
+    giveItemId: 'green_tea_crepe_case', // 녹차 크레이프 케이스
+    receiveItemId: 'supreme_fabric_plus', // 최상급 옷감+
+    giveQuantity: 2,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 2,
+    isEnabled: true
+  },
+  // 5. 갈빈
+  {
+    id: 'galvin_tough_rope',
+    npcId: 'galvin',
+    giveItemId: 'equipment_parts', // 분해된 장비 부품
+    receiveItemId: 'tough_rope', // 튼튼한 밧줄
+    giveQuantity: 1000,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  // 6. 오슬라
+  {
+    id: 'osla_iron_ingot',
+    npcId: 'osla',
+    giveItemId: 'curry_rice', // 카레라이스
+    receiveItemId: 'iron_ingot', // 철괴
+    giveQuantity: 1,
+    receiveQuantity: 5,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 2,
+    isEnabled: true
+  },
+  {
+    id: 'osla_cloud_steel_ingot',
+    npcId: 'osla',
+    giveItemId: 'curry_rice', // 카레라이스
+    receiveItemId: 'cloud_steel_ingot', // 운철괴
+    giveQuantity: 2,
+    receiveQuantity: 1,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 2,
+    isEnabled: true
+  },
+  // 7. 고든
+  {
+    id: 'gordon_flour',
+    npcId: 'gordon',
+    giveItemId: 'rice', // 쌀
+    receiveItemId: 'flour', // 밀가루
+    giveQuantity: 30,
+    receiveQuantity: 10,
+    type: 'daily',
+    scope: 'character',
+    maxExchanges: 5,
+    isEnabled: true
+  },
+  {
+    id: 'gordon_heavy_potato',
+    npcId: 'gordon',
+    giveItemId: 'fermented_tea_leaves', // 발효된 찻잎
+    receiveItemId: 'heavy_potato', // 묵직한 감자
+    giveQuantity: 10,
+    receiveQuantity: 5,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  // 8. 크레이그
+  {
+    id: 'craig_supreme_heat_resistant_bandage',
+    npcId: 'craig',
+    giveItemId: 'golden_spicy_soup', // 금은 매운탕
+    receiveItemId: 'supreme_heat_resistant_bandage', // 최상급 내열 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'craig_supreme_anti_magic_bandage',
+    npcId: 'craig',
+    giveItemId: 'golden_spicy_soup', // 금은 매운탕
+    receiveItemId: 'supreme_anti_magic_bandage', // 최상급 방항 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'craig_supreme_insulation_bandage',
+    npcId: 'craig',
+    giveItemId: 'golden_spicy_soup', // 금은 매운탕
+    receiveItemId: 'supreme_insulation_bandage', // 최상급 절연 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'craig_supreme_blessing_bandage',
+    npcId: 'craig',
+    giveItemId: 'golden_spicy_soup', // 금은 매운탕
+    receiveItemId: 'supreme_blessing_bandage', // 최상급 축복의 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
+  },
+  {
+    id: 'craig_supreme_seal_bandage',
+    npcId: 'craig',
+    giveItemId: 'golden_spicy_soup', // 금은 매운탕
+    receiveItemId: 'supreme_seal_bandage', // 최상급 봉인의 붕대
+    giveQuantity: 1,
+    receiveQuantity: 3,
+    type: 'account',
+    scope: 'account',
+    maxExchanges: 1,
+    isEnabled: true
   }
 ] 
