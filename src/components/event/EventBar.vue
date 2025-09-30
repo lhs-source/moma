@@ -1,6 +1,10 @@
 <template>
-  <div :class="barClass" class="px-3 py-2 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-shadow">
-    <div class="flex items-center justify-between">
+  <div 
+    :class="barClass" 
+    class="px-3 py-2 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
+    @click="handleClick"
+  >
+    <div class="flex items-center justify-between pointer-events-none">
       <div class="flex-1 min-w-0">
         <div class="font-semibold text-sm truncate text-foreground">{{ event.name }}</div>
         <div class="text-xs text-muted-foreground mt-1">
@@ -23,6 +27,10 @@ import { EVENT_TYPE } from '@/data/schemas/event'
 const props = withDefaults(defineProps<{
   event: GameEvent
 }>(), {})
+
+const emit = defineEmits<{
+  (eventName: 'click', event: GameEvent): void
+}>()
 
 const now = ref(new Date())
 let intervalId: number | null = null
@@ -67,6 +75,10 @@ function formatDateTime(date: Date): string {
 
 function updateTime() {
   now.value = new Date()
+}
+
+function handleClick() {
+  emit('click', props.event)
 }
 
 onMounted(() => {
