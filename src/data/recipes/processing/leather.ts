@@ -68,5 +68,19 @@ export const leatherProcessingRecipes: Recipe[] = [
     facilityLevel: 5,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_LEATHER
+  },
+  {
+    id: 'craft_supreme_leather_plus',
+    name: '최상급 가죽+',
+    resultItemId: 'supreme_leather_plus',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'best_leather_processed', quantity: 5 },
+      { itemId: 'best_leather_plus', quantity: 20 },
+      { itemId: 'tannin_powder', quantity: 20 }
+    ],
+    facilityLevel: 6,
+    craftingTime: 18000,
+    category: RECIPE_CATEGORY.PROCESS_LEATHER
   }
 ]

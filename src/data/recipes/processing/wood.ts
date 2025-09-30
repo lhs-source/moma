@@ -82,5 +82,19 @@ export const woodProcessingRecipes: Recipe[] = [
     facilityLevel: 5,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_WOOD
+  },
+  {
+    id: 'craft_supreme_wood_plus',
+    name: '최상급 목재+',
+    resultItemId: 'supreme_wood_plus',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'supreme_wood', quantity: 5 },
+      { itemId: 'supreme_log_plus', quantity: 20 },
+      { itemId: 'tree_sap', quantity: 20 }
+    ],
+    facilityLevel: 6,
+    craftingTime: 18000,
+    category: RECIPE_CATEGORY.PROCESS_WOOD
   }
 ]

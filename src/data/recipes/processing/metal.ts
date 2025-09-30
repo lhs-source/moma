@@ -68,5 +68,19 @@ export const metalProcessingRecipes: Recipe[] = [
     facilityLevel: 5,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_METAL
+  },
+  {
+    id: 'craft_cloud_steel_ingot',
+    name: '운철괴',
+    resultItemId: 'cloud_steel_ingot',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'silver_alloy_ingot', quantity: 5 },
+      { itemId: 'cloud_iron_ore', quantity: 20 },
+      { itemId: 'coal', quantity: 20 }
+    ],
+    facilityLevel: 6,
+    craftingTime: 18000,
+    category: RECIPE_CATEGORY.PROCESS_METAL
   }
 ]

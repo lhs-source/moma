@@ -1321,4 +1321,71 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/supreme_seal_bandage.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  // 추가 가공 재료들
+  {
+    id: 'cloud_iron_ore',
+    name: '운철광석',
+    imageUrl: '/images/items/cloud_iron_ore.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_log_plus',
+    name: '최상급 통나무+',
+    imageUrl: '/images/items/supreme_log_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_wool_plus',
+    name: '최상급 양털+',
+    imageUrl: '/images/items/supreme_wool_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'sleepy_mushroom',
+    name: '솔솔 버섯',
+    imageUrl: '/images/items/sleepy_mushroom.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'sleepy_mushroom_spores',
+    name: '솔솔 버섯 포자',
+    imageUrl: '/images/items/sleepy_mushroom_spores.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'sleepy_mushroom_juice',
+    name: '솔솔 버섯 진액',
+    imageUrl: '/images/items/sleepy_mushroom_juice.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'lightning_struck_branch',
+    name: '벼락 맞은 나뭇가지',
+    imageUrl: '/images/items/lightning_struck_branch.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'butterfly_dragonfly',
+    name: '나비 잠자리',
+    imageUrl: '/images/items/butterfly_dragonfly.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'illusion_powder',
+    name: '환영 가루',
+    imageUrl: '/images/items/illusion_powder.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'calming_herb_powder',
+    name: '진정초 가루',
+    imageUrl: '/images/items/calming_herb_powder.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'best_leather_plus',
+    name: '최상급 생가죽+',
+    imageUrl: '/images/items/best_leather_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];

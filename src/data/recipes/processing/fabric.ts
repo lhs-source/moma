@@ -106,5 +106,19 @@ export const fabricProcessingRecipes: Recipe[] = [
     facilityLevel: 5,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_FABRIC
+  },
+  {
+    id: 'craft_supreme_fabric_plus',
+    name: '최상급 옷감+',
+    resultItemId: 'supreme_fabric_plus',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'supreme_fabric', quantity: 5 },
+      { itemId: 'supreme_wool_plus', quantity: 20 },
+      { itemId: 'wool', quantity: 20 }
+    ],
+    facilityLevel: 6,
+    craftingTime: 18000,
+    category: RECIPE_CATEGORY.PROCESS_FABRIC
   }
 ]

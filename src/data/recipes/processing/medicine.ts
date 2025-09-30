@@ -197,5 +197,56 @@ export const medicineProcessingRecipes: Recipe[] = [
     facilityLevel: 4,
     craftingTime: 1800,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_calming_herb_powder',
+    name: '진정초 가루',
+    resultItemId: 'calming_herb_powder',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'calming_herb', quantity: 20 }
+    ],
+    facilityLevel: 3,
+    craftingTime: 1800,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_sleepy_mushroom_spore',
+    name: '솔솔 버섯 포자',
+    resultItemId: 'sleepy_mushroom_spores',
+    resultQuantity: 15,
+    requiredItems: [
+      { itemId: 'sleepy_mushroom', quantity: 30 },
+      { itemId: 'paper', quantity: 3 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 2100,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_sleepy_mushroom_extract',
+    name: '솔솔 버섯 진액',
+    resultItemId: 'sleepy_mushroom_juice',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'sleepy_mushroom_spores', quantity: 10 },
+      { itemId: 'fresh_mushroom_juice', quantity: 10 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 7200,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_illusion_powder',
+    name: '환영 가루',
+    resultItemId: 'illusion_powder',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'lightning_struck_branch', quantity: 20 },
+      { itemId: 'butterfly_dragonfly', quantity: 10 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 1800,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
   }
 ]
