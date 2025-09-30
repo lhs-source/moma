@@ -17,7 +17,7 @@ const todos = ref<TodoItem[]>([
   { id: 'membership', text: '멤버십 퀘스트', completed: false, category: 'weekly' },
   { id: 'monster', text: '마물 퇴치 증표 교환', completed: false, category: 'weekly' },
   { id: 'guild', text: '모험가 길드 정기 의뢰', completed: false, category: 'weekly' },
-  { id: 'abyss_reward', text: '어비스 보상 받기', completed: false, category: 'daily' },
+  { id: 'abyss_reward', text: '어비스 보상 받기', completed: false, category: 'weekly' },
   { id: 'blackhole', text: '검은 구멍', completed: false, category: 'daily' },
   { id: 'silvercoin', text: '은동전 소모', completed: false, category: 'daily' },
   { id: 'tribute', text: '공물 소모', completed: false, category: 'daily' },

@@ -39,11 +39,6 @@ const router = createRouter({
       component: () => import('../views/DataView.vue'),
     },
     {
-      path: '/gear',
-      name: 'gear',
-      component: () => import('../views/GearSimulatorView.vue'),
-    },
-    {
       path: '/events',
       name: 'events',
       component: () => import('../views/EventCalendarView.vue'),
