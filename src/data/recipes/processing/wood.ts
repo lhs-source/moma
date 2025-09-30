@@ -94,7 +94,7 @@ export const woodProcessingRecipes: Recipe[] = [
       { itemId: 'tree_sap', quantity: 20 }
     ],
     facilityLevel: 6,
-    craftingTime: 18000,
+    craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_WOOD
   }
 ]

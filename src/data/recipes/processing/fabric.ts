@@ -118,7 +118,7 @@ export const fabricProcessingRecipes: Recipe[] = [
       { itemId: 'wool', quantity: 20 }
     ],
     facilityLevel: 6,
-    craftingTime: 18000,
+    craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_FABRIC
   }
 ]

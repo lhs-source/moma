@@ -80,7 +80,7 @@ export const leatherProcessingRecipes: Recipe[] = [
       { itemId: 'tannin_powder', quantity: 20 }
     ],
     facilityLevel: 6,
-    craftingTime: 18000,
+    craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_LEATHER
   }
 ]

@@ -80,7 +80,7 @@ export const metalProcessingRecipes: Recipe[] = [
       { itemId: 'coal', quantity: 20 }
     ],
     facilityLevel: 6,
-    craftingTime: 18000,
+    craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_METAL
   }
 ]

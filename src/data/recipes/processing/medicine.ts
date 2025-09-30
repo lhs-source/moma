@@ -207,7 +207,7 @@ export const medicineProcessingRecipes: Recipe[] = [
       { itemId: 'calming_herb', quantity: 20 }
     ],
     facilityLevel: 3,
-    craftingTime: 1800,
+    craftingTime: 3600,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
@@ -220,7 +220,7 @@ export const medicineProcessingRecipes: Recipe[] = [
       { itemId: 'paper', quantity: 3 }
     ],
     facilityLevel: 4,
-    craftingTime: 2100,
+    craftingTime: 4200,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
@@ -233,7 +233,7 @@ export const medicineProcessingRecipes: Recipe[] = [
       { itemId: 'fresh_mushroom_juice', quantity: 10 }
     ],
     facilityLevel: 4,
-    craftingTime: 7200,
+    craftingTime: 14400,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
@@ -246,7 +246,7 @@ export const medicineProcessingRecipes: Recipe[] = [
       { itemId: 'butterfly_dragonfly', quantity: 10 }
     ],
     facilityLevel: 4,
-    craftingTime: 1800,
+    craftingTime: 3600,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   }
 ]
