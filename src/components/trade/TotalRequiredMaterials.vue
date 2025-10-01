@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import type { Item } from '@/data/schemas/item'
 import type { Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 import type { WeeklyTrade } from './WeeklyRequirements.vue'
 
 interface Props {
@@ -18,22 +19,24 @@ function calculateRecipeMaterials(recipe: Recipe, quantity: number): { [key: str
 
   recipe.requiredItems.forEach(item => {
     const nestedRecipe = props.recipes.find(r => r.resultItemId === item.itemId)
-    if (nestedRecipe) {
+    
+    // 골드로 구매하는 항목이거나 레시피가 없으면 더 이상 분해하지 않음
+    if (!nestedRecipe || nestedRecipe.category === RECIPE_CATEGORY.BUY) {
+      // 기본 재료로 취급
+      materials[item.itemId] = (materials[item.itemId] || 0) + (item.quantity * quantity)
+    } else {
       // 중첩된 레시피가 있는 경우 재귀적으로 계산
       const nestedMaterials = calculateRecipeMaterials(nestedRecipe as Recipe, item.quantity * quantity)
       Object.entries(nestedMaterials).forEach(([itemId, qty]) => {
         materials[itemId] = (materials[itemId] || 0) + qty
       })
-    } else {
-      // 기본 재료인 경우
-      materials[item.itemId] = (materials[item.itemId] || 0) + (item.quantity * quantity)
     }
   })
 
   return materials
 }
 
-// 최종 필요 재료 계산
+// 최종 필요 재료 계산 (골드로 구매하는 항목 제외)
 const calculateTotalRequiredMaterials = computed(() => {
   const materials: { [key: string]: number } = {}
 
@@ -57,8 +60,13 @@ const calculateTotalRequiredMaterials = computed(() => {
     }
   })
 
-  // 아이템 ID를 기준으로 정렬된 배열로 변환
+  // 골드로 구매하는 항목 제외하고, 아이템 ID를 기준으로 정렬된 배열로 변환
   return Object.entries(materials)
+    .filter(([itemId]) => {
+      const recipe = props.recipes.find(r => r.resultItemId === itemId)
+      // 골드로 구매하는 레시피는 제외
+      return !recipe || recipe.category !== RECIPE_CATEGORY.BUY
+    })
     .map(([itemId, quantity]) => ({
       itemId,
       quantity
