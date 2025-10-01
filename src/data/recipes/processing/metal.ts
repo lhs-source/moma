@@ -73,7 +73,7 @@ export const metalProcessingRecipes: Recipe[] = [
     id: 'craft_cloud_steel_ingot',
     name: '운철괴',
     resultItemId: 'cloud_steel_ingot',
-    resultQuantity: 1,
+    resultQuantity: 3,
     requiredItems: [
       { itemId: 'silver_alloy_ingot', quantity: 5 },
       { itemId: 'cloud_iron_ore', quantity: 20 },

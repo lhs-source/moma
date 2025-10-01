@@ -73,7 +73,7 @@ export const leatherProcessingRecipes: Recipe[] = [
     id: 'craft_supreme_leather_plus',
     name: '최상급 가죽+',
     resultItemId: 'supreme_leather_plus',
-    resultQuantity: 1,
+    resultQuantity: 3,
     requiredItems: [
       { itemId: 'best_leather_processed', quantity: 5 },
       { itemId: 'best_leather_plus', quantity: 20 },

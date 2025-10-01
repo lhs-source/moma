@@ -87,7 +87,7 @@ export const woodProcessingRecipes: Recipe[] = [
     id: 'craft_supreme_wood_plus',
     name: '최상급 목재+',
     resultItemId: 'supreme_wood_plus',
-    resultQuantity: 1,
+    resultQuantity: 3,
     requiredItems: [
       { itemId: 'supreme_wood', quantity: 5 },
       { itemId: 'supreme_log_plus', quantity: 20 },

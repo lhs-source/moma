@@ -7,8 +7,9 @@ export const craftingRecipes: Recipe[] = recipes.filter(recipe =>
   recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
   recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
   recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
-  recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM ||
-  recipe.category === RECIPE_CATEGORY.MEDICINE
+  recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE ||
+  recipe.category === RECIPE_CATEGORY.PROCESS_FOOD ||
+  recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM
 )
 
 // 제작 카테고리별로 그룹화
@@ -32,8 +33,8 @@ export const craftingCategories = [
   RECIPE_CATEGORY.PROCESS_WOOD, 
   RECIPE_CATEGORY.PROCESS_LEATHER,
   RECIPE_CATEGORY.PROCESS_FABRIC,
-  RECIPE_CATEGORY.CRAFTING_ITEM,
-  RECIPE_CATEGORY.MEDICINE
+  RECIPE_CATEGORY.PROCESS_MEDICINE,
+  RECIPE_CATEGORY.PROCESS_FOOD
 ]
 
 // 레거시 인터페이스 (기존 코드와의 호환성을 위해)

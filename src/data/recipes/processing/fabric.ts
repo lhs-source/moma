@@ -111,7 +111,7 @@ export const fabricProcessingRecipes: Recipe[] = [
     id: 'craft_supreme_fabric_plus',
     name: '최상급 옷감+',
     resultItemId: 'supreme_fabric_plus',
-    resultQuantity: 1,
+    resultQuantity: 3,
     requiredItems: [
       { itemId: 'supreme_fabric', quantity: 5 },
       { itemId: 'supreme_wool_plus', quantity: 20 },
