@@ -40,18 +40,38 @@
       <!-- 총 필요 식재료 집계 -->
       <div v-if="totalRawMaterialsRows.length" class="pt-2 mt-2 border-t border-border">
         <div class="text-xs text-muted-foreground mb-1">총 필요 식재료</div>
-        <div v-for="row in totalRawMaterialsRows" :key="'raw-' + row.itemId" class="flex items-center gap-2 text-sm">
-          <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)" class="w-5 h-5 rounded object-cover"
-            @error="handleImageError" />
-          <span class="truncate text-foreground">{{ getItemName(row.itemId) }}</span>
-          <span class="ml-auto font-semibold text-foreground">x{{ row.quantity }}</span>
-          <span v-if="getBuyableCount(row.itemId) > 0"
-            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-destructive font-semibold' : 'text-muted-foreground']"
-            class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
-          <span v-if="getMinBuyPrice(row.itemId) !== null"
-            class="ml-2 text-xs text-muted-foreground whitespace-nowrap">개당 {{
-              formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
-            }}</span>
+        <div v-for="row in totalRawMaterialsRows" :key="'raw-' + row.itemId" class="space-y-1">
+          <!-- 메인 아이템 -->
+          <div class="flex items-center gap-2 text-sm">
+            <img :src="getItemImageUrl(row.itemId)" :alt="getItemName(row.itemId)" class="w-5 h-5 rounded object-cover"
+              @error="handleImageError" />
+            <span class="truncate text-foreground">{{ getItemName(row.itemId) }}</span>
+            <span class="ml-auto font-semibold text-foreground">x{{ row.quantity }}</span>
+            <span v-if="getBuyableCount(row.itemId) > 0"
+              :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-destructive font-semibold' : 'text-muted-foreground']"
+              class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
+            <span v-if="getMinBuyPrice(row.itemId) !== null"
+              class="ml-2 text-xs text-muted-foreground whitespace-nowrap">개당 {{
+                formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
+              }}</span>
+          </div>
+
+          <!-- 요리/가공 레시피가 있는 경우 하위에 표시 -->
+          <div v-if="getProcessedRecipe(row.itemId)" class="ml-7 space-y-1">
+            <div v-for="ingredient in getProcessedRecipe(row.itemId)!.requiredItems" :key="ingredient.itemId"
+              class="flex items-center gap-2 text-xs text-muted-foreground">
+              <img :src="getItemImageUrl(ingredient.itemId)" :alt="getItemName(ingredient.itemId)"
+                class="w-4 h-4 rounded object-cover" @error="handleImageError" />
+              <span class="truncate">{{ getItemName(ingredient.itemId) }}</span>
+              <span class="ml-auto">x{{ ingredient.quantity * Math.ceil(row.quantity /
+                (getProcessedRecipe(row.itemId)!.resultQuantity || 1)) }}</span>
+              <span v-if="getMinBuyPrice(ingredient.itemId) !== null"
+                class="ml-2 text-muted-foreground whitespace-nowrap">개당 {{
+                  formatGold(getMinBuyPrice(ingredient.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(ingredient.itemId)! *
+                  ingredient.quantity * Math.ceil(row.quantity / (getProcessedRecipe(row.itemId)!.resultQuantity || 1)))
+                }}</span>
+            </div>
+          </div>
         </div>
         <div class="flex items-center justify-end gap-2 text-sm mt-2 pt-2 border-t border-border">
           <span class="text-foreground">총 골드 (식재료)</span>
@@ -127,7 +147,17 @@ const processRecipeMap = computed(() => {
   const map: Record<string, Recipe> = {}
   for (const g of props.recipesGrouped) {
     for (const r of g.recipeList) {
-      if (r.category === RECIPE_CATEGORY.PROCESS) {
+      // 요리, 가공, 식재료 가공 등 모든 제작 레시피 포함
+      if (
+        r.category === RECIPE_CATEGORY.COOK ||
+        r.category === RECIPE_CATEGORY.PROCESS ||
+        r.category === RECIPE_CATEGORY.PROCESS_FOOD ||
+        r.category === RECIPE_CATEGORY.PROCESS_METAL ||
+        r.category === RECIPE_CATEGORY.PROCESS_WOOD ||
+        r.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
+        r.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
+        r.category === RECIPE_CATEGORY.PROCESS_MEDICINE
+      ) {
         if (!map[r.resultItemId]) map[r.resultItemId] = r
       }
     }
