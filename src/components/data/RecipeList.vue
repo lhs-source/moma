@@ -55,10 +55,10 @@
             </div>
 
             <div class="flex flex-wrap gap-2 mt-3">
-              <span v-if="recipe.category" class="inline-block px-2 py-1 text-xs bg-accent text-foreground rounded">
+              <span v-if="recipe.category" class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md border-2 bg-slate-50 dark:bg-slate-700 text-slate-950 dark:text-slate-100 border-slate-700 dark:border-slate-500">
                 {{ recipe.category }}
               </span>
-              <span v-if="recipe.facilityLevel" class="inline-block px-2 py-1 text-xs bg-muted text-foreground rounded">
+              <span v-if="recipe.facilityLevel" class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md border-2 bg-blue-50 dark:bg-blue-700 text-blue-950 dark:text-blue-100 border-blue-700 dark:border-blue-500">
                 요리 Lv.{{ recipe.facilityLevel }}
               </span>
             </div>

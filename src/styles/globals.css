@@ -1,5 +1,7 @@
 @import "tailwindcss";
- 
+
+@variant dark (.dark &);
+
 @layer base {
   :root {
     --background: 255 255 255;
@@ -14,26 +16,26 @@
     --primary: 15 23 42;
     --primary-foreground: 248 250 252;
  
-    --secondary: 241 245 249;
+    --secondary: 226 232 240;
     --secondary-foreground: 15 23 42;
  
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
+    --muted: 226 232 240;
+    --muted-foreground: 71 85 105;
  
-    --accent: 241 245 249;
+    --accent: 226 232 240;
     --accent-foreground: 15 23 42;
  
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
+    --border: 203 213 225;
+    --input: 203 213 225;
     --ring: 15 23 42;
  
     --radius: 0.5rem;
   }
  
-  .dark {
+  :root.dark {
     --background: 0 0 0;
     --foreground: 255 255 255;
 

@@ -21,6 +21,13 @@ onMounted(() => {
   if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
     isDark.value = true
     document.documentElement.classList.add('dark')
+  } else {
+    // 명시적으로 라이트모드 설정
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+    if (!savedTheme) {
+      localStorage.setItem('theme', 'light')
+    }
   }
 })
 </script>
