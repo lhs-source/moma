@@ -224,4 +224,52 @@ export const foodItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.FOOD,
   },
+  {
+    id: 'golden_silver_spicy_soup',
+    name: '금은 매운탕',
+    imageUrl: '/images/items/golden_silver_spicy_soup.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'trout_papillote',
+    name: '송어 파피요트',
+    imageUrl: '/images/items/trout_papillote.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'green_tea_crepe_cake',
+    name: '녹차 크레이프 케이크',
+    imageUrl: '/images/items/green_tea_crepe_cake.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'pumpkin_pie',
+    name: '호박 파이',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'tomato_risotto',
+    name: '토마토 리소토',
+    imageUrl: '/images/items/tomato_risotto.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'pumpkin_soup',
+    name: '호박 수프',
+    imageUrl: '/images/items/pumpkin_soup.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'curry_rice',
+    name: '카레라이스',
+    imageUrl: '/images/items/curry_rice.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
+  {
+    id: 'meat_pot_pie',
+    name: '미트 포트파이',
+    imageUrl: '/images/items/meat_pot_pie.png',
+    category: ITEM_CATEGORY.FOOD,
+  },
 ];

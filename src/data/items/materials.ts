@@ -1388,4 +1388,83 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/best_leather_plus.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  // 추가 요리 재료
+  {
+    id: 'golden_carp',
+    name: '금린어',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'chili_powder',
+    name: '고춧가루',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'brown_trout',
+    name: '갈색송어',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'dried_tea_leaves',
+    name: '말린 찻잎',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'pumpkin',
+    name: '호박',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'ginger',
+    name: '생강',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'carrot',
+    name: '당근',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'curry_powder',
+    name: '카레 가루',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'cooked_rice',
+    name: '밥',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'trout_papillote',
+    name: '송어 파피요트',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'green_tea_crepe_cake',
+    name: '녹차 크레이프 케이크',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'tomato_risotto',
+    name: '토마토 리소토',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'meat_pot_pie',
+    name: '미트 포트파이',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];

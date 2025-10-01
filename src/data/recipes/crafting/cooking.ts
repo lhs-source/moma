@@ -439,5 +439,119 @@ export const cookingRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.COOK,
     facilityLevel: 20
+  },
+  {
+    id: 'golden_silver_spicy_soup',
+    name: '금은 매운탕',
+    resultItemId: 'golden_silver_spicy_soup',
+    requiredItems: [
+      { itemId: 'golden_carp', quantity: 4 },
+      { itemId: 'silver_fish', quantity: 4 },
+      { itemId: 'radish', quantity: 6 },
+      { itemId: 'water_bottle', quantity: 5 },
+      { itemId: 'onion', quantity: 10 },
+      { itemId: 'chili_powder', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 5
+  },
+  {
+    id: 'trout_papillote',
+    name: '송어 파피요트',
+    resultItemId: 'trout_papillote',
+    requiredItems: [
+      { itemId: 'brown_trout', quantity: 6 },
+      { itemId: 'asparagus', quantity: 4 },
+      { itemId: 'garlic', quantity: 6 },
+      { itemId: 'lemon', quantity: 5 },
+      { itemId: 'salt', quantity: 2 },
+      { itemId: 'pepper', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 1
+  },
+  {
+    id: 'green_tea_crepe_cake',
+    name: '녹차 크레이프 케이크',
+    resultItemId: 'green_tea_crepe_cake',
+    requiredItems: [
+      { itemId: 'dried_tea_leaves', quantity: 10 },
+      { itemId: 'strawberry', quantity: 6 },
+      { itemId: 'cream', quantity: 6 },
+      { itemId: 'flour', quantity: 4 },
+      { itemId: 'sugar', quantity: 6 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 5
+  },
+  {
+    id: 'pumpkin_pie',
+    name: '호박 파이',
+    resultItemId: 'pumpkin_pie',
+    requiredItems: [
+      { itemId: 'pumpkin', quantity: 10 },
+      { itemId: 'ginger', quantity: 2 },
+      { itemId: 'cream', quantity: 3 },
+      { itemId: 'flour', quantity: 4 },
+      { itemId: 'sugar', quantity: 2 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 1
+  },
+  {
+    id: 'tomato_risotto',
+    name: '토마토 리소토',
+    resultItemId: 'tomato_risotto',
+    requiredItems: [
+      { itemId: 'cooked_rice', quantity: 4 },
+      { itemId: 'tomato', quantity: 2 },
+      { itemId: 'onion', quantity: 3 },
+      { itemId: 'cheese', quantity: 8 },
+      { itemId: 'salt', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 5
+  },
+  {
+    id: 'pumpkin_soup',
+    name: '호박 수프',
+    resultItemId: 'pumpkin_soup',
+    requiredItems: [
+      { itemId: 'pumpkin', quantity: 10 },
+      { itemId: 'potato', quantity: 6 },
+      { itemId: 'onion', quantity: 6 },
+      { itemId: 'ginger', quantity: 2 },
+      { itemId: 'cream', quantity: 5 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 1
+  },
+  {
+    id: 'curry_rice',
+    name: '카레라이스',
+    resultItemId: 'curry_rice',
+    requiredItems: [
+      { itemId: 'meat', quantity: 10 },
+      { itemId: 'cooked_rice', quantity: 3 },
+      { itemId: 'carrot', quantity: 3 },
+      { itemId: 'potato', quantity: 8 },
+      { itemId: 'curry_powder', quantity: 2 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 5
+  },
+  {
+    id: 'meat_pot_pie',
+    name: '미트 포트파이',
+    resultItemId: 'meat_pot_pie',
+    requiredItems: [
+      { itemId: 'light_meat', quantity: 10 },
+      { itemId: 'pea', quantity: 2 },
+      { itemId: 'parsnip', quantity: 6 },
+      { itemId: 'flour', quantity: 4 },
+      { itemId: 'milk', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.COOK,
+    facilityLevel: 1
   }
 ]
