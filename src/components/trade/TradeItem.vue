@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useItemStore } from '@/stores/item'
 import { useNpcStore } from '@/stores/npc'
 import { useTradeStore } from '@/stores/trade'
@@ -27,6 +28,10 @@ const itemStore = useItemStore()
 const npcStore = useNpcStore()
 const tradeStore = useTradeStore()
 
+const isTradeDisabled = computed(() => {
+  return tradeStore.disabledTrades.has(props.trade.id)
+})
+
 function getLimitText(trade: Trade) {
   switch (trade.limitType) {
     case 'daily':
@@ -47,7 +52,7 @@ function getLimitText(trade: Trade) {
   <div
     class="flex items-center justify-between p-3 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow"
     :class="{
-      'bg-slate-50 dark:bg-slate-400/50 border-slate-200 dark:border-slate-500': tradeStore.disabledTrades.has(trade.id),
+      'bg-slate-50 dark:bg-slate-400/50 border-slate-200 dark:border-slate-500': isTradeDisabled,
       'bg-green-50 dark:bg-green-500/20 border-green-200 dark:border-green-800': tradeStore.favoriteTrades.has(trade.id)
     }">
     <div class="flex items-center gap-3">
@@ -63,7 +68,7 @@ function getLimitText(trade: Trade) {
         class="w-10 h-10 object-contain" />
       <div>
         <h3 class="font-medium" :class="{
-          'text-slate-600 dark:text-slate-500': tradeStore.disabledTrades.has(trade.id),
+          'text-slate-600 dark:text-slate-500': isTradeDisabled,
           'font-bold': tradeStore.favoriteTrades.has(trade.id)
         }">
           {{ itemStore.getItemById(trade.itemId)?.name }} {{ trade.itemQuantity }}개
@@ -82,8 +87,8 @@ function getLimitText(trade: Trade) {
       </div>
     </div>
     <button @click="tradeStore.toggleTrade(trade.id)" class="px-3 py-1.5 rounded-full text-sm transition-colors"
-      :class="tradeStore.disabledTrades.has(trade.id) ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300' : 'bg-primary hover:bg-primary/90 text-primary-foreground'">
-      {{ tradeStore.disabledTrades.has(trade.id) ? '비활성화' : '활성화' }}
+      :class="isTradeDisabled ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300' : 'bg-primary hover:bg-primary/90 text-primary-foreground'">
+      {{ isTradeDisabled ? '비활성화' : '활성화' }}
     </button>
   </div>
 </template>

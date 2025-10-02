@@ -93,16 +93,7 @@ onMounted(() => {
   npcStore.fetchNpcList();
   itemStore.fetchItemList();
   tradeStore.fetchTradeList();
-
-  const savedDisabledTrades = localStorage.getItem('disabledTrades')
-  if (savedDisabledTrades) {
-    tradeStore.disabledTrades = new Set(JSON.parse(savedDisabledTrades))
-  }
-
-  const savedFavoriteTrades = localStorage.getItem('favoriteTrades')
-  if (savedFavoriteTrades) {
-    tradeStore.favoriteTrades = new Set(JSON.parse(savedFavoriteTrades))
-  }
+  tradeStore.loadFromLocalStorage();
 })
 </script>
 
@@ -114,7 +105,18 @@ onMounted(() => {
       <h2 class="text-2xl font-bold mb-4">교환 목록</h2>
       <div class="grid gap-6">
         <div v-for="(trades, location) in formattedTrades" :key="location" class="bg-card rounded-lg p-2">
-          <h3 class="text-xl font-semibold mb-4">{{ location }}</h3>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">{{ location }}</h3>
+            <button 
+              @click="tradeStore.toggleLocation(location, trades.map(t => t.id))"
+              class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              :class="tradeStore.disabledLocations.has(location) 
+                ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300' 
+                : 'bg-primary hover:bg-primary/90 text-primary-foreground'"
+            >
+              {{ tradeStore.disabledLocations.has(location) ? '마을 비활성화' : '마을 활성화' }}
+            </button>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <TradeItem v-for="trade in trades" :key="trade.id" :trade="trade" />
           </div>

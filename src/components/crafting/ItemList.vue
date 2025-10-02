@@ -2,8 +2,9 @@
   <div class="item-list flex-1 flex flex-col">
     <h2 class="text-xl font-bold mb-3 text-foreground">제작 항목</h2>
     <div v-if="selectedCategory" class="overflow-y-auto flex-1 pr-2">
-      <div v-for="recipe in categoryRecipes" :key="recipe.id"
-        class="item-card p-3 mb-3 rounded border border-border bg-card hover:bg-accent">
+      <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
+        <div v-for="recipe in categoryRecipes" :key="recipe.id"
+          class="item-card p-3 rounded border border-border bg-card hover:bg-accent">
         <div class="flex items-start gap-3 mb-3">
           <img :src="getItemImageUrlById(recipe.resultItemId)" :alt="recipe.name"
             class="w-12 h-12 object-cover rounded border border-border">
@@ -38,6 +39,7 @@
             @click="addItem(recipe)">
             추가
           </button>
+        </div>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ export const useTradeStore = defineStore('trade', () => {
   const tradeList = ref<Trade[]>([])
   const disabledTrades = ref<Set<string>>(new Set())
   const favoriteTrades = ref<Set<string>>(new Set())
+  const disabledLocations = ref<Set<string>>(new Set())
 
   // Getters
   const filterActiveTradeList = computed(() => {
@@ -31,6 +32,10 @@ export const useTradeStore = defineStore('trade', () => {
     localStorage.setItem('favoriteTrades', JSON.stringify([...favoriteTrades.value]))
   }
   
+  function saveDisabledLocations() {
+    localStorage.setItem('disabledLocations', JSON.stringify([...disabledLocations.value]))
+  }
+  
   function toggleTrade(tradeId: string) {
     if (disabledTrades.value.has(tradeId)) {
       disabledTrades.value.delete(tradeId)
@@ -48,6 +53,27 @@ export const useTradeStore = defineStore('trade', () => {
     }
     saveFavoriteTrades()
   }
+  
+  function toggleLocation(locationName: string, tradeIds: string[]) {
+    const isCurrentlyDisabled = disabledLocations.value.has(locationName)
+    
+    if (isCurrentlyDisabled) {
+      // 마을을 활성화: 해당 마을의 모든 아이템들을 활성화
+      disabledLocations.value.delete(locationName)
+      tradeIds.forEach(tradeId => {
+        disabledTrades.value.delete(tradeId)
+      })
+    } else {
+      // 마을을 비활성화: 해당 마을의 모든 아이템들을 비활성화
+      disabledLocations.value.add(locationName)
+      tradeIds.forEach(tradeId => {
+        disabledTrades.value.add(tradeId)
+      })
+    }
+    
+    saveDisabledLocations()
+    saveDisabledTrades()
+  }
 
   function loadFromLocalStorage() {
     const savedDisabledTrades = localStorage.getItem('disabledTrades')
@@ -59,6 +85,11 @@ export const useTradeStore = defineStore('trade', () => {
     if (savedFavoriteTrades) {
       favoriteTrades.value = new Set(JSON.parse(savedFavoriteTrades))
     }
+    
+    const savedDisabledLocations = localStorage.getItem('disabledLocations')
+    if (savedDisabledLocations) {
+      disabledLocations.value = new Set(JSON.parse(savedDisabledLocations))
+    }
   }
 
   return {
@@ -66,6 +97,7 @@ export const useTradeStore = defineStore('trade', () => {
     tradeList,
     disabledTrades,
     favoriteTrades,
+    disabledLocations,
     
     // Getters
     filterActiveTradeList,
@@ -75,6 +107,7 @@ export const useTradeStore = defineStore('trade', () => {
     getTradeById,
     toggleTrade,
     toggleFavorite,
+    toggleLocation,
     loadFromLocalStorage
   }
 })
