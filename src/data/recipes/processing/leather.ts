@@ -62,7 +62,7 @@ export const leatherProcessingRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'superior_leather_plus_processed', quantity: 5 },
-      { itemId: 'best_leather', quantity: 30 },
+      { itemId: 'best_leather', quantity: 20 },
       { itemId: 'tannin_powder', quantity: 16 }
     ],
     facilityLevel: 5,

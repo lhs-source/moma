@@ -3,9 +3,6 @@
     <div
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-card border-b border-border flex-shrink-0 shadow-sm">
       <h1 class="text-lg font-bold text-foreground">요리 시뮬레이팅</h1>
-      <div class="flex flex-col sm:flex-row gap-1 items-center">
-        <label class="text-xs text-muted-foreground">주간 획득 한도 입력</label>
-      </div>
     </div>
 
     <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 overflow-hidden main-container">
