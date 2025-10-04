@@ -3,9 +3,7 @@ import { computed } from 'vue'
 import { recipes } from '@/data/recipes'
 import type { Trade } from '@/data/schemas/trade'
 import type { Item } from '@/data/schemas/item'
-// Recipe 타입을 확장하여 교환 카테고리 추가
 import type { Recipe } from '@/data/schemas/recipe'
-import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 import TotalRequiredMaterials from './TotalRequiredMaterials.vue'
 import WeeklyTradeRequirements from './WeeklyTradeRequirements.vue'
 
@@ -32,37 +30,6 @@ const npcStore = useNpcStore();
 const itemStore = useItemStore();
 const tradeStore = useTradeStore();
 
-/**
- * # 아이템 id 가 필요한 아이템인 교환 목록 찾기
- * @param {number} itemId 필요한 아이템 id
- */
-const findTradesForItem = (itemId: string): Trade[] => {
-  return tradeStore.filterActiveTradeList.filter((trade: Trade) => {
-    if (trade.receiveItemId === itemId && !tradeStore.disabledTrades.has(trade.id)) {
-      return trade
-    }
-  })
-}
-
-// 교환 데이터로부터 가상의 레시피 생성
-const createTradeRecipe = (itemId: string): Recipe | undefined => {
-  const trades = findTradesForItem(itemId)
-  if (trades.length === 0) return undefined
-  const bestTrade = trades[0]
-
-  // 가상 레시피 생성
-  return {
-    id: `trade_${itemId}`,
-    name: `교환: ${getItemInfo(bestTrade.giveItemId)?.name}`,
-    resultItemId: itemId,
-    requiredItems: [{
-      itemId: bestTrade.giveItemId,
-      quantity: bestTrade.giveQuantity
-    }],
-    category: RECIPE_CATEGORY.TRADE,
-    facilityLevel: 0
-  } as Recipe
-}
 
 /**
  * # 필요한 아이템 목록
@@ -94,35 +61,9 @@ const weeklyCount = computed(() => {
   return Object.entries(totalNeedItemList.value).reduce((acc, [needItemId, trades]) => {
     // 레시피 찾기
     const recipe = recipes.find(r => r.resultItemId === needItemId);
-    const tradeTarget = createTradeRecipe(needItemId);
 
     let totalNeedItemCount = 0;
     const tradeList = trades.map((trade: Trade) => {
-      if (tradeTarget) {
-        const doubleTrade = tradeStore.filterActiveTradeList.find(item => item.receiveItemId === needItemId)
-        let doubleTradeCount = 0;
-        if (doubleTrade) {
-          // 2단계로 계산
-          // doubleTrade 의 일주일 교환 결과 개수
-          const dayTradeCount = doubleTrade.type === 'daily' ? doubleTrade.maxExchanges : 1;
-          const weeklyTradeCount = dayTradeCount * 7;
-          doubleTradeCount = doubleTrade.receiveQuantity * weeklyTradeCount;
-          // 글리니스의 애플 밀크티는 일주일 7개 -> 상급 목재로는 2번 교환 가능 maxCount == 2
-          const maxCount = Math.floor(doubleTradeCount / trade.giveQuantity);
-          const needItemQuantity = maxCount * trade.giveQuantity;
-          totalNeedItemCount += needItemQuantity;
-          return {
-            resultItemId: trade.receiveItemId,
-            needItemQuantity,
-            receiveItemQuantity: maxCount * trade.receiveQuantity,
-          }
-        }
-        return {
-          resultItemId: trade.receiveItemId,
-          needItemQuantity: 0,
-          receiveItemQuantity: 0,
-        }
-      }
       const dayTradeCount = trade.type === 'daily' ? trade.maxExchanges : 1;
       const weeklyTradeCount = dayTradeCount * 7;
       const needItemQuantity = trade.giveQuantity * weeklyTradeCount;
@@ -141,7 +82,7 @@ const weeklyCount = computed(() => {
         itemId: needItemId,
         totalNeedItemCount,
         recipe,
-        trade: tradeTarget,
+        trade: undefined,
         trades: tradeList,
       }
     } else {
@@ -195,8 +136,7 @@ const getItemRecipe = (itemId: string): Recipe | undefined => {
     if (recipeEfficiency[0]) return recipeEfficiency[0].recipe as Recipe
   }
 
-  // 레시피가 없는 경우 교환 방식으로 얻을 수 있는지 확인
-  return createTradeRecipe(itemId)
+  return undefined
 }
 
 

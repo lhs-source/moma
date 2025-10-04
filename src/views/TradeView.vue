@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import WeeklyRequirements from '@/components/trade/WeeklyRequirements.vue'
 import TradeItem from '@/components/trade/TradeItem.vue'
+import Accordion from '@/components/ui/accordion.vue'
+import Input from '@/components/ui/input.vue'
 import type { TradeData } from '@/data/schemas/trade'
 import { useItemStore } from '@/stores/item'
 import { useNpcStore } from '@/stores/npc'
 import { useTradeStore } from '@/stores/trade'
 import { locations } from '@/data/locations'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 // Types
 interface Trade {
@@ -25,6 +27,9 @@ interface Trade {
 const npcStore = useNpcStore();
 const itemStore = useItemStore();
 const tradeStore = useTradeStore()
+
+// 검색어
+const searchQuery = ref('')
 
 /**
  * # 위치 별 교환 목록
@@ -87,6 +92,32 @@ const formattedTrades = computed(() => {
   return result
 })
 
+/**
+ * # 검색 필터링된 교환 목록
+ * - 교환 결과 아이템 이름으로 검색
+ */
+const filteredTrades = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return formattedTrades.value
+  }
+
+  const query = searchQuery.value.toLowerCase().trim()
+  const result: Record<string, Trade[]> = {}
+
+  Object.entries(formattedTrades.value).forEach(([region, trades]) => {
+    const filtered = trades.filter((trade: Trade) => {
+      const item = itemStore.itemList.find(i => i.id === trade.itemId)
+      return item?.name.toLowerCase().includes(query)
+    })
+
+    if (filtered.length > 0) {
+      result[region] = filtered
+    }
+  })
+
+  return result
+})
+
 
 // Lifecycle
 onMounted(() => {
@@ -102,25 +133,39 @@ onMounted(() => {
     <WeeklyRequirements />
 
     <div class="mt-8">
-      <h2 class="text-2xl font-bold mb-4">교환 목록</h2>
-      <div class="grid gap-6">
-        <div v-for="(trades, location) in formattedTrades" :key="location" class="bg-card rounded-lg p-2">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-semibold">{{ location }}</h3>
-            <button 
-              @click="tradeStore.toggleLocation(location, trades.map(t => t.id))"
-              class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              :class="tradeStore.disabledLocations.has(location) 
-                ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300' 
-                : 'bg-primary hover:bg-primary/90 text-primary-foreground'"
-            >
-              {{ tradeStore.disabledLocations.has(location) ? '마을 비활성화' : '마을 활성화' }}
-            </button>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <TradeItem v-for="trade in trades" :key="trade.id" :trade="trade" />
-          </div>
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">교환 목록</h2>
+        <div class="w-64">
+          <Input v-model="searchQuery" type="text" placeholder="아이템 이름 검색..." class="w-full" />
         </div>
+      </div>
+
+      <div class="grid gap-4">
+        <div v-for="(trades, location) in filteredTrades" :key="location"
+          class="bg-card rounded-lg border border-border">
+          <Accordion :default-open="true" class="px-4">
+            <template #trigger>
+              <div class="flex items-center justify-between flex-1 mr-4">
+                <h3 class="text-xl font-semibold">{{ location }}</h3>
+                <button @click.stop="tradeStore.toggleLocation(location, trades.map(t => t.id))"
+                  class="px-4 py-2 rounded-lg text-sm font-medium transition-colors" :class="tradeStore.disabledLocations.has(location)
+                    ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300'
+                    : 'bg-primary hover:bg-primary/90 text-primary-foreground'">
+                  {{ tradeStore.disabledLocations.has(location) ? '마을 비활성화' : '마을 활성화' }}
+                </button>
+              </div>
+            </template>
+            <template #content>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 px-4">
+                <TradeItem v-for="trade in trades" :key="trade.id" :trade="trade" />
+              </div>
+            </template>
+          </Accordion>
+        </div>
+      </div>
+
+      <div v-if="Object.keys(filteredTrades).length === 0" class="text-center py-8 text-muted-foreground">
+        검색 결과가 없습니다.
       </div>
     </div>
   </div>
