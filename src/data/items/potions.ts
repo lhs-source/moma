@@ -237,4 +237,91 @@ export const potionItems: Item[] = [
     imageUrl: '/images/items/bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
+  // 퀴아난 시리즈
+  {
+    id: 'quianan_healing_potion_5',
+    name: '퀴아난 회복 물약 x5',
+    imageUrl: '/images/items/healing_potion.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'quianan_auto_healing_potion_5',
+    name: '퀴아난 자동회복 물약 x5',
+    imageUrl: '/images/items/healing_potion.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'quianan_bandage_5',
+    name: '퀴아난 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'quianan_healing_potion_s_5',
+    name: '퀴아난 회복 물약S x5',
+    imageUrl: '/images/items/healing_potion.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'quianan_auto_healing_potion_s_5',
+    name: '퀴아난 자동회복 물약S x5',
+    imageUrl: '/images/items/healing_potion.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  // 최상급 붕대 시리즈
+  {
+    id: 'supreme_bandage_10',
+    name: '최상급 붕대 x10',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_blue_bandage_10',
+    name: '최상급 붕대 x10',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_heat_resistant_bandage_5',
+    name: '최상급 내열 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_cold_resistant_bandage_5',
+    name: '최상급 방한 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_insulation_bandage_5',
+    name: '최상급 절연 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_blessing_bandage_5',
+    name: '최상급 축복의 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_seal_bandage_5',
+    name: '최상급 봉인의 붕대 x5',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  // 단일 아이템
+  {
+    id: 'quianan_bandage',
+    name: '퀴아난 붕대',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
+    id: 'supreme_bandage',
+    name: '최상급 붕대',
+    imageUrl: '/images/items/bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
 ];

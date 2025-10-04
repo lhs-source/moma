@@ -1467,4 +1467,53 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  // 물약 조제용 재료
+  {
+    id: 'fabric',
+    name: '옷감',
+    imageUrl: '/images/items/fabric.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'sprout_mushroom_essence',
+    name: '쑥쑥 버섯 진액',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'life_flower',
+    name: '생세기꽃',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'life_flower_powder',
+    name: '생세기꽃 가루',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'life_flower_mana_stone',
+    name: '생세기꽃 마나석',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'strong_herb_powder',
+    name: '진강초 가루',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'fire_mana_stone',
+    name: '볼꽃의 마나석',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'alchemy_fragment',
+    name: '먼금속 부스러기',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];

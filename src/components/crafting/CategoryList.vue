@@ -1,6 +1,8 @@
 <template>
   <div class="category-list h-auto">
-    <h2 class="text-xl font-bold mb-3 text-foreground">가공처</h2>
+    <h2 class="text-xl font-bold mb-3 text-foreground">
+      {{ categoryTitle }}
+    </h2>
     <div class="overflow-y-auto max-h-60 pr-2 grid grid-cols-2 gap-2">
       <div v-for="category in categories" :key="category" :class="[
         'category-item p-2 rounded cursor-pointer border hover:bg-accent',
@@ -23,6 +25,14 @@ const categories = computed(() => craftingStore.categories);
 
 // 현재 선택된 카테고리
 const selectedCategory = computed(() => craftingStore.selectedCategory);
+
+// 현재 탭
+const activeTab = computed(() => craftingStore.activeTab);
+
+// 카테고리 제목
+const categoryTitle = computed(() => {
+  return activeTab.value === 'crafting' ? '제작 계열' : '재료 가공';
+});
 
 // 카테고리 선택 함수
 function selectCategory(category: string) {

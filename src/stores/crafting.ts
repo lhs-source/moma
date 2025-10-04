@@ -1,7 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { craftingRecipesByCategory, craftingCategories } from '@/data/crafting'
+import { 
+  craftingRecipesByCategory, 
+  processingRecipesByCategory,
+  craftingCategories,
+  processingCategories 
+} from '@/data/crafting'
 import type { Recipe } from '@/data/schemas/recipe'
+
+export type CraftingTabType = 'crafting' | 'processing'
 
 interface SelectedItem {
   recipe: Recipe
@@ -17,14 +24,23 @@ export const useCraftingStore = defineStore('crafting', () => {
   const selectedItems = ref<SelectedItems>({})
   const selectedCategory = ref<string | null>(null)
   const isMembershipEnabled = ref(false) // 멤버십 활성화 상태
+  const activeTab = ref<CraftingTabType>('crafting') // 현재 활성화된 탭
 
   // Getters
   const recipesByCategory = computed(() => {
-    return craftingRecipesByCategory()
+    if (activeTab.value === 'crafting') {
+      return craftingRecipesByCategory()
+    } else {
+      return processingRecipesByCategory()
+    }
   })
   
   const categories = computed(() => {
-    return craftingCategories
+    if (activeTab.value === 'crafting') {
+      return craftingCategories
+    } else {
+      return processingCategories
+    }
   })
   
   const selectedCategoryRecipes = computed(() => {
@@ -167,12 +183,19 @@ export const useCraftingStore = defineStore('crafting', () => {
       delete selectedItems.value[recipeId]
     }
   }
+  
+  function setActiveTab(tab: CraftingTabType) {
+    activeTab.value = tab
+    // 탭 변경 시 선택된 카테고리 초기화
+    selectedCategory.value = null
+  }
 
   return {
     // State
     selectedItems,
     selectedCategory,
     isMembershipEnabled,
+    activeTab,
     
     // Getters
     recipesByCategory,
@@ -192,6 +215,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     toggleMembership,
     setMembership,
     clearSelectedItems,
-    clearCategory
+    clearCategory,
+    setActiveTab
   }
 })

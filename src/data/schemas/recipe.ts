@@ -19,7 +19,20 @@ export interface RequiredItem {
  */
 export enum RECIPE_CATEGORY {
   COOK = '요리',
+  // 제작 계열
+  CRAFT_BLACKSMITH = '대장 기술',
+  CRAFT_CARPENTRY = '목공',
+  CRAFT_MAGIC_CRAFT = '매직 크래프트',
+  CRAFT_HEAVY_ARMOR = '중갑 제작',
+  CRAFT_LIGHT_ARMOR = '경갑 제작',
+  CRAFT_CLOTH_ARMOR = '천옷 제작',
+  CRAFT_POTION = '물약 조제',
+  CRAFT_COOKING = '요리 제작',
+  CRAFT_HANDICRAFT = '핸디크래프트',
+  CRAFT_ALCHEMY = '연금술',
+  // 레거시 (기존 데이터 호환용)
   CRAFTING_ITEM = '아이템 제작',
+  // 재료 가공
   PROCESS_METAL = '금속 가공',
   PROCESS_WOOD = '목재 가공',
   PROCESS_LEATHER = '가죽 가공',
