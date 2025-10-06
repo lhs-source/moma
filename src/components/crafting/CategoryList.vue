@@ -1,12 +1,12 @@
 <template>
   <div class="category-list h-auto">
-    <h2 class="text-xl font-bold mb-3 text-foreground">
+    <h2 class="text-lg font-bold mb-2 text-foreground">
       {{ categoryTitle }}
     </h2>
-    <div class="overflow-y-auto max-h-60 pr-2 grid grid-cols-2 gap-2">
+    <div class="overflow-y-auto max-h-48 grid grid-cols-2 gap-1">
       <div v-for="category in categories" :key="category" :class="[
-        'category-item p-2 rounded cursor-pointer border hover:bg-accent',
-        selectedCategory === category ? 'bg-accent border-foreground' : 'border-border']"
+        'category-item p-1.5 rounded cursor-pointer border hover:bg-accent text-sm transition-colors',
+        selectedCategory === category ? 'bg-accent border-foreground font-semibold' : 'border-border']"
         @click="selectCategory(category)">
         <span class="text-foreground">{{ category }}</span>
       </div>

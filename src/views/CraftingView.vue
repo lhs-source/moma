@@ -1,22 +1,22 @@
 <template>
-  <div class="crafting-view container mx-auto p-4">
-    <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold text-foreground">가공 시스템</h1>
+  <div class="crafting-view container mx-auto p-3">
+    <div class="flex justify-between items-center mb-3">
+      <h1 class="text-xl font-bold text-foreground">가공 시스템</h1>
       <MembershipToggle />
     </div>
 
     <!-- 탭 -->
     <Tabs default-value="crafting" class="w-full" @update:value="handleTabChange">
-      <TabsList class="mb-4">
+      <TabsList class="mb-3">
         <TabsTrigger value="crafting">제작</TabsTrigger>
         <TabsTrigger value="processing">재료 가공</TabsTrigger>
       </TabsList>
 
       <TabsContent value="crafting">
         <!-- 3열 레이아웃 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-180px)]">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-[calc(100vh-150px)]">
           <!-- 첫 번째 열: 제작 계열 + 제작 항목 -->
-          <div class="flex flex-col space-y-4">
+          <div class="flex flex-col space-y-2">
             <CategoryList />
             <ItemList />
           </div>
@@ -35,9 +35,9 @@
 
       <TabsContent value="processing">
         <!-- 3열 레이아웃 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-180px)]">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-[calc(100vh-150px)]">
           <!-- 첫 번째 열: 재료 가공 + 제작 항목 -->
-          <div class="flex flex-col space-y-4">
+          <div class="flex flex-col space-y-2">
             <CategoryList />
             <ItemList />
           </div>

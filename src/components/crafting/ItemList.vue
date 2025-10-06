@@ -1,50 +1,52 @@
 <template>
   <div class="item-list flex-1 flex flex-col">
-    <h2 class="text-xl font-bold mb-3 text-foreground">제작 항목</h2>
-    <div v-if="selectedCategory" class="overflow-y-auto flex-1 pr-2">
-      <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
-        <div v-for="recipe in categoryRecipes" :key="recipe.id"
-          class="item-card p-3 rounded border border-border bg-card hover:bg-accent">
-        <div class="flex items-start gap-3 mb-3">
-          <img :src="getItemImageUrlById(recipe.resultItemId)" :alt="recipe.name"
-            class="w-12 h-12 object-cover rounded border border-border">
-          <div class="flex-1">
-            <div class="font-medium text-lg text-foreground">{{ recipe.name }}</div>
-            <div class="text-sm text-muted-foreground">생산량: {{ recipe.resultQuantity || 1 }}개</div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 text-sm">
-          <div>
-            <div class="font-medium mb-1 text-foreground">시간:</div>
-            <div class="pl-2 text-foreground">{{ formatTime(recipe.craftingTime || 0) }}</div>
-          </div>
-
-          <div>
-            <div class="font-medium mb-1 text-foreground">재료:</div>
-            <ul class="pl-2">
-              <li v-for="requiredItem in recipe.requiredItems" :key="requiredItem.itemId"
-                class="mb-1 flex items-center gap-2">
-                <img :src="getItemImageUrlById(requiredItem.itemId)" :alt="getItemInfoById(requiredItem.itemId).name"
-                  class="w-4 h-4 object-cover rounded">
-                <span class="text-foreground">{{ getItemInfoById(requiredItem.itemId).name }}: {{ requiredItem.quantity
-                }}개</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="flex justify-end mt-3">
-          <button class="bg-foreground hover:bg-foreground/90 text-background px-3 py-1 rounded text-sm"
-            @click="addItem(recipe)">
-            추가
-          </button>
-        </div>
-        </div>
-      </div>
+    <h2 class="text-lg font-bold mb-2 text-foreground">제작 항목</h2>
+    <div v-if="selectedCategory" class="overflow-y-auto flex-1">
+      <table class="w-full text-sm border-collapse">
+        <thead class="sticky top-0 bg-muted z-10">
+          <tr class="border-b border-border">
+            <th class="text-left p-2 font-semibold text-foreground">항목</th>
+            <th class="text-center p-2 font-semibold text-foreground w-16">생산량</th>
+            <th class="text-center p-2 font-semibold text-foreground w-20">시간</th>
+            <th class="text-left p-2 font-semibold text-foreground">재료</th>
+            <th class="text-center p-2 font-semibold text-foreground w-16"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="recipe in categoryRecipes" :key="recipe.id"
+            class="border-b border-border hover:bg-accent/50 transition-colors">
+            <td class="p-2">
+              <div class="flex items-center gap-2">
+                <img :src="getItemImageUrlById(recipe.resultItemId)" :alt="recipe.name"
+                  class="w-8 h-8 object-cover rounded border border-border">
+                <span class="font-medium text-foreground">{{ recipe.name }}</span>
+              </div>
+            </td>
+            <td class="p-2 text-center text-foreground">{{ recipe.resultQuantity || 1 }}개</td>
+            <td class="p-2 text-center text-foreground">{{ formatTime(recipe.craftingTime || 0) }}</td>
+            <td class="p-2">
+              <div class="flex flex-wrap gap-1">
+                <span v-for="requiredItem in recipe.requiredItems" :key="requiredItem.itemId"
+                  class="inline-flex items-center gap-1 text-xs">
+                  <img :src="getItemImageUrlById(requiredItem.itemId)" :alt="getItemInfoById(requiredItem.itemId).name"
+                    class="w-4 h-4 object-cover rounded">
+                  <span class="text-foreground">{{ getItemInfoById(requiredItem.itemId).name }}:{{ requiredItem.quantity
+                    }}</span>
+                </span>
+              </div>
+            </td>
+            <td class="p-2 text-center">
+              <button class="bg-foreground hover:bg-foreground/90 text-background px-2 py-1 rounded text-xs"
+                @click="addItem(recipe)">
+                추가
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div v-else class="text-center py-4 text-muted-foreground">
-      가공처를 선택해주세요
+    <div v-else class="text-center py-4 text-muted-foreground text-sm">
+      카테고리를 선택해주세요
     </div>
   </div>
 </template>
