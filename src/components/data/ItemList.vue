@@ -39,13 +39,98 @@
       총 {{ filteredItems.length }}개의 아이템
     </div>
 
-    <!-- 아이템 그리드 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-      <ItemCard v-for="item in filteredItems" :key="item.id" :item="item" />
+    <!-- 아이템 테이블 -->
+    <div class="border rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-muted/50">
+            <tr class="border-b">
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-20">이미지</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-48">기본 정보</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">사용처 상세</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr v-for="item in filteredItems" :key="item.id" class="hover:bg-muted/30 transition-colors">
+              <!-- 이미지 -->
+              <td class="px-4 py-3 align-top">
+                <img :src="item.imageUrl" :alt="item.name" class="w-16 h-16 object-cover rounded" @error="handleImageError" />
+              </td>
+              
+              <!-- 기본 정보 -->
+              <td class="px-4 py-3 align-top">
+                <div v-if="item.category" class="text-xs text-muted-foreground mb-1">{{ item.category }}</div>
+                <div class="font-bold text-base text-foreground">{{ item.name }}</div>
+                <div class="text-xs text-muted-foreground mt-1">ID: {{ item.id }}</div>
+                
+                <!-- 사용처 태그 -->
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span v-for="usageType in getUsageTypes(item.id)" :key="usageType" :class="{
+                    'inline-flex items-center px-2 py-0.5 text-xs font-medium rounded': true,
+                    'bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100': usageType === '레시피',
+                    'bg-blue-100 dark:bg-blue-700 text-blue-900 dark:text-blue-100': usageType === '교환',
+                    'bg-emerald-100 dark:bg-emerald-700 text-emerald-900 dark:text-emerald-100': usageType === '구매',
+                    'bg-yellow-100 dark:bg-yellow-700 text-yellow-900 dark:text-yellow-100': usageType === '제작',
+                    'bg-green-100 dark:bg-green-700 text-green-900 dark:text-green-100': usageType === '교환으로 얻을 수 있음'
+                  }">
+                    {{ usageType }}
+                  </span>
+                </div>
+              </td>
+              
+              <!-- 사용처 상세 정보 -->
+              <td class="px-4 py-3 align-top">
+                <div class="space-y-2 text-sm">
+                  <!-- 레시피 사용처 -->
+                  <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length" class="bg-slate-50 dark:bg-slate-800 rounded p-2">
+                    <div class="font-semibold text-xs text-slate-900 dark:text-slate-200 mb-1">재료로 사용되는 레시피</div>
+                    <div v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId" class="text-xs py-0.5">
+                      • {{ recipeUsage.resultItemName }} x{{ recipeUsage.resultQuantity }} ({{ recipeUsage.quantity }}개 필요)
+                    </div>
+                  </div>
+                  
+                  <!-- 교환 사용처 -->
+                  <div v-if="getItemUsage(item.id)?.usageTypes.trades.length" class="bg-blue-50 dark:bg-blue-900 rounded p-2">
+                    <div class="font-semibold text-xs text-blue-900 dark:text-blue-200 mb-1">교환에 사용</div>
+                    <div v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId" class="text-xs py-0.5">
+                      • {{ tradeUsage.npcName }} ({{ tradeUsage.locationName }}) → {{ tradeUsage.receiveItemName }} x{{ tradeUsage.receiveQuantity }} ({{ tradeUsage.giveQuantity }}개 필요)
+                    </div>
+                  </div>
+                  
+                  <!-- 교환으로 얻을 수 있음 -->
+                  <div v-if="getObtainableTrades(item.id).length" class="bg-green-50 dark:bg-green-900 rounded p-2">
+                    <div class="font-semibold text-xs text-green-900 dark:text-green-200 mb-1">교환으로 얻을 수 있음</div>
+                    <div v-for="trade in getObtainableTrades(item.id)" :key="trade.id" class="text-xs py-0.5">
+                      • {{ trade.npcName }} ({{ trade.locationName }}) - {{ trade.giveItemName }} x{{ trade.giveQuantity }} → {{ trade.receiveQuantity }}개 획득
+                    </div>
+                  </div>
+                  
+                  <!-- 제작 레시피 -->
+                  <div v-if="getCraftableRecipes(item.id).length" class="bg-yellow-50 dark:bg-yellow-900 rounded p-2">
+                    <div class="font-semibold text-xs text-yellow-900 dark:text-yellow-200 mb-1">제작 가능</div>
+                    <div v-for="recipe in getCraftableRecipes(item.id)" :key="recipe.id" class="text-xs py-0.5">
+                      • {{ recipe.name }} ({{ recipe.category }})
+                      <span v-if="recipe.craftingTime"> - ⏱️ {{ formatTime(recipe.craftingTime) }}</span>
+                    </div>
+                  </div>
+                  
+                  <div v-if="!getItemUsage(item.id)?.usageTypes.recipes.length && 
+                             !getItemUsage(item.id)?.usageTypes.trades.length && 
+                             !getObtainableTrades(item.id).length && 
+                             !getCraftableRecipes(item.id).length" 
+                       class="text-xs text-muted-foreground">
+                    사용처 정보 없음
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- 빈 결과 메시지 -->
-    <div v-if="filteredItems.length === 0" class="text-center py-12">
+    <div v-if="filteredItems.length === 0" class="text-center py-12 border rounded-lg">
       <p class="text-muted-foreground">검색 조건에 맞는 아이템이 없습니다.</p>
     </div>
   </div>
@@ -92,7 +177,12 @@ import { useItemStore } from '@/stores/item'
 import { useRecipesStore } from '@/stores/recipes'
 import { useTradeStore } from '@/stores/trade'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
-import ItemCard from './ItemCard.vue'
+import { recipes } from '@/data/recipes'
+import { trades } from '@/data/trade'
+import { npcs } from '@/data/npcs'
+import { locations } from '@/data/locations'
+import { items } from '@/data/items'
+import { formatTime } from '@/utils/timeUtils'
 import Input from '@/components/ui/input.vue'
 import Select from '@/components/ui/select.vue'
 import SelectContent from '@/components/ui/select-content.vue'
@@ -120,6 +210,61 @@ const debouncedSearchQuery = ref('')
 const selectedCategory = ref('')
 // 선택된 사용처 필터 ('' = 전체, '레시피', '교환', '구매', '제작', '교환으로 얻을 수 있음')
 const selectedUsageType = ref('')
+
+// 아이템 ID로 사용처 타입 목록 반환
+function getUsageTypes(itemId: string): string[] {
+  const types: string[] = []
+  const usage = itemUsageIndex.getItemUsage(itemId)
+  
+  if (usage?.usageTypes.recipes.length) types.push('레시피')
+  if (usage?.usageTypes.trades.length) types.push('교환')
+  if (usage?.usageTypes.purchases.length) types.push('구매')
+  
+  if (recipesStore.recipeList.some(recipe => recipe.resultItemId === itemId)) {
+    types.push('제작')
+  }
+  
+  const obtainableTrades = tradeStore.tradeList.filter(trade => trade.receiveItemId === itemId && trade.isEnabled)
+  if (obtainableTrades.length > 0) types.push('교환으로 얻을 수 있음')
+  
+  return types
+}
+
+// 아이템 ID로 사용처 상세 정보 조회
+function getItemUsage(itemId: string) {
+  return itemUsageIndex.getItemUsage(itemId)
+}
+
+// 교환으로 얻을 수 있는 아이템 목록 조회
+function getObtainableTrades(itemId: string) {
+  return trades
+    .filter(trade => trade.receiveItemId === itemId && trade.isEnabled)
+    .map(trade => {
+      const npc = npcs.find(n => n.id === trade.npcId)
+      const location = locations.find(l => l.id === npc?.locationId)
+      const giveItem = items.find(i => i.id === trade.giveItemId)
+      
+      return {
+        id: trade.id,
+        npcName: npc?.name || '알 수 없음',
+        locationName: location?.name || '알 수 없음',
+        giveItemName: giveItem?.name || trade.giveItemId,
+        giveQuantity: trade.giveQuantity,
+        receiveQuantity: trade.receiveQuantity
+      }
+    })
+}
+
+// 제작 가능한 레시피 조회
+function getCraftableRecipes(itemId: string) {
+  return recipes.filter(recipe => recipe.resultItemId === itemId)
+}
+
+// 이미지 로드 실패 시 기본 이미지로 대체
+function handleImageError(event: Event) {
+  const target = event.target as HTMLImageElement
+  target.src = '/images/items/default.webp'
+}
 
 /**
  * ## Lifecycle Hook - onMounted
