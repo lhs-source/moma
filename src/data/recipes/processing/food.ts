@@ -67,5 +67,18 @@ export const foodProcessingRecipes: Recipe[] = [
     facilityLevel: 3,
     craftingTime: 3000,
     category: RECIPE_CATEGORY.PROCESS_FOOD
-  }
+  },
+  {
+    id: 'craft_bread',
+    name: '빵',
+    resultItemId: 'bread',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'flour', quantity: 2 },
+      { itemId: 'water_bottle', quantity: 1 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 1,
+    craftingTime: 60
+  },
 ]

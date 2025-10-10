@@ -4,9 +4,9 @@ import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
 export const craftingItemRecipes: Recipe[] = [
   // 회복 아이템
   {
-    id: 'craft_healing_potion_5',
-    name: '회복 물약 x5',
-    resultItemId: 'healing_potion_5',
+    id: 'craft_healing_potion',
+    name: '회복 물약',
+    resultItemId: 'healing_potion',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 2 },
@@ -14,37 +14,34 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 60
   },
   {
-    id: 'craft_bandage_10',
-    name: '붕대 x10',
-    resultItemId: 'bandage_10',
+    id: 'craft_bandage',
+    name: '붕대',
+    resultItemId: 'bandage',
     resultQuantity: 10,
     requiredItems: [
       { itemId: 'fabric', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 30
   },
   {
-    id: 'craft_auto_healing_potion_5',
-    name: '자동회복 물약 x5',
-    resultItemId: 'auto_healing_potion_5',
+    id: 'craft_auto_healing_potion',
+    name: '자동회복 물약',
+    resultItemId: 'auto_healing_potion',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'healing_potion_5', quantity: 5 },
+      { itemId: 'healing_potion', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 120
   },
   {
-    id: 'craft_high_healing_potion_5',
-    name: '상급 회복 물약 x5',
-    resultItemId: 'high_healing_potion_5',
+    id: 'craft_high_healing_potion',
+    name: '상급 회복 물약',
+    resultItemId: 'high_healing_potion',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 6 },
@@ -53,95 +50,88 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 180
   },
   {
-    id: 'craft_high_auto_healing_potion_5',
-    name: '상급 자동회복 물약 x5',
-    resultItemId: 'high_auto_healing_potion_5',
+    id: 'craft_high_auto_healing_potion',
+    name: '상급 자동회복 물약',
+    resultItemId: 'high_auto_healing_potion',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_healing_potion_5', quantity: 5 },
+      { itemId: 'high_healing_potion', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 300
   },
   {
-    id: 'craft_heat_resistant_bandage_5',
-    name: '내열 붕대 x5',
-    resultItemId: 'heat_resistant_bandage_5',
+    id: 'craft_heat_resistant_bandage',
+    name: '내열 붕대',
+    resultItemId: 'heat_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'bandage_5', quantity: 5 },
-      { itemId: 'tough_mushroom_powder', quantity: 3 },
+      { itemId: 'bandage', quantity: 5 },
+      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
       { itemId: 'flame_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 300
   },
   {
-    id: 'craft_cold_resistant_bandage_5',
-    name: '방한 붕대 x5',
-    resultItemId: 'cold_resistant_bandage_5',
+    id: 'craft_cold_resistant_bandage',
+    name: '방한 붕대',
+    resultItemId: 'cold_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'bandage_5', quantity: 5 },
-      { itemId: 'tough_mushroom_powder', quantity: 3 },
+      { itemId: 'bandage', quantity: 5 },
+      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
       { itemId: 'ice_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 300
   },
   {
-    id: 'craft_insulation_bandage_5',
-    name: '절연 붕대 x5',
-    resultItemId: 'insulation_bandage_5',
+    id: 'craft_insulation_bandage',
+    name: '절연 붕대',
+    resultItemId: 'insulation_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'bandage_5', quantity: 5 },
-      { itemId: 'tough_mushroom_powder', quantity: 3 },
+      { itemId: 'bandage', quantity: 5 },
+      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
       { itemId: 'lightning_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 300
   },
   {
-    id: 'craft_blessing_bandage_5',
-    name: '축복의 붕대 x5',
-    resultItemId: 'blessing_bandage_5',
+    id: 'craft_blessing_bandage',
+    name: '축복의 붕대',
+    resultItemId: 'blessing_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'bandage_5', quantity: 5 },
-      { itemId: 'tough_mushroom_powder', quantity: 3 },
+      { itemId: 'bandage', quantity: 5 },
+      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
       { itemId: 'radiance_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 1,
-    craftingTime: 300
   },
   {
-    id: 'craft_seal_bandage_5',
-    name: '봉인의 붕대 x5',
-    resultItemId: 'seal_bandage_5',
+    id: 'craft_seal_bandage',
+    name: '봉인의 붕대',
+    resultItemId: 'seal_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'bandage_5', quantity: 5 },
-      { itemId: 'tough_mushroom_powder', quantity: 3 },
+      { itemId: 'bandage', quantity: 5 },
+      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
       { itemId: 'seal_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
-    id: 'craft_supreme_healing_potion_5',
-    name: '최상급 회복 물약 x5',
-    resultItemId: 'supreme_healing_potion_5',
+    id: 'craft_supreme_healing_potion',
+    name: '최상급 회복 물약',
+    resultItemId: 'supreme_healing_potion',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 12 },
@@ -150,54 +140,50 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
-    id: 'craft_high_bandage_10',
-    name: '상급 붕대 x10',
-    resultItemId: 'high_bandage_10',
+    id: 'craft_high_bandage',
+    name: '상급 붕대',
+    resultItemId: 'high_bandage',
     resultQuantity: 10,
     requiredItems: [
-      { itemId: 'high_fabric', quantity: 2 }
+      { itemId: 'superior_fabric', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
-    id: 'craft_supreme_auto_healing_potion_5',
-    name: '최상급 자동회복 물약 x5',
-    resultItemId: 'supreme_auto_healing_potion_5',
+    id: 'craft_supreme_auto_healing_potion',
+    name: '최상급 자동회복 물약',
+    resultItemId: 'supreme_auto_healing_potion',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_healing_potion_5', quantity: 5 },
+      { itemId: 'supreme_healing_potion', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 60 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 780
   },
   {
-    id: 'craft_high_heat_resistant_bandage_5',
-    name: '상급 내열 붕대 x5',
-    resultItemId: 'high_heat_resistant_bandage_5',
+    id: 'craft_high_heat_resistant_bandage',
+    name: '상급 내열 붕대',
+    resultItemId: 'high_heat_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_bandage_5', quantity: 5 },
+      { itemId: 'high_bandage', quantity: 5 },
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'flame_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 780
   },
   {
-    id: 'craft_high_cold_resistant_bandage_5',
-    name: '상급 방한 붕대 x5',
-    resultItemId: 'high_cold_resistant_bandage_5',
+    id: 'craft_high_cold_resistant_bandage',
+    name: '상급 방한 붕대',
+    resultItemId: 'high_cold_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_bandage_5', quantity: 5 },
+      { itemId: 'high_bandage', quantity: 5 },
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'ice_crystal', quantity: 2 }
     ],
@@ -206,12 +192,12 @@ export const craftingItemRecipes: Recipe[] = [
     craftingTime: 780
   },
   {
-    id: 'craft_high_insulation_bandage_5',
-    name: '상급 절연 붕대 x5',
-    resultItemId: 'high_insulation_bandage_5',
+    id: 'craft_high_insulation_bandage',
+    name: '상급 절연 붕대',
+    resultItemId: 'high_insulation_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_bandage_5', quantity: 5 },
+      { itemId: 'high_bandage', quantity: 5 },
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'lightning_crystal', quantity: 2 }
     ],
@@ -220,12 +206,12 @@ export const craftingItemRecipes: Recipe[] = [
     craftingTime: 780
   },
   {
-    id: 'craft_high_blessing_bandage_5',
-    name: '상급 축복의 붕대 x5',
-    resultItemId: 'high_blessing_bandage_5',
+    id: 'craft_high_blessing_bandage',
+    name: '상급 축복의 붕대',
+    resultItemId: 'high_blessing_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_bandage_5', quantity: 5 },
+      { itemId: 'high_bandage', quantity: 5 },
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'radiance_crystal', quantity: 2 }
     ],
@@ -234,12 +220,12 @@ export const craftingItemRecipes: Recipe[] = [
     craftingTime: 780
   },
   {
-    id: 'craft_high_seal_bandage_5',
-    name: '상급 봉인의 붕대 x5',
-    resultItemId: 'high_seal_bandage_5',
+    id: 'craft_high_seal_bandage',
+    name: '상급 봉인의 붕대',
+    resultItemId: 'high_seal_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_bandage_5', quantity: 5 },
+      { itemId: 'high_bandage', quantity: 5 },
       { itemId: 'hidden_flower_powder', quantity: 6 },
       { itemId: 'seal_crystal', quantity: 2 }
     ],
@@ -383,85 +369,6 @@ export const craftingItemRecipes: Recipe[] = [
     facilityLevel: 1,
     craftingTime: 30
   },
-
-  // 기타 음식
-  {
-    id: 'craft_bread',
-    name: '빵',
-    resultItemId: 'bread',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'flour', quantity: 2 },
-      { itemId: 'water_bottle', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 60
-  },
-  {
-    id: 'craft_cheese',
-    name: '치즈',
-    resultItemId: 'cheese',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'milk', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 120
-  },
-
-  // 재료
-  {
-    id: 'craft_high_fabric',
-    name: '상급 옷감',
-    resultItemId: 'high_fabric',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'fabric', quantity: 3 },
-      { itemId: 'silk_thread', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.PROCESS_FABRIC,
-    facilityLevel: 2,
-    craftingTime: 180
-  },
-  {
-    id: 'craft_silk_thread',
-    name: '실크 실',
-    resultItemId: 'silk_thread',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'silk_cocoon', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.PROCESS_FABRIC,
-    facilityLevel: 1,
-    craftingTime: 90
-  },
-  {
-    id: 'craft_tough_mushroom_powder',
-    name: '튼튼 버섯 가루',
-    resultItemId: 'tough_mushroom_powder',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'tough_mushroom', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 30
-  },
-  {
-    id: 'craft_hidden_flower_powder',
-    name: '숨숨꽃 가루',
-    resultItemId: 'hidden_flower_powder',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'hidden_flower', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-    craftingTime: 60
-  },
-
   // 캠프파이어
   {
     id: 'craft_campfire_kit',
@@ -517,7 +424,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_wooden_pulley',
@@ -531,7 +437,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_flat_knife',
@@ -545,7 +450,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_thread_making_rod',
@@ -559,7 +463,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_pottery_wheel',
@@ -573,7 +476,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_food_input_port',
@@ -587,7 +489,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 480
   },
   {
     id: 'craft_iron_anvil',
@@ -601,7 +502,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 600
   },
   {
     id: 'craft_tailoring_scissors',
@@ -615,7 +515,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 600
   },
   {
     id: 'craft_medicine_bowl',
@@ -629,7 +528,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 600
   },
   {
     id: 'craft_iron_furnace',
@@ -643,7 +541,6 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 600
   },
   {
     id: 'craft_rotary_grinder',
@@ -657,6 +554,5 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
-    craftingTime: 600
   }
 ]
