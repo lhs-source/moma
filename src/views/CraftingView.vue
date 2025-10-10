@@ -1,7 +1,7 @@
 <template>
   <div class="crafting-view container mx-auto p-4">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold text-foreground">제작 시스템</h1>
+      <PageTitle size="md">제작 시스템</PageTitle>
       <MembershipToggle />
     </div>
 
@@ -32,4 +32,5 @@ import ItemList from '@/components/crafting/ItemList.vue';
 import SelectedItems from '@/components/crafting/SelectedItems.vue';
 import CraftingResults from '@/components/crafting/CraftingResults.vue';
 import MembershipToggle from '@/components/crafting/MembershipToggle.vue';
+import PageTitle from '@/components/ui/PageTitle.vue';
 </script>

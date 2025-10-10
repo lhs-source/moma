@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-      <h1 class="text-3xl font-bold text-foreground">이벤트 & 캐시샵 캘린더</h1>
+      <PageTitle>이벤트 & 캐시샵 캘린더</PageTitle>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -13,7 +13,7 @@
       <!-- 이벤트 목록 영역 (오른쪽, 1/3) -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-foreground">진행 중인 일정</h2>
+          <SectionTitle>진행 중인 일정</SectionTitle>
         </div>
 
         <div class="space-y-3">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-8">
-          <h2 class="text-xl font-semibold text-foreground mb-3">예정된 일정</h2>
+          <SectionTitle class="mb-3">예정된 일정</SectionTitle>
           <div class="space-y-3">
             <EventBar 
               v-for="event in upcomingEvents" 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="mt-8">
-          <h2 class="text-xl font-semibold text-foreground mb-3">종료된 일정</h2>
+          <SectionTitle class="mb-3">종료된 일정</SectionTitle>
           <div class="space-y-3">
             <EventBar 
               v-for="event in pastEvents" 
@@ -80,6 +80,8 @@ import { computed, ref } from 'vue'
 import MonthCalendar from '@/components/event/MonthCalendar.vue'
 import EventBar from '@/components/event/EventBar.vue'
 import EventDetailSheet from '@/components/event/EventDetailSheet.vue'
+import PageTitle from '@/components/ui/PageTitle.vue'
+import SectionTitle from '@/components/ui/SectionTitle.vue'
 import { gameEvents } from '@/data/events'
 import type { GameEvent } from '@/data/schemas/event'
 
