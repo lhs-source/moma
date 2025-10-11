@@ -157,6 +157,53 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * # ItemCard 컴포넌트
+ * 
+ * ## 기능 설명
+ * 개별 아이템의 상세 정보를 카드 형태로 표시하는 컴포넌트
+ * 아이템 기본 정보와 다양한 사용처 정보를 시각적으로 표현
+ * 
+ * ## 주요 기능
+ * - 아이템 기본 정보 표시 (이미지, 이름, ID, 카테고리)
+ * - 사용처 태그 표시 (레시피, 교환, 구매, 제작, 제작 재료)
+ * - 레시피 재료로 사용되는 경우 상세 정보 표시
+ * - 가공/제작 레시피 정보 표시 (카테고리별 그룹화 및 색상 구분)
+ * - 교환 정보 표시 (아이템을 주는 경우, 받는 경우)
+ * - 제작 비용 계산 및 표시
+ * - 이미지 로드 실패 시 기본 이미지로 대체
+ * 
+ * ## 데이터 흐름
+ * 1. props로 아이템 정보 수신
+ * 2. `itemUsageIndex`를 통해 아이템 사용처 조회 (레시피, 교환, 구매)
+ * 3. `recipes` 데이터에서 가공/제작 레시피 조회
+ * 4. `trades`, `npcs`, `locations` 데이터와 매칭하여 교환 상세 정보 구성
+ * 5. 카테고리별로 그룹화하여 UI 렌더링
+ * 
+ * ## UI 구조
+ * ```
+ * ┌────────────────────────────────────┐
+ * │ [이미지] 아이템 이름                │ <- 기본 정보
+ * │          카테고리, ID               │
+ * ├────────────────────────────────────┤
+ * │ [레시피] [교환] [구매] [제작]      │ <- 사용처 태그
+ * ├────────────────────────────────────┤
+ * │ 재료로 사용되는 레시피             │ <- 레시피 사용처
+ * │  - 빵 x5 (밀가루 2개 필요)         │
+ * ├────────────────────────────────────┤
+ * │ 교환에 사용                        │ <- 교환 정보
+ * │  - NPC명 (위치) → 받는 아이템      │
+ * ├────────────────────────────────────┤
+ * │ [금속 가공]                        │ <- 제작 레시피
+ * │  - 철괴 (⏱️ 30초, 💰 100G)        │
+ * └────────────────────────────────────┘
+ * ```
+ * 
+ * ## 성능 최적화
+ * - 모든 계산된 값은 `computed`로 캐싱
+ * - `itemUsageIndex`를 통한 사전 계산된 인덱스 활용
+ * - 중복 레시피 제거 (Map 사용)
+ */
 import { computed } from 'vue'
 import type { Item } from '@/data/schemas/item'
 import { items } from '@/data/items'
@@ -170,16 +217,40 @@ import { findProcessingRecipesForItem } from '@/utils/recipeDependencyUtils'
 import { formatTime } from '@/utils/timeUtils'
 import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 
+/**
+ * ## Props
+ * 
+ * | 속성 | 타입 | 필수 | 설명 |
+ * |------|------|------|------|
+ * | item | Item | O | 표시할 아이템 정보 |
+ * 
+ * ### Item 인터페이스
+ * - `id`: 아이템 고유 ID
+ * - `name`: 아이템 이름
+ * - `imageUrl`: 아이템 이미지 URL
+ * - `category`: 아이템 카테고리 (선택적)
+ */
 const props = defineProps<{
   item: Item
 }>()
 
-// 사용처 정보 - 한 번만 계산하고 캐시
+// 아이템의 전체 사용처 정보 (레시피, 교환, 구매)
 const itemUsage = computed(() => {
   return itemUsageIndex.getItemUsage(props.item.id)
 })
 
-// 사용처 타입들 - 한 번만 계산하고 캐시
+/**
+ * ## usageTypes
+ * 
+ * 아이템의 사용처 타입 목록을 반환 (태그로 표시할 용도)
+ * 
+ * ### 반환값
+ * `Array<string>` - 사용처 타입 문자열 배열 ('레시피', '교환', '구매', '교환으로 얻을 수 있음')
+ * 
+ * ### 처리 로직
+ * 1. `itemUsageIndex.getUsageTypes()`로 기본 사용처 타입 조회
+ * 2. `obtainableTrades`가 있으면 '교환으로 얻을 수 있음' 추가
+ */
 const usageTypes = computed(() => {
   const types = itemUsageIndex.getUsageTypes(props.item.id)
   // 교환으로 얻을 수 있는 경우 추가
@@ -189,17 +260,29 @@ const usageTypes = computed(() => {
   return types
 })
 
-// 가공 레시피들 - 한 번만 계산하고 캐시
+// 해당 아이템을 결과물로 만드는 가공 레시피 목록 (금속, 목재, 가죽, 옷감 등)
 const processingRecipes = computed(() => {
   return findProcessingRecipesForItem(props.item.id)
 })
 
-// 제작 레시피들 - 한 번만 계산하고 캐시
+// 해당 아이템을 결과물로 만드는 일반 제작 레시피 목록 (모든 카테고리)
 const craftableRecipes = computed(() => {
   return recipes.filter(recipe => recipe.resultItemId === props.item.id)
 })
 
-// 모든 제작 레시피들을 카테고리별로 그룹화
+/**
+ * ## allCraftingRecipes
+ * 
+ * 모든 제작 레시피를 카테고리별로 그룹화
+ * 
+ * ### 반환값
+ * `Record<string, Array<Recipe>>` - 카테고리를 키로 하는 레시피 배열 객체
+ * 
+ * ### 처리 플로우
+ * 1. `processingRecipes`와 `craftableRecipes` 병합
+ * 2. Map을 사용하여 중복 레시피 제거 (같은 ID의 레시피는 하나만)
+ * 3. 고유한 레시피들을 `category`별로 그룹화
+ */
 const allCraftingRecipes = computed(() => {
   // 중복 제거를 위해 Map 사용
   const recipeMap = new Map()
@@ -225,12 +308,12 @@ const allCraftingRecipes = computed(() => {
   return grouped
 })
 
-// 제작 레시피가 있는 카테고리들만 필터링
+// 제작 레시피가 있는 카테고리들만 필터링하여 [카테고리, 레시피[]] 튜플 배열로 반환
 const craftingCategories = computed(() => {
   return Object.entries(allCraftingRecipes.value).filter(([, recipes]) => recipes.length > 0)
 })
 
-// 카테고리별 배경 색상
+// 카테고리별 배경 색상 클래스 반환 (다크모드 지원)
 const getCategoryBgColor = (category: string) => {
   const colorMap: Record<string, string> = {
     '금속 가공': 'bg-gray-100 dark:bg-gray-800',
@@ -249,7 +332,7 @@ const getCategoryBgColor = (category: string) => {
   return colorMap[category] || 'bg-slate-100 dark:bg-slate-800'
 }
 
-// 카테고리별 아이템 테두리 색상
+// 카테고리별 아이템 테두리 및 호버 색상 클래스 반환
 const getCategoryItemBorder = (category: string) => {
   const colorMap: Record<string, string> = {
     '금속 가공': 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800',
@@ -268,7 +351,7 @@ const getCategoryItemBorder = (category: string) => {
   return colorMap[category] || 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
 }
 
-// 카테고리별 텍스트 색상 매핑
+// 카테고리별 텍스트 색상 클래스 반환 (다크모드 지원)
 const getCategoryTextColor = (category: string) => {
   const colorMap: Record<string, string> = {
     '금속 가공': 'text-gray-950 dark:text-gray-200',
@@ -287,7 +370,18 @@ const getCategoryTextColor = (category: string) => {
   return colorMap[category] || 'text-slate-950 dark:text-slate-200'
 }
 
-// 가공 레시피에서 재료로 사용되는 레시피들
+/**
+ * ## processingRecipeUsage
+ * 
+ * 현재 아이템을 재료로 사용하는 가공/제작 레시피 목록
+ * 
+ * ### 반환값
+ * `Array<Recipe>` - 가공/제작 레시피 배열
+ * 
+ * ### 필터 조건
+ * 1. 레시피 카테고리가 가공/제작 카테고리 중 하나
+ * 2. 필요 재료에 현재 아이템이 포함됨
+ */
 const processingRecipeUsage = computed(() => {
   return recipes.filter(recipe =>
     (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
@@ -300,7 +394,38 @@ const processingRecipeUsage = computed(() => {
   )
 })
 
-// 교환으로 얻을 수 있는 아이템들
+/**
+ * ## obtainableTrades
+ * 
+ * 교환을 통해 현재 아이템을 얻을 수 있는 교환 목록
+ * 
+ * ### 반환값
+ * `Array<ObtainableTrade>` - 교환 정보 배열
+ * 
+ * #### ObtainableTrade 구조
+ * - `id`: 교환 ID
+ * - `npcName`: NPC 이름
+ * - `locationName`: 위치 이름
+ * - `giveItemName`: 주는 아이템 이름
+ * - `giveQuantity`: 주는 수량
+ * - `receiveQuantity`: 받는 수량
+ * - `type`: 교환 타입
+ * - `maxExchanges`: 최대 교환 횟수
+ * 
+ * ### 필터 조건
+ * - `receiveItemId`가 현재 아이템
+ * - `isEnabled`가 true (활성화된 교환만)
+ * 
+ * ### 데이터 조합
+ * 1. `trades`에서 교환 정보
+ * 2. `npcs`에서 NPC 이름
+ * 3. `locations`에서 위치 이름
+ * 4. `items`에서 주는 아이템 이름
+ * 
+ * ### 사용처
+ * - "교환으로 얻을 수 있음" 태그 표시 여부 결정
+ * - "교환으로 얻을 수 있음" 섹션 표시
+ */
 const obtainableTrades = computed(() => {
   return trades
     .filter(trade => trade.receiveItemId === props.item.id && trade.isEnabled)
@@ -322,7 +447,36 @@ const obtainableTrades = computed(() => {
     })
 })
 
-// 제작 비용 계산 (purchaseData에서 가격 찾기)
+/**
+ * ## calculateRecipeCost
+ * 
+ * 레시피 제작에 필요한 재료들의 총 구매 비용 계산
+ * 
+ * ### 인자
+ * - `recipe.requiredItems`: 필요 재료 목록
+ *   - `itemId`: 재료 아이템 ID
+ *   - `quantity`: 필요 수량
+ * 
+ * ### 반환값
+ * `number` - 총 제작 비용 (골드)
+ * 
+ * #### 케이스별 반환값
+ * - `0`: 구매 불가능한 재료만 있는 경우
+ * - `> 0`: 계산된 총 비용
+ * 
+ * ### 계산 로직
+ * 1. `requiredItems`를 순회
+ * 2. 각 재료의 `itemId`로 `purchaseData`에서 가격 조회
+ * 3. 가격 × 수량을 누적 합산
+ * 4. 첫 번째로 찾은 NPC의 가격 사용
+ * 
+ * ### 주의사항
+ * - NPC마다 가격이 다를 수 있으나 첫 번째 가격만 사용
+ * - 구매 불가능한 아이템은 비용 계산에서 제외 (가격 0)
+ * 
+ * ### 사용처
+ * 제작 레시피 카드에 "💰 100G" 형태로 표시
+ */
 function calculateRecipeCost(recipe: { requiredItems: Array<{ itemId: string; quantity: number }> }): number {
   return recipe.requiredItems.reduce((total: number, material: { itemId: string; quantity: number }) => {
     // purchaseData에서 해당 아이템의 가격 찾기
@@ -338,11 +492,36 @@ function calculateRecipeCost(recipe: { requiredItems: Array<{ itemId: string; qu
   }, 0)
 }
 
+// 아이템 ID로 아이템 이름 조회 (없으면 ID 그대로 반환)
 function getItemName(itemId: string) {
   const item = items.find(i => i.id === itemId)
   return item ? item.name : itemId
 }
 
+/**
+ * ## handleImageError
+ * 
+ * **이벤트**: `img` 태그의 `@error` 이벤트
+ * 
+ * 이미지 로드 실패 시 기본 이미지로 대체하는 핸들러
+ * 
+ * ### 인자
+ * - `event`: 이미지 에러 이벤트 (`Event`)
+ * 
+ * ### 트리거 조건
+ * - 이미지 URL이 유효하지 않은 경우
+ * - 네트워크 오류로 이미지 로드 실패
+ * - 파일이 존재하지 않는 경우
+ * 
+ * ### 처리 플로우
+ * 1. 에러 이벤트에서 이미지 요소 추출
+ * 2. `src`를 `/images/items/default.webp`로 변경
+ * 
+ * ### 사용 위치
+ * - 아이템 메인 이미지
+ * - 재료 이미지들
+ * - 모든 이미지에 공통 적용
+ */
 function handleImageError(event: Event) {
   const target = event.target as HTMLImageElement
   target.src = '/images/items/default.webp'

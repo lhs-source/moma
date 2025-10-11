@@ -2,7 +2,7 @@
   <div class="h-screen flex flex-col overflow-hidden bg-background wrapper">
     <div
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-card border-b border-border flex-shrink-0 shadow-sm">
-      <h1 class="text-lg font-bold text-foreground">요리 시뮬레이팅</h1>
+      <PageTitle size="sm">요리 시뮬레이팅</PageTitle>
     </div>
 
     <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 overflow-hidden main-container">
@@ -30,12 +30,12 @@
       <!-- 오른쪽 열: 필요 재료 및 비용 -->
       <div class="border border-border rounded bg-card flex flex-col overflow-hidden shadow-sm column-container">
         <div class="p-1 border-b border-border flex-shrink-0 bg-muted/50">
-          <h2 class="text-sm font-bold text-foreground">필요 재료 및 비용</h2>
+          <SectionTitle size="sm">필요 재료 및 비용</SectionTitle>
         </div>
 
         <div class="flex-1 overflow-y-auto p-1 space-y-1 min-h-0 scroll-container">
           <div>
-            <h3 class="text-xs font-semibold text-muted-foreground mb-1">선택한 총 제작 요리 목록</h3>
+            <CategoryTitle size="xs" class-name="text-muted-foreground mb-1">선택한 총 제작 요리 목록</CategoryTitle>
             <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
               :get-item-image-url="getItemImageUrl" :handle-image-error="handleImageError" @remove="removeSelected" />
           </div>
@@ -56,6 +56,9 @@ import RecipeGrid from '@/components/cooking/RecipeGrid.vue'
 import SelectedRecipeList from '@/components/cooking/SelectedRecipeList.vue'
 import MaterialsSummary from '@/components/cooking/MaterialsSummary.vue'
 import WeeklyBuyableGrid from '@/components/cooking/WeeklyBuyableGrid.vue'
+import PageTitle from '@/components/ui/PageTitle.vue'
+import SectionTitle from '@/components/ui/SectionTitle.vue'
+import CategoryTitle from '@/components/ui/CategoryTitle.vue'
 import { recipesGrouped } from '@/data/recipes'
 import { items } from '@/data/items'
 import type { Recipe } from '@/data/schemas/recipe'

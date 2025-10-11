@@ -1,7 +1,7 @@
 <template>
-  <div class="crafting-view container mx-auto p-3">
-    <div class="flex justify-between items-center mb-3">
-      <h1 class="text-xl font-bold text-foreground">가공 시스템</h1>
+  <div class="crafting-view container mx-auto p-4">
+    <div class="flex justify-between items-center mb-6">
+      <PageTitle size="md">가공 시스템</PageTitle>
       <MembershipToggle />
     </div>
 
@@ -74,4 +74,5 @@ const craftingStore = useCraftingStore();
 function handleTabChange(value: string) {
   craftingStore.setActiveTab(value as CraftingTabType);
 }
+import PageTitle from '@/components/ui/PageTitle.vue';
 </script>

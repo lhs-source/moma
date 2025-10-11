@@ -667,7 +667,7 @@ export const trades: Trade[] = [
     id: 'calix_leather_plus_to_milk_tea',
     npcId: 'calix',
     giveItemId: 'glenis_apple_milk_tea', // 글리니스의 애플 밀크티
-    receiveItemId: 'leather_plus',
+    receiveItemId: 'leather_plus_processed',
     giveQuantity: 2,
     receiveQuantity: 10,
     type: 'daily',

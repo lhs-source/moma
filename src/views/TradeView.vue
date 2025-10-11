@@ -9,6 +9,8 @@ import { useNpcStore } from '@/stores/npc'
 import { useTradeStore } from '@/stores/trade'
 import { locations } from '@/data/locations'
 import { computed, onMounted, ref } from 'vue'
+import SectionTitle from '@/components/ui/SectionTitle.vue'
+import CategoryTitle from '@/components/ui/CategoryTitle.vue'
 
 // Types
 interface Trade {
@@ -134,7 +136,7 @@ onMounted(() => {
 
     <div class="mt-8">
       <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-bold">교환 목록</h2>
+        <SectionTitle>교환 목록</SectionTitle>
         <div class="w-64">
           <Input v-model="searchQuery" type="text" placeholder="아이템 이름 검색..." class="w-full" />
         </div>
@@ -146,7 +148,7 @@ onMounted(() => {
           <Accordion :default-open="true" class="px-4">
             <template #trigger>
               <div class="flex items-center justify-between flex-1 mr-4">
-                <h3 class="text-xl font-semibold">{{ location }}</h3>
+                <CategoryTitle size="lg">{{ location }}</CategoryTitle>
                 <button @click.stop="tradeStore.toggleLocation(location, trades.map(t => t.id))"
                   class="px-4 py-2 rounded-lg text-sm font-medium transition-colors" :class="tradeStore.disabledLocations.has(location)
                     ? 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300'
