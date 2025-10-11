@@ -148,6 +148,12 @@ export const medicineProcessingItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
+    id: 'calming_herb',
+    name: '진정초',
+    imageUrl: '/images/items/calming_herb.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
     id: 'calming_herb_powder',
     name: '진정초 가루',
     imageUrl: '/images/items/calming_herb_powder.png',

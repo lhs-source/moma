@@ -1,14 +1,8 @@
 import { type Recipe, RECIPE_CATEGORY } from '@/data/schemas/recipe'
 import { recipes } from './recipes'
 
-// 제작 계열 레시피
+// 제작 계열 레시피 (대장기술, 목공, 매직크래프트, 중갑, 경갑, 천옷 제외)
 export const craftingRecipes: Recipe[] = recipes.filter(recipe => 
-  recipe.category === RECIPE_CATEGORY.CRAFT_BLACKSMITH ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_CARPENTRY ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_MAGIC_CRAFT ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_HEAVY_ARMOR ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_LIGHT_ARMOR ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_CLOTH_ARMOR ||
   recipe.category === RECIPE_CATEGORY.CRAFT_POTION ||
   recipe.category === RECIPE_CATEGORY.CRAFT_COOKING ||
   recipe.category === RECIPE_CATEGORY.CRAFT_HANDICRAFT ||
@@ -59,14 +53,8 @@ export const processingRecipesByCategory = () => {
   return Object.fromEntries(categoryMap)
 }
 
-// 제작 계열 카테고리 목록
+// 제작 계열 카테고리 목록 (대장기술, 목공, 매직크래프트, 중갑, 경갑, 천옷 제외)
 export const craftingCategories = [
-  RECIPE_CATEGORY.CRAFT_BLACKSMITH,
-  RECIPE_CATEGORY.CRAFT_CARPENTRY,
-  RECIPE_CATEGORY.CRAFT_MAGIC_CRAFT,
-  RECIPE_CATEGORY.CRAFT_HEAVY_ARMOR,
-  RECIPE_CATEGORY.CRAFT_LIGHT_ARMOR,
-  RECIPE_CATEGORY.CRAFT_CLOTH_ARMOR,
   RECIPE_CATEGORY.CRAFT_POTION,
   RECIPE_CATEGORY.CRAFT_COOKING,
   RECIPE_CATEGORY.CRAFT_HANDICRAFT,

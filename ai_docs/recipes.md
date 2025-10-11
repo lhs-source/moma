@@ -147,7 +147,7 @@ src/data/recipes/
 | craft_cheese | 치즈 | 1 | 120 | 우유 x3 | 1 |
 | craft_high_fabric | 상급 옷감 | 1 | 180 | 옷감 x3, 실크 실 x1 | 2 |
 | craft_silk_thread | 실크 실 | 1 | 90 | 실크 고치 x2 | 1 |
-| craft_tough_mushroom_powder | 튼튼 버섯 가루 | 1 | 30 | 튼튼 버섯 x3 | 1 |
+| craft_sturdy_mushroom_powder | 튼튼 버섯 가루 | 1 | 30 | 튼튼 버섯 x3 | 1 |
 | craft_hidden_flower_powder | 숨숨꽃 가루 | 1 | 60 | 숨숨꽃 x3 | 2 |
 | craft_campfire_kit | 캠프파이어 키트 | 1 | 30 | 통나무 x2 | 1 |
 | craft_skilled_campfire_kit | 숙련 캠프파이어 키트 | 1 | 180 | 나뭇가지 x5, 상급 통나무 x4, 돌 x10 | 1 |

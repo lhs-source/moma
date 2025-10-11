@@ -8,6 +8,7 @@ import { buyingRecipes } from './recipes/buying'
 import { dropRecipes } from './recipes/drops'
 import { craftingItemRecipes } from './recipes/crafting/crafting_item'
 import { potionCraftRecipes } from './recipes/crafting/potion_craft'
+import { handicraftRecipes } from './recipes/crafting/handicraft'
 
 // https://www.inven.co.kr/board/mabimo/6366/134
 // 모든 레시피를 통합하여 export
@@ -18,7 +19,8 @@ export const recipes: Recipe[] = [
   ...buyingRecipes,
   ...dropRecipes,
   ...craftingItemRecipes,
-  ...potionCraftRecipes
+  ...potionCraftRecipes,
+  ...handicraftRecipes
 ]
 
 // 결과 아이템별 레시피 그룹화 버전 (기존 export 유지)
@@ -39,3 +41,4 @@ export { gatheringRecipes } from './recipes/gathering'
 export { buyingRecipes } from './recipes/buying'
 export { dropRecipes } from './recipes/drops'
 export { potionCraftRecipes } from './recipes/crafting/potion_craft'
+export { handicraftRecipes } from './recipes/crafting/handicraft'

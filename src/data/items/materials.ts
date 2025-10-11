@@ -199,12 +199,6 @@ export const materialItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'calming_herb',
-    name: '진정초',
-    imageUrl: '/images/items/calming_herb.png',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
     id: 'red_flower',
     name: '빨간 꽃',
     imageUrl: '/images/items/default.webp',
@@ -416,33 +410,113 @@ export const materialItems: Item[] = [
     id: 'condensed_wind',
     name: '응축된 바람',
     imageUrl: '/images/items/condensed_wind.png',
-    category: ITEM_CATEGORY.MATERIAL,
   },
-  // 물약 조제용 재료
   {
-    id: 'fabric',
-    name: '옷감',
-    imageUrl: '/images/items/fabric.png',
+    id: 'disassembled_equipment_part',
+    name: '분해된 장비 부품',
+    imageUrl: '/images/items/equipment_parts.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'sprout_mushroom_essence',
-    name: '쑥쑥 버섯 진액',
+    id: 'flame_crystal',
+    name: '불꽃의 결정',
+    imageUrl: '/images/items/fire_crystal.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'lightning_crystal',
+    name: '전기의 결정',
+    imageUrl: '/images/items/electric_crystal.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'radiance_crystal',
+    name: '광휘의 결정',
+    imageUrl: '/images/items/light_crystal.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'red_flower',
+    name: '빨간 꽃',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'life_flower',
-    name: '생세기꽃',
+    id: 'blue_flower',
+    name: '파란 꽃',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'life_flower_powder',
-    name: '생세기꽃 가루',
+    id: 'yellow_flower',
+    name: '노란 꽃',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  {
+    id: 'green_flower',
+    name: '초록 꽃',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'branch',
+    name: '나뭇가지',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  
+  {
+    id: 'stone',
+    name: '돌멩이',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'facility_upgrade_part',
+    name: '설비 개량 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'high_wood',
+    name: '상급 목재',
+    imageUrl: '/images/items/superior_wood.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'high_wood_plus',
+    name: '상급 목재+',
+    imageUrl: '/images/items/superior_wood_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'high_fabric',
+    name: '상급 옷감',
+    imageUrl: '/images/items/superior_fabric.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'silk_thread',
+    name: '실크 실',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+
+  {
+    id: 'gold_ingot_pile',
+    name: '황금 주괴 더미',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'dream_reflecting_mirror_fragment',
+    name: '꿈을 비추는 거울 조각',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  
+
   {
     id: 'life_flower_mana_stone',
     name: '생세기꽃 마나석',
@@ -464,6 +538,44 @@ export const materialItems: Item[] = [
   {
     id: 'alchemy_fragment',
     name: '먼금속 부스러기',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  // 생활 업그레이드 재료
+  {
+    id: 'advanced_facility_upgrade_part',
+    name: '상급 설비 개량 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  // 생활도구 제작 재료
+  {
+    id: 'tool_part',
+    name: '도구 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'improved_tool_part',
+    name: '개량된 도구 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'refined_tool_part',
+    name: '정교한 도구 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'delicate_tool_part',
+    name: '섬세한 도구 부품',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'barrack_mana_stone',
+    name: '병영의 마나석',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
