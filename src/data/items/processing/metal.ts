@@ -81,5 +81,11 @@ export const metalProcessingItems: Item[] = [
     imageUrl: '/images/items/cloud_steel_ingot.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  {
+    id: 'tar',
+    name: '타르',
+    imageUrl: '/images/items/tar.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];
 

@@ -42,6 +42,19 @@ export const metalProcessingRecipes: Recipe[] = [
     craftingTime: 14400
   },
   {
+    id: 'craft_tar',
+    name: '타르',
+    resultItemId: 'tar',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'log', quantity: 50 },
+      { itemId: 'clay', quantity: 25 }
+    ],
+    facilityLevel: 3,
+    craftingTime: 14400,
+    category: RECIPE_CATEGORY.PROCESS_METAL
+  },
+  {
     id: 'craft_special_steel',
     name: '특수강괴',
     resultItemId: 'special_steel',

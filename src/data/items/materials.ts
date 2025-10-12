@@ -518,7 +518,7 @@ export const materialItems: Item[] = [
   
 
   {
-    id: 'life_flower_mana_stone',
+    id: 'life_gem',
     name: '생세기꽃 마나석',
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,

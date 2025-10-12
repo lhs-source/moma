@@ -264,10 +264,10 @@ export const potionCraftRecipes: Recipe[] = [
     facilityLevel: 13,
     craftingTime: 780
   },
-  // Lv15 - 퀴아난 회복 물약
+  // Lv15 - 뛰어난 회복 물약
   {
     id: 'craft_quianan_healing_potion',
-    name: '퀴아난 회복 물약',
+    name: '뛰어난 회복 물약',
     resultItemId: 'quianan_healing_potion',
     resultQuantity: 5,
     requiredItems: [
@@ -280,10 +280,10 @@ export const potionCraftRecipes: Recipe[] = [
     facilityLevel: 15,
     craftingTime: 960
   },
-  // Lv20 - 퀴아난 자동회복 물약
+  // Lv20 - 뛰어난 자동회복 물약
   {
     id: 'craft_quianan_auto_healing_potion',
-    name: '퀴아난 자동회복 물약',
+    name: '뛰어난 자동회복 물약',
     resultItemId: 'quianan_auto_healing_potion',
     resultQuantity: 5,
     requiredItems: [
@@ -294,10 +294,10 @@ export const potionCraftRecipes: Recipe[] = [
     facilityLevel: 20,
     craftingTime: 1200
   },
-  // Lv22 - 퀴아난 붕대
+  // Lv22 - 뛰어난 붕대
   {
     id: 'craft_quianan_bandage',
-    name: '퀴아난 붕대',
+    name: '뛰어난 붕대',
     resultItemId: 'quianan_bandage',
     resultQuantity: 5,
     requiredItems: [
@@ -313,16 +313,16 @@ export const potionCraftRecipes: Recipe[] = [
     facilityLevel: 22,
     craftingTime: 1440
   },
-  // Lv25 - 퀴아난 회복 물약S
+  // Lv25 - 뛰어난 회복 물약S
   {
     id: 'craft_quianan_healing_potion_s',
-    name: '퀴아난 회복 물약S',
+    name: '뛰어난 회복 물약S',
     resultItemId: 'quianan_healing_potion_s',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 20 },
-      { itemId: 'growing_mushroom_juice', quantity: 5 },
-      { itemId: 'life_flower_mana_stone', quantity: 10 }
+      { itemId: 'sleepy_mushroom_juice', quantity: 5 },
+      { itemId: 'life_gem', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 25,
@@ -434,10 +434,10 @@ export const potionCraftRecipes: Recipe[] = [
     facilityLevel: 27,
     craftingTime: 2040
   },
-  // Lv29 - 퀴아난 자동회복 물약S
+  // Lv29 - 뛰어난 자동회복 물약S
   {
     id: 'craft_quianan_auto_healing_potion_s',
-    name: '퀴아난 자동회복 물약S',
+    name: '뛰어난 자동회복 물약S',
     resultItemId: 'quianan_auto_healing_potion_s',
     resultQuantity: 5,
     requiredItems: [

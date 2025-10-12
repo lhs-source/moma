@@ -34,6 +34,12 @@ export const woodProcessingItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
+    id: 'hard_log',
+    name: '단단한 통나무',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
     id: 'supreme_log',
     name: '최상급 통나무',
     imageUrl: '/images/items/supreme_log.png',
@@ -85,6 +91,12 @@ export const woodProcessingItems: Item[] = [
     id: 'smooth_wood',
     name: '부드러운 목재',
     imageUrl: '/images/items/smooth_wood.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'hard_wood',
+    name: '단단한 목재',
+    imageUrl: '/images/items/hard_wood.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

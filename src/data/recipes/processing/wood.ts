@@ -96,5 +96,19 @@ export const woodProcessingRecipes: Recipe[] = [
     facilityLevel: 6,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_WOOD
+  },
+  {
+    id: 'craft_hard_wood',
+    name: '단단한 목재',
+    resultItemId: 'hard_wood',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'superior_wood_plus', quantity: 15 },
+      { itemId: 'hard_log', quantity: 30 },
+      { itemId: 'tree_sap', quantity: 30 }
+    ],
+    facilityLevel: 5,
+    craftingTime: 28800,
+    category: RECIPE_CATEGORY.PROCESS_WOOD
   }
 ]
