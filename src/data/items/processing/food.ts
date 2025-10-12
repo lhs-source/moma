@@ -35,13 +35,13 @@ export const foodProcessingItems: Item[] = [
   {
     id: 'soaked_bean',
     name: '물에 불린 콩',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/soaked_bean.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'tofu',
     name: '두부',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/tofu.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -57,9 +57,45 @@ export const foodProcessingItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
+    id: 'aged_large_meat',
+    name: '숙성된 커다란 고기',
+    imageUrl: '/images/items/aged_large_meat.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'large_meat',
+    name: '커다란 고기',
+    imageUrl: '/images/items/large_meat.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'soaked_rice',
+    name: '물에 불린 쌀',
+    imageUrl: '/images/items/soaked_rice.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'tea_leaf',
+    name: '찻잎',
+    imageUrl: '/images/items/tea_leaf.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'dried_tea_leaf',
+    name: '말린 찻잎',
+    imageUrl: '/images/items/dried_tea_leaf.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'fermented_tea_leaf',
+    name: '발효된 찻잎',
+    imageUrl: '/images/items/fermented_tea_leaf.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
     id: 'cooked_rice',
     name: '밥',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/cooked_rice.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 물고기
@@ -120,13 +156,13 @@ export const foodProcessingItems: Item[] = [
   {
     id: 'golden_carp',
     name: '금린어',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/golden_carp.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'brown_trout',
     name: '갈색송어',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/brown_trout.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

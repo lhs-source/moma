@@ -219,12 +219,6 @@ export const foodItems: Item[] = [
     category: ITEM_CATEGORY.FOOD,
   },
   {
-    id: 'bread',
-    name: '빵',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.FOOD,
-  },
-  {
     id: 'golden_silver_spicy_soup',
     name: '금은 매운탕',
     imageUrl: '/images/items/golden_silver_spicy_soup.png',
