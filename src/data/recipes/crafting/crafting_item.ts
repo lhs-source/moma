@@ -58,22 +58,9 @@ export const craftingItemRecipes: Recipe[] = [
     craftingTime: 60
   },
   {
-    id: 'craft_ice_magic_bullet',
-    name: '얼음 마법유탄',
-    resultItemId: 'ice_magic_bullet',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'ice_crystal', quantity: 1 },
-      { itemId: 'iron_ore', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 60
-  },
-  {
-    id: 'craft_lightning_magic_bullet',
-    name: '전기 마법유탄',
-    resultItemId: 'lightning_magic_bullet',
+    id: 'craft_thunder_magic_bullet',
+    name: '번개 마법유탄',
+    resultItemId: 'thunder_magic_bullet',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'lightning_crystal', quantity: 1 },

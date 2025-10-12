@@ -113,7 +113,7 @@ export const trades: Trade[] = [
     id: 'malcolm_workbench',
     npcId: 'malcolm',
     giveItemId: 'campfire_kit',
-    receiveItemId: 'workbench_blueprint', // 다목적 제작대 설계도 (3레벨)
+    receiveItemId: 'multi_purpose_workbench_design_3', // 다목적 제작대 설계도 (3레벨)
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -209,7 +209,7 @@ export const trades: Trade[] = [
     id: 'kaitin_food_processing',
     npcId: 'kaitin',
     giveItemId: 'wheat_flour',
-    receiveItemId: 'food_processing_blueprint', // 식재료 가공 시설 설계도 (3레벨)
+    receiveItemId: 'food_processing_facility_design_3', // 식재료 가공 시설 설계도 (3레벨)
     giveQuantity: 10,
     receiveQuantity: 1,
     type: 'daily',
@@ -294,7 +294,7 @@ export const trades: Trade[] = [
     id: 'elvin_leather_processing',
     npcId: 'elvin',
     giveItemId: 'superior_fabric_plus',
-    receiveItemId: 'leather_processing_blueprint', // 가죽 가공 시설 설계도 (3레벨)
+    receiveItemId: 'leather_processing_facility_design_3', // 가죽 가공 시설 설계도 (3레벨)
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -355,7 +355,7 @@ export const trades: Trade[] = [
     id: 'tracy_wood_processing',
     npcId: 'tracy',
     giveItemId: 'caterpillar',
-    receiveItemId: 'wood_processing_blueprint', // 목재 가공 시설 설계도 (3레벨)
+    receiveItemId: 'wood_processing_facility_design_3', // 목재 가공 시설 설계도 (3레벨)
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -391,7 +391,7 @@ export const trades: Trade[] = [
     id: 'glenis_food_blueprint_to_apple_souffle',
     npcId: 'glenis',
     giveItemId: 'apple_souffle', // 사과 수플레
-    receiveItemId: 'food_processing_blueprint',
+    receiveItemId: 'food_processing_facility_design_3',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -436,10 +436,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_fire_bomb_to_dark_fish',
+    id: 'walter_fire_magic_bullet_to_dark_fish',
     npcId: 'walter',
     giveItemId: 'dark_fish', // 어둠유령고기
-    receiveItemId: 'fire_bomb',
+    receiveItemId: 'fire_magic_bullet',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -448,10 +448,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_thunder_bomb_to_dark_fish',
+    id: 'walter_thunder_magic_bullet_to_dark_fish',
     npcId: 'walter',
     giveItemId: 'dark_fish', // 어둠유령고기
-    receiveItemId: 'thunder_bomb',
+    receiveItemId: 'thunder_magic_bullet',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -460,10 +460,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_wind_bomb_to_dark_fish',
+    id: 'walter_wind_magic_bullet_to_dark_fish',
     npcId: 'walter',
     giveItemId: 'dark_fish', // 어둠유령고기
-    receiveItemId: 'wind_bomb',
+    receiveItemId: 'wind_magic_bullet',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -472,10 +472,10 @@ export const trades: Trade[] = [
     isEnabled: true
   },
   {
-    id: 'walter_acid_bomb_to_dark_fish',
+    id: 'walter_acid_magic_bullet_to_dark_fish',
     npcId: 'walter',
     giveItemId: 'dark_fish', // 어둠유령고기
-    receiveItemId: 'acid_bomb',
+    receiveItemId: 'acid_magic_bullet',
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -559,7 +559,7 @@ export const trades: Trade[] = [
     id: 'simon_silk_fabric',
     npcId: 'simon',
     giveItemId: 'ghost_lantern', // 유령 반딧불이
-    receiveItemId: 'silk_fabric',
+    receiveItemId: 'fabric_processing_facility_design_3',
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -571,7 +571,7 @@ export const trades: Trade[] = [
     id: 'simon_armor_blueprint',
     npcId: 'simon',
     giveItemId: 'sanded_ferodotS', // 세공된 페리도트S
-    receiveItemId: 'armor_blueprint',
+    receiveItemId: 'armor_workbench_design_3',
     giveQuantity: 1,
     receiveQuantity: 1,
     type: 'daily',
@@ -727,7 +727,7 @@ export const trades: Trade[] = [
     id: 'armis_metal_processing',
     npcId: 'armis',
     giveItemId: 'coal',
-    receiveItemId: 'metal_processing_blueprint', // 금속 가공 시설 설계도 (3레벨)
+    receiveItemId: 'metal_processing_facility_design_3', // 금속 가공 시설 설계도 (3레벨)
     giveQuantity: 20,
     receiveQuantity: 1,
     type: 'daily',
@@ -739,7 +739,7 @@ export const trades: Trade[] = [
     id: 'armis_weapon_blueprint',
     npcId: 'armis',
     giveItemId: 'heat_resistant_bandage',
-    receiveItemId: 'weapon_blueprint', // 무기 제작대 설계도 (3레벨)
+    receiveItemId: 'weapon_workbench_design_3', // 무기 제작대 설계도 (3레벨)
     giveQuantity: 5,
     receiveQuantity: 1,
     type: 'daily',
@@ -834,8 +834,8 @@ export const trades: Trade[] = [
   {
     id: 'killian_medicine_processing',
     npcId: 'killian',
-    giveItemId: 'poison_bag',
-    receiveItemId: 'medicine_processing_blueprint', // 의약품 가공 시설 설계도 (3레벨)
+    giveItemId: 'poison_sac',
+    receiveItemId: 'medicine_processing_facility_design_3', // 의약품 가공 시설 설계도 (3레벨)
     giveQuantity: 3,
     receiveQuantity: 1,
     type: 'daily',
@@ -847,7 +847,7 @@ export const trades: Trade[] = [
     id: 'killian_medicine_blueprint',
     npcId: 'killian',
     giveItemId: 'sun_butterfly',
-    receiveItemId: 'medicine_blueprint', // 의약품 제작대 설계도 (3레벨)
+    receiveItemId: 'medicine_workbench_design_3', // 의약품 제작대 설계도 (3레벨)
     giveQuantity: 2,
     receiveQuantity: 1,
     type: 'daily',
@@ -1323,7 +1323,7 @@ export const trades: Trade[] = [
     id: 'galvin_tough_rope',
     npcId: 'galvin',
     giveItemId: 'equipment_parts', // 분해된 장비 부품
-    receiveItemId: 'tough_rope', // 튼튼한 밧줄
+    receiveItemId: 'strong_rope', // 튼튼한 밧줄
     giveQuantity: 1000,
     receiveQuantity: 1,
     type: 'daily',

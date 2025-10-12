@@ -6,7 +6,7 @@ export const metalProcessingItems: Item[] = [
   {
     id: 'ore',
     name: '광석',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/ore.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {

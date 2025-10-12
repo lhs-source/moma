@@ -235,18 +235,6 @@ export const materialItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'dried_tea_leaves',
-    name: '말린 찻잎',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'fermented_tea_leaves',
-    name: '발효된 찻잎',
-    imageUrl: '/images/items/fermented_tea_leaves.png',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
     id: 'equipment_parts',
     name: '분해된 장비 부품',
     imageUrl: '/images/items/equipment_parts.png',
@@ -346,14 +334,8 @@ export const materialItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'poison_bag',
-    name: '독 주머니',
-    imageUrl: '/images/items/poison_bag.png',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
     id: 'poison_sac',
-    name: '독주머니',
+    name: '독 주머니',
     imageUrl: '/images/items/poison_sac.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
@@ -390,19 +372,19 @@ export const materialItems: Item[] = [
   {
     id: 'coin_bug',
     name: '동전무당벌레',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/coin_bug.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'scythe',
     name: '장수풍뎅이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/scythe.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'bulbous',
     name: '뚝딱 반딧불이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/bulbous.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 기타
@@ -501,7 +483,7 @@ export const materialItems: Item[] = [
   {
     id: 'advanced_facility_upgrade_part',
     name: '상급 설비 개량 부품',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/advanced_facility_upgrade_part.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 생활도구 제작 재료
@@ -531,8 +513,62 @@ export const materialItems: Item[] = [
   },
   {
     id: 'barrack_mana_stone',
-    name: '병영의 마나석',
+    name: '변형의 마나석',
     imageUrl: '/images/items/barrack_mana_stone.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'tenacity_grass',
+    name: '끈기 풀',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'white_flower_butterfly',
+    name: '흰꽃나비',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'twilight_butterfly',
+    name: '황혼 잠자리',
+    imageUrl: '/images/items/twilight_butterfly.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'enhanced_potion_emulsifier',
+    name: '강화 비약 유화제',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'life_mana_stone',
+    name: '생명의 마나석',
+    imageUrl: '/images/items/life_gem.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'mine_mana_stone',
+    name: '광산의 마나석',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'fragment_of_rage',
+    name: '분노의 파편',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'fragment_of_oblivion',
+    name: '망각의 파편',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'fragment_of_wildness',
+    name: '야성의 파편',
+    imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

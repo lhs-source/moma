@@ -36,7 +36,7 @@ export const otherItems: Item[] = [
   {
     id: 'health_drink',
     name: '건강 드링크',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/healthy_drink.webp',
     category: ITEM_CATEGORY.OTHER,
   },
   {
@@ -56,12 +56,6 @@ export const otherItems: Item[] = [
     name: '고풍스러운 포장지',
     imageUrl: '/images/items/antique_wrapping_paper.png',
     category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'healthy_drink',
-    name: '건강 드링크',
-    imageUrl: '/images/items/healthy_drink.png',
-    category: ITEM_CATEGORY.FOOD,
   },
   {
     id: 'gift_bouquet',
@@ -202,12 +196,6 @@ export const otherItems: Item[] = [
     imageUrl: '/images/items/holy_water_bundle.png',
     category: ITEM_CATEGORY.OTHER,
   },
-  {
-    id: 'tough_rope',
-    name: '튼튼한 밧줄',
-    imageUrl: '/images/items/tough_rope.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
   // 설비 부품 및 도구
   {
     id: 'facility_upgrade_part',
@@ -287,16 +275,9 @@ export const otherItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.OTHER,
   },
-  // 제작대 업글 설계도
-  {
-    id: 'workbench_blueprint',
-    name: '다목적 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
   {
     id: 'campfire_kit',
-    name: '전문 캠프파이어 키트',
+    name: '캠프파이어 키트',
     imageUrl: '/images/items/campfire_kit.png',
     category: ITEM_CATEGORY.OTHER,
   },
@@ -304,60 +285,6 @@ export const otherItems: Item[] = [
     id: 'heart_token',
     name: '하트 토큰',
     imageUrl: '/images/items/heart_token.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'food_processing_blueprint',
-    name: '식재료 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'silk_fabric',
-    name: '옷감 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'armor_blueprint',
-    name: '방어구 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'metal_processing_blueprint',
-    name: '금속 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'weapon_blueprint',
-    name: '무기 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'medicine_processing_blueprint',
-    name: '의약품 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'medicine_blueprint',
-    name: '의약품 제작대 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'leather_processing_blueprint',
-    name: '가죽 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
-    category: ITEM_CATEGORY.OTHER,
-  },
-  {
-    id: 'wood_processing_blueprint',
-    name: '목재 가공 시설 설계도 (3레벨)',
-    imageUrl: '/images/items/blueprint.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
@@ -644,67 +571,67 @@ export const otherItems: Item[] = [
   {
     id: 'spinning_whorl',
     name: '손바퀴',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/spinning_whorl.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'plywood_cover',
     name: '합판 덮개',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/plywood_cover.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'washing_tub',
     name: '세척통',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/washing_tub.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'vacuum_comb',
     name: '진공증 빗',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/vacuum_comb.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'rotary_handle',
     name: '돌림 손잡이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/rotary_handle.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'link_handle',
     name: '연결 손잡이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/link_handle.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'forging_tongs',
     name: '단조 집게',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/forging_tongs.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'needle_holder',
     name: '바늘꽂이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/needle_holder.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'leg_bracket',
     name: '다리쇠',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/leg_bracket.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'iron_plate',
     name: '쇠붙판',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/iron_plate.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
     id: 'work_hammer',
     name: '작업용 망치',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/work_hammer.png',
     category: ITEM_CATEGORY.OTHER,
   },
 ];

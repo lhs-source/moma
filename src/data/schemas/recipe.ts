@@ -65,6 +65,7 @@ export interface Recipe {
   // 제작 시스템 전용 필드
   craftingTime?: number; // 제작 시간 (초)
   craftingCategory?: string; // 제작 카테고리 (레거시 호환성)
+  requiredLevel?: number; // 필요 레벨
 }
 
 /**

@@ -51,12 +51,6 @@ export const foodProcessingItems: Item[] = [
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
-    id: 'wine',
-    name: '와인',
-    imageUrl: '/images/items/wine.png',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
     id: 'aged_large_meat',
     name: '숙성된 커다란 고기',
     imageUrl: '/images/items/aged_large_meat.png',
