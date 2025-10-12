@@ -16,33 +16,39 @@ export const potionItems: Item[] = [
     category: ITEM_CATEGORY.POTION,
   },
   {
+    id: 'excellent_auto_healing_potion',
+    name: '뛰어난 자동회복 물약',
+    imageUrl: '/images/items/excellent_auto_healing_potion.png',
+    category: ITEM_CATEGORY.POTION,
+  },
+  {
     id: 'auto_healing_potion',
     name: '자동회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/auto_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_healing_potion',
     name: '상급 회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/high_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_auto_healing_potion',
     name: '상급 자동회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/high_auto_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_healing_potion',
     name: '최상급 회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/supreme_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_auto_healing_potion',
     name: '최상급 자동회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/supreme_auto_healing_potion.png',
     category: ITEM_CATEGORY.POTION,
   },
   // 기본 붕대
@@ -61,26 +67,26 @@ export const potionItems: Item[] = [
   {
     id: 'perfect_bandage',
     name: '완벽한 붕대',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/perfect_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_bandage',
     name: '상급 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   // 내열 붕대
   {
     id: 'heat_resistant_bandage',
     name: '내열 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/heat_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_heat_resistant_bandage',
     name: '상급 내열 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_heat_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -93,13 +99,13 @@ export const potionItems: Item[] = [
   {
     id: 'cold_resistant_bandage',
     name: '방한 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/cold_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_cold_resistant_bandage',
     name: '상급 방한 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_cold_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -112,13 +118,13 @@ export const potionItems: Item[] = [
   {
     id: 'insulation_bandage',
     name: '절연 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/insulation_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_insulation_bandage',
     name: '상급 절연 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_insulation_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -131,13 +137,13 @@ export const potionItems: Item[] = [
   {
     id: 'blessing_bandage',
     name: '축복의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/blessing_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_blessing_bandage',
     name: '상급 축복의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_blessing_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -150,13 +156,13 @@ export const potionItems: Item[] = [
   {
     id: 'seal_bandage',
     name: '봉인의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/seal_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'high_seal_bandage',
     name: '상급 봉인의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/high_seal_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -228,48 +234,16 @@ export const potionItems: Item[] = [
     imageUrl: '/images/items/acid_bomb.png',
     category: ITEM_CATEGORY.POTION,
   },
-  // 뛰어난 시리즈
   {
-    id: 'quianan_healing_potion',
-    name: '뛰어난 회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  {
-    id: 'quianan_auto_healing_potion',
-    name: '뛰어난 자동회복 물약',
-    imageUrl: '/images/items/healing_potion.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  {
-    id: 'quianan_bandage',
-    name: '뛰어난 붕대',
-    imageUrl: '/images/items/bandage.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  {
-    id: 'quianan_healing_potion_s',
+    id: 'excellent_healing_potion_s',
     name: '뛰어난 회복 물약S',
-    imageUrl: '/images/items/healing_potion.png',
+    imageUrl: '/images/items/excellent_healing_potion_s.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
-    id: 'quianan_auto_healing_potion_s',
+    id: 'excellent_auto_healing_potion_s',
     name: '뛰어난 자동회복 물약S',
-    imageUrl: '/images/items/healing_potion.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  // 최상급 붕대 시리즈
-  {
-    id: 'supreme_bandage',
-    name: '최상급 붕대',
-    imageUrl: '/images/items/bandage.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  {
-    id: 'supreme_blue_bandage',
-    name: '최상급 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/excellent_auto_healing_potion_s.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
@@ -299,19 +273,6 @@ export const potionItems: Item[] = [
   {
     id: 'supreme_seal_bandage',
     name: '최상급 봉인의 붕대',
-    imageUrl: '/images/items/bandage.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  // 단일 아이템
-  {
-    id: 'quianan_bandage',
-    name: '뛰어난 붕대',
-    imageUrl: '/images/items/bandage.png',
-    category: ITEM_CATEGORY.POTION,
-  },
-  {
-    id: 'supreme_bandage',
-    name: '최상급 붕대',
     imageUrl: '/images/items/bandage.png',
     category: ITEM_CATEGORY.POTION,
   },

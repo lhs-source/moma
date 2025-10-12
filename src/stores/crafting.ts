@@ -24,7 +24,7 @@ export const useCraftingStore = defineStore('crafting', () => {
   const selectedItems = ref<SelectedItems>({})
   const selectedCategory = ref<string | null>(null)
   const isMembershipEnabled = ref(false) // 멤버십 활성화 상태
-  const activeTab = ref<CraftingTabType>('crafting') // 현재 활성화된 탭
+  const activeTab = ref<CraftingTabType>('processing') // 현재 활성화된 탭
 
   // Getters
   const recipesByCategory = computed(() => {

@@ -36,8 +36,9 @@
               </div>
             </td>
             <td class="p-2 text-center">
-              <button class="bg-foreground hover:bg-foreground/90 text-background px-2 py-1 rounded text-xs"
-                @click="addItem(recipe)">
+              <button
+                class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-semibold transition-colors border border-blue-600 hover:border-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                @click="addItem(recipe)" title="제작 목록에 추가">
                 추가
               </button>
             </td>

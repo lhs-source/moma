@@ -126,7 +126,7 @@ export const medicineProcessingItems: Item[] = [
   {
     id: 'hidden_flower_powder',
     name: '숨숨꽃 가루',
-    imageUrl: '/images/items/flower_powder.png',
+    imageUrl: '/images/items/hidden_flower_powder.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {

@@ -120,5 +120,59 @@ export const fabricProcessingRecipes: Recipe[] = [
     facilityLevel: 6,
     craftingTime: 36000,
     category: RECIPE_CATEGORY.PROCESS_FABRIC
-  }
+  },
+  {
+    id: 'craft_thick_fabric',
+    name: '두꺼운 옷감',
+    resultItemId: 'thick_fabric',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'thick_wool', quantity: 50 },
+      { itemId: 'superior_wool', quantity: 100 },
+      { itemId: 'wax', quantity: 2 }
+    ],
+    facilityLevel: 2,
+    craftingTime: 7200,
+    category: RECIPE_CATEGORY.PROCESS_FABRIC
+  },
+  {
+    id: 'craft_plant_fiber',
+    name: '식물 섬유',
+    resultItemId: 'plant_fiber',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'long_stem', quantity: 150 }
+    ],
+    facilityLevel: 2,
+    craftingTime: 1800,
+    category: RECIPE_CATEGORY.PROCESS_FABRIC
+  },
+  {
+    id: 'craft_rope',
+    name: '밧줄',
+    resultItemId: 'rope',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'plant_fiber', quantity: 45 },
+      { itemId: 'wax', quantity: 4 }
+    ],
+    facilityLevel: 2,
+    craftingTime: 3600,
+    category: RECIPE_CATEGORY.PROCESS_FABRIC
+  },
+  {
+    id: 'craft_strong_rope',
+    name: '튼튼한 밧줄',
+    resultItemId: 'strong_rope',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'rope', quantity: 6 },
+      { itemId: 'plant_fiber', quantity: 90 },
+      { itemId: 'wax', quantity: 8 },
+      { itemId: 'tar', quantity: 3 }
+    ],
+    facilityLevel: 2,
+    craftingTime: 9000,
+    category: RECIPE_CATEGORY.PROCESS_FABRIC
+  },
 ]

@@ -45,24 +45,28 @@
         <table class="w-full">
           <thead class="bg-muted/50">
             <tr class="border-b">
-              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-20">이미지</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-48">기본 정보</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">사용처 상세</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-20">
+                이미지</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-48">기본
+                정보</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">사용처 상세
+              </th>
             </tr>
           </thead>
           <tbody class="divide-y divide-border">
             <tr v-for="item in filteredItems" :key="item.id" class="hover:bg-muted/30 transition-colors">
               <!-- 이미지 -->
               <td class="px-4 py-3 align-top">
-                <img :src="item.imageUrl" :alt="item.name" class="w-16 h-16 object-cover rounded" @error="handleImageError" />
+                <img :src="item.imageUrl" :alt="item.name" class="w-16 min-w-16 h-16 object-cover rounded"
+                  @error="handleImageError" />
               </td>
-              
+
               <!-- 기본 정보 -->
               <td class="px-4 py-3 align-top">
                 <div v-if="item.category" class="text-xs text-muted-foreground mb-1">{{ item.category }}</div>
                 <div class="font-bold text-base text-foreground">{{ item.name }}</div>
                 <div class="text-xs text-muted-foreground mt-1">ID: {{ item.id }}</div>
-                
+
                 <!-- 사용처 태그 -->
                 <div class="flex flex-wrap gap-1 mt-2">
                   <span v-for="usageType in getUsageTypes(item.id)" :key="usageType" :class="{
@@ -77,34 +81,41 @@
                   </span>
                 </div>
               </td>
-              
+
               <!-- 사용처 상세 정보 -->
               <td class="px-4 py-3 align-top">
                 <div class="space-y-2 text-sm">
                   <!-- 레시피 사용처 -->
-                  <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length" class="bg-slate-50 dark:bg-slate-800 rounded p-2">
+                  <div v-if="getItemUsage(item.id)?.usageTypes.recipes.length"
+                    class="bg-slate-50 dark:bg-slate-800 rounded p-2">
                     <div class="font-semibold text-xs text-slate-900 dark:text-slate-200 mb-1">재료로 사용되는 레시피</div>
-                    <div v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId" class="text-xs py-0.5">
-                      • {{ recipeUsage.resultItemName }} x{{ recipeUsage.resultQuantity }} ({{ recipeUsage.quantity }}개 필요)
+                    <div v-for="recipeUsage in getItemUsage(item.id)?.usageTypes.recipes" :key="recipeUsage.recipeId"
+                      class="text-xs py-0.5">
+                      • {{ recipeUsage.resultItemName }} x{{ recipeUsage.resultQuantity }} ({{ recipeUsage.quantity }}개
+                      필요)
                     </div>
                   </div>
-                  
+
                   <!-- 교환 사용처 -->
-                  <div v-if="getItemUsage(item.id)?.usageTypes.trades.length" class="bg-blue-50 dark:bg-blue-900 rounded p-2">
+                  <div v-if="getItemUsage(item.id)?.usageTypes.trades.length"
+                    class="bg-blue-50 dark:bg-blue-900 rounded p-2">
                     <div class="font-semibold text-xs text-blue-900 dark:text-blue-200 mb-1">교환에 사용</div>
-                    <div v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId" class="text-xs py-0.5">
-                      • {{ tradeUsage.npcName }} ({{ tradeUsage.locationName }}) → {{ tradeUsage.receiveItemName }} x{{ tradeUsage.receiveQuantity }} ({{ tradeUsage.giveQuantity }}개 필요)
+                    <div v-for="tradeUsage in getItemUsage(item.id)?.usageTypes.trades" :key="tradeUsage.tradeId"
+                      class="text-xs py-0.5">
+                      • {{ tradeUsage.npcName }} ({{ tradeUsage.locationName }}) → {{ tradeUsage.receiveItemName }} x{{
+                        tradeUsage.receiveQuantity }} ({{ tradeUsage.giveQuantity }}개 필요)
                     </div>
                   </div>
-                  
+
                   <!-- 교환으로 얻을 수 있음 -->
                   <div v-if="getObtainableTrades(item.id).length" class="bg-green-50 dark:bg-green-900 rounded p-2">
                     <div class="font-semibold text-xs text-green-900 dark:text-green-200 mb-1">교환으로 얻을 수 있음</div>
                     <div v-for="trade in getObtainableTrades(item.id)" :key="trade.id" class="text-xs py-0.5">
-                      • {{ trade.npcName }} ({{ trade.locationName }}) - {{ trade.giveItemName }} x{{ trade.giveQuantity }} → {{ trade.receiveQuantity }}개 획득
+                      • {{ trade.npcName }} ({{ trade.locationName }}) - {{ trade.giveItemName }} x{{ trade.giveQuantity
+                      }} → {{ trade.receiveQuantity }}개 획득
                     </div>
                   </div>
-                  
+
                   <!-- 제작 레시피 -->
                   <div v-if="getCraftableRecipes(item.id).length" class="bg-yellow-50 dark:bg-yellow-900 rounded p-2">
                     <div class="font-semibold text-xs text-yellow-900 dark:text-yellow-200 mb-1">제작 가능</div>
@@ -113,12 +124,11 @@
                       <span v-if="recipe.craftingTime"> - ⏱️ {{ formatTime(recipe.craftingTime) }}</span>
                     </div>
                   </div>
-                  
-                  <div v-if="!getItemUsage(item.id)?.usageTypes.recipes.length && 
-                             !getItemUsage(item.id)?.usageTypes.trades.length && 
-                             !getObtainableTrades(item.id).length && 
-                             !getCraftableRecipes(item.id).length" 
-                       class="text-xs text-muted-foreground">
+
+                  <div v-if="!getItemUsage(item.id)?.usageTypes.recipes.length &&
+                    !getItemUsage(item.id)?.usageTypes.trades.length &&
+                    !getObtainableTrades(item.id).length &&
+                    !getCraftableRecipes(item.id).length" class="text-xs text-muted-foreground">
                     사용처 정보 없음
                   </div>
                 </div>
@@ -215,18 +225,18 @@ const selectedUsageType = ref('')
 function getUsageTypes(itemId: string): string[] {
   const types: string[] = []
   const usage = itemUsageIndex.getItemUsage(itemId)
-  
+
   if (usage?.usageTypes.recipes.length) types.push('레시피')
   if (usage?.usageTypes.trades.length) types.push('교환')
   if (usage?.usageTypes.purchases.length) types.push('구매')
-  
+
   if (recipesStore.recipeList.some(recipe => recipe.resultItemId === itemId)) {
     types.push('제작')
   }
-  
+
   const obtainableTrades = tradeStore.tradeList.filter(trade => trade.receiveItemId === itemId && trade.isEnabled)
   if (obtainableTrades.length > 0) types.push('교환으로 얻을 수 있음')
-  
+
   return types
 }
 
@@ -243,7 +253,7 @@ function getObtainableTrades(itemId: string) {
       const npc = npcs.find(n => n.id === trade.npcId)
       const location = locations.find(l => l.id === npc?.locationId)
       const giveItem = items.find(i => i.id === trade.giveItemId)
-      
+
       return {
         id: trade.id,
         npcName: npc?.name || '알 수 없음',

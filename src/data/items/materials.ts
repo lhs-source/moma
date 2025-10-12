@@ -183,13 +183,13 @@ export const materialItems: Item[] = [
   {
     id: 'scar_flower',
     name: '생채기꽃',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/scar_flower.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'bloody_herb',
     name: '블러디 허브',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/bloody_herb.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -201,7 +201,7 @@ export const materialItems: Item[] = [
   {
     id: 'red_flower',
     name: '빨간 꽃',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/red_flower.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -273,7 +273,7 @@ export const materialItems: Item[] = [
   {
     id: 'wax',
     name: '밀랍',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/wax.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 마나석

@@ -53,7 +53,7 @@ export const fabricProcessingItems: Item[] = [
   {
     id: 'superior_web',
     name: '최상급 거미줄',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/superior_web.png',
     category: ITEM_CATEGORY.OTHER,
   },
   {
@@ -96,6 +96,42 @@ export const fabricProcessingItems: Item[] = [
     id: 'supreme_fabric_plus',
     name: '최상급 옷감+',
     imageUrl: '/images/items/supreme_fabric_plus.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'thick_fabric',
+    name: '두꺼운 옷감',
+    imageUrl: '/images/items/thick_fabric.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'plant_fiber',
+    name: '식물 섬유',
+    imageUrl: '/images/items/plant_fiber.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'rope',
+    name: '밧줄',
+    imageUrl: '/images/items/rope.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'strong_rope',
+    name: '튼튼한 밧줄',
+    imageUrl: '/images/items/strong_rope.png',  
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'thick_wool',
+    name: '두꺼운 양털',
+    imageUrl: '/images/items/thick_wool.png',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'long_stem',
+    name: '긴 줄기',
+    imageUrl: '/images/items/long_stem.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

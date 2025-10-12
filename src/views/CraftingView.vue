@@ -6,49 +6,41 @@
     </div>
 
     <!-- 탭 -->
-    <Tabs default-value="crafting" class="w-full" @update:value="handleTabChange">
+    <Tabs default-value="processing" class="w-full" @update:value="handleTabChange">
       <TabsList class="mb-3">
-        <TabsTrigger value="crafting">제작</TabsTrigger>
         <TabsTrigger value="processing">재료 가공</TabsTrigger>
+        <TabsTrigger value="crafting">제작</TabsTrigger>
       </TabsList>
 
-      <TabsContent value="crafting">
-        <!-- 3열 레이아웃 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-[calc(100vh-150px)]">
-          <!-- 첫 번째 열: 제작 계열 + 제작 항목 -->
-          <div class="flex flex-col space-y-2">
-            <CategoryList />
-            <ItemList />
-          </div>
-
-          <!-- 두 번째 열: 선택된 항목 -->
-          <div>
-            <SelectedItems />
-          </div>
-
-          <!-- 세 번째 열: 제작 결과 -->
-          <div>
-            <CraftingResults />
-          </div>
-        </div>
-      </TabsContent>
-
       <TabsContent value="processing">
-        <!-- 3열 레이아웃 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 h-[calc(100vh-150px)]">
+        <!-- 2열 레이아웃 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 h-[calc(100vh-150px)]">
           <!-- 첫 번째 열: 재료 가공 + 제작 항목 -->
           <div class="flex flex-col space-y-2">
             <CategoryList />
             <ItemList />
           </div>
 
-          <!-- 두 번째 열: 선택된 항목 -->
-          <div>
+          <!-- 두 번째 열: 선택된 항목 + 제작 결과 -->
+          <div class="flex flex-col space-y-2">
             <SelectedItems />
+            <CraftingResults />
+          </div>
+        </div>
+      </TabsContent>
+
+      <TabsContent value="crafting">
+        <!-- 2열 레이아웃 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 h-[calc(100vh-150px)]">
+          <!-- 첫 번째 열: 제작 계열 + 제작 항목 -->
+          <div class="flex flex-col space-y-2">
+            <CategoryList />
+            <ItemList />
           </div>
 
-          <!-- 세 번째 열: 제작 결과 -->
-          <div>
+          <!-- 두 번째 열: 선택된 항목 + 제작 결과 -->
+          <div class="flex flex-col space-y-2">
+            <SelectedItems />
             <CraftingResults />
           </div>
         </div>

@@ -36,7 +36,7 @@ export const woodProcessingItems: Item[] = [
   {
     id: 'hard_log',
     name: '단단한 통나무',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/hard_log.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {

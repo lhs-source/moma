@@ -18,9 +18,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv1 - 붕대
   {
-    id: 'craft_bandage_10',
-    name: '붕대 x10',
-    resultItemId: 'bandage_10',
+    id: 'craft_bandage',
+    name: '붕대',
+    resultItemId: 'bandage',
     resultQuantity: 10,
     requiredItems: [
       { itemId: 'fabric', quantity: 2 }
@@ -164,9 +164,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv8 - 상급 붕대
   {
-    id: 'craft_high_bandage_10',
-    name: '상급 붕대 x10',
-    resultItemId: 'high_bandage_10',
+    id: 'craft_high_bandage',
+    name: '상급 붕대',
+    resultItemId: 'high_bandage',
     resultQuantity: 10,
     requiredItems: [
       { itemId: 'high_fabric', quantity: 2 }
@@ -266,9 +266,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv15 - 뛰어난 회복 물약
   {
-    id: 'craft_quianan_healing_potion',
+    id: 'craft_excellent_healing_potion',
     name: '뛰어난 회복 물약',
-    resultItemId: 'quianan_healing_potion',
+    resultItemId: 'excellent_healing_potion',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 16 },
@@ -282,12 +282,12 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv20 - 뛰어난 자동회복 물약
   {
-    id: 'craft_quianan_auto_healing_potion',
+    id: 'craft_excellent_auto_healing_potion',
     name: '뛰어난 자동회복 물약',
-    resultItemId: 'quianan_auto_healing_potion',
+    resultItemId: 'excellent_auto_healing_potion',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'quianan_healing_potion', quantity: 5 },
+      { itemId: 'excellent_healing_potion', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
@@ -296,9 +296,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv22 - 뛰어난 붕대
   {
-    id: 'craft_quianan_bandage',
+    id: 'craft_excellent_bandage',
     name: '뛰어난 붕대',
-    resultItemId: 'quianan_bandage',
+    resultItemId: 'excellent_bandage',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'high_fabric', quantity: 5 },
@@ -315,9 +315,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv25 - 뛰어난 회복 물약S
   {
-    id: 'craft_quianan_healing_potion_s',
+    id: 'craft_excellent_healing_potion_s',
     name: '뛰어난 회복 물약S',
-    resultItemId: 'quianan_healing_potion_s',
+    resultItemId: 'excellent_healing_potion_s',
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 20 },
@@ -330,9 +330,9 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv27 - 최상급 붕대 (첫 번째)
   {
-    id: 'craft_supreme_bandage_10_v1',
-    name: '최상급 붕대 x10',
-    resultItemId: 'supreme_bandage_10',
+    id: 'craft_supreme_bandage_v1',
+    name: '최상급 붕대',
+    resultItemId: 'supreme_bandage',
     resultQuantity: 10,
     requiredItems: [
       { itemId: 'supreme_fabric', quantity: 2 },
@@ -345,12 +345,12 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv27 - 최상급 붕대 (두 번째, 파란색 붕대)
   {
-    id: 'craft_supreme_bandage_10_v2',
-    name: '최상급 붕대 x10',
-    resultItemId: 'supreme_blue_bandage_10',
+    id: 'craft_supreme_bandage_v2',
+    name: '최상급 붕대',
+    resultItemId: 'supreme_blue_bandage',
     resultQuantity: 10,
     requiredItems: [
-      { itemId: 'quianan_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'fire_mana_stone', quantity: 10 },
       { itemId: 'life_flower', quantity: 5 },
       { itemId: 'alchemy_fragment', quantity: 50 }
@@ -436,12 +436,12 @@ export const potionCraftRecipes: Recipe[] = [
   },
   // Lv29 - 뛰어난 자동회복 물약S
   {
-    id: 'craft_quianan_auto_healing_potion_s',
+    id: 'craft_excellent_auto_healing_potion_s',
     name: '뛰어난 자동회복 물약S',
-    resultItemId: 'quianan_auto_healing_potion_s',
+    resultItemId: 'excellent_auto_healing_potion_s',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'quianan_healing_potion_s', quantity: 5 },
+      { itemId: 'excellent_healing_potion_s', quantity: 5 },
       { itemId: 'disassembled_equipment_part', quantity: 180 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,

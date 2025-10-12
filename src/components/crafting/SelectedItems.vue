@@ -5,7 +5,9 @@
       <div v-for="(categoryItems, category) in selectedItemsByCategory" :key="category" class="mb-3">
         <div class="flex justify-between items-center mb-1 px-2">
           <h3 class="text-sm font-semibold text-foreground">{{ category }}</h3>
-          <button class="text-xs text-destructive hover:text-destructive/80" @click="clearCategory(category)">
+          <button
+            class="text-xs px-2 py-1 rounded bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-700 border border-red-300 hover:border-red-400 dark:bg-red-950 dark:text-red-400 dark:hover:bg-red-900 dark:hover:text-red-300 dark:border-red-800 font-medium transition-colors"
+            @click="clearCategory(category)" title="이 카테고리의 모든 항목 삭제">
             모두 삭제
           </button>
         </div>
@@ -34,18 +36,18 @@
               <td class="p-1">
                 <div class="flex items-center justify-center gap-1">
                   <button
-                    class="w-5 h-5 flex items-center justify-center rounded hover:bg-accent text-foreground border border-border"
-                    @click="decrementItem(selectedItem.recipe)">
+                    class="w-6 h-6 flex items-center justify-center rounded bg-gray-200 hover:bg-blue-200 text-gray-700 hover:text-blue-700 border border-gray-300 hover:border-blue-400 dark:bg-gray-800 dark:hover:bg-blue-950 dark:text-gray-300 dark:hover:text-blue-300 dark:border-gray-700 dark:hover:border-blue-600 font-bold transition-colors"
+                    @click="decrementItem(selectedItem.recipe)" title="횟수 감소">
                     -
                   </button>
                   <button
-                    class="w-5 h-5 flex items-center justify-center rounded hover:bg-accent text-foreground border border-border"
-                    @click="incrementItem(selectedItem.recipe)">
+                    class="w-6 h-6 flex items-center justify-center rounded bg-gray-200 hover:bg-blue-200 text-gray-700 hover:text-blue-700 border border-gray-300 hover:border-blue-400 dark:bg-gray-800 dark:hover:bg-blue-950 dark:text-gray-300 dark:hover:text-blue-300 dark:border-gray-700 dark:hover:border-blue-600 font-bold transition-colors"
+                    @click="incrementItem(selectedItem.recipe)" title="횟수 증가">
                     +
                   </button>
                   <button
-                    class="w-5 h-5 flex items-center justify-center rounded hover:bg-accent text-destructive border border-destructive"
-                    @click="removeItem(selectedItem.recipe.id)">
+                    class="w-6 h-6 flex items-center justify-center rounded bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 border border-red-300 hover:border-red-400 dark:bg-red-950 dark:hover:bg-red-900 dark:text-red-400 dark:hover:text-red-300 dark:border-red-800 dark:hover:border-red-700 font-bold transition-colors"
+                    @click="removeItem(selectedItem.recipe.id)" title="항목 삭제">
                     ×
                   </button>
                 </div>
@@ -60,8 +62,8 @@
     </div>
 
     <button v-if="hasSelectedItems"
-      class="w-full mt-2 py-1.5 bg-destructive hover:bg-destructive/90 text-destructive-foreground rounded text-sm"
-      @click="clearAllItems">
+      class="w-full mt-2 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-sm font-semibold transition-colors border border-red-600 hover:border-red-700 dark:bg-red-700 dark:hover:bg-red-800"
+      @click="clearAllItems" title="모든 선택 항목 초기화">
       선택 초기화
     </button>
   </div>
