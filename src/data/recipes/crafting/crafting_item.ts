@@ -2,75 +2,6 @@ import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
 
 // 아이템 제작 레시피 데이터
 export const craftingItemRecipes: Recipe[] = [
-  // 강화 아이템
-  {
-    id: 'craft_weapon_enchant_stone',
-    name: '무기 강화석',
-    resultItemId: 'weapon_enchant_stone',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'iron_ore', quantity: 5 },
-      { itemId: 'coal', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 120
-  },
-  {
-    id: 'craft_armor_enchant_stone',
-    name: '방어구 강화석',
-    resultItemId: 'armor_enchant_stone',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'iron_ore', quantity: 3 },
-      { itemId: 'coal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 90
-  },
-  {
-    id: 'craft_accessory_enchant_stone',
-    name: '악세사리 강화석',
-    resultItemId: 'accessory_enchant_stone',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'iron_ore', quantity: 2 },
-      { itemId: 'coal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 60
-  },
-
-  // 마법유탄
-  {
-    id: 'craft_fire_magic_bullet',
-    name: '화염 마법유탄',
-    resultItemId: 'fire_magic_bullet',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'flame_crystal', quantity: 1 },
-      { itemId: 'iron_ore', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 60
-  },
-  {
-    id: 'craft_thunder_magic_bullet',
-    name: '번개 마법유탄',
-    resultItemId: 'thunder_magic_bullet',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'lightning_crystal', quantity: 1 },
-      { itemId: 'iron_ore', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-    craftingTime: 60
-  },
-
   // 염색약
   {
     id: 'craft_red_dye',
@@ -442,5 +373,347 @@ export const craftingItemRecipes: Recipe[] = [
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 2,
+  },
+  // Lv.15 레시피 (다목적 제작대 Lv.3)
+  {
+    id: 'craft_advanced_spinning_whorl',
+    name: '상급 손바퀴',
+    resultItemId: 'advanced_spinning_whorl',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+  {
+    id: 'craft_advanced_plywood_cover',
+    name: '상급 합판 덮개',
+    resultItemId: 'advanced_plywood_cover',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+  {
+    id: 'craft_advanced_washing_tub',
+    name: '상급 세척통',
+    resultItemId: 'advanced_washing_tub',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+  {
+    id: 'craft_advanced_vacuum_comb',
+    name: '상급 직조용 빗',
+    resultItemId: 'advanced_vacuum_comb',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+  {
+    id: 'craft_advanced_rotary_handle',
+    name: '상급 돌림 손잡이',
+    resultItemId: 'advanced_rotary_handle',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+  {
+    id: 'craft_advanced_link_handle',
+    name: '상급 연결 손잡이',
+    resultItemId: 'advanced_link_handle',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 22 },
+      { itemId: 'high_wood', quantity: 4 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 15
+  },
+
+  // Lv.17 레시피
+  {
+    id: 'craft_advanced_forging_tongs',
+    name: '상급 단조 집게',
+    resultItemId: 'advanced_forging_tongs',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 27 },
+      { itemId: 'silver_alloy_ingot', quantity: 3 },
+      { itemId: 'special_steel_ingot', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 17
+  },
+  {
+    id: 'craft_advanced_needle_holder',
+    name: '상급 바늘꽂이',
+    resultItemId: 'advanced_needle_holder',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 27 },
+      { itemId: 'supreme_fabric', quantity: 3 },
+      { itemId: 'advanced_fabric', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 17
+  },
+  {
+    id: 'craft_advanced_leg_bracket',
+    name: '상급 다리쇠',
+    resultItemId: 'advanced_leg_bracket',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 27 },
+      { itemId: 'silver_alloy_ingot', quantity: 3 },
+      { itemId: 'special_steel_ingot', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 17
+  },
+  {
+    id: 'craft_advanced_iron_plate',
+    name: '상급 쇠불판',
+    resultItemId: 'advanced_iron_plate',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 27 },
+      { itemId: 'silver_alloy_ingot', quantity: 3 },
+      { itemId: 'special_steel_ingot', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 17
+  },
+  {
+    id: 'craft_advanced_work_hammer',
+    name: '상급 작업용 망치',
+    resultItemId: 'advanced_work_hammer',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 27 },
+      { itemId: 'supreme_wood', quantity: 3 },
+      { itemId: 'high_wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 17
+  },
+
+  // Lv.19 레시피 (다목적 제작대 Lv.4) - DIY팩
+  {
+    id: 'craft_processing_facility_modification_diy_pack_5',
+    name: '가공 시설 개조 DIY팩 (5레벨)',
+    resultItemId: 'processing_facility_modification_diy_pack_5',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 25 },
+      { itemId: 'silver_alloy_ingot', quantity: 5 },
+      { itemId: 'supreme_wood', quantity: 5 },
+      { itemId: 'supreme_fabric', quantity: 5 },
+      { itemId: 'advanced_facility_expansion_blueprint', quantity: 4 },
+      { itemId: 'disassembled_equipment_part', quantity: 500 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 19
+  },
+  {
+    id: 'craft_workbench_modification_diy_pack_5',
+    name: '제작대 개조 DIY팩 (5레벨)',
+    resultItemId: 'workbench_modification_diy_pack_5',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'advanced_facility_upgrade_part', quantity: 30 },
+      { itemId: 'meteorite_ingot', quantity: 3 },
+      { itemId: 'supreme_wood', quantity: 3 },
+      { itemId: 'supreme_fabric', quantity: 3 },
+      { itemId: 'advanced_facility_expansion_blueprint', quantity: 5 },
+      { itemId: 'disassembled_equipment_part', quantity: 700 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 19
+  },
+
+  // === 마법유탄 레시피 (이미지에서 추가) ===
+
+  // 다목적 제작대 Lv.3 - Lv.10
+  {
+    id: 'craft_magic_grenade_part',
+    name: '마법 유탄 부품',
+    resultItemId: 'magic_grenade_part',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'disassembled_equipment_part', quantity: 50 },
+      { itemId: 'mana_herb', quantity: 10 },
+      { itemId: 'cave_gem', quantity: 1 },
+      { itemId: 'alchemy_scraps', quantity: 50 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 10
+  },
+  {
+    id: 'craft_fire_magic_bullet_lv10',
+    name: '화염 마법 유탄',
+    resultItemId: 'fire_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'fire_crystal', quantity: 3 },
+      { itemId: 'magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 10
+  },
+  {
+    id: 'craft_thunder_magic_bullet_lv10',
+    name: '번개 마법 유탄',
+    resultItemId: 'thunder_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'lightning_crystal', quantity: 3 },
+      { itemId: 'magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 10
+  },
+  {
+    id: 'craft_wind_magic_bullet_lv10',
+    name: '바람 마법 유탄',
+    resultItemId: 'wind_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'condensed_wind', quantity: 3 },
+      { itemId: 'magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 10
+  },
+  {
+    id: 'craft_acid_magic_bullet_lv10',
+    name: '산성 마법 유탄',
+    resultItemId: 'acid_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'poison_sac', quantity: 3 },
+      { itemId: 'magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3,
+    requiredLevel: 10
+  },
+
+  // 다목적 제작대 Lv.4 - Lv.20
+  {
+    id: 'craft_advanced_magic_grenade_part_method1',
+    name: '상급 마법 유탄 부품',
+    resultItemId: 'advanced_magic_grenade_part',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'magic_grenade_part', quantity: 5 },
+      { itemId: 'magic_power_detonator', quantity: 25 },
+      { itemId: 'cave_gem', quantity: 24 },
+      { itemId: 'alchemy_scraps', quantity: 100 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
+  },
+  {
+    id: 'craft_advanced_magic_grenade_part_method2',
+    name: '상급 마법 유탄 부품',
+    resultItemId: 'advanced_magic_grenade_part',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'disassembled_equipment_part', quantity: 150 },
+      { itemId: 'magic_power_detonator', quantity: 15 },
+      { itemId: 'wilderness_mana_stone', quantity: 25 },
+      { itemId: 'alchemy_scraps', quantity: 100 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
+  },
+  {
+    id: 'craft_advanced_fire_magic_bullet',
+    name: '상급 화염 마법 유탄',
+    resultItemId: 'advanced_fire_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'fire_crystal', quantity: 9 },
+      { itemId: 'advanced_magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
+  },
+  {
+    id: 'craft_advanced_thunder_magic_bullet',
+    name: '상급 번개 마법 유탄',
+    resultItemId: 'advanced_thunder_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'lightning_crystal', quantity: 9 },
+      { itemId: 'advanced_magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
+  },
+  {
+    id: 'craft_advanced_wind_magic_bullet',
+    name: '상급 바람 마법 유탄',
+    resultItemId: 'advanced_wind_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'condensed_wind', quantity: 9 },
+      { itemId: 'advanced_magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
+  },
+  {
+    id: 'craft_advanced_acid_magic_bullet',
+    name: '상급 산성 마법 유탄',
+    resultItemId: 'advanced_acid_magic_bullet',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'poison_sac', quantity: 9 },
+      { itemId: 'advanced_magic_grenade_part', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 4,
+    requiredLevel: 20
   }
 ]

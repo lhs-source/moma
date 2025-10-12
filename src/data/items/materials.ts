@@ -571,4 +571,66 @@ export const materialItems: Item[] = [
     imageUrl: '/images/items/default.webp',
     category: ITEM_CATEGORY.MATERIAL,
   },
+  // 제작 재료 (이미지에서 추가된 레시피들)
+  {
+    id: 'alloy_steel_ingot',
+    name: '합금강괴',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'special_steel_ingot',
+    name: '특수강괴',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'silver_alloy_ingot',
+    name: '은합금괴',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'meteorite_ingot',
+    name: '운석괴',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_wood',
+    name: '최상급 목재',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'supreme_fabric',
+    name: '최상급 옷감',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'high_wood',
+    name: '상급 목재',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'advanced_fabric',
+    name: '상급 옷감',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  // 마법유탄 제작 재료
+  {
+    id: 'magic_power_detonator',
+    name: '마력 기폭제',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
+  {
+    id: 'wilderness_mana_stone',
+    name: '황야의 마나석',
+    imageUrl: '/images/items/default.webp',
+    category: ITEM_CATEGORY.MATERIAL,
+  },
 ];
