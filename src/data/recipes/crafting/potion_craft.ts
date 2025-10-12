@@ -10,11 +10,10 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 2 },
-      { itemId: 'saelok_mushroom', quantity: 2 }
+      { itemId: 'fresh_mushroom', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 1,
-    craftingTime: 60
+    facilityLevel: 1
   },
   // Lv1 - 붕대
   {
@@ -23,11 +22,10 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'bandage',
     resultQuantity: 10,
     requiredItems: [
-      { itemId: 'fabric', quantity: 2 }
+      { itemId: 'fabric_processed', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 1,
-    craftingTime: 30
+    facilityLevel: 1
   },
   // Lv2 - 자동회복 물약
   {
@@ -40,8 +38,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 2,
-    craftingTime: 120
+    facilityLevel: 2
   },
   // Lv3 - 상급 회복 물약
   {
@@ -51,12 +48,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 6 },
-      { itemId: 'saelok_mushroom_essence', quantity: 5 },
-      { itemId: 'sprout_mushroom', quantity: 2 }
+      { itemId: 'fresh_mushroom_juice', quantity: 5 },
+      { itemId: 'growing_mushroom', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 3,
-    craftingTime: 180
+    facilityLevel: 3
   },
   // Lv5 - 상급 자동회복 물약
   {
@@ -69,8 +65,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 300
+    facilityLevel: 5
   },
   // Lv5 - 내열 붕대
   {
@@ -84,8 +79,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'flame_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 300
+    facilityLevel: 5
   },
   // Lv5 - 방한 붕대
   {
@@ -99,8 +93,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'ice_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 300
+    facilityLevel: 5
   },
   // Lv5 - 절연 붕대
   {
@@ -114,8 +107,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'lightning_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 300
+    facilityLevel: 5
   },
   // Lv5 - 축복의 붕대
   {
@@ -129,8 +121,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'radiance_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 300
+    facilityLevel: 5
   },
   // Lv5 - 봉인의 붕대
   {
@@ -144,8 +135,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'seal_crystal', quantity: 1 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 5,
-    craftingTime: 480
+    facilityLevel: 5
   },
   // Lv8 - 최상급 회복 물약
   {
@@ -159,8 +149,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'hidden_flower', quantity: 6 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 8,
-    craftingTime: 480
+    facilityLevel: 8
   },
   // Lv8 - 상급 붕대
   {
@@ -172,8 +161,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'high_fabric', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 8,
-    craftingTime: 480
+    facilityLevel: 8
   },
   // Lv13 - 최상급 자동회복 물약
   {
@@ -186,8 +174,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 60 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv13 - 상급 내열 붕대
   {
@@ -201,8 +188,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'flame_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv13 - 상급 방한 붕대
   {
@@ -216,8 +202,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'ice_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv13 - 상급 절연 붕대
   {
@@ -231,8 +216,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'lightning_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv13 - 상급 축복의 붕대
   {
@@ -246,8 +230,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'radiance_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv13 - 상급 봉인의 붕대
   {
@@ -261,8 +244,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'seal_crystal', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 13,
-    craftingTime: 780
+    facilityLevel: 13
   },
   // Lv15 - 뛰어난 회복 물약
   {
@@ -273,12 +255,10 @@ export const potionCraftRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 16 },
       { itemId: 'clean_mushroom_juice', quantity: 6 },
-      { itemId: 'sprout_mushroom', quantity: 5 },
-      { itemId: 'sturdy_mushroom', quantity: 2 }
+      { itemId: 'life_gem', quantity: 2 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 15,
-    craftingTime: 960
+    facilityLevel: 15
   },
   // Lv20 - 뛰어난 자동회복 물약
   {
@@ -291,8 +271,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 20,
-    craftingTime: 1200
+    facilityLevel: 20
   },
   // Lv22 - 뛰어난 붕대
   {
@@ -301,8 +280,8 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'excellent_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'high_fabric', quantity: 5 },
-      { itemId: 'life_flower_powder', quantity: 6 },
+      { itemId: 'superior_fabric_plus_processed', quantity: 5 },
+      { itemId: 'scar_flower_powder', quantity: 6 },
       { itemId: 'flame_crystal', quantity: 10 },
       { itemId: 'ice_crystal', quantity: 10 },
       { itemId: 'lightning_crystal', quantity: 10 },
@@ -310,8 +289,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'seal_crystal', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 22,
-    craftingTime: 1440
+    facilityLevel: 22
   },
   // Lv25 - 뛰어난 회복 물약S
   {
@@ -325,39 +303,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'life_gem', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 25,
-    craftingTime: 1800
-  },
-  // Lv27 - 최상급 붕대 (첫 번째)
-  {
-    id: 'craft_supreme_bandage_v1',
-    name: '최상급 붕대',
-    resultItemId: 'supreme_bandage',
-    resultQuantity: 10,
-    requiredItems: [
-      { itemId: 'supreme_fabric', quantity: 2 },
-      { itemId: 'life_flower_powder', quantity: 6 },
-      { itemId: 'life_flower', quantity: 5 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
-  },
-  // Lv27 - 최상급 붕대 (두 번째, 파란색 붕대)
-  {
-    id: 'craft_supreme_bandage_v2',
-    name: '최상급 붕대',
-    resultItemId: 'supreme_blue_bandage',
-    resultQuantity: 10,
-    requiredItems: [
-      { itemId: 'excellent_bandage', quantity: 5 },
-      { itemId: 'fire_mana_stone', quantity: 10 },
-      { itemId: 'life_flower', quantity: 5 },
-      { itemId: 'alchemy_fragment', quantity: 50 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 25
   },
   // Lv27 - 최상급 내열 붕대
   {
@@ -367,12 +313,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'supreme_bandage', quantity: 5 },
-      { itemId: 'strong_herb_powder', quantity: 6 },
+      { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'flame_crystal', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 27
   },
   // Lv27 - 최상급 방한 붕대
   {
@@ -382,12 +327,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'supreme_bandage', quantity: 5 },
-      { itemId: 'strong_herb_powder', quantity: 6 },
+      { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'ice_crystal', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 27
   },
   // Lv27 - 최상급 절연 붕대
   {
@@ -397,12 +341,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'supreme_bandage', quantity: 5 },
-      { itemId: 'strong_herb_powder', quantity: 6 },
+      { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'lightning_crystal', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 27
   },
   // Lv27 - 최상급 축복의 붕대
   {
@@ -412,12 +355,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'supreme_bandage', quantity: 5 },
-      { itemId: 'strong_herb_powder', quantity: 6 },
+      { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'radiance_crystal', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 27
   },
   // Lv27 - 최상급 봉인의 붕대
   {
@@ -427,12 +369,11 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 5,
     requiredItems: [
       { itemId: 'supreme_bandage', quantity: 5 },
-      { itemId: 'strong_herb_powder', quantity: 6 },
+      { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'seal_crystal', quantity: 4 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 27,
-    craftingTime: 2040
+    facilityLevel: 27
   },
   // Lv29 - 뛰어난 자동회복 물약S
   {
@@ -445,8 +386,7 @@ export const potionCraftRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 180 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
-    facilityLevel: 29,
-    craftingTime: 2400
+    facilityLevel: 29
   },
 ]
 

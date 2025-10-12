@@ -2,238 +2,6 @@ import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
 
 // 아이템 제작 레시피 데이터
 export const craftingItemRecipes: Recipe[] = [
-  // 회복 아이템
-  {
-    id: 'craft_healing_potion',
-    name: '회복 물약',
-    resultItemId: 'healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bloody_herb', quantity: 2 },
-      { itemId: 'saelok_mushroom', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_bandage',
-    name: '붕대',
-    resultItemId: 'bandage',
-    resultQuantity: 10,
-    requiredItems: [
-      { itemId: 'fabric', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_auto_healing_potion',
-    name: '자동회복 물약',
-    resultItemId: 'auto_healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'healing_potion', quantity: 5 },
-      { itemId: 'disassembled_equipment_part', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_high_healing_potion',
-    name: '상급 회복 물약',
-    resultItemId: 'high_healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bloody_herb', quantity: 6 },
-      { itemId: 'saelok_mushroom_essence', quantity: 5 },
-      { itemId: 'sprout_mushroom', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_high_auto_healing_potion',
-    name: '상급 자동회복 물약',
-    resultItemId: 'high_auto_healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_healing_potion', quantity: 5 },
-      { itemId: 'disassembled_equipment_part', quantity: 10 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_heat_resistant_bandage',
-    name: '내열 붕대',
-    resultItemId: 'heat_resistant_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bandage', quantity: 5 },
-      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
-      { itemId: 'flame_crystal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_cold_resistant_bandage',
-    name: '방한 붕대',
-    resultItemId: 'cold_resistant_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bandage', quantity: 5 },
-      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
-      { itemId: 'ice_crystal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_insulation_bandage',
-    name: '절연 붕대',
-    resultItemId: 'insulation_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bandage', quantity: 5 },
-      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
-      { itemId: 'lightning_crystal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_blessing_bandage',
-    name: '축복의 붕대',
-    resultItemId: 'blessing_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bandage', quantity: 5 },
-      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
-      { itemId: 'radiance_crystal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 1,
-  },
-  {
-    id: 'craft_seal_bandage',
-    name: '봉인의 붕대',
-    resultItemId: 'seal_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bandage', quantity: 5 },
-      { itemId: 'sturdy_mushroom_powder', quantity: 3 },
-      { itemId: 'seal_crystal', quantity: 1 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-  },
-  {
-    id: 'craft_supreme_healing_potion',
-    name: '최상급 회복 물약',
-    resultItemId: 'supreme_healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'bloody_herb', quantity: 12 },
-      { itemId: 'clean_mushroom', quantity: 6 },
-      { itemId: 'hidden_flower', quantity: 6 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-  },
-  {
-    id: 'craft_high_bandage',
-    name: '상급 붕대',
-    resultItemId: 'high_bandage',
-    resultQuantity: 10,
-    requiredItems: [
-      { itemId: 'superior_fabric', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-  },
-  {
-    id: 'craft_supreme_auto_healing_potion',
-    name: '최상급 자동회복 물약',
-    resultItemId: 'supreme_auto_healing_potion',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'supreme_healing_potion', quantity: 5 },
-      { itemId: 'disassembled_equipment_part', quantity: 60 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-  },
-  {
-    id: 'craft_high_heat_resistant_bandage',
-    name: '상급 내열 붕대',
-    resultItemId: 'high_heat_resistant_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_bandage', quantity: 5 },
-      { itemId: 'hidden_flower_powder', quantity: 6 },
-      { itemId: 'flame_crystal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-  },
-  {
-    id: 'craft_high_cold_resistant_bandage',
-    name: '상급 방한 붕대',
-    resultItemId: 'high_cold_resistant_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_bandage', quantity: 5 },
-      { itemId: 'hidden_flower_powder', quantity: 6 },
-      { itemId: 'ice_crystal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-    craftingTime: 780
-  },
-  {
-    id: 'craft_high_insulation_bandage',
-    name: '상급 절연 붕대',
-    resultItemId: 'high_insulation_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_bandage', quantity: 5 },
-      { itemId: 'hidden_flower_powder', quantity: 6 },
-      { itemId: 'lightning_crystal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-    craftingTime: 780
-  },
-  {
-    id: 'craft_high_blessing_bandage',
-    name: '상급 축복의 붕대',
-    resultItemId: 'high_blessing_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_bandage', quantity: 5 },
-      { itemId: 'hidden_flower_powder', quantity: 6 },
-      { itemId: 'radiance_crystal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-    craftingTime: 780
-  },
-  {
-    id: 'craft_high_seal_bandage',
-    name: '상급 봉인의 붕대',
-    resultItemId: 'high_seal_bandage',
-    resultQuantity: 5,
-    requiredItems: [
-      { itemId: 'high_bandage', quantity: 5 },
-      { itemId: 'hidden_flower_powder', quantity: 6 },
-      { itemId: 'seal_crystal', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFTING_ITEM,
-    facilityLevel: 2,
-    craftingTime: 780
-  },
-
   // 강화 아이템
   {
     id: 'craft_weapon_enchant_stone',
@@ -411,6 +179,139 @@ export const craftingItemRecipes: Recipe[] = [
     craftingTime: 360
   },
 
+  // === 생활 업그레이드 부품 제작 (기본) ===
+  {
+    id: 'craft_spinning_whorl',
+    name: '손바퀴',
+    resultItemId: 'spinning_whorl',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 1
+  },
+  {
+    id: 'craft_plywood_cover',
+    name: '합판 덮개',
+    resultItemId: 'plywood_cover',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3
+  },
+  {
+    id: 'craft_washing_tub',
+    name: '세척통',
+    resultItemId: 'washing_tub',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3
+  },
+  {
+    id: 'craft_vacuum_comb',
+    name: '진공증 빗',
+    resultItemId: 'vacuum_comb',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3
+  },
+  {
+    id: 'craft_rotary_handle',
+    name: '돌림 손잡이',
+    resultItemId: 'rotary_handle',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3
+  },
+  {
+    id: 'craft_link_handle',
+    name: '연결 손잡이',
+    resultItemId: 'link_handle',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 8 },
+      { itemId: 'wood', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 3
+  },
+  {
+    id: 'craft_forging_tongs',
+    name: '단조 집게',
+    resultItemId: 'forging_tongs',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 12 },
+      { itemId: 'steel_ingot', quantity: 5 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 5
+  },
+  {
+    id: 'craft_needle_holder',
+    name: '바늘꽂이',
+    resultItemId: 'needle_holder',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 12 },
+      { itemId: 'wood_plus', quantity: 3 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 5
+  },
+  {
+    id: 'craft_leg_bracket',
+    name: '다리쇠',
+    resultItemId: 'leg_bracket',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 12 },
+      { itemId: 'steel_ingot', quantity: 5 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 5
+  },
+  {
+    id: 'craft_iron_plate',
+    name: '쇠붙판',
+    resultItemId: 'iron_plate',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 12 },
+      { itemId: 'steel_ingot', quantity: 5 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 5
+  },
+  {
+    id: 'craft_work_hammer',
+    name: '작업용 망치',
+    resultItemId: 'work_hammer',
+    resultQuantity: 1,
+    requiredItems: [
+      { itemId: 'facility_upgrade_part', quantity: 12 },
+      { itemId: 'wood_plus', quantity: 5 }
+    ],
+    category: RECIPE_CATEGORY.CRAFTING_ITEM,
+    facilityLevel: 5
+  },
   // 설비 제작 도구
   {
     id: 'craft_bellows',

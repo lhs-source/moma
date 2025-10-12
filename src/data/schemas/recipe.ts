@@ -27,9 +27,8 @@ export enum RECIPE_CATEGORY {
   CRAFT_LIGHT_ARMOR = '경갑 제작',
   CRAFT_CLOTH_ARMOR = '천옷 제작',
   CRAFT_POTION = '물약 조제',
-  CRAFT_COOKING = '요리 제작',
   CRAFT_HANDICRAFT = '핸디크래프트',
-  CRAFT_ALCHEMY = '연금술',
+  CRAFT_TOOL_MAKING = '도구 제작',
   // 레거시 (기존 데이터 호환용)
   CRAFTING_ITEM = '아이템 제작',
   // 재료 가공

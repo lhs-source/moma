@@ -4,9 +4,9 @@ import { recipes } from './recipes'
 // 제작 계열 레시피 (대장기술, 목공, 매직크래프트, 중갑, 경갑, 천옷 제외)
 export const craftingRecipes: Recipe[] = recipes.filter(recipe => 
   recipe.category === RECIPE_CATEGORY.CRAFT_POTION ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_COOKING ||
+  recipe.category === RECIPE_CATEGORY.COOK ||
   recipe.category === RECIPE_CATEGORY.CRAFT_HANDICRAFT ||
-  recipe.category === RECIPE_CATEGORY.CRAFT_ALCHEMY ||
+  recipe.category === RECIPE_CATEGORY.CRAFT_TOOL_MAKING ||
   recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM // 레거시 데이터 호환
 )
 
@@ -56,9 +56,9 @@ export const processingRecipesByCategory = () => {
 // 제작 계열 카테고리 목록 (대장기술, 목공, 매직크래프트, 중갑, 경갑, 천옷 제외)
 export const craftingCategories = [
   RECIPE_CATEGORY.CRAFT_POTION,
-  RECIPE_CATEGORY.CRAFT_COOKING,
+  RECIPE_CATEGORY.COOK,
   RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-  RECIPE_CATEGORY.CRAFT_ALCHEMY,
+  RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
   RECIPE_CATEGORY.CRAFTING_ITEM // 레거시 데이터 호환
 ]
 

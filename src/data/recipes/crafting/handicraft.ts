@@ -11,140 +11,8 @@ export const handicraftRecipes: Recipe[] = [
     requiredItems: [
       { itemId: 'iron_ingot', quantity: 2 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
-  },
-  // === 생활 업그레이드 부품 제작 (기본) ===
-  {
-    id: 'craft_spinning_whorl',
-    name: '손바퀴',
-    resultItemId: 'spinning_whorl',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'iron_ingot', quantity: 2 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 1
-  },
-  {
-    id: 'craft_plywood_cover',
-    name: '합판 덮개',
-    resultItemId: 'plywood_cover',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 8 },
-      { itemId: 'wood', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 3
-  },
-  {
-    id: 'craft_washing_tub',
-    name: '세척통',
-    resultItemId: 'washing_tub',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 8 },
-      { itemId: 'wood', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 3
-  },
-  {
-    id: 'craft_vacuum_comb',
-    name: '진공증 빗',
-    resultItemId: 'vacuum_comb',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 8 },
-      { itemId: 'wood', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 3
-  },
-  {
-    id: 'craft_rotary_handle',
-    name: '돌림 손잡이',
-    resultItemId: 'rotary_handle',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 8 },
-      { itemId: 'wood', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 3
-  },
-  {
-    id: 'craft_link_handle',
-    name: '연결 손잡이',
-    resultItemId: 'link_handle',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 8 },
-      { itemId: 'wood', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 3
-  },
-  {
-    id: 'craft_forging_tongs',
-    name: '단조 집게',
-    resultItemId: 'forging_tongs',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 12 },
-      { itemId: 'steel_ingot', quantity: 5 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 5
-  },
-  {
-    id: 'craft_needle_holder',
-    name: '바늘꽂이',
-    resultItemId: 'needle_holder',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 12 },
-      { itemId: 'wood_plus', quantity: 3 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 5
-  },
-  {
-    id: 'craft_leg_bracket',
-    name: '다리쇠',
-    resultItemId: 'leg_bracket',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 12 },
-      { itemId: 'steel_ingot', quantity: 5 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 5
-  },
-  {
-    id: 'craft_iron_plate',
-    name: '쇠붙판',
-    resultItemId: 'iron_plate',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 12 },
-      { itemId: 'steel_ingot', quantity: 5 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 5
-  },
-  {
-    id: 'craft_work_hammer',
-    name: '작업용 망치',
-    resultItemId: 'work_hammer',
-    resultQuantity: 1,
-    requiredItems: [
-      { itemId: 'facility_upgrade_part', quantity: 12 },
-      { itemId: 'wood_plus', quantity: 5 }
-    ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
-    facilityLevel: 5
   },
   // === 기본 생활도구 (Lv.2, 다목적 제작대 Lv.1) ===
   // 금속 도구
@@ -158,7 +26,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
   {
@@ -171,7 +39,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
   {
@@ -184,7 +52,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
   {
@@ -197,7 +65,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
   {
@@ -210,7 +78,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1,
   },
   {
@@ -223,7 +91,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1,
   },
   // 목재 도구
@@ -237,7 +105,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 6 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
   {
@@ -250,7 +118,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 6 },
       { itemId: 'tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 1
   },
 
@@ -266,7 +134,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -279,7 +147,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -292,7 +160,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -305,7 +173,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -318,7 +186,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -331,7 +199,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 3 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   // 목재 도구
@@ -345,7 +213,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 6 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
   {
@@ -358,7 +226,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 6 },
       { itemId: 'improved_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 2
   },
 
@@ -375,7 +243,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -389,7 +257,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -403,7 +271,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -417,7 +285,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -431,7 +299,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -445,7 +313,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 4 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   // 목재 도구
@@ -460,7 +328,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 8 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
   {
@@ -474,7 +342,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'nail', quantity: 8 },
       { itemId: 'refined_tool_part', quantity: 1 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 4
   },
 
@@ -492,7 +360,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -507,7 +375,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -522,7 +390,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -537,7 +405,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -552,7 +420,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -567,7 +435,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   // 목재 도구
@@ -583,7 +451,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   },
   {
@@ -598,7 +466,7 @@ export const handicraftRecipes: Recipe[] = [
       { itemId: 'delicate_tool_part', quantity: 1 },
       { itemId: 'barrack_mana_stone', quantity: 5 }
     ],
-    category: RECIPE_CATEGORY.CRAFT_HANDICRAFT,
+    category: RECIPE_CATEGORY.CRAFT_TOOL_MAKING,
     facilityLevel: 5
   }
 ]
