@@ -392,6 +392,22 @@ export const potionCraftRecipes: Recipe[] = [
   // === 비약 제작 레시피 (이미지에서 추가) ===
   
   // 약품 제작대 Lv.1 레시피
+  // critical_potion
+  {
+    id: 'craft_critical_potion',
+    name: '치명타 비약',
+    resultItemId: 'critical_potion',
+    resultQuantity: 3,
+    requiredItems: [
+      { itemId: 'four_leaf_clover', quantity: 10 },
+      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'coin_bug', quantity: 6 },
+      { itemId: 'alchemy_scraps', quantity: 10 }
+    ],
+    category: RECIPE_CATEGORY.CRAFT_POTION,
+    facilityLevel: 1,
+    requiredLevel: 4
+  },
   {
     id: 'craft_ultimate_skill_potion',
     name: '궁극기 비약',
