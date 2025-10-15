@@ -574,7 +574,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 50 },
       { itemId: 'mana_herb', quantity: 10 },
       { itemId: 'cave_gem', quantity: 1 },
-      { itemId: 'alchemy_scraps', quantity: 50 }
+      { itemId: 'alchemy_powder', quantity: 50 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 3,
@@ -643,7 +643,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'magic_grenade_part', quantity: 5 },
       { itemId: 'magic_power_detonator', quantity: 25 },
       { itemId: 'cave_gem', quantity: 24 },
-      { itemId: 'alchemy_scraps', quantity: 100 }
+      { itemId: 'alchemy_powder', quantity: 100 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 4,
@@ -658,7 +658,7 @@ export const craftingItemRecipes: Recipe[] = [
       { itemId: 'disassembled_equipment_part', quantity: 150 },
       { itemId: 'magic_power_detonator', quantity: 15 },
       { itemId: 'wilderness_mana_stone', quantity: 25 },
-      { itemId: 'alchemy_scraps', quantity: 100 }
+      { itemId: 'alchemy_powder', quantity: 100 }
     ],
     category: RECIPE_CATEGORY.CRAFTING_ITEM,
     facilityLevel: 4,

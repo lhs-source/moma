@@ -475,7 +475,7 @@ export const cookingRecipes: Recipe[] = [
     name: '녹차 크레이프 케이크',
     resultItemId: 'green_tea_crepe_cake',
     requiredItems: [
-      { itemId: 'dried_tea_leaves', quantity: 10 },
+      { itemId: 'dried_tea_leaf', quantity: 10 },
       { itemId: 'strawberry', quantity: 6 },
       { itemId: 'cream', quantity: 6 },
       { itemId: 'flour', quantity: 4 },

@@ -312,7 +312,7 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'supreme_heat_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'flame_crystal', quantity: 4 }
     ],
@@ -326,7 +326,7 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'supreme_cold_resistant_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'ice_crystal', quantity: 4 }
     ],
@@ -340,7 +340,7 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'supreme_insulation_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'lightning_crystal', quantity: 4 }
     ],
@@ -354,7 +354,7 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'supreme_blessing_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'radiance_crystal', quantity: 4 }
     ],
@@ -368,7 +368,7 @@ export const potionCraftRecipes: Recipe[] = [
     resultItemId: 'supreme_seal_bandage',
     resultQuantity: 5,
     requiredItems: [
-      { itemId: 'supreme_bandage', quantity: 5 },
+      { itemId: 'excellent_bandage', quantity: 5 },
       { itemId: 'calming_herb_powder', quantity: 6 },
       { itemId: 'seal_crystal', quantity: 4 }
     ],
@@ -400,9 +400,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'four_leaf_clover', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'coin_bug', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 1,
@@ -415,9 +415,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'tenacity_grass', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'white_flower_butterfly', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 1,
@@ -430,9 +430,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'scythe', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 1,
@@ -445,9 +445,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'arrow_flower', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'bulbous', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 1,
@@ -462,9 +462,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'critical_potion', quantity: 9 },
-      { itemId: 'clean_mushroom_extract', quantity: 5 },
+      { itemId: 'clean_mushroom_juice', quantity: 5 },
       { itemId: 'ruin_gem', quantity: 1 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 2,
@@ -477,9 +477,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'ultimate_skill_potion', quantity: 9 },
-      { itemId: 'clean_mushroom_extract', quantity: 5 },
+      { itemId: 'clean_mushroom_juice', quantity: 5 },
       { itemId: 'ruin_gem', quantity: 1 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 2,
@@ -492,9 +492,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'damage_reduction_potion', quantity: 9 },
-      { itemId: 'clean_mushroom_extract', quantity: 5 },
+      { itemId: 'clean_mushroom_juice', quantity: 5 },
       { itemId: 'ruin_gem', quantity: 1 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 2,
@@ -507,9 +507,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'movement_speed_potion', quantity: 9 },
-      { itemId: 'clean_mushroom_extract', quantity: 5 },
+      { itemId: 'clean_mushroom_juice', quantity: 5 },
       { itemId: 'ruin_gem', quantity: 1 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 2,
@@ -524,9 +524,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'bloody_herb', quantity: 10 },
-      { itemId: 'clean_mushroom_extract', quantity: 3 },
+      { itemId: 'clean_mushroom_juice', quantity: 3 },
       { itemId: 'scythe', quantity: 10 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 3,
@@ -539,9 +539,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'arrow_flower', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'bulbous', quantity: 10 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 3,
@@ -554,9 +554,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'mana_herb', quantity: 10 },
-      { itemId: 'growth_mushroom_extract', quantity: 3 },
+      { itemId: 'growing_mushroom_juice', quantity: 3 },
       { itemId: 'white_flower_butterfly', quantity: 10 },
-      { itemId: 'alchemy_scraps', quantity: 10 }
+      { itemId: 'alchemy_powder', quantity: 10 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 3,
@@ -619,9 +619,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'strike_enhancement_potion', quantity: 5 },
-      { itemId: 'amplification_mushroom_extract', quantity: 5 },
+      { itemId: 'amplifying_mushroom_juice', quantity: 5 },
       { itemId: 'mine_mana_stone', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 4,
@@ -634,9 +634,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'combo_enhancement_potion', quantity: 5 },
-      { itemId: 'amplification_mushroom_extract', quantity: 5 },
+      { itemId: 'amplifying_mushroom_juice', quantity: 5 },
       { itemId: 'mine_mana_stone', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 4,
@@ -649,9 +649,9 @@ export const potionCraftRecipes: Recipe[] = [
     resultQuantity: 3,
     requiredItems: [
       { itemId: 'area_enhancement_potion', quantity: 5 },
-      { itemId: 'amplification_mushroom_extract', quantity: 5 },
+      { itemId: 'amplifying_mushroom_juice', quantity: 5 },
       { itemId: 'mine_mana_stone', quantity: 6 },
-      { itemId: 'alchemy_scraps', quantity: 20 }
+      { itemId: 'alchemy_powder', quantity: 20 }
     ],
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 4,

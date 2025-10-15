@@ -463,20 +463,20 @@ export const materialItems: Item[] = [
   {
     id: 'silk_thread',
     name: '실크 실',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/silk_thread.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 
   {
     id: 'gold_ingot_pile',
     name: '황금 주괴 더미',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/gold_ingot_pile.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'dream_reflecting_mirror_fragment',
     name: '꿈을 비추는 거울 조각',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/dream_reflecting_mirror_fragment.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 생활 업그레이드 재료
@@ -520,13 +520,13 @@ export const materialItems: Item[] = [
   {
     id: 'tenacity_grass',
     name: '끈기 풀',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/tenacity_grass.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'white_flower_butterfly',
     name: '흰꽃나비',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/white_flower_butterfly.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -538,7 +538,7 @@ export const materialItems: Item[] = [
   {
     id: 'enhanced_potion_emulsifier',
     name: '강화 비약 유화제',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/enhanced_potion_emulsifier.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
@@ -550,87 +550,38 @@ export const materialItems: Item[] = [
   {
     id: 'mine_mana_stone',
     name: '광산의 마나석',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/mine_mana_stone.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'fragment_of_rage',
     name: '분노의 파편',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/fragment_of_rage.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'fragment_of_oblivion',
     name: '망각의 파편',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/fragment_of_oblivion.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'fragment_of_wildness',
     name: '야성의 파편',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  // 제작 재료 (이미지에서 추가된 레시피들)
-  {
-    id: 'alloy_steel_ingot',
-    name: '합금강괴',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'special_steel_ingot',
-    name: '특수강괴',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'silver_alloy_ingot',
-    name: '은합금괴',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'meteorite_ingot',
-    name: '운석괴',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'supreme_wood',
-    name: '최상급 목재',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'supreme_fabric',
-    name: '최상급 옷감',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'high_wood',
-    name: '상급 목재',
-    imageUrl: '/images/items/default.webp',
-    category: ITEM_CATEGORY.MATERIAL,
-  },
-  {
-    id: 'advanced_fabric',
-    name: '상급 옷감',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/fragment_of_wildness.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   // 마법유탄 제작 재료
   {
     id: 'magic_power_detonator',
     name: '마력 기폭제',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/magic_power_detonator.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
     id: 'wilderness_mana_stone',
     name: '황야의 마나석',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/wilderness_mana_stone.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
 ];

@@ -1372,7 +1372,7 @@ export const trades: Trade[] = [
   {
     id: 'gordon_heavy_potato',
     npcId: 'gordon',
-    giveItemId: 'fermented_tea_leaves', // 발효된 찻잎
+    giveItemId: 'fermented_tea_leaf', // 발효된 찻잎
     receiveItemId: 'heavy_potato', // 묵직한 감자
     giveQuantity: 10,
     receiveQuantity: 5,

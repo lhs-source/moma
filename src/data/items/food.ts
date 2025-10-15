@@ -239,7 +239,7 @@ export const foodItems: Item[] = [
   {
     id: 'pumpkin_pie',
     name: '호박 파이',
-    imageUrl: '/images/items/default.webp',
+    imageUrl: '/images/items/pumpkin_pie.png',
     category: ITEM_CATEGORY.FOOD,
   },
   {

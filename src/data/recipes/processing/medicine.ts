@@ -16,7 +16,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
-    id: 'craft_fresh_mushroom_extract',
+    id: 'craft_fresh_mushroom_juice',
     name: '새록 버섯 진액',
     resultItemId: 'fresh_mushroom_juice',
     resultQuantity: 5,
@@ -54,7 +54,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
-    id: 'craft_sturdy_mushroom_extract',
+    id: 'craft_sturdy_mushroom_juice',
     name: '튼튼 버섯 진액',
     resultItemId: 'sturdy_mushroom_juice',
     resultQuantity: 5,
@@ -80,7 +80,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
-    id: 'craft_growing_mushroom_extract',
+    id: 'craft_growing_mushroom_juice',
     name: '쑥쑥 버섯 진액',
     resultItemId: 'growing_mushroom_juice',
     resultQuantity: 5,
@@ -106,7 +106,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
-    id: 'craft_clean_mushroom_extract',
+    id: 'craft_clean_mushroom_juice',
     name: '깔끔 버섯 진액',
     resultItemId: 'clean_mushroom_juice',
     resultQuantity: 5,
@@ -196,6 +196,33 @@ export const medicineProcessingRecipes: Recipe[] = [
     craftingTime: 3600,
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
+  // 증폭
+  {
+    id: 'craft_amplifying_mushroom_juice',
+    name: '증폭 버섯 진액',
+    resultItemId: 'amplifying_mushroom_juice',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'amplifying_mushroom_spores', quantity: 10 },
+      { itemId: 'growing_mushroom_juice', quantity: 10 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 14400,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
+  {
+    id: 'craft_amplifying_mushroom_spore',
+    name: '증폭 버섯 포자',
+    resultItemId: 'amplifying_mushroom_spores',
+    resultQuantity: 15,
+    requiredItems: [
+      { itemId: 'amplifying_mushroom', quantity: 30 },
+      { itemId: 'paper', quantity: 3 }
+    ],
+    facilityLevel: 4,
+    craftingTime: 4200,
+    category: RECIPE_CATEGORY.PROCESS_MEDICINE
+  },
   {
     id: 'craft_sleepy_mushroom_spore',
     name: '솔솔 버섯 포자',
@@ -210,7 +237,7 @@ export const medicineProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_MEDICINE
   },
   {
-    id: 'craft_sleepy_mushroom_extract',
+    id: 'craft_sleepy_mushroom_juice',
     name: '솔솔 버섯 진액',
     resultItemId: 'sleepy_mushroom_juice',
     resultQuantity: 5,
