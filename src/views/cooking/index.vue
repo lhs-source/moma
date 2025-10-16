@@ -52,10 +52,10 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import RecipeGrid from '@/components/cooking/RecipeGrid.vue'
-import SelectedRecipeList from '@/components/cooking/SelectedRecipeList.vue'
-import MaterialsSummary from '@/components/cooking/MaterialsSummary.vue'
-import WeeklyBuyableGrid from '@/components/cooking/WeeklyBuyableGrid.vue'
+import RecipeGrid from './components/RecipeGrid.vue'
+import SelectedRecipeList from './components/SelectedRecipeList.vue'
+import MaterialsSummary from './components/MaterialsSummary.vue'
+import WeeklyBuyableGrid from './components/WeeklyBuyableGrid.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
 import CategoryTitle from '@/components/ui/CategoryTitle.vue'
@@ -245,3 +245,4 @@ onUnmounted(() => {
   overflow: hidden !important;
 }
 </style>
+

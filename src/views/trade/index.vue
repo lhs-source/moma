@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import WeeklySummaryTable from '@/components/trade/WeeklySummaryTable.vue'
-import TradeItem from '@/components/trade/TradeItem.vue'
+import WeeklySummaryTable from './components/WeeklySummaryTable.vue'
+import TradeItem from './components/TradeItem.vue'
 import Accordion from '@/components/ui/accordion.vue'
 import Input from '@/components/ui/input.vue'
 import type { TradeData } from '@/data/schemas/trade'
@@ -256,3 +256,4 @@ onMounted(() => {
     </div>
   </div>
 </template>
+

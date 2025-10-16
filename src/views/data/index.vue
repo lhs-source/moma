@@ -56,8 +56,8 @@
  * ```
  */
 import { ref } from 'vue'
-import ItemList from '@/components/data/ItemList.vue'
-import RecipeList from '@/components/data/RecipeList.vue'
+import ItemList from './components/ItemList.vue'
+import RecipeList from './components/RecipeList.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 import Tabs from '@/components/ui/tabs.vue'
 import TabsList from '@/components/ui/tabs-list.vue'
@@ -67,3 +67,4 @@ import TabsContent from '@/components/ui/tabs-content.vue'
 // 현재 활성화된 탭 상태
 const activeTab = ref<'items' | 'recipes'>('items')
 </script>
+

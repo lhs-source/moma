@@ -51,20 +51,21 @@
 
 <script setup lang="ts">
 import { useCraftingStore, type CraftingTabType } from '@/stores/crafting';
-import CategoryList from '@/components/crafting/CategoryList.vue';
-import ItemList from '@/components/crafting/ItemList.vue';
-import SelectedItems from '@/components/crafting/SelectedItems.vue';
-import CraftingResults from '@/components/crafting/CraftingResults.vue';
-import MembershipToggle from '@/components/crafting/MembershipToggle.vue';
+import CategoryList from './components/CategoryList.vue';
+import ItemList from './components/ItemList.vue';
+import SelectedItems from './components/SelectedItems.vue';
+import CraftingResults from './components/CraftingResults.vue';
+import MembershipToggle from './components/MembershipToggle.vue';
 import Tabs from '@/components/ui/tabs.vue';
 import TabsList from '@/components/ui/tabs-list.vue';
 import TabsTrigger from '@/components/ui/tabs-trigger.vue';
 import TabsContent from '@/components/ui/tabs-content.vue';
+import PageTitle from '@/components/ui/PageTitle.vue';
 
 const craftingStore = useCraftingStore();
 
 function handleTabChange(value: string) {
   craftingStore.setActiveTab(value as CraftingTabType);
 }
-import PageTitle from '@/components/ui/PageTitle.vue';
 </script>
+

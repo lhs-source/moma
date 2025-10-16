@@ -77,9 +77,9 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import MonthCalendar from '@/components/event/MonthCalendar.vue'
-import EventBar from '@/components/event/EventBar.vue'
-import EventDetailSheet from '@/components/event/EventDetailSheet.vue'
+import MonthCalendar from './components/MonthCalendar.vue'
+import EventBar from './components/EventBar.vue'
+import EventDetailSheet from './components/EventDetailSheet.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
 import { gameEvents } from '@/data/events'
@@ -122,3 +122,4 @@ function closeEventDetail() {
   }, 300)
 }
 </script>
+
