@@ -98,7 +98,7 @@ const activeEvents = computed(() => {
 const upcomingEvents = computed(() => {
   return gameEvents.filter(event => {
     return event.startDate > now
-  }).sort((a, b) => a.startDate.getTime() - b.startDate.getTime())
+  }).sort((a, b) => a.endDate.getTime() - b.endDate.getTime())
 })
 
 const pastEvents = computed(() => {

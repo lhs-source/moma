@@ -127,8 +127,11 @@ const weekEventBarsCache = computed(() => {
   calendarWeeks.value.forEach((week, weekIndex) => {
     const eventBars: EventBar[] = []
 
+    // 종료일이 빠른 순서대로 정렬하여 처리 (빨리 끝나는 이벤트가 위에 배치됨)
+    const sortedEvents = [...props.events].sort((a, b) => a.endDate.getTime() - b.endDate.getTime())
+
     // 각 이벤트에 대해 처리
-    for (const event of props.events) {
+    for (const event of sortedEvents) {
       // 이 주의 첫 날과 마지막 날
       const weekStart = week.find(d => d !== null)
       const weekEnd = week[week.length - 1] || weekStart
