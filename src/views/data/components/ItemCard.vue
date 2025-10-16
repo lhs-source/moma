@@ -57,22 +57,17 @@
         class="bg-amber-100 dark:bg-amber-900 rounded-lg p-3">
         <p class="text-xs font-bold text-amber-950 dark:text-amber-200 mb-3 text-center uppercase tracking-wide">재료로 사용되는 제작 레시피</p>
         <div class="space-y-3">
-          <div v-for="recipe in processingRecipeUsage" :key="recipe.id" 
+          <div v-for="usage in processingRecipeUsage" :key="usage.recipeId" 
             class="p-2 rounded border border-amber-200 dark:border-amber-800 hover:bg-amber-50/30 dark:hover:bg-amber-800">
             <div class="flex justify-between items-start gap-2">
               <div class="flex-1">
-                <div class="font-semibold text-foreground text-xs">{{ recipe.name }} <span class="text-muted-foreground">x{{ recipe.resultQuantity || 1 }}</span></div>
-                <div v-if="recipe.craftingTime" class="text-xs text-muted-foreground mt-0.5">
-                  ⏱️ {{ formatTime(recipe.craftingTime) }}
-                </div>
-                <div v-if="recipe.category" class="text-xs text-muted-foreground mt-0.5">
-                  📁 {{ recipe.category }}
+                <div class="font-semibold text-foreground text-xs">{{ usage.recipeName }} <span class="text-muted-foreground">x{{ usage.resultQuantity }}</span></div>
+                <div v-if="usage.category" class="text-xs text-muted-foreground mt-0.5">
+                  📁 {{ usage.category }}
                 </div>
               </div>
               <div class="text-xs text-muted-foreground text-right flex-shrink-0">
-                <div v-for="material in recipe.requiredItems" :key="material.itemId">
-                  {{ getItemName(material.itemId) }} x{{ material.quantity }}
-                </div>
+                {{ usage.quantity }}개 필요
               </div>
             </div>
           </div>
@@ -205,33 +200,36 @@
  * - 중복 레시피 제거 (Map 사용)
  */
 import { computed } from 'vue'
-import type { Item } from '@/data/schemas/item'
+import type { EnrichedItem } from '@/data/schemas/enrichedItem'
 import { items } from '@/data/items'
-import { recipes } from '@/data/recipes'
 import { purchaseData } from '@/data/purchase'
-import { trades } from '@/data/trade'
-import { npcs } from '@/data/npcs'
-import { locations } from '@/data/locations'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
-import { findProcessingRecipesForItem } from '@/utils/recipeDependencyUtils'
 import { formatTime } from '@/utils/timeUtils'
-import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 
 /**
  * ## Props
  * 
  * | 속성 | 타입 | 필수 | 설명 |
  * |------|------|------|------|
- * | item | Item | O | 표시할 아이템 정보 |
+ * | item | EnrichedItem | O | 표시할 아이템 정보 (사용처 정보 포함) |
  * 
- * ### Item 인터페이스
+ * ### EnrichedItem 인터페이스
  * - `id`: 아이템 고유 ID
  * - `name`: 아이템 이름
  * - `imageUrl`: 아이템 이미지 URL
  * - `category`: 아이템 카테고리 (선택적)
+ * - `usageTypes`: 사용처 타입 목록
+ * - `requiredForTrades`: 교환에 필요
+ * - `obtainableFromTrades`: 교환으로 얻음
+ * - `cookingRecipes`: 요리 레시피
+ * - `usedInCookingRecipes`: 요리 재료
+ * - `processingRecipes`: 가공 레시피
+ * - `usedInProcessingRecipes`: 가공 재료
+ * - `craftingRecipes`: 제작 레시피
+ * - `usedInCraftingRecipes`: 제작 재료
  */
 const props = defineProps<{
-  item: Item
+  item: EnrichedItem
 }>()
 
 // 아이템의 전체 사용처 정보 (레시피, 교환, 구매)
@@ -242,33 +240,18 @@ const itemUsage = computed(() => {
 /**
  * ## usageTypes
  * 
- * 아이템의 사용처 타입 목록을 반환 (태그로 표시할 용도)
+ * 아이템의 사용처 타입 목록 (이미 계산됨)
  * 
  * ### 반환값
- * `Array<string>` - 사용처 타입 문자열 배열 ('레시피', '교환', '구매', '교환으로 얻을 수 있음')
- * 
- * ### 처리 로직
- * 1. `itemUsageIndex.getUsageTypes()`로 기본 사용처 타입 조회
- * 2. `obtainableTrades`가 있으면 '교환으로 얻을 수 있음' 추가
+ * `Array<string>` - 사용처 타입 문자열 배열 ('레시피', '교환', '구매', '제작', '교환으로 얻을 수 있음')
  */
-const usageTypes = computed(() => {
-  const types = itemUsageIndex.getUsageTypes(props.item.id)
-  // 교환으로 얻을 수 있는 경우 추가
-  if (obtainableTrades.value.length > 0) {
-    types.push('교환으로 얻을 수 있음')
-  }
-  return types
-})
+const usageTypes = computed(() => props.item.usageTypes)
 
-// 해당 아이템을 결과물로 만드는 가공 레시피 목록 (금속, 목재, 가죽, 옷감 등)
-const processingRecipes = computed(() => {
-  return findProcessingRecipesForItem(props.item.id)
-})
+// 해당 아이템을 결과물로 만드는 가공 레시피 목록 (이미 계산됨)
+const processingRecipes = computed(() => props.item.processingRecipes)
 
-// 해당 아이템을 결과물로 만드는 일반 제작 레시피 목록 (모든 카테고리)
-const craftableRecipes = computed(() => {
-  return recipes.filter(recipe => recipe.resultItemId === props.item.id)
-})
+// 해당 아이템을 결과물로 만드는 일반 제작 레시피 목록 (이미 계산됨)
+const craftableRecipes = computed(() => props.item.craftingRecipes)
 
 /**
  * ## allCraftingRecipes
@@ -279,16 +262,21 @@ const craftableRecipes = computed(() => {
  * `Record<string, Array<Recipe>>` - 카테고리를 키로 하는 레시피 배열 객체
  * 
  * ### 처리 플로우
- * 1. `processingRecipes`와 `craftableRecipes` 병합
- * 2. Map을 사용하여 중복 레시피 제거 (같은 ID의 레시피는 하나만)
+ * 1. 요리, 가공, 제작 레시피를 모두 병합
+ * 2. Map을 사용하여 중복 레시피 제거
  * 3. 고유한 레시피들을 `category`별로 그룹화
  */
 const allCraftingRecipes = computed(() => {
   // 중복 제거를 위해 Map 사용
   const recipeMap = new Map()
 
-  // processingRecipes와 craftableRecipes를 합치되, 중복 제거
-  const allRecipes = [...processingRecipes.value, ...craftableRecipes.value]
+  // 모든 제작 레시피를 합치되, 중복 제거
+  const allRecipes = [
+    ...props.item.cookingRecipes,
+    ...props.item.processingRecipes,
+    ...props.item.craftingRecipes
+  ]
+  
   allRecipes.forEach(recipe => {
     recipeMap.set(recipe.id, recipe)
   })
@@ -297,7 +285,6 @@ const allCraftingRecipes = computed(() => {
   const grouped: Record<string, Array<{ id: string; name: string; craftingTime?: number; category: string; requiredItems: Array<{ itemId: string; quantity: number }> }>> = {}
 
   uniqueRecipes.forEach(recipe => {
-    // category를 그대로 사용
     const category = recipe.category
     if (!grouped[category]) {
       grouped[category] = []
@@ -373,79 +360,27 @@ const getCategoryTextColor = (category: string) => {
 /**
  * ## processingRecipeUsage
  * 
- * 현재 아이템을 재료로 사용하는 가공/제작 레시피 목록
+ * 현재 아이템을 재료로 사용하는 가공/제작 레시피 목록 (이미 계산됨)
  * 
  * ### 반환값
- * `Array<Recipe>` - 가공/제작 레시피 배열
- * 
- * ### 필터 조건
- * 1. 레시피 카테고리가 가공/제작 카테고리 중 하나
- * 2. 필요 재료에 현재 아이템이 포함됨
+ * `Array<RecipeUsage>` - 가공/제작 레시피 사용처 배열
  */
 const processingRecipeUsage = computed(() => {
-  return recipes.filter(recipe =>
-    (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
-      recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
-      recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
-      recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
-      recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM ||
-      recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE) &&
-    recipe.requiredItems.some(material => material.itemId === props.item.id)
-  )
+  return [
+    ...props.item.usedInProcessingRecipes,
+    ...props.item.usedInCraftingRecipes
+  ]
 })
 
 /**
  * ## obtainableTrades
  * 
- * 교환을 통해 현재 아이템을 얻을 수 있는 교환 목록
+ * 교환을 통해 현재 아이템을 얻을 수 있는 교환 목록 (이미 계산됨)
  * 
  * ### 반환값
  * `Array<ObtainableTrade>` - 교환 정보 배열
- * 
- * #### ObtainableTrade 구조
- * - `id`: 교환 ID
- * - `npcName`: NPC 이름
- * - `locationName`: 위치 이름
- * - `giveItemName`: 주는 아이템 이름
- * - `giveQuantity`: 주는 수량
- * - `receiveQuantity`: 받는 수량
- * - `type`: 교환 타입
- * - `maxExchanges`: 최대 교환 횟수
- * 
- * ### 필터 조건
- * - `receiveItemId`가 현재 아이템
- * - `isEnabled`가 true (활성화된 교환만)
- * 
- * ### 데이터 조합
- * 1. `trades`에서 교환 정보
- * 2. `npcs`에서 NPC 이름
- * 3. `locations`에서 위치 이름
- * 4. `items`에서 주는 아이템 이름
- * 
- * ### 사용처
- * - "교환으로 얻을 수 있음" 태그 표시 여부 결정
- * - "교환으로 얻을 수 있음" 섹션 표시
  */
-const obtainableTrades = computed(() => {
-  return trades
-    .filter(trade => trade.receiveItemId === props.item.id && trade.isEnabled)
-    .map(trade => {
-      const npc = npcs.find(n => n.id === trade.npcId)
-      const location = locations.find(l => l.id === npc?.locationId)
-      const giveItem = items.find(i => i.id === trade.giveItemId)
-
-      return {
-        id: trade.id,
-        npcName: npc?.name || '알 수 없음',
-        locationName: location?.name || '알 수 없음',
-        giveItemName: giveItem?.name || trade.giveItemId,
-        giveQuantity: trade.giveQuantity,
-        receiveQuantity: trade.receiveQuantity,
-        type: trade.type,
-        maxExchanges: trade.maxExchanges
-      }
-    })
-})
+const obtainableTrades = computed(() => props.item.obtainableFromTrades)
 
 /**
  * ## calculateRecipeCost

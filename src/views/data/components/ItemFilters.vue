@@ -1,24 +1,36 @@
 <template>
   <div class="flex flex-col sm:flex-row gap-2">
     <!-- 검색 입력 -->
-    <Input :model-value="searchQuery" type="text" placeholder="아이템 이름 또는 ID로 검색..."
+    <Input 
+      :model-value="searchQuery" 
+      type="text" 
+      placeholder="아이템 이름 또는 ID로 검색..."
       @update:model-value="updateSearchQuery" />
 
     <!-- 카테고리 필터 -->
-    <Select :model-value="category" default-value="" @update:model-value="updateCategory">
+    <Select 
+      :model-value="category" 
+      default-value="" 
+      @update:model-value="updateCategory">
       <SelectTrigger class="w-full sm:w-[200px]">
         <SelectValue placeholder="모든 카테고리" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="">모든 카테고리</SelectItem>
-        <SelectItem v-for="cat in categories" :key="cat" :value="cat">
+        <SelectItem 
+          v-for="cat in categories" 
+          :key="cat" 
+          :value="cat">
           {{ cat }}
         </SelectItem>
       </SelectContent>
     </Select>
 
     <!-- 사용처 필터 -->
-    <Select :model-value="usageType" default-value="" @update:model-value="updateUsageType">
+    <Select 
+      :model-value="usageType" 
+      default-value="" 
+      @update:model-value="updateUsageType">
       <SelectTrigger class="w-full sm:w-[200px]">
         <SelectValue placeholder="모든 사용처" />
       </SelectTrigger>

@@ -86,68 +86,41 @@
  * 아이템의 이미지, 기본 정보, 사용처 상세 정보를 표시
  * 
  * ## Props
- * - item: 표시할 아이템 객체
+ * - item: 표시할 EnrichedItem 객체 (사용처 정보가 이미 계산되어 있음)
  * 
  * ## 주요 기능
  * - 아이템 이미지 표시 (에러 시 기본 이미지)
  * - 사용처 태그 표시
  * - 레시피, 교환, 구매, 제작 등 상세 사용처 정보 표시
+ * 
+ * ## 성능 최적화
+ * - EnrichedItem 사용으로 실시간 계산 불필요
+ * - itemStore에서 초기화 시 한 번만 계산된 데이터 사용
  */
 import { computed } from 'vue'
-import type { Item } from '@/data/schemas/item'
+import type { EnrichedItem } from '@/data/schemas/enrichedItem'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
-import { recipes } from '@/data/recipes'
-import { trades } from '@/data/trade'
-import { npcs } from '@/data/npcs'
-import { locations } from '@/data/locations'
-import { items } from '@/data/items'
 import { formatTime } from '@/utils/timeUtils'
 
 const props = withDefaults(defineProps<{
-  item: Item
+  item: EnrichedItem
 }>(), {})
 
-// 아이템 사용처 정보
+// 아이템 사용처 정보 (이미 계산되어 있지만 itemUsageIndex의 레시피 상세정보 필요)
 const itemUsage = computed(() => itemUsageIndex.getItemUsage(props.item.id))
 
-// 사용처 타입 목록
-const usageTypes = computed(() => {
-  const types: string[] = []
-  
-  if (itemUsage.value?.usageTypes.recipes.length) types.push('레시피')
-  if (itemUsage.value?.usageTypes.trades.length) types.push('교환')
-  if (itemUsage.value?.usageTypes.purchases.length) types.push('구매')
-  
-  if (craftableRecipes.value.length > 0) types.push('제작')
-  if (obtainableTrades.value.length > 0) types.push('교환으로 얻을 수 있음')
-  
-  return types
-})
+// 사용처 타입 목록 (이미 계산됨)
+const usageTypes = computed(() => props.item.usageTypes)
 
-// 교환으로 얻을 수 있는 정보
-const obtainableTrades = computed(() => {
-  return trades
-    .filter(trade => trade.receiveItemId === props.item.id && trade.isEnabled)
-    .map(trade => {
-      const npc = npcs.find(n => n.id === trade.npcId)
-      const location = locations.find(l => l.id === npc?.locationId)
-      const giveItem = items.find(i => i.id === trade.giveItemId)
+// 교환으로 얻을 수 있는 정보 (이미 계산됨)
+const obtainableTrades = computed(() => props.item.obtainableFromTrades)
 
-      return {
-        id: trade.id,
-        npcName: npc?.name || '알 수 없음',
-        locationName: location?.name || '알 수 없음',
-        giveItemName: giveItem?.name || trade.giveItemId,
-        giveQuantity: trade.giveQuantity,
-        receiveQuantity: trade.receiveQuantity
-      }
-    })
-})
-
-// 제작 가능한 레시피
-const craftableRecipes = computed(() => {
-  return recipes.filter(recipe => recipe.resultItemId === props.item.id)
-})
+// 제작 가능한 레시피 (이미 계산됨 - 모든 제작 레시피 합산)
+const craftableRecipes = computed(() => [
+  ...props.item.cookingRecipes,
+  ...props.item.processingRecipes,
+  ...props.item.craftingRecipes
+])
 
 // 이미지 로드 실패 시 기본 이미지로 대체
 function handleImageError(event: Event) {
