@@ -267,6 +267,63 @@ export const inGameEvents: GameEvent[] = [
 // 캐시샵 일정
 export const cashShopEvents: GameEvent[] = [
   {
+    id: 'cash-shop-005',
+    name: '[암흑술사: 클래스 레벨] 미션 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-10-16T08:35:00'),
+    endDate: new Date('2025-12-18T05:59:00'),
+    description: '암흑술사 클래스 레벨업 미션 패키지 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [패키지] → [클래스]',
+    packages: [
+      {
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 1',
+        price: '3,900 M캐시',
+        cashPoint: '390',
+        purchaseLimit: '캐릭터당 1회',
+        items: []
+      },
+      {
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 2', 
+        price: '3,900 M캐시',
+        cashPoint: '390',
+        purchaseLimit: '캐릭터당 1회',
+        items: []
+      }
+    ]
+  },
+  {
+    id: 'cash-shop-004',
+    name: '가을날 성장! 특별 지원 / 인챈트 증폭 패키지 & 급속 성장! 연속 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-10-16T08:35:00'),
+    endDate: new Date('2025-10-30T05:59:00'),
+    description: '가을 시즌 특별 성장 지원 패키지 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [패키지] → [스페셜]',
+    packages: [
+      {
+        name: '가을날 성장! 특별 지원 패키지',
+        price: '4,900 M캐시',
+        cashPoint: '490',
+        purchaseLimit: '캐릭터당 1회',
+        items: []
+      },
+      {
+        name: '가을날 인챈트 증폭 패키지',
+        price: '3,900 M캐시',
+        cashPoint: '390',
+        purchaseLimit: '캐릭터당 1회',
+        items: []
+      },
+      {
+        name: '급속 성장! 연속 패키지',
+        price: '5,900 M캐시',
+        cashPoint: '590',
+        purchaseLimit: '캐릭터당 1회',
+        items: []
+      }
+    ]
+  },
+  {
     id: 'cash-shop-002',
     name: '[암흑술사: 클래스 레벨] 미션 패키지',
     type: EVENT_TYPE.CASH_SHOP,
