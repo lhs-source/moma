@@ -42,7 +42,7 @@
         <div class="relative h-full pointer-events-none">
           <div v-for="(eventBar, barIndex) in weekEventBarsCache.get(weekIndex)" :key="`${weekIndex}-${barIndex}`"
             :class="['absolute text-xs font-medium px-2 py-1 rounded truncate cursor-pointer pointer-events-auto shadow-sm transition-all',
-              getEventBarClass(eventBar.event),
+              getEventBarClass(eventBar),
               getEventBarHoverClass(eventBar.event)]" :style="getEventBarStyle(eventBar)"
             :title="`${eventBar.event.name}\n${formatDateTime(eventBar.event.startDate)} ~ ${formatDateTime(eventBar.event.endDate)}`"
             @mouseenter="hoveredEventId = eventBar.event.id" @mouseleave="hoveredEventId = null"
@@ -66,6 +66,7 @@ interface EventBar {
   endCol: number
   row: number
   showName: boolean
+  isEnding: boolean // 이 주에서 이벤트가 실제로 끝나는지 여부
 }
 
 const props = withDefaults(defineProps<{
@@ -164,6 +165,12 @@ const weekEventBarsCache = computed(() => {
         // 이름 표시 여부: 각 주에서 바가 시작하는 위치에는 항상 제목 표시
         const showName = true
 
+        // 이 주에서 이벤트가 실제로 끝나는지 확인
+        const lastDayOfWeek = week[endCol]
+        const isEnding = lastDayOfWeek ? 
+          new Date(lastDayOfWeek.getFullYear(), lastDayOfWeek.getMonth(), lastDayOfWeek.getDate()).getTime() >= eventEnd.getTime() 
+          : false
+
         // 이미 추가된 이벤트와 겹치지 않는 row 찾기
         let row = 0
         while (eventBars.some(bar => bar.row === row &&
@@ -176,7 +183,8 @@ const weekEventBarsCache = computed(() => {
           startCol,
           endCol,
           row,
-          showName
+          showName,
+          isEnding
         })
       }
     }
@@ -204,7 +212,7 @@ function getDayClass(day: Date | null): string {
 
   const today = new Date()
   if (day.toDateString() === today.toDateString()) {
-    return 'bg-primary/10 border-2 border-primary/30'
+    return 'bg-primary/20 border-2 border-primary/50 ring-2 ring-primary/30'
   }
 
   return 'bg-card hover:bg-accent/30'
@@ -250,11 +258,28 @@ function getEventBarStyle(eventBar: EventBar): string {
   return `left: ${left}%; width: ${width}%; top: ${top}px;`
 }
 
-function getEventBarClass(event: GameEvent): string {
-  if (event.type === EVENT_TYPE.EVENT) {
-    return 'bg-blue-500 text-white'
+function getEventBarClass(eventBar: EventBar): string {
+  const isEvent = eventBar.event.type === EVENT_TYPE.EVENT
+  const isCashShop = eventBar.event.type === EVENT_TYPE.CASH_SHOP
+  
+  if (eventBar.isEnding) {
+    // 끝나는 바는 그라데이션 + 빨간색 오른쪽 테두리 적용 (왼쪽 연하게 -> 오른쪽 진하게)
+    if (isEvent) {
+      return 'bg-gradient-to-r from-blue-400 to-blue-700 text-white border-r-4 border-red-600'
+    } else if (isCashShop) {
+      return 'bg-gradient-to-r from-green-400 to-green-700 text-white border-r-4 border-red-600'
+    } else {
+      return 'bg-gradient-to-r from-purple-400 to-purple-700 text-white border-r-4 border-red-600'
+    }
   } else {
-    return 'bg-purple-500 text-white'
+    // 일반 바는 단색
+    if (isEvent) {
+      return 'bg-blue-500 text-white'
+    } else if (isCashShop) {
+      return 'bg-green-500 text-white'
+    } else {
+      return 'bg-purple-500 text-white'
+    }
   }
 }
 

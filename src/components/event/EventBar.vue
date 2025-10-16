@@ -38,6 +38,8 @@ let intervalId: number | null = null
 const barClass = computed(() => {
   if (props.event.type === EVENT_TYPE.EVENT) {
     return 'bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700'
+  } else if (props.event.type === EVENT_TYPE.CASH_SHOP) {
+    return 'bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700'
   } else {
     return 'bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700'
   }
