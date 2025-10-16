@@ -65,6 +65,9 @@
  */
 import { ref, computed, onMounted, watch } from 'vue'
 import { useItemStore } from '@/stores/item'
+import { useRecipesStore } from '@/stores/recipes'
+import { useTradeStore } from '@/stores/trade'
+import { useNpcStore } from '@/stores/npc'
 import ItemFilters from './ItemFilters.vue'
 import ItemRow from './ItemRow.vue'
 
@@ -72,6 +75,7 @@ import ItemRow from './ItemRow.vue'
  * ## Stores
  * 
  * - `itemStore`: EnrichedItem 목록 관리 (사용처 정보 포함)
+ * - 다른 store들은 itemStore의 enrichItemList() 호출 전에 초기화됨
  */
 const itemStore = useItemStore()
 
@@ -131,7 +135,20 @@ const filteredItems = computed(() => {
   })
 })
 
-onMounted(() => {
+onMounted(async () => {
+  // 다른 store들을 먼저 초기화
+  const recipesStore = useRecipesStore()
+  const tradeStore = useTradeStore()
+  const npcStore = useNpcStore()
+  
+  recipesStore.fetchRecipeList()
+  tradeStore.fetchTradeList()
+  npcStore.fetchNpcList()
+  
+  // 아이템 데이터 로드
   itemStore.fetchItemList()
+  
+  // enriched 데이터 생성 (다른 store 데이터 필요)
+  itemStore.enrichItemList()
 })
 </script>

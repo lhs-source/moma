@@ -1,12 +1,12 @@
 import { items } from '@/data/items'
+import { locations } from '@/data/locations'
 import { ITEM_CATEGORY, type Item } from '@/data/schemas/item'
 import type { EnrichedItem } from '@/data/schemas/enrichedItem'
-import { recipes } from '@/data/recipes'
-import { trades } from '@/data/trade'
-import { npcs } from '@/data/npcs'
-import { locations } from '@/data/locations'
 import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
 import { itemUsageIndex } from '@/utils/itemUsageIndex'
+import { useRecipesStore } from './recipes'
+import { useTradeStore } from './trade'
+import { useNpcStore } from './npc'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
@@ -15,10 +15,46 @@ export const useItemStore = defineStore('item', () => {
   const enrichedItemList = ref<EnrichedItem[]>([])
 
   /**
-   * 아이템 리스트를 파일로부터 가져오고 enriched 데이터를 생성한다
+   * 아이템 리스트를 파일로부터 가져온다
+   * 
+   * **주의**: enrichItemList()를 호출하기 전에 다른 store들이 먼저 초기화되어야 함
+   * 
+   * ### 초기화 순서 (중요!)
+   * ```typescript
+   * // 1. 의존하는 store들 먼저 초기화
+   * recipesStore.fetchRecipeList()
+   * tradeStore.fetchTradeList()
+   * npcStore.fetchNpcList()
+   * 
+   * // 2. itemStore 초기화
+   * itemStore.fetchItemList()
+   * 
+   * // 3. enriched 데이터 생성
+   * itemStore.enrichItemList()
+   * ```
    */
   function fetchItemList() {
     itemList.value = items
+  }
+
+  /**
+   * enriched 데이터를 생성한다
+   * 
+   * 다른 store의 데이터를 사용하므로 반드시 다른 store들이 먼저 초기화되어야 함
+   * 
+   * ### Store 의존성
+   * - `recipesStore.recipeList`: 요리/가공/제작 레시피 정보
+   * - `tradeStore.tradeList`: 교환 정보
+   * - `npcStore.npcList`: NPC 정보
+   * 
+   * ### 처리 내용
+   * 각 아이템에 대해 다음 정보를 계산하여 EnrichedItem 생성:
+   * - 사용처 타입 목록
+   * - 교환 관련 정보 (교환에 필요, 교환으로 얻기)
+   * - 레시피 관련 정보 (요리, 가공, 제작)
+   * - 재료 사용처 정보
+   */
+  function enrichItemList() {
     enrichedItemList.value = enrichItems(items)
   }
 
@@ -31,8 +67,23 @@ export const useItemStore = defineStore('item', () => {
 
   /**
    * 개별 아이템을 EnrichedItem으로 변환
+   * 
+   * ### Store 사용
+   * - `recipesStore`: 레시피 정보 조회
+   * - `tradeStore`: 교환 정보 조회
+   * - `npcStore`: NPC 정보 조회
+   * 
+   * ### 직접 Import 사용
+   * - `items`: 아이템 이름 조회용 (순환 참조 방지)
+   * - `locations`: 위치 이름 조회용 (정적 데이터)
+   * - `itemUsageIndex`: 레시피/교환 사용처 빠른 조회용
    */
   function enrichItem(item: Item): EnrichedItem {
+    // 다른 store들을 가져옴 (store 기반 데이터 접근)
+    const recipesStore = useRecipesStore()
+    const tradeStore = useTradeStore()
+    const npcStore = useNpcStore()
+    
     const usage = itemUsageIndex.getItemUsage(item.id)
     
     // 교환에 필요한 정보
@@ -46,10 +97,10 @@ export const useItemStore = defineStore('item', () => {
     })) || []
 
     // 교환으로 얻을 수 있는 정보
-    const obtainableFromTrades = trades
+    const obtainableFromTrades = tradeStore.tradeList
       .filter(trade => trade.receiveItemId === item.id && trade.isEnabled)
       .map(trade => {
-        const npc = npcs.find(n => n.id === trade.npcId)
+        const npc = npcStore.npcList.find(n => n.id === trade.npcId)
         const location = locations.find(l => l.id === npc?.locationId)
         const giveItem = items.find(i => i.id === trade.giveItemId)
 
@@ -64,14 +115,14 @@ export const useItemStore = defineStore('item', () => {
       })
 
     // 요리 레시피
-    const cookingRecipes = recipes.filter(
+    const cookingRecipes = recipesStore.recipeList.filter(
       recipe => recipe.resultItemId === item.id && recipe.category === RECIPE_CATEGORY.COOK
     )
 
     // 요리 재료로 사용
     const usedInCookingRecipes = usage?.usageTypes.recipes
       .filter(r => {
-        const recipe = recipes.find(rec => rec.id === r.recipeId)
+        const recipe = recipesStore.getRecipeById(r.recipeId)
         return recipe?.category === RECIPE_CATEGORY.COOK
       })
       .map(r => ({
@@ -83,7 +134,7 @@ export const useItemStore = defineStore('item', () => {
       })) || []
 
     // 가공 레시피
-    const processingRecipes = recipes.filter(
+    const processingRecipes = recipesStore.recipeList.filter(
       recipe => recipe.resultItemId === item.id && (
         recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
         recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
@@ -94,7 +145,7 @@ export const useItemStore = defineStore('item', () => {
     )
 
     // 가공 재료로 사용
-    const usedInProcessingRecipes = recipes
+    const usedInProcessingRecipes = recipesStore.recipeList
       .filter(recipe => 
         (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
          recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
@@ -117,13 +168,13 @@ export const useItemStore = defineStore('item', () => {
       })
 
     // 제작 레시피
-    const craftingRecipes = recipes.filter(
+    const craftingRecipes = recipesStore.recipeList.filter(
       recipe => recipe.resultItemId === item.id && 
         recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM
     )
 
     // 제작 재료로 사용
-    const usedInCraftingRecipes = recipes
+    const usedInCraftingRecipes = recipesStore.recipeList
       .filter(recipe => 
         recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM &&
         recipe.requiredItems.some(material => material.itemId === item.id)
@@ -255,6 +306,7 @@ export const useItemStore = defineStore('item', () => {
     itemsByCategory,
     categories,
     fetchItemList,
+    enrichItemList,
     getItemById,
     getEnrichedItemById,
     searchItems,
