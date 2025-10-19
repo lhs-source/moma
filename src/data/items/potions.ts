@@ -228,34 +228,41 @@ export const potionItems: Item[] = [
     imageUrl: '/images/items/excellent_auto_healing_potion_s.png',
     category: ITEM_CATEGORY.POTION,
   },
+  // 최상급 붕대
+  {
+    id: 'supreme_bandage',
+    name: '최상급 붕대',
+    imageUrl: '/images/items/supreme_bandage.png',
+    category: ITEM_CATEGORY.POTION,
+  },
   {
     id: 'supreme_heat_resistant_bandage',
     name: '최상급 내열 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/supreme_heat_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_cold_resistant_bandage',
     name: '최상급 방한 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/supreme_cold_resistant_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_insulation_bandage',
     name: '최상급 절연 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/supreme_insulation_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_blessing_bandage',
     name: '최상급 축복의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/supreme_blessing_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   {
     id: 'supreme_seal_bandage',
     name: '최상급 봉인의 붕대',
-    imageUrl: '/images/items/bandage.png',
+    imageUrl: '/images/items/supreme_seal_bandage.png',
     category: ITEM_CATEGORY.POTION,
   },
   // 비약류 (이미지에서 추가된 레시피들)

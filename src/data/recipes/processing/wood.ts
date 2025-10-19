@@ -70,12 +70,12 @@ export const woodProcessingRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.PROCESS_WOOD
   },
   {
-    id: 'craft_finest_wood',
+    id: 'craft_supreme_wood',
     name: '최상급 목재',
-    resultItemId: 'superior_wood_plus',
+    resultItemId: 'supreme_wood',
     resultQuantity: 3,
     requiredItems: [
-      { itemId: 'superior_wood_plus', quantity: 5 },
+      { itemId: 'supreme_wood', quantity: 5 },
       { itemId: 'supreme_log', quantity: 20 },
       { itemId: 'tree_sap', quantity: 16 }
     ],
