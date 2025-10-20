@@ -305,6 +305,20 @@ export const potionCraftRecipes: Recipe[] = [
     category: RECIPE_CATEGORY.CRAFT_POTION,
     facilityLevel: 25
   },
+  // Lv27 - 최상급 붕대
+  {
+    id: 'craft_supreme_bandage',
+    name: '최상급 붕대',
+    resultItemId: 'supreme_bandage',
+    resultQuantity: 5,
+    requiredItems: [
+      { itemId: 'supreme_fabric', quantity: 1 },
+      { itemId: 'scar_flower_powder', quantity: 6 },
+      { itemId: 'life_mana_stone', quantity: 10 }
+    ],
+    category: RECIPE_CATEGORY.CRAFT_POTION,
+    facilityLevel: 27
+  },
   // Lv27 - 최상급 내열 붕대
   {
     id: 'craft_supreme_heat_resistant_bandage',

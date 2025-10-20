@@ -64,7 +64,7 @@ export const foodItems: Item[] = [
   },
   {
     id: 'potato_soup',
-    name: '감자수프',
+    name: '감자 수프',
     imageUrl: '/images/items/potato_soup.png',
     category: ITEM_CATEGORY.FOOD,
   },
@@ -114,12 +114,6 @@ export const foodItems: Item[] = [
     id: 'roasted_potato',
     name: '통감자 구이',
     imageUrl: '/images/items/roasted_potato.png',
-    category: ITEM_CATEGORY.FOOD,
-  },
-  {
-    id: 'potato_soup',
-    name: '감자 수프',
-    imageUrl: '/images/items/potato_soup.png',
     category: ITEM_CATEGORY.FOOD,
   },
   {

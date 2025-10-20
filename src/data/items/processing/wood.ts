@@ -78,7 +78,7 @@ export const woodProcessingItems: Item[] = [
   {
     id: 'supreme_wood',
     name: '최상급 목재',
-    imageUrl: '/images/items/superior_wood_plus.png',
+    imageUrl: '/images/items/supreme_wood.png',
     category: ITEM_CATEGORY.MATERIAL,
   },
   {
