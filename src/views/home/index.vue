@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TimerInfo from '../components/TimerInfo.vue'
-import TodoList from '../components/TodoList.vue'
+import TimerInfo from '../../components/TimerInfo.vue'
+import TodoList from '../../components/TodoList.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 </script>
 
