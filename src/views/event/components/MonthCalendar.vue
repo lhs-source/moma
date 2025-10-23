@@ -58,39 +58,94 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { GameEvent } from '@/data/schemas/event'
-import { EVENT_TYPE } from '@/data/schemas/event'
+import { useEventCalendar, type EventBar } from '@/composables/useEventCalendar'
 
-interface EventBar {
-  event: GameEvent
-  startCol: number
-  endCol: number
-  row: number
-  showName: boolean
-  isEnding: boolean // 이 주에서 이벤트가 실제로 끝나는지 여부
-}
+/**
+ * 월별 캘린더 뷰 컴포넌트
+ * 
+ * 한 달의 모든 날짜를 주 단위로 표시하고, 이벤트를 시각적으로 렌더링합니다.
+ * useEventCalendar composable을 사용하여 공통 로직을 재사용합니다.
+ * 
+ * @component MonthCalendar
+ * 
+ * @remarks
+ * 설계 원칙:
+ * - 단일 책임: 월별 캘린더 렌더링만 담당
+ * - 재사용성: useEventCalendar composable로 공통 로직 활용
+ * - Event 기반: 이벤트 클릭 시 명시적으로 eventClick 이벤트 발생
+ * 
+ * 동작 플로우:
+ * 1. 현재 월의 모든 날짜 계산 (앞뒤 빈칸 포함)
+ * 2. 주 단위로 날짜를 그룹화
+ * 3. 각 주마다 useEventCalendar로 이벤트 바 배치 계산
+ * 4. 이벤트 바를 절대 위치로 렌더링
+ * 5. 이벤트 바 클릭 시 부모에게 eventClick 이벤트 전달
+ * 
+ * @example
+ * ```vue
+ * <MonthCalendar 
+ *   :events="gameEvents" 
+ *   @event-click="openEventDetail" 
+ * />
+ * ```
+ */
 
+/**
+ * Props
+ * @property {GameEvent[]} events - 표시할 이벤트 목록
+ */
 const props = withDefaults(defineProps<{
   events: GameEvent[]
 }>(), {
   events: () => []
 })
 
+/**
+ * Emits
+ * @event eventClick - 이벤트 바 클릭 시 발생
+ * @param {GameEvent} event - 클릭된 이벤트
+ */
 const emit = defineEmits<{
   (eventName: 'eventClick', event: GameEvent): void
 }>()
 
+// Composable 사용: 공통 로직 활용
+const {
+  calculateEventBars,
+  getEventBarStyle: getEventBarStyleFromComposable,
+  getEventBarClass,
+  formatDateTime,
+} = useEventCalendar()
+
+// 현재 선택된 날짜 (월 계산 기준)
 const currentDate = ref(new Date())
+
+// 요일 레이블
 const weekDays = ['일', '월', '화', '수', '목', '금', '토']
+
+// 호버 중인 이벤트 ID (hover 효과용)
 const hoveredEventId = ref<string | null>(null)
 
-const EVENT_BAR_HEIGHT = 26 // 이벤트 바 하나의 높이 (px)
-const BASE_HEIGHT = 50 // 날짜 숫자 표시를 위한 기본 높이 (px)
-const MIN_HEIGHT = 100 // 최소 높이 (px)
+// 이벤트 바 높이 상수
+const EVENT_BAR_HEIGHT = 26
+// 날짜 숫자 표시 기본 높이
+const BASE_HEIGHT = 50
+// 월별 뷰 최소 높이
+const MIN_HEIGHT = 100
 
+/**
+ * 현재 월 레이블 (예: "2025년 10월")
+ * @computed
+ */
 const currentMonthLabel = computed(() => {
   return `${currentDate.value.getFullYear()}년 ${currentDate.value.getMonth() + 1}월`
 })
 
+/**
+ * 월의 모든 날짜를 주 단위로 그룹화
+ * @computed
+ * @returns {(Date | null)[][]} 주 단위 날짜 배열 (null은 빈 셀)
+ */
 const calendarWeeks = computed(() => {
   const year = currentDate.value.getFullYear()
   const month = currentDate.value.getMonth()
@@ -120,96 +175,52 @@ const calendarWeeks = computed(() => {
   return weeks
 })
 
-// 각 주의 이벤트 바를 계산하고 캐싱
+/**
+ * 각 주의 이벤트 바 배치 계산 및 캐싱
+ * @computed
+ * @returns {Map<number, EventBar[]>} 주 인덱스별 이벤트 바 배열
+ * 
+ * @remarks
+ * useEventCalendar composable의 calculateEventBars 함수를 사용하여
+ * 공통 로직을 재사용합니다. 이를 통해 월별/주간 뷰에서 동일한 알고리즘 적용.
+ */
 const weekEventBarsCache = computed(() => {
   const cache = new Map<number, EventBar[]>()
 
   calendarWeeks.value.forEach((week, weekIndex) => {
-    const eventBars: EventBar[] = []
-
-    // 종료일이 빠른 순서대로 정렬하여 처리 (빨리 끝나는 이벤트가 위에 배치됨)
-    const sortedEvents = [...props.events].sort((a, b) => a.endDate.getTime() - b.endDate.getTime())
-
-    // 각 이벤트에 대해 처리
-    for (const event of sortedEvents) {
-      // 이 주의 첫 날과 마지막 날
-      const weekStart = week.find(d => d !== null)
-      const weekEnd = week[week.length - 1] || weekStart
-
-      if (!weekStart) continue
-
-      const eventStart = new Date(event.startDate.getFullYear(), event.startDate.getMonth(), event.startDate.getDate())
-      const eventEnd = new Date(event.endDate.getFullYear(), event.endDate.getMonth(), event.endDate.getDate())
-      const weekStartDate = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate())
-      const weekEndDate = weekEnd ? new Date(weekEnd.getFullYear(), weekEnd.getMonth(), weekEnd.getDate()) : weekStartDate
-
-      // 이 주와 이벤트가 겹치는지 확인
-      if (eventEnd < weekStartDate || eventStart > weekEndDate) continue
-
-      // 이 주에서 이벤트가 시작하는 컬럼과 끝나는 컬럼 계산
-      let startCol = -1
-      let endCol = -1
-
-      for (let i = 0; i < week.length; i++) {
-        const day = week[i]
-        if (!day) continue
-
-        const dayDate = new Date(day.getFullYear(), day.getMonth(), day.getDate())
-
-        if (dayDate >= eventStart && dayDate <= eventEnd) {
-          if (startCol === -1) {
-            startCol = i
-          }
-          endCol = i
-        }
-      }
-
-      if (startCol !== -1 && endCol !== -1) {
-        // 이름 표시 여부: 각 주에서 바가 시작하는 위치에는 항상 제목 표시
-        const showName = true
-
-        // 이 주에서 이벤트가 실제로 끝나는지 확인
-        const lastDayOfWeek = week[endCol]
-        const isEnding = lastDayOfWeek ? 
-          new Date(lastDayOfWeek.getFullYear(), lastDayOfWeek.getMonth(), lastDayOfWeek.getDate()).getTime() >= eventEnd.getTime() 
-          : false
-
-        // 이미 추가된 이벤트와 겹치지 않는 row 찾기
-        let row = 0
-        while (eventBars.some(bar => bar.row === row &&
-          !(bar.endCol < startCol || bar.startCol > endCol))) {
-          row++
-        }
-
-        eventBars.push({
-          event,
-          startCol,
-          endCol,
-          row,
-          showName,
-          isEnding
-        })
-      }
-    }
-
-    cache.set(weekIndex, eventBars.sort((a, b) => a.row - b.row))
+    // Composable 함수 사용: 이벤트 바 계산 로직 공통화
+    const eventBars = calculateEventBars(week, props.events)
+    cache.set(weekIndex, eventBars)
   })
 
   return cache
 })
 
-function previousMonth() {
+/**
+ * 이전 달로 이동
+ * Event handler - 명시적 상태 변경
+ */
+function previousMonth(): void {
   const newDate = new Date(currentDate.value)
   newDate.setMonth(newDate.getMonth() - 1)
   currentDate.value = newDate
 }
 
-function nextMonth() {
+/**
+ * 다음 달로 이동
+ * Event handler - 명시적 상태 변경
+ */
+function nextMonth(): void {
   const newDate = new Date(currentDate.value)
   newDate.setMonth(newDate.getMonth() + 1)
   currentDate.value = newDate
 }
 
+/**
+ * 날짜 셀 배경 스타일 클래스 반환
+ * @param {Date | null} day - 날짜 (null이면 빈 셀)
+ * @returns {string} Tailwind CSS 클래스
+ */
 function getDayClass(day: Date | null): string {
   if (!day) return 'bg-muted/30'
 
@@ -221,6 +232,11 @@ function getDayClass(day: Date | null): string {
   return 'bg-card hover:bg-accent/30'
 }
 
+/**
+ * 날짜 숫자 스타일 클래스 반환
+ * @param {Date} day - 날짜
+ * @returns {string} Tailwind CSS 클래스
+ */
 function getDayNumberClass(day: Date): string {
   const today = new Date()
   if (day.toDateString() === today.toDateString()) {
@@ -228,12 +244,18 @@ function getDayNumberClass(day: Date): string {
   }
 
   const dayOfWeek = day.getDay()
-  if (dayOfWeek === 0) return 'text-red-500'
-  if (dayOfWeek === 6) return 'text-blue-500'
+  if (dayOfWeek === 0) return 'text-red-500' // 일요일
+  if (dayOfWeek === 6) return 'text-blue-500' // 토요일
 
   return 'text-foreground'
 }
 
+/**
+ * 주의 높이 계산
+ * 이벤트 바 개수에 따라 동적으로 높이 조정
+ * @param {number} weekIndex - 주 인덱스
+ * @returns {number} 계산된 높이 (px)
+ */
 function getWeekHeight(weekIndex: number): number {
   const eventBars = weekEventBarsCache.value.get(weekIndex) || []
 
@@ -241,51 +263,31 @@ function getWeekHeight(weekIndex: number): number {
     return MIN_HEIGHT
   }
 
-  // 최대 row 번호 찾기
   const maxRow = Math.max(...eventBars.map(bar => bar.row))
-
-  // 높이 = 기본 높이 + (이벤트 바 개수 * 이벤트 바 높이)
   const calculatedHeight = BASE_HEIGHT + (maxRow + 1) * EVENT_BAR_HEIGHT
 
   return Math.max(calculatedHeight, MIN_HEIGHT)
 }
 
+/**
+ * 이벤트 바 스타일 계산 (composable 함수 래핑)
+ * @param {EventBar} eventBar - 이벤트 바 정보
+ * @returns {string} CSS 인라인 스타일 문자열
+ */
 function getEventBarStyle(eventBar: EventBar): string {
-  const colWidth = 100 / 7 // 7 columns
-  const padding = 0.3 // 좌우 여백 (%)
-
-  const left = eventBar.startCol * colWidth + padding
-  const width = (eventBar.endCol - eventBar.startCol + 1) * colWidth - padding * 2
-  const top = 28 + eventBar.row * EVENT_BAR_HEIGHT // 날짜 숫자 아래부터 시작
-
-  return `left: ${left}%; width: ${width}%; top: ${top}px;`
+  return getEventBarStyleFromComposable(eventBar, {
+    colWidth: 100 / 7,
+    padding: 0.3,
+    topOffset: 28,
+    barHeight: EVENT_BAR_HEIGHT,
+  })
 }
 
-function getEventBarClass(eventBar: EventBar): string {
-  const isEvent = eventBar.event.type === EVENT_TYPE.EVENT
-  const isCashShop = eventBar.event.type === EVENT_TYPE.CASH_SHOP
-  
-  if (eventBar.isEnding) {
-    // 끝나는 바는 그라데이션 + 빨간색 오른쪽 테두리 적용 (왼쪽 연하게 -> 오른쪽 진하게)
-    if (isEvent) {
-      return 'bg-gradient-to-r from-blue-400 to-blue-700 text-white border-r-4 border-red-600'
-    } else if (isCashShop) {
-      return 'bg-gradient-to-r from-green-400 to-green-700 text-white border-r-4 border-red-600'
-    } else {
-      return 'bg-gradient-to-r from-purple-400 to-purple-700 text-white border-r-4 border-red-600'
-    }
-  } else {
-    // 일반 바는 단색
-    if (isEvent) {
-      return 'bg-blue-500 text-white'
-    } else if (isCashShop) {
-      return 'bg-green-500 text-white'
-    } else {
-      return 'bg-purple-500 text-white'
-    }
-  }
-}
-
+/**
+ * 이벤트 바 hover 스타일 클래스 반환
+ * @param {GameEvent} event - 이벤트
+ * @returns {string} Tailwind CSS 클래스
+ */
 function getEventBarHoverClass(event: GameEvent): string {
   if (hoveredEventId.value === event.id) {
     return 'ring-2 ring-yellow-400 ring-offset-1 scale-105 z-50 shadow-lg'
@@ -293,17 +295,12 @@ function getEventBarHoverClass(event: GameEvent): string {
   return 'hover:opacity-90'
 }
 
-function formatDateTime(date: Date): string {
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  const hours = String(date.getHours()).padStart(2, '0')
-  const minutes = String(date.getMinutes()).padStart(2, '0')
-
-  return `${year}-${month}-${day} ${hours}:${minutes}`
-}
-
-function handleEventClick(event: GameEvent) {
+/**
+ * 이벤트 바 클릭 핸들러
+ * Event handler - 부모에게 이벤트 전달
+ * @param {GameEvent} event - 클릭된 이벤트
+ */
+function handleEventClick(event: GameEvent): void {
   emit('eventClick', event)
 }
 </script>

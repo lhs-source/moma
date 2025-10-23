@@ -33,6 +33,19 @@ Each epic includes:
 
 기존 데이터 목록(아이템/레시피 탭), 제작, 요리 시뮬레이팅, 물물교환, 이벤트 캘린더 시스템의 사용성을 개선하고, 누락된 편의 기능을 추가하여 사용자 경험을 향상시킵니다. 현재 구현된 기능들을 안정화하고, 모바일 반응형과 성능을 개선하며, 일관된 UI/UX를 제공합니다. 멀티 캐릭터 환경에서의 재료 관리, 가공 시뮬레이션, 주간 식재료 구매 한도를 고려한 요리 시뮬레이션 기능을 추가하여 효율적인 게임 플레이를 지원합니다. 이 Epic은 기존 시스템의 기초를 탄탄히 하여 이후 Epic들의 토대를 마련합니다.
 
+### Implementation Progress
+
+**진행 상황**: 1/14 완료 (7.1%)
+
+✅ **완료 (1)**
+- Story 1.14: 이벤트 캘린더 주간 뷰 추가
+
+🔄 **진행 중 (0)**
+- 없음
+
+📋 **대기 중 (13)**
+- Story 1.1~1.13
+
 ### Story Breakdown
 
 **Story 1.1: 아이템 검색 성능 최적화**
@@ -264,6 +277,39 @@ So that 실현 가능한 요리 목표를 수립하고 식재료를 효율적으
 10. 주간 리셋 시점 및 남은 시간 표시
 
 **Prerequisites:** Story 1.11
+
+---
+
+**Story 1.14: 이벤트 캘린더 주간 뷰 추가** ✅ **완료 (2025-10-23)**
+
+As a 플레이어,
+I want 이벤트 캘린더에서 월별 뷰와 주간 뷰를 선택할 수 있기를,
+So that 내가 원하는 시간 범위로 이벤트 일정을 확인할 수 있다.
+
+**Acceptance Criteria:**
+1. ✅ 월별/주간 뷰 전환 버튼(토글) 제공
+2. ✅ 주간 뷰는 선택된 주의 7일(일~토)을 표시
+3. ✅ 주간 뷰에서 이전/다음 주 이동 버튼 제공
+4. ✅ 주간 뷰의 이벤트 바는 월별 뷰와 동일한 스타일 유지
+5. ✅ 이벤트 바는 시작일/종료일을 시각적으로 표현 (그라데이션, 경계 표시)
+6. ✅ 주간 뷰에서도 이벤트 바 클릭 시 상세 정보 시트 표시
+7. ✅ 주간 뷰의 각 날짜별 이벤트 개수 및 시간대 명확히 표시
+8. ✅ 뷰 전환 상태를 로컬 스토리지에 저장하여 다음 방문 시 유지
+9. ✅ 모바일에서도 주간 뷰가 정상 동작 (터치 스와이프로 주 이동 가능)
+10. ✅ 현재 날짜가 포함된 주를 기본으로 표시
+
+**Prerequisites:** 없음 (기존 이벤트 캘린더 개선)
+
+**Implementation Notes:**
+- 구현 파일:
+  - `src/composables/useEventCalendar.ts` - 공통 이벤트 바 로직
+  - `src/composables/useCalendarView.ts` - 뷰 상태 관리
+  - `src/views/event/components/CalendarViewToggle.vue` - 토글 버튼
+  - `src/views/event/components/WeekCalendar.vue` - 주간 캘린더
+  - `src/views/event/components/MonthCalendar.vue` - 리팩터링
+  - `src/views/event/index.vue` - 뷰 통합
+- 기술 특징: Event 기반 패턴, Composable 재사용, JSDoc 완전 문서화
+- 코드 품질: 린트 에러 0개, TypeScript 타입 안전성 100%
 
 ---
 
