@@ -7,6 +7,13 @@
       v-model:usage-type="selectedUsageType" 
       :categories="itemStore.categories" />
 
+    <!-- 스키마별 필터 -->
+    <ItemSchemaFilter
+      :selected-schema="selectedSchema"
+      :available-schemas="schemaOptions"
+      :schema-counts="itemStore.schemaCounts"
+      @update:selected-schema="handleSchemaChange" />
+
     <!-- 결과 개수 표시 -->
     <div class="text-sm text-muted-foreground">
       총 {{ filteredItems.length }}개의 아이템
@@ -68,8 +75,10 @@ import { useItemStore } from '@/stores/item'
 import { useRecipesStore } from '@/stores/recipes'
 import { useTradeStore } from '@/stores/trade'
 import { useNpcStore } from '@/stores/npc'
+import { useSchemaFilter } from '@/composables/useSchemaFilter'
 import ItemFilters from './ItemFilters.vue'
 import ItemRow from './ItemRow.vue'
+import ItemSchemaFilter from './ItemSchemaFilter.vue'
 
 /**
  * ## Stores
@@ -78,6 +87,9 @@ import ItemRow from './ItemRow.vue'
  * - 다른 store들은 itemStore의 enrichItemList() 호출 전에 초기화됨
  */
 const itemStore = useItemStore()
+
+// 스키마 필터 composable
+const { selectedSchema, updateSchema, availableSchemas } = useSchemaFilter()
 
 // 사용자가 입력하는 검색어 (실시간)
 const searchQuery = ref('')
@@ -103,6 +115,31 @@ watch(searchQuery, (newValue) => {
 })
 
 /**
+ * ## 스키마 옵션 목록
+ * 
+ * 스키마 필터 컴포넌트에 전달할 옵션 목록
+ * availableSchemas에 개수 정보를 추가
+ */
+const schemaOptions = computed(() => {
+  return availableSchemas.value.map(schema => ({
+    ...schema,
+    count: itemStore.schemaCounts[schema.value] || 0
+  }))
+})
+
+/**
+ * # 스키마 변경 핸들러
+ * 
+ * 스키마 필터에서 스키마가 변경되었을 때 호출되는 이벤트 핸들러
+ * Event 기반 패턴으로 명시적 상태 업데이트
+ * 
+ * @param {SchemaFilterOption} schema - 선택된 스키마 값
+ */
+function handleSchemaChange(schema: SchemaFilterOption): void {
+  updateSchema(schema)
+}
+
+/**
  * ## filteredItems
  * 
  * 모든 필터 조건을 적용하여 최종 아이템 목록 반환
@@ -115,6 +152,7 @@ watch(searchQuery, (newValue) => {
  * - 검색어(`debouncedSearchQuery`) 적용
  * - 카테고리(`selectedCategory`) 적용
  * - 사용처(`selectedUsageType`) 적용
+ * - 스키마(`selectedSchema`) 적용 (새로 추가)
  * 
  * ### 성능 최적화
  * - `computed`로 자동 캐싱
@@ -125,13 +163,15 @@ watch(searchQuery, (newValue) => {
  * - `debouncedSearchQuery`
  * - `selectedCategory`
  * - `selectedUsageType`
+ * - `selectedSchema`
  * - `itemStore.getFilteredItems()`
  */
 const filteredItems = computed(() => {
   return itemStore.getFilteredItems({
     searchQuery: debouncedSearchQuery.value,
     category: selectedCategory.value,
-    usageType: selectedUsageType.value
+    usageType: selectedUsageType.value,
+    schema: selectedSchema.value
   })
 })
 

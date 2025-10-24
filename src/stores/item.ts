@@ -268,6 +268,7 @@ export const useItemStore = defineStore('item', () => {
     searchQuery?: string
     category?: string
     usageType?: string
+    schema?: string
   }): EnrichedItem[] {
     let filtered = enrichedItemList.value
 
@@ -290,6 +291,11 @@ export const useItemStore = defineStore('item', () => {
       filtered = filtered.filter(item => item.usageTypes.includes(filters.usageType!))
     }
 
+    // 스키마 필터 (새로 추가)
+    if (filters.schema) {
+      filtered = filtered.filter(item => item.category === filters.schema)
+    }
+
     return filtered
   }
 
@@ -300,11 +306,34 @@ export const useItemStore = defineStore('item', () => {
     return enrichedItemList.value.find(item => item.id === id)
   }
 
+  /**
+   * 스키마별 아이템 개수 계산
+   * 
+   * 각 스키마(카테고리)별로 아이템 개수를 계산하여 반환
+   * 
+   * @returns {ComputedRef<Record<string, number>>} 스키마별 아이템 개수
+   */
+  const schemaCounts = computed(() => {
+    const counts: Record<string, number> = {}
+    
+    // 전체 개수
+    counts[''] = enrichedItemList.value.length
+    
+    // 각 스키마별 개수
+    enrichedItemList.value.forEach(item => {
+      const category = item.category || '기타'
+      counts[category] = (counts[category] || 0) + 1
+    })
+    
+    return counts
+  })
+
   return {
     itemList,
     enrichedItemList,
     itemsByCategory,
     categories,
+    schemaCounts,
     fetchItemList,
     enrichItemList,
     getItemById,
