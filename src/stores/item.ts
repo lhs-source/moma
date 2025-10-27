@@ -45,7 +45,7 @@ export const useItemStore = defineStore('item', () => {
    * ### Store 의존성
    * - `recipesStore.recipeList`: 요리/가공/제작 레시피 정보
    * - `tradeStore.tradeList`: 교환 정보
-   * - `npcStore.npcList`: NPC 정보
+   * - `npcStore.enrichedNPCList`: NPC 정보
    * 
    * ### 처리 내용
    * 각 아이템에 대해 다음 정보를 계산하여 EnrichedItem 생성:
@@ -100,7 +100,7 @@ export const useItemStore = defineStore('item', () => {
     const obtainableFromTrades = tradeStore.tradeList
       .filter(trade => trade.receiveItemId === item.id && trade.isEnabled)
       .map(trade => {
-        const npc = npcStore.npcList.find(n => n.id === trade.npcId)
+        const npc = npcStore.enrichedNPCList.find(n => n.id === trade.npcId)
         const location = locations.find(l => l.id === npc?.locationId)
         const giveItem = items.find(i => i.id === trade.giveItemId)
 

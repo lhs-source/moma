@@ -5,7 +5,6 @@ import { locations } from '@/data/locations'
 import { trades } from '@/data/trade'
 import type { NPC } from '@/data/schemas/npc'
 import type { Location } from '@/data/schemas/location'
-// Trade 타입은 현재 사용하지 않음
 
 /**
  * # EnrichedNPC 인터페이스

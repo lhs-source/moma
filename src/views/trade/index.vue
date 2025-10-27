@@ -58,7 +58,7 @@ const tradeGroupByLocation = computed(() => {
 
   // Group trades by location
   tradeStore.tradeList.forEach((trade) => {
-    const npc = npcStore.npcList.find((n) => n.id === trade.npcId)
+    const npc = npcStore.enrichedNPCList.find((n) => n.id === trade.npcId)
     if (!npc) return
 
     const location = locations.find((l) => l.id === npc.locationId)

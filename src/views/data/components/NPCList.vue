@@ -49,15 +49,15 @@
     </div>
 
     <!-- NPC 그리드 -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
       <div
         v-for="npc in filteredNPCs"
         :key="npc.id"
-        class="bg-card border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+        class="bg-card border rounded-lg p-3 hover:shadow-md transition-shadow cursor-pointer"
         @click="selectNPC(npc)"
       >
         <!-- NPC 이미지 -->
-        <div class="aspect-square mb-3 bg-muted rounded-lg flex items-center justify-center overflow-hidden">
+        <div class="aspect-square mb-2 bg-muted rounded-lg flex items-center justify-center overflow-hidden">
           <img
             v-if="npc.imageUrl"
             :src="npc.imageUrl"
@@ -65,21 +65,21 @@
             class="w-full h-full object-cover"
             @error="handleImageError"
           />
-          <div v-else class="text-muted-foreground text-sm">
+          <div v-else class="text-muted-foreground text-xs">
             이미지 없음
           </div>
         </div>
 
         <!-- NPC 정보 -->
-        <div class="space-y-2">
-          <h3 class="font-semibold text-lg">{{ npc.name }}</h3>
-          <p class="text-sm text-muted-foreground">{{ npc.description }}</p>
-          <p class="text-sm text-muted-foreground">{{ npc.location.name }}</p>
+        <div class="space-y-1">
+          <h3 class="font-semibold text-sm">{{ npc.name }}</h3>
+          <p class="text-xs text-muted-foreground line-clamp-2">{{ npc.description }}</p>
+          <p class="text-xs text-muted-foreground">{{ npc.location.name }}</p>
           
           <!-- 물물교환 정보 -->
           <div v-if="npc.tradeCount > 0" class="flex items-center gap-1 text-xs text-blue-600">
             <span>교환 가능</span>
-            <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full">
+            <span class="bg-blue-100 text-blue-800 px-1 py-0.5 rounded-full text-xs">
               {{ npc.tradeCount }}개
             </span>
           </div>
@@ -171,8 +171,7 @@ function handleImageError(event: Event): void {
 /* 모바일에서 그리드 반응형 최적화 */
 @media (max-width: 640px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 }
 

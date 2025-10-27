@@ -3,6 +3,22 @@ import { EVENT_TYPE, type GameEvent } from './schemas/event'
 // 점검 일정
 export const maintenanceEvents: GameEvent[] = [
   {
+    id: 'maintenance-009',
+    name: '10/23(목) 정기점검',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-10-23T06:00:00'),
+    endDate: new Date('2025-10-23T08:15:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-010',
+    name: '10/17(금) 임시점검',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-10-17T06:00:00'),
+    endDate: new Date('2025-10-17T07:45:00'),
+    description: '서버 안정화를 위한 임시 점검',
+  },
+  {
     id: 'maintenance-008',
     name: '10/16(목) 정기점검',
     type: EVENT_TYPE.MAINTENANCE,
@@ -266,6 +282,24 @@ export const inGameEvents: GameEvent[] = [
 
 // 캐시샵 일정
 export const cashShopEvents: GameEvent[] = [
+  {
+    id: 'cash-shop-006',
+    name: '펫 럭키박스 : 햄스터',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-10-23T08:15:00'),
+    endDate: new Date('2025-12-18T05:59:00'),
+    description: '펫 럭키박스 : 햄스터 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [럭키박스]',
+    packages: [
+      {
+        name: '펫 럭키박스 : 햄스터',
+        price: '2,900 M캐시',
+        cashPoint: '290',
+        purchaseLimit: '무제한',
+        items: []
+      }
+    ]
+  },
   {
     id: 'cash-shop-005',
     name: '[암흑술사: 클래스 레벨] 미션 패키지',
