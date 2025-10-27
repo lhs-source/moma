@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { npcs } from '@/data/npcs'
 import { locations } from '@/data/locations'
 import { trades } from '@/data/trade'
+import { items } from '@/data/items'
 import type { NPC } from '@/data/schemas/npc'
 import type { Location } from '@/data/schemas/location'
 
@@ -57,10 +58,17 @@ export const useNpcStore = defineStore('npc', () => {
 
       // 물물교환 정보 찾기
       const npcTrades = trades.filter(trade => trade.npcId === npc.id)
+      
+      // 아이템 ID를 이름으로 변환하는 헬퍼 함수
+      function getItemName(itemId: string): string {
+        const item = items.find(i => i.id === itemId)
+        return item?.name || itemId
+      }
+      
       const availableTrades = npcTrades.map(trade => ({
         tradeId: trade.id,
-        giveItemName: trade.giveItemId, // TODO: 아이템 이름으로 변환 필요
-        receiveItemName: trade.receiveItemId, // TODO: 아이템 이름으로 변환 필요
+        giveItemName: getItemName(trade.giveItemId),
+        receiveItemName: getItemName(trade.receiveItemId),
         giveQuantity: trade.giveQuantity,
         receiveQuantity: trade.receiveQuantity,
         type: trade.type,

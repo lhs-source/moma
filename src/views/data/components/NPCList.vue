@@ -97,6 +97,13 @@
         <p class="text-sm">검색어나 필터를 변경해보세요</p>
       </div>
     </div>
+
+    <!-- NPC 상세 정보 Sheet -->
+    <NPCDetailSheet
+      :open="sheetOpen"
+      :selected-npc="selectedNPC"
+      @update:open="sheetOpen = $event"
+    />
   </div>
 </template>
 
@@ -110,6 +117,7 @@ import SelectContent from '@/components/ui/select-content.vue'
 import SelectItem from '@/components/ui/select-item.vue'
 import SelectTrigger from '@/components/ui/select-trigger.vue'
 import SelectValue from '@/components/ui/select-value.vue'
+import NPCDetailSheet from './NPCDetailSheet.vue'
 
 /**
  * # NPCList 컴포넌트
@@ -127,6 +135,9 @@ const searchQuery = ref('')
 const selectedLocation = ref('')
 // 물물교환 필터 (문자열로 처리)
 const tradeFilter = ref('')
+// Sheet 상태
+const sheetOpen = ref(false)
+const selectedNPC = ref<EnrichedNPC | null>(null)
 
 /**
  * # 필터링된 NPC 목록
@@ -145,13 +156,13 @@ const filteredNPCs = computed(() => {
  * # NPC 선택 핸들러
  * 
  * NPC를 클릭했을 때 호출되는 이벤트 핸들러
- * 현재는 콘솔에 로그만 출력 (향후 상세 정보 모달 등으로 확장 가능)
+ * NPC 상세 정보 Sheet를 열고 선택된 NPC를 설정
  * 
  * @param npc - 선택된 NPC
  */
 function selectNPC(npc: EnrichedNPC): void {
-  console.log('Selected NPC:', npc)
-  // TODO: NPC 상세 정보 모달 표시
+  selectedNPC.value = npc
+  sheetOpen.value = true
 }
 
 /**
