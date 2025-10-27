@@ -8,10 +8,11 @@
     <!-- 탭 컴포넌트 -->
     <Tabs v-model:value="activeTab" default-value="items">
       <!-- 탭 버튼 목록 -->
-      <TabsList class="grid w-full grid-cols-3">
+      <TabsList class="grid w-full grid-cols-4">
         <TabsTrigger value="items">아이템</TabsTrigger>
         <TabsTrigger value="recipes">레시피</TabsTrigger>
         <TabsTrigger value="npcs">NPC</TabsTrigger>
+        <TabsTrigger value="locations">위치</TabsTrigger>
       </TabsList>
 
       <!-- 아이템 탭 컨텐츠 -->
@@ -27,6 +28,11 @@
       <!-- NPC 탭 컨텐츠 -->
       <TabsContent value="npcs">
         <NPCList />
+      </TabsContent>
+
+      <!-- 위치 탭 컨텐츠 -->
+      <TabsContent value="locations">
+        <LocationList />
       </TabsContent>
     </Tabs>
   </div>
@@ -65,6 +71,7 @@ import { ref } from 'vue'
 import ItemList from './components/ItemList.vue'
 import RecipeList from './components/RecipeList.vue'
 import NPCList from './components/NPCList.vue'
+import LocationList from './components/LocationList.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 import Tabs from '@/components/ui/tabs.vue'
 import TabsList from '@/components/ui/tabs-list.vue'
@@ -72,6 +79,6 @@ import TabsTrigger from '@/components/ui/tabs-trigger.vue'
 import TabsContent from '@/components/ui/tabs-content.vue'
 
 // 현재 활성화된 탭 상태
-const activeTab = ref<'items' | 'recipes' | 'npcs'>('items')
+const activeTab = ref<'items' | 'recipes' | 'npcs' | 'locations'>('items')
 </script>
 
