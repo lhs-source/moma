@@ -1,41 +1,39 @@
 <template>
   <Teleport to="body">
-    <Transition name="sheet">
+    <div
+      v-if="open"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center"
+      @click.self="handleClose"
+    >
       <div
-        v-if="open"
-        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center"
-        @click.self="handleClose"
+        ref="sheetRef"
+        class="fixed inset-x-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-h-[85vh] w-full sm:max-w-lg sm:mx-auto bg-background border-t sm:border border-border rounded-t-2xl sm:rounded-lg shadow-xl overflow-hidden flex flex-col animate-in slide-in-from-bottom sm:slide-in-from-top"
+        @keydown.esc="handleClose"
       >
-        <div
-          ref="sheetRef"
-          class="fixed inset-x-0 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-h-[85vh] w-full sm:max-w-lg sm:mx-auto bg-background border-t sm:border border-border rounded-t-2xl sm:rounded-lg shadow-xl overflow-hidden flex flex-col"
-          @keydown.esc="handleClose"
-        >
-        <div class="flex items-center justify-between p-4 border-b border-border">
-          <h2 v-if="title" class="text-lg font-semibold">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+          <h2 v-if="title" class="text-lg font-semibold text-gray-900 dark:text-white">
             {{ title }}
           </h2>
           <button
-            class="ml-auto rounded-md p-2 hover:bg-muted transition-colors"
+            class="ml-auto rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             @click="handleClose"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/>
               <line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
-        <div class="flex-1 overflow-y-auto p-4">
+        <div class="flex-1 overflow-y-auto p-4 bg-white dark:bg-gray-900">
           <slot />
         </div>
       </div>
     </div>
-    </Transition>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 defineOptions({
   name: 'SheetComponent'
@@ -58,48 +56,52 @@ function handleClose(): void {
 
 // Escape 키 처리
 function handleEscape(event: KeyboardEvent): void {
-  if (event.key === 'Escape') {
+  if (event.key === 'Escape' && props.open) {
     handleClose()
   }
 }
 
 // Escape 키 리스너 추가/제거
-watch(() => props.open, (isOpen) => {
-  if (isOpen) {
-    document.addEventListener('keydown', handleEscape)
-  } else {
-    document.removeEventListener('keydown', handleEscape)
-  }
+onMounted(() => {
+  document.addEventListener('keydown', handleEscape)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscape)
 })
 </script>
 
 <style scoped>
-/* Vue Transition Classes */
-.sheet-enter-active,
-.sheet-leave-active {
-  transition: opacity 0.3s ease;
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.sheet-enter-active .bg-background,
-.sheet-leave-active .bg-background {
-  transition: transform 0.3s ease;
+@keyframes slide-in-from-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.sheet-enter-from,
-.sheet-leave-to {
-  opacity: 0;
+.animate-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
 }
 
-.sheet-enter-from .bg-background,
-.sheet-leave-to .bg-background {
-  transform: translateY(100%);
+.slide-in-from-bottom {
+  animation-name: slide-in-from-bottom;
 }
 
-/* 데스크탑에서는 아래가 아니라 중앙에서 슬라이드 */
 @media (min-width: 640px) {
-  .sheet-enter-from .bg-background,
-  .sheet-leave-to .bg-background {
-    transform: translate(-50%, -50%) scale(0.95);
+  .slide-in-from-top {
+    animation-name: slide-in-from-top;
   }
 }
 </style>

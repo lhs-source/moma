@@ -1,14 +1,20 @@
 <template>
-  <Sheet :open="props.open" :title="props.selectedNPC?.name || 'NPC 정보'" @update:open="updateOpen">
-    <div v-if="props.selectedNPC" class="space-y-6">
+  <Sheet :open="props.open" :title="props.selectedNpc?.name || 'NPC 정보'" @update:open="updateOpen">
+    <!-- NPC 데이터 없음 -->
+    <div v-if="!props.selectedNpc" class="text-center py-12 bg-muted/50 rounded-lg">
+      <p class="text-muted-foreground text-sm">NPC 정보를 불러오는 중...</p>
+    </div>
+    
+    <!-- NPC 상세 정보 -->
+    <div v-else class="space-y-6 bg-background">
       <!-- NPC 기본 정보 -->
       <div class="flex items-start gap-4">
         <!-- NPC 이미지 -->
         <div class="w-24 h-24 bg-muted rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
           <img
-            v-if="props.selectedNPC.imageUrl"
-            :src="props.selectedNPC.imageUrl"
-            :alt="props.selectedNPC.name"
+            v-if="props.selectedNpc.imageUrl"
+            :src="props.selectedNpc.imageUrl"
+            :alt="props.selectedNpc.name"
             class="w-full h-full object-cover"
             @error="handleImageError"
           />
@@ -20,17 +26,17 @@
         <!-- NPC 정보 -->
         <div class="flex-1 space-y-2">
           <div>
-            <h3 class="text-lg font-semibold">{{ props.selectedNPC.name }}</h3>
-            <p class="text-sm text-muted-foreground">{{ props.selectedNPC.description }}</p>
+            <h3 class="text-lg font-semibold">{{ props.selectedNpc.name }}</h3>
+            <p class="text-sm text-muted-foreground">{{ props.selectedNpc.description }}</p>
           </div>
           
           <div class="flex items-center gap-2">
-            <span class="text-xs bg-muted px-2 py-1 rounded">{{ props.selectedNPC.location.name }}</span>
+            <span class="text-xs bg-muted px-2 py-1 rounded">{{ props.selectedNpc.location.name }}</span>
             <span
-              v-if="props.selectedNPC.tradeCount > 0"
+              v-if="props.selectedNpc.tradeCount > 0"
               class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded"
             >
-              물물교환 가능 {{ props.selectedNPC.tradeCount }}개
+              물물교환 가능 {{ props.selectedNpc.tradeCount }}개
             </span>
             <span
               v-else
@@ -43,13 +49,13 @@
       </div>
 
       <!-- 물물교환 가능 아이템 목록 -->
-      <div v-if="props.selectedNPC.availableTrades.length > 0">
+      <div v-if="props.selectedNpc.availableTrades.length > 0" class="bg-muted/30 rounded-lg p-4">
         <h4 class="text-sm font-semibold mb-3">물물교환 가능 아이템</h4>
         <div class="space-y-2">
           <div
-            v-for="trade in props.selectedNPC.availableTrades"
+            v-for="trade in props.selectedNpc.availableTrades"
             :key="trade.tradeId"
-            class="bg-muted rounded-lg p-3 text-sm"
+            class="bg-background rounded-lg p-3 text-sm border border-border"
           >
             <div class="flex items-center gap-2">
               <span class="font-medium">{{ trade.giveQuantity }}x {{ trade.giveItemName }}</span>
@@ -64,7 +70,7 @@
       </div>
 
       <!-- 빈 상태 -->
-      <div v-else class="text-center py-8 text-muted-foreground text-sm">
+      <div v-else class="text-center py-8 text-muted-foreground text-sm bg-muted/30 rounded-lg">
         물물교환 가능한 아이템이 없습니다.
       </div>
     </div>
@@ -75,9 +81,13 @@
 import type { EnrichedNPC } from '@/stores/npc'
 import Sheet from '@/components/ui/sheet.vue'
 
+defineOptions({
+  inheritAttrs: false
+})
+
 const props = defineProps<{
   open: boolean
-  selectedNPC?: EnrichedNPC | null
+  selectedNpc?: EnrichedNPC | null
 }>()
 
 

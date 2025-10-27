@@ -101,7 +101,7 @@
     <!-- NPC 상세 정보 Sheet -->
     <NPCDetailSheet
       :open="sheetOpen"
-      :selected-npc="selectedNPC"
+      :selected-npc="selectedNpc"
       @update:open="sheetOpen = $event"
     />
   </div>
@@ -137,7 +137,7 @@ const selectedLocation = ref('')
 const tradeFilter = ref('')
 // Sheet 상태
 const sheetOpen = ref(false)
-const selectedNPC = ref<EnrichedNPC | null>(null)
+const selectedNpc = ref<EnrichedNPC | null>(null)
 
 /**
  * # 필터링된 NPC 목록
@@ -161,7 +161,7 @@ const filteredNPCs = computed(() => {
  * @param npc - 선택된 NPC
  */
 function selectNPC(npc: EnrichedNPC): void {
-  selectedNPC.value = npc
+  selectedNpc.value = npc
   sheetOpen.value = true
 }
 
