@@ -10,9 +10,12 @@
             @error="handleImageError" />
           <span class="truncate text-foreground">{{ getItemName(row.itemId) }}</span>
           <span class="ml-auto text-foreground">x{{ row.quantity }}</span>
-          <span v-if="getBuyableCount(row.itemId) > 0"
-            :class="[row.quantity > getBuyableCount(row.itemId) ? 'text-destructive font-semibold' : 'text-muted-foreground']"
-            class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{ getBuyableCount(row.itemId) }})</span>
+          <span v-if="getBuyableCount(row.itemId) > 0" :class="[row.quantity > getBuyableCount(row.itemId)
+            ? 'text-red-600 font-semibold bg-red-100 px-1 rounded border border-red-300'
+            : 'text-muted-foreground']" class="ml-2 text-xs whitespace-nowrap">({{ row.quantity }}/{{
+              getBuyableCount(row.itemId) }})
+            <span v-if="row.quantity > getBuyableCount(row.itemId)" class="text-red-600 ml-1">⚠️</span>
+          </span>
           <span v-if="getMinBuyPrice(row.itemId) !== null"
             class="ml-2 text-xs text-muted-foreground whitespace-nowrap">개당 {{
               formatGold(getMinBuyPrice(row.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(row.itemId)! * row.quantity)
@@ -67,7 +70,8 @@
                 (getProcessedRecipe(row.itemId)!.resultQuantity || 1)) }}</span>
               <span v-if="getMinBuyPrice(ingredient.itemId) !== null"
                 class="ml-2 text-muted-foreground whitespace-nowrap">개당 {{
-                  formatGold(getMinBuyPrice(ingredient.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(ingredient.itemId)! *
+                  formatGold(getMinBuyPrice(ingredient.itemId)!) }} · 합계 {{ formatGold(getMinBuyPrice(ingredient.itemId)!
+                  *
                   ingredient.quantity * Math.ceil(row.quantity / (getProcessedRecipe(row.itemId)!.resultQuantity || 1)))
                 }}</span>
             </div>

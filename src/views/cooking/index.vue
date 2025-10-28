@@ -3,6 +3,20 @@
     <div
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-card border-b border-border flex-shrink-0 shadow-sm">
       <PageTitle size="sm">요리 시뮬레이팅</PageTitle>
+      <div class="flex gap-1">
+        <button @click="saveCookingPlan" 
+          class="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-accent">
+          저장
+        </button>
+        <button @click="loadCookingPlan" 
+          class="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-accent">
+          불러오기
+        </button>
+        <button @click="resetCookingPlan" 
+          class="px-2 py-1 text-xs border border-border rounded bg-destructive text-destructive-foreground hover:bg-destructive/90">
+          초기화
+        </button>
+      </div>
     </div>
 
     <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 overflow-hidden main-container">
@@ -34,6 +48,8 @@
         </div>
 
         <div class="flex-1 overflow-y-auto p-1 space-y-1 min-h-0 scroll-container">
+          <WeeklyResetTimer />
+          
           <div>
             <CategoryTitle size="xs" class-name="text-muted-foreground mb-1">선택한 총 제작 요리 목록</CategoryTitle>
             <SelectedRecipeList :recipes="selectedRecipes" :selected-counts="selectedCounts"
@@ -56,6 +72,7 @@ import RecipeGrid from './components/RecipeGrid.vue'
 import SelectedRecipeList from './components/SelectedRecipeList.vue'
 import MaterialsSummary from './components/MaterialsSummary.vue'
 import WeeklyBuyableGrid from './components/WeeklyBuyableGrid.vue'
+import WeeklyResetTimer from './components/WeeklyResetTimer.vue'
 import PageTitle from '@/components/ui/PageTitle.vue'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
 import CategoryTitle from '@/components/ui/CategoryTitle.vue'
@@ -68,6 +85,48 @@ import { ITEM_CATEGORY } from '@/data/schemas/item'
 const searchQuery = ref('')
 const selectedFacilityLevel = ref('')
 const selectedCounts = ref<Record<string, number>>({})
+
+// 로컬 스토리지 키
+const COOKING_PLAN_STORAGE_KEY = 'moma-cooking-plan'
+
+// 요리 계획 저장
+function saveCookingPlan() {
+  try {
+    const planData = {
+      selectedCounts: selectedCounts.value,
+      savedAt: new Date().toISOString(),
+      planName: 'My Cooking Plan'
+    }
+    localStorage.setItem(COOKING_PLAN_STORAGE_KEY, JSON.stringify(planData))
+  } catch (error) {
+    console.warn('Failed to save cooking plan:', error)
+  }
+}
+
+// 요리 계획 불러오기
+function loadCookingPlan() {
+  try {
+    const saved = localStorage.getItem(COOKING_PLAN_STORAGE_KEY)
+    if (saved) {
+      const planData = JSON.parse(saved)
+      selectedCounts.value = planData.selectedCounts || {}
+      return true
+    }
+  } catch (error) {
+    console.warn('Failed to load cooking plan:', error)
+  }
+  return false
+}
+
+// 요리 계획 초기화
+function resetCookingPlan() {
+  selectedCounts.value = {}
+  try {
+    localStorage.removeItem(COOKING_PLAN_STORAGE_KEY)
+  } catch (error) {
+    console.warn('Failed to reset cooking plan:', error)
+  }
+}
 
 // 그룹에서 요리 레시피만 평탄화
 const cookRecipesFlat = computed<Recipe[]>(() => {
@@ -172,16 +231,22 @@ function handleImageError(e: Event) {
 
 function onChangeCount(id: string, count: number) {
   selectedCounts.value[id] = count
+  // 변경 시 자동 저장
+  saveCookingPlan()
 }
 
 function removeSelected(recipeId: string) {
   selectedCounts.value[recipeId] = 0
+  // 제거 시에도 자동 저장
+  saveCookingPlan()
 }
 
-// 페이지 스크롤 방지
+// 페이지 스크롤 방지 및 저장된 계획 불러오기
 onMounted(() => {
   document.body.style.overflow = 'hidden'
   document.documentElement.style.overflow = 'hidden'
+  // 저장된 요리 계획 불러오기
+  loadCookingPlan()
 })
 
 onUnmounted(() => {
