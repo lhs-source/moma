@@ -84,6 +84,27 @@ export const useReportStore = defineStore('report', {
         console.error('Error fetching reports:', error)
         throw error
       }
+    },
+
+    /**
+     * # 제보 단건 조회
+     * 
+     * @param id - 제보 ID
+     */
+    async fetchReportById(id: string) {
+      try {
+        const { data, error } = await supabase
+          .from('reports')
+          .select('*')
+          .eq('id', id)
+          .single()
+
+        if (error) throw error
+        return data as Report
+      } catch (error) {
+        console.error('Error fetching report by id:', error)
+        throw error
+      }
     }
   }
 })

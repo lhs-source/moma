@@ -38,6 +38,16 @@ const router = createRouter({
       name: 'report',
       component: () => import('../views/report/index.vue'),
     },
+    {
+      path: '/report/list',
+      name: 'report-list',
+      component: () => import('../views/report/list.vue'),
+    },
+    {
+      path: '/report/:id',
+      name: 'report-detail',
+      component: () => import('../views/report/detail.vue'),
+    },
   ],
 })
 
