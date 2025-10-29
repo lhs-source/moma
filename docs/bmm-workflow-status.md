@@ -21,24 +21,24 @@ PHASE_4_COMPLETE: false
 
 ## Next Action
 
-NEXT_ACTION: Implement Story 3.1 - 제보 폼 UI 설계 및 구현
+NEXT_ACTION: Implement Story 3.3 - 제보 내역 확인 페이지
 NEXT_COMMAND: story-implementation
 NEXT_AGENT: dev
 
 ## Story Backlog
 
-ORDERED_STORY_LIST: [3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7]
-TODO_STORY: 3.1
-TODO_TITLE: 제보 폼 UI 설계 및 구현
+ORDERED_STORY_LIST: [3.3, 3.4, 3.5, 3.6, 3.7]
+TODO_STORY: 3.3
+TODO_TITLE: 제보 내역 확인 페이지
 IN_PROGRESS_STORY: 
 IN_PROGRESS_TITLE: 
-BACKLOG_COUNT: 7
+BACKLOG_COUNT: 5
 DONE_COUNT: 7
 TOTAL_STORIES: 17
 
 ## Completed Stories
 
-COMPLETED_STORY_LIST: [1.2, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18]
+COMPLETED_STORY_LIST: [1.2, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 3.1, 3.2]
 
 ---
 

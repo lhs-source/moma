@@ -18,9 +18,16 @@
           </p>
         </CardHeader>
         <CardContent>
-          <ReportForm @submit="handleSubmit" />
+          <ReportForm @submit="handleSubmit" :disabled="submitting" />
         </CardContent>
       </Card>
+    </div>
+
+    <!-- 제출 메시지 표시 -->
+    <div v-if="submitMessage" class="max-w-2xl mx-auto text-center">
+      <p :class="submitMessage.includes('성공') ? 'text-green-600' : 'text-red-600'">
+        {{ submitMessage }}
+      </p>
     </div>
 
     <!-- 제보 가이드 링크 -->
@@ -92,22 +99,42 @@ import Button from '@/components/ui/Button.vue'
 
 import ReportForm from '@/views/report/components/ReportForm.vue'
 import type { ReportFormData } from './types.ts'
+import { useReportStore } from '@/stores/report'
 
 defineOptions({ name: 'ReportView' })
 
+// Report Store
+const reportStore = useReportStore()
+
 // 제보 가이드 모달 상태
 const showGuide = ref(false)
+const submitting = ref(false)
+const submitMessage = ref('')
 
 /**
  * # 제보 제출 핸들러
  * 
- * 제보 폼에서 제출된 데이터를 처리
+ * 제보 폼에서 제출된 데이터를 Supabase에 저장
  * 
  * @param reportData - 제보 데이터
  */
-function handleSubmit(reportData: ReportFormData): void {
-  console.log('제보 제출:', reportData)
-  // TODO: 실제 제보 데이터 저장 로직 구현
-  // 현재는 콘솔에 출력만 함
+async function handleSubmit(reportData: ReportFormData): Promise<void> {
+  submitting.value = true
+  submitMessage.value = ''
+  
+  try {
+    await reportStore.submitReport(reportData)
+    submitMessage.value = '제보가 성공적으로 제출되었습니다!'
+    
+    // 3초 후 메시지 초기화
+    setTimeout(() => {
+      submitMessage.value = ''
+    }, 3000)
+  } catch (error) {
+    console.error('Error submitting report:', error)
+    submitMessage.value = '제보 제출 중 오류가 발생했습니다. 다시 시도해주세요.'
+  } finally {
+    submitting.value = false
+  }
 }
 </script>

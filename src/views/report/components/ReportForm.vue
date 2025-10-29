@@ -58,11 +58,11 @@
 
     <!-- 제출 버튼 -->
     <div class="flex justify-end space-x-2">
-      <Button type="button" variant="outline" @click="resetForm">
+      <Button type="button" variant="outline" @click="resetForm" :disabled="props.disabled">
         초기화
       </Button>
-      <Button type="submit" :disabled="!isFormValid">
-        제보하기
+      <Button type="submit" :disabled="!isFormValid || props.disabled">
+        {{ props.disabled ? '제출 중...' : '제보하기' }}
       </Button>
     </div>
   </form>
@@ -100,8 +100,12 @@ import type { ReportFormData, ReportType, ReportCategory } from '../types'
 
 // Props
 interface Props {
-  // 현재는 props 없음
+  disabled?: boolean
 }
+
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false
+})
 
 // Emits
 interface Emits {
