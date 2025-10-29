@@ -107,10 +107,12 @@ const activeTab = ref<TabValue>(defaultTab)
  * 
  * @param value - 선택된 탭 값
  */
-function handleTabChange(value: TabValue): void {
-  activeTab.value = value
-  // URL query parameter 업데이트 (replace로 히스토리에 남지 않도록)
-  router.replace({ query: { ...route.query, tab: value } })
+function handleTabChange(value: string): void {
+  if (validTabValues.includes(value as TabValue)) {
+    activeTab.value = value as TabValue
+    // URL query parameter 업데이트 (replace로 히스토리에 남지 않도록)
+    router.replace({ query: { ...route.query, tab: value } })
+  }
 }
 
 /**
