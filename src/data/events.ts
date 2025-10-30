@@ -87,6 +87,38 @@ export const maintenanceEvents: GameEvent[] = [
 // 게임 이벤트
 export const inGameEvents: GameEvent[] = [
   {
+    id: "event-025",
+    name: "Trick or 변신! 온타임",
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-10-30T12:00:00'),
+    endDate: new Date('2025-11-02T23:59:00'),
+    description: "매일 접속 시 변신 물약 등 다양한 아이템 지급 이벤트"
+  },
+  {
+    id: "event-026",
+    name: "괴도와 파수꾼",
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-10-30T12:00:00'),
+    endDate: new Date('2025-11-13T05:59:00'),
+    description: "참여형 미니 게임 이벤트, 참여 완료 보상 지급"
+  },
+  {
+    id: "event-027",
+    name: "한 번 더! 할로윈 고양이! 발바닥 스탬프!",
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-10-30T12:00:00'),
+    endDate: new Date('2025-11-13T05:59:00'),
+    description: "각종 미션 참여로 이벤트 스탬프와 보상 획득"
+  },
+  {
+    id: "event-028",
+    name: "할로윈의 한 컷! 스크린샷 콘테스트",
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-10-30T12:00:00'),
+    endDate: new Date('2025-11-12T23:59:00'),
+    description: "할로윈 기념 스크린샷 콘테스트, 추첨 보상 지급"
+  },
+  {
     id: 'event-020',
     name: '암흑술사 클래스 성장 지원',
     type: EVENT_TYPE.EVENT,
