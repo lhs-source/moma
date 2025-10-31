@@ -48,6 +48,11 @@ const router = createRouter({
       name: 'report-detail',
       component: () => import('../views/report/detail.vue'),
     },
+    {
+      path: '/rune',
+      name: 'rune',
+      component: () => import('../views/rune/index.vue'),
+    },
   ],
 })
 

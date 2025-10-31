@@ -38,10 +38,10 @@ TOTAL_STORIES: 17
 
 ## Completed Stories
 
-COMPLETED_STORY_LIST: [1.2, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 3.1, 3.2]
+COMPLETED_STORY_LIST: [1.2, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 2.1, 3.1, 3.2]
 
 ---
 
-_Last Updated: 2025-10-29_
+_Last Updated: 2025-10-30_
 _Status Version: 2.1_
 

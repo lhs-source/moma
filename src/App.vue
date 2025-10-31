@@ -41,6 +41,11 @@ import ThemeToggle from '@/components/ui/theme-toggle.vue'
               active-class="text-foreground">
               이벤트 캘린더
             </RouterLink>
+            <RouterLink to="/rune"
+              class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              active-class="text-foreground">
+              룬 도감
+            </RouterLink>
             <ThemeToggle />
           </div>
         </nav>
