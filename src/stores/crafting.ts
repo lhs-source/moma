@@ -19,11 +19,32 @@ interface SelectedItems {
   [recipeId: string]: SelectedItem
 }
 
+const MEMBERSHIP_STORAGE_KEY = 'crafting-membership'
+
+// 로컬 스토리지에서 멤버십 상태 로드
+function loadMembershipFromStorage(): boolean {
+  try {
+    const stored = localStorage.getItem(MEMBERSHIP_STORAGE_KEY)
+    return stored === 'true'
+  } catch {
+    return false
+  }
+}
+
+// 로컬 스토리지에 멤버십 상태 저장
+function saveMembershipToStorage(enabled: boolean): void {
+  try {
+    localStorage.setItem(MEMBERSHIP_STORAGE_KEY, String(enabled))
+  } catch {
+    // 저장 실패 시 무시
+  }
+}
+
 export const useCraftingStore = defineStore('crafting', () => {
   // State
   const selectedItems = ref<SelectedItems>({})
   const selectedCategory = ref<string | null>(null)
-  const isMembershipEnabled = ref(false) // 멤버십 활성화 상태
+  const isMembershipEnabled = ref(loadMembershipFromStorage()) // 멤버십 활성화 상태 (로컬 스토리지에서 로드)
   const activeTab = ref<CraftingTabType>('processing') // 현재 활성화된 탭
 
   // Getters
@@ -160,10 +181,12 @@ export const useCraftingStore = defineStore('crafting', () => {
   
   function toggleMembership() {
     isMembershipEnabled.value = !isMembershipEnabled.value
+    saveMembershipToStorage(isMembershipEnabled.value)
   }
   
   function setMembership(enabled: boolean) {
     isMembershipEnabled.value = enabled
+    saveMembershipToStorage(enabled)
   }
   
   function clearSelectedItems() {

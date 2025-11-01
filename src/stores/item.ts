@@ -1,16 +1,219 @@
 import { items } from '@/data/items'
-import type { Item } from '@/data/schemas/item'
+import { locations } from '@/data/locations'
+import { ITEM_CATEGORY, type Item } from '@/data/schemas/item'
+import type { EnrichedItem } from '@/data/schemas/enrichedItem'
+import { RECIPE_CATEGORY } from '@/data/schemas/recipe'
+import { itemUsageIndex } from '@/utils/itemUsageIndex'
+import { useRecipesStore } from './recipes'
+import { useTradeStore } from './trade'
+import { useNpcStore } from './npc'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useItemStore = defineStore('item', () => {
   const itemList = ref<Item[]>([])
+  const enrichedItemList = ref<EnrichedItem[]>([])
 
   /**
    * 아이템 리스트를 파일로부터 가져온다
+   * 
+   * **주의**: enrichItemList()를 호출하기 전에 다른 store들이 먼저 초기화되어야 함
+   * 
+   * ### 초기화 순서 (중요!)
+   * ```typescript
+   * // 1. 의존하는 store들 먼저 초기화
+   * recipesStore.fetchRecipeList()
+   * tradeStore.fetchTradeList()
+   * npcStore.fetchNpcList()
+   * 
+   * // 2. itemStore 초기화
+   * itemStore.fetchItemList()
+   * 
+   * // 3. enriched 데이터 생성
+   * itemStore.enrichItemList()
+   * ```
    */
   function fetchItemList() {
     itemList.value = items
+  }
+
+  /**
+   * enriched 데이터를 생성한다
+   * 
+   * 다른 store의 데이터를 사용하므로 반드시 다른 store들이 먼저 초기화되어야 함
+   * 
+   * ### Store 의존성
+   * - `recipesStore.recipeList`: 요리/가공/제작 레시피 정보
+   * - `tradeStore.tradeList`: 교환 정보
+   * - `npcStore.enrichedNPCList`: NPC 정보
+   * 
+   * ### 처리 내용
+   * 각 아이템에 대해 다음 정보를 계산하여 EnrichedItem 생성:
+   * - 사용처 타입 목록
+   * - 교환 관련 정보 (교환에 필요, 교환으로 얻기)
+   * - 레시피 관련 정보 (요리, 가공, 제작)
+   * - 재료 사용처 정보
+   */
+  function enrichItemList() {
+    enrichedItemList.value = enrichItems(items)
+  }
+
+  /**
+   * 아이템에 사용처 정보를 추가하여 EnrichedItem으로 변환
+   */
+  function enrichItems(itemsToEnrich: Item[]): EnrichedItem[] {
+    return itemsToEnrich.map(item => enrichItem(item))
+  }
+
+  /**
+   * 개별 아이템을 EnrichedItem으로 변환
+   * 
+   * ### Store 사용
+   * - `recipesStore`: 레시피 정보 조회
+   * - `tradeStore`: 교환 정보 조회
+   * - `npcStore`: NPC 정보 조회
+   * 
+   * ### 직접 Import 사용
+   * - `items`: 아이템 이름 조회용 (순환 참조 방지)
+   * - `locations`: 위치 이름 조회용 (정적 데이터)
+   * - `itemUsageIndex`: 레시피/교환 사용처 빠른 조회용
+   */
+  function enrichItem(item: Item): EnrichedItem {
+    // 다른 store들을 가져옴 (store 기반 데이터 접근)
+    const recipesStore = useRecipesStore()
+    const tradeStore = useTradeStore()
+    const npcStore = useNpcStore()
+    
+    const usage = itemUsageIndex.getItemUsage(item.id)
+    
+    // 교환에 필요한 정보
+    const requiredForTrades = usage?.usageTypes.trades.map(trade => ({
+      tradeId: trade.tradeId,
+      npcName: trade.npcName,
+      locationName: trade.locationName,
+      receiveItemName: trade.receiveItemName,
+      receiveQuantity: trade.receiveQuantity,
+      giveQuantity: trade.giveQuantity
+    })) || []
+
+    // 교환으로 얻을 수 있는 정보
+    const obtainableFromTrades = tradeStore.tradeList
+      .filter(trade => trade.receiveItemId === item.id && trade.isEnabled)
+      .map(trade => {
+        const npc = npcStore.enrichedNPCList.find(n => n.id === trade.npcId)
+        const location = locations.find(l => l.id === npc?.locationId)
+        const giveItem = items.find(i => i.id === trade.giveItemId)
+
+        return {
+          id: trade.id,
+          npcName: npc?.name || '알 수 없음',
+          locationName: location?.name || '알 수 없음',
+          giveItemName: giveItem?.name || trade.giveItemId,
+          giveQuantity: trade.giveQuantity,
+          receiveQuantity: trade.receiveQuantity
+        }
+      })
+
+    // 요리 레시피
+    const cookingRecipes = recipesStore.recipeList.filter(
+      recipe => recipe.resultItemId === item.id && recipe.category === RECIPE_CATEGORY.COOK
+    )
+
+    // 요리 재료로 사용
+    const usedInCookingRecipes = usage?.usageTypes.recipes
+      .filter(r => {
+        const recipe = recipesStore.getRecipeById(r.recipeId)
+        return recipe?.category === RECIPE_CATEGORY.COOK
+      })
+      .map(r => ({
+        recipeId: r.recipeId,
+        recipeName: r.recipeName || '',
+        resultItemName: r.resultItemName,
+        resultQuantity: r.resultQuantity,
+        quantity: r.quantity
+      })) || []
+
+    // 가공 레시피
+    const processingRecipes = recipesStore.recipeList.filter(
+      recipe => recipe.resultItemId === item.id && (
+        recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
+        recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
+        recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
+        recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
+        recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE
+      )
+    )
+
+    // 가공 재료로 사용
+    const usedInProcessingRecipes = recipesStore.recipeList
+      .filter(recipe => 
+        (recipe.category === RECIPE_CATEGORY.PROCESS_METAL ||
+         recipe.category === RECIPE_CATEGORY.PROCESS_WOOD ||
+         recipe.category === RECIPE_CATEGORY.PROCESS_LEATHER ||
+         recipe.category === RECIPE_CATEGORY.PROCESS_FABRIC ||
+         recipe.category === RECIPE_CATEGORY.PROCESS_MEDICINE) &&
+        recipe.requiredItems.some(material => material.itemId === item.id)
+      )
+      .map(recipe => {
+        const material = recipe.requiredItems.find(m => m.itemId === item.id)!
+        const resultItem = items.find(i => i.id === recipe.resultItemId)
+        return {
+          recipeId: recipe.id,
+          recipeName: recipe.name,
+          resultItemName: resultItem?.name || recipe.resultItemId,
+          resultQuantity: recipe.resultQuantity || 1,
+          quantity: material.quantity,
+          category: recipe.category
+        }
+      })
+
+    // 제작 레시피
+    const craftingRecipes = recipesStore.recipeList.filter(
+      recipe => recipe.resultItemId === item.id && 
+        recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM
+    )
+
+    // 제작 재료로 사용
+    const usedInCraftingRecipes = recipesStore.recipeList
+      .filter(recipe => 
+        recipe.category === RECIPE_CATEGORY.CRAFTING_ITEM &&
+        recipe.requiredItems.some(material => material.itemId === item.id)
+      )
+      .map(recipe => {
+        const material = recipe.requiredItems.find(m => m.itemId === item.id)!
+        const resultItem = items.find(i => i.id === recipe.resultItemId)
+        return {
+          recipeId: recipe.id,
+          recipeName: recipe.name,
+          resultItemName: resultItem?.name || recipe.resultItemId,
+          resultQuantity: recipe.resultQuantity || 1,
+          quantity: material.quantity,
+          category: recipe.category
+        }
+      })
+
+    // 사용처 타입 목록 생성
+    const usageTypes: string[] = []
+    if (usage?.usageTypes.recipes.length) usageTypes.push('레시피')
+    if (usage?.usageTypes.trades.length) usageTypes.push('교환')
+    if (usage?.usageTypes.purchases.length) usageTypes.push('구매')
+    if (cookingRecipes.length > 0 || processingRecipes.length > 0 || craftingRecipes.length > 0) {
+      usageTypes.push('제작')
+    }
+    if (obtainableFromTrades.length > 0) usageTypes.push('교환으로 얻을 수 있음')
+
+    return {
+      ...item,
+      usageTypes,
+      requiredForTrades,
+      obtainableFromTrades,
+      cookingRecipes,
+      usedInCookingRecipes,
+      processingRecipes,
+      usedInProcessingRecipes,
+      craftingRecipes,
+      usedInCraftingRecipes
+    }
   }
 
   /**
@@ -34,12 +237,12 @@ export const useItemStore = defineStore('item', () => {
   }
 
   /**
-   * 카테고리별로 아이템을 그룹화
+   * 카테고리별로 아이템을 그룹화 (EnrichedItem 사용)
    */
   const itemsByCategory = computed(() => {
-    const grouped: Record<string, Item[]> = {}
+    const grouped: Record<string, EnrichedItem[]> = {}
     
-    itemList.value.forEach(item => {
+    enrichedItemList.value.forEach(item => {
       const category = item.category || '기타'
       if (!grouped[category]) {
         grouped[category] = []
@@ -52,26 +255,22 @@ export const useItemStore = defineStore('item', () => {
 
   /**
    * 모든 카테고리 목록
+   * - ITEM_CATEGORY 를 목록으로 변환 
    */
   const categories = computed(() => {
-    const categorySet = new Set<string>()
-    itemList.value.forEach(item => {
-      if (item.category) {
-        categorySet.add(item.category)
-      }
-    })
-    return Array.from(categorySet).sort()
+    return Object.values(ITEM_CATEGORY).sort()
   })
 
   /**
-   * 필터링된 아이템 목록
+   * 필터링된 아이템 목록 (EnrichedItem 반환)
    */
   function getFilteredItems(filters: {
     searchQuery?: string
     category?: string
     usageType?: string
-  }) {
-    let filtered = itemList.value
+    schema?: string
+  }): EnrichedItem[] {
+    let filtered = enrichedItemList.value
 
     // 검색어 필터
     if (filters.searchQuery?.trim()) {
@@ -87,20 +286,58 @@ export const useItemStore = defineStore('item', () => {
       filtered = filtered.filter(item => item.category === filters.category)
     }
 
-    // 사용처 필터 (이 부분은 itemUsageIndex와 연동 필요)
+    // 사용처 필터
     if (filters.usageType) {
-      // TODO: itemUsageIndex와 연동하여 구현
+      filtered = filtered.filter(item => item.usageTypes.includes(filters.usageType!))
+    }
+
+    // 스키마 필터 (새로 추가)
+    if (filters.schema) {
+      filtered = filtered.filter(item => item.category === filters.schema)
     }
 
     return filtered
   }
 
+  /**
+   * ID로 EnrichedItem 조회
+   */
+  function getEnrichedItemById(id: string): EnrichedItem | undefined {
+    return enrichedItemList.value.find(item => item.id === id)
+  }
+
+  /**
+   * 스키마별 아이템 개수 계산
+   * 
+   * 각 스키마(카테고리)별로 아이템 개수를 계산하여 반환
+   * 
+   * @returns {ComputedRef<Record<string, number>>} 스키마별 아이템 개수
+   */
+  const schemaCounts = computed(() => {
+    const counts: Record<string, number> = {}
+    
+    // 전체 개수
+    counts[''] = enrichedItemList.value.length
+    
+    // 각 스키마별 개수
+    enrichedItemList.value.forEach(item => {
+      const category = item.category || '기타'
+      counts[category] = (counts[category] || 0) + 1
+    })
+    
+    return counts
+  })
+
   return {
     itemList,
+    enrichedItemList,
     itemsByCategory,
     categories,
+    schemaCounts,
     fetchItemList,
+    enrichItemList,
     getItemById,
+    getEnrichedItemById,
     searchItems,
     getFilteredItems
   }
