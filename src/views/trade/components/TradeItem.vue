@@ -32,6 +32,11 @@ const isTradeDisabled = computed(() => {
   return tradeStore.disabledTrades.has(props.trade.id)
 })
 
+// NPC를 이름으로 찾기
+const npcInfo = computed(() => {
+  return npcStore.enrichedNPCList.find(npc => npc.name === props.trade.npc)
+})
+
 function getLimitText(trade: Trade) {
   switch (trade.limitType) {
     case 'daily':
@@ -74,7 +79,7 @@ function getLimitText(trade: Trade) {
           {{ itemStore.getItemById(trade.itemId)?.name }} {{ trade.itemQuantity }}개
         </h3>
         <p class="text-sm text-muted-foreground" :class="{ 'font-semibold': tradeStore.favoriteTrades.has(trade.id) }">
-          {{ trade.npc }} ({{ npcStore.getNpcByName(trade.npc)?.description }})<br>
+          {{ trade.npc }} ({{ npcInfo?.description }})<br>
           <span class="flex items-center gap-1">
             <img :src="itemStore.getItemById(trade.requiredItemId)?.imageUrl"
               :alt="itemStore.getItemById(trade.requiredItemId)?.name" class="w-4 h-4 object-contain" />

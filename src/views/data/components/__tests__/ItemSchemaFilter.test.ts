@@ -2,15 +2,16 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ItemSchemaFilter from '../ItemSchemaFilter.vue'
 import { ITEM_CATEGORY } from '@/data/schemas/item'
+import type { SchemaFilterOption } from '@/composables/useSchemaFilter'
 
 describe('ItemSchemaFilter', () => {
   const defaultProps = {
-    selectedSchema: '',
+    selectedSchema: '' as SchemaFilterOption,
     availableSchemas: [
-      { value: '', label: '전체', count: 150 },
-      { value: ITEM_CATEGORY.MATERIAL, label: '재료', count: 45 },
-      { value: ITEM_CATEGORY.FOOD, label: '음식', count: 30 },
-      { value: ITEM_CATEGORY.POTION, label: '물약', count: 12 }
+      { value: '' as SchemaFilterOption, label: '전체', count: 150 },
+      { value: ITEM_CATEGORY.MATERIAL as SchemaFilterOption, label: '재료', count: 45 },
+      { value: ITEM_CATEGORY.FOOD as SchemaFilterOption, label: '음식', count: 30 },
+      { value: ITEM_CATEGORY.POTION as SchemaFilterOption, label: '물약', count: 12 }
     ],
     schemaCounts: {
       '': 150,
@@ -61,7 +62,7 @@ describe('ItemSchemaFilter', () => {
       const wrapper = mount(ItemSchemaFilter, {
         props: {
           ...defaultProps,
-          selectedSchema: ITEM_CATEGORY.MATERIAL
+          selectedSchema: ITEM_CATEGORY.MATERIAL as SchemaFilterOption
         }
       })
       
@@ -76,7 +77,7 @@ describe('ItemSchemaFilter', () => {
       const wrapper = mount(ItemSchemaFilter, {
         props: {
           ...defaultProps,
-          selectedSchema: ITEM_CATEGORY.MATERIAL
+          selectedSchema: ITEM_CATEGORY.MATERIAL as SchemaFilterOption
         }
       })
       
@@ -113,7 +114,7 @@ describe('ItemSchemaFilter', () => {
       
       await allButton?.trigger('click')
       
-      expect(wrapper.emitted('update:selectedSchema')?.[0]).toEqual([''])
+      expect(wrapper.emitted('update:selectedSchema')?.[0]).toEqual(['' as SchemaFilterOption])
     })
   })
 
@@ -121,10 +122,10 @@ describe('ItemSchemaFilter', () => {
     it('availableSchemas에 count가 없을 때 개수를 표시하지 않아야 함', () => {
       const wrapper = mount(ItemSchemaFilter, {
         props: {
-          selectedSchema: '',
+          selectedSchema: '' as SchemaFilterOption,
           availableSchemas: [
-            { value: '', label: '전체' },
-            { value: ITEM_CATEGORY.MATERIAL, label: '재료' }
+            { value: '' as SchemaFilterOption, label: '전체' },
+            { value: ITEM_CATEGORY.MATERIAL as SchemaFilterOption, label: '재료' }
           ],
           schemaCounts: {}
         }
@@ -137,10 +138,10 @@ describe('ItemSchemaFilter', () => {
     it('availableSchemas에 count가 있으면 그것을 우선 사용해야 함', () => {
       const wrapper = mount(ItemSchemaFilter, {
         props: {
-          selectedSchema: '',
+          selectedSchema: '' as SchemaFilterOption,
           availableSchemas: [
-            { value: '', label: '전체', count: 999 },
-            { value: ITEM_CATEGORY.MATERIAL, label: '재료', count: 45 }
+            { value: '' as SchemaFilterOption, label: '전체', count: 999 },
+            { value: ITEM_CATEGORY.MATERIAL as SchemaFilterOption, label: '재료', count: 45 }
           ],
           schemaCounts: {
             '': 150,

@@ -1,18 +1,12 @@
 <template>
   <div class="space-y-4">
     <!-- 검색 및 필터 -->
-    <ItemFilters 
-      v-model:search-query="searchQuery" 
-      v-model:category="selectedCategory"
-      v-model:usage-type="selectedUsageType" 
-      :categories="itemStore.categories" />
+    <ItemFilters v-model:search-query="searchQuery" v-model:category="selectedCategory"
+      v-model:usage-type="selectedUsageType" :categories="itemStore.categories" />
 
     <!-- 스키마별 필터 -->
-    <ItemSchemaFilter
-      :selected-schema="selectedSchema"
-      :available-schemas="schemaOptions"
-      :schema-counts="itemStore.schemaCounts"
-      @update:selected-schema="handleSchemaChange" />
+    <ItemSchemaFilter :selected-schema="selectedSchema" :available-schemas="schemaOptions"
+      :schema-counts="itemStore.schemaCounts" @update:selected-schema="handleSchemaChange" />
 
     <!-- 결과 개수 표시 -->
     <div class="text-sm text-muted-foreground">
@@ -34,19 +28,14 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-border">
-            <ItemRow 
-              v-for="item in filteredItems" 
-              :key="item.id" 
-              :item="item" />
+            <ItemRow v-for="item in filteredItems" :key="item.id" :item="item" />
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- 빈 결과 메시지 -->
-    <div 
-      v-if="filteredItems.length === 0" 
-      class="text-center py-12 border rounded-lg">
+    <div v-if="filteredItems.length === 0" class="text-center py-12 border rounded-lg">
       <p class="text-muted-foreground">
         검색 조건에 맞는 아이템이 없습니다.
       </p>
@@ -75,7 +64,7 @@ import { useItemStore } from '@/stores/item'
 import { useRecipesStore } from '@/stores/recipes'
 import { useTradeStore } from '@/stores/trade'
 import { useNpcStore } from '@/stores/npc'
-import { useSchemaFilter } from '@/composables/useSchemaFilter'
+import { useSchemaFilter, type SchemaFilterOption } from '@/composables/useSchemaFilter'
 import ItemFilters from './ItemFilters.vue'
 import ItemRow from './ItemRow.vue'
 import ItemSchemaFilter from './ItemSchemaFilter.vue'
@@ -104,7 +93,7 @@ const selectedUsageType = ref('')
  * # searchQuery (디바운싱)
  * 검색어 입력 시 300ms 디바운싱 처리
  */
-let searchTimeout: number | null = null
+let searchTimeout: ReturnType<typeof setTimeout> | null = null
 watch(searchQuery, (newValue) => {
   if (searchTimeout) {
     clearTimeout(searchTimeout)
@@ -121,7 +110,7 @@ watch(searchQuery, (newValue) => {
  * availableSchemas에 개수 정보를 추가
  */
 const schemaOptions = computed(() => {
-  return availableSchemas.value.map(schema => ({
+  return availableSchemas.value.map((schema: { value: SchemaFilterOption; label: string; count?: number }) => ({
     ...schema,
     count: itemStore.schemaCounts[schema.value] || 0
   }))
@@ -180,14 +169,14 @@ onMounted(async () => {
   const recipesStore = useRecipesStore()
   const tradeStore = useTradeStore()
   const npcStore = useNpcStore()
-  
+
   recipesStore.fetchRecipeList()
   tradeStore.fetchTradeList()
   npcStore.fetchNpcList()
-  
+
   // 아이템 데이터 로드
   itemStore.fetchItemList()
-  
+
   // enriched 데이터 생성 (다른 store 데이터 필요)
   itemStore.enrichItemList()
 })

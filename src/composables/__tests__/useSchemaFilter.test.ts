@@ -69,10 +69,10 @@ describe('useSchemaFilter', () => {
 
   describe('resetSchema', () => {
     it('스키마를 전체로 초기화하고 localStorage에 저장해야 함', () => {
-      const { resetSchema, selectedSchema } = useSchemaFilter()
+      const { resetSchema, selectedSchema, updateSchema } = useSchemaFilter()
       
       // 먼저 다른 값으로 설정
-      selectedSchema.value = ITEM_CATEGORY.POTION
+      updateSchema(ITEM_CATEGORY.POTION)
       
       resetSchema()
       

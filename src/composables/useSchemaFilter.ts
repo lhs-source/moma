@@ -1,4 +1,4 @@
-import { ref, computed, readonly } from 'vue'
+import { ref, computed, readonly, type Ref, type ComputedRef } from 'vue'
 import { ITEM_CATEGORY } from '@/data/schemas/item'
 
 /**
@@ -145,6 +145,6 @@ export function useSchemaFilter(): SchemaFilterState {
     selectedSchema: readonly(_selectedSchema),
     updateSchema,
     resetSchema,
-    availableSchemas: readonly(availableSchemas)
+    availableSchemas
   }
 }
