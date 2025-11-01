@@ -12,6 +12,7 @@ export interface EventBar {
   row: number // 행(row) 위치 - 겹치는 이벤트 배치를 위해 사용
   showName: boolean // 이벤트 이름 표시 여부
   isEnding: boolean // 이 주/행에서 이벤트가 실제로 종료되는지 여부 (종료 시각적 효과용)
+  endTimeRatio?: number // 종료일에서 시간에 따른 비율 (0-1, 예: 6시는 0.25). 종료일이 표시 범위 내일 때만 설정
 }
 
 /**
@@ -142,9 +143,29 @@ export function useEventCalendar() {
         
         // 이 주에서 이벤트가 실제로 끝나는지 확인
         const lastDayOfWeek = days[endCol]
-        const isEnding = lastDayOfWeek ? 
-          new Date(lastDayOfWeek.getFullYear(), lastDayOfWeek.getMonth(), lastDayOfWeek.getDate()).getTime() >= eventEnd.getTime() 
+        const lastDayDate = lastDayOfWeek ? 
+          new Date(lastDayOfWeek.getFullYear(), lastDayOfWeek.getMonth(), lastDayOfWeek.getDate())
+          : null
+        const isEnding = lastDayDate ? 
+          lastDayDate.getTime() >= eventEnd.getTime() 
           : false
+        
+        // 종료 시간 비율 계산 (종료일이 표시 범위 내일 때)
+        let endTimeRatio: number | undefined = undefined
+        if (lastDayDate && isEnding) {
+          // 종료일의 시작(00:00:00)부터 종료 시각까지의 비율 계산
+          const dayStart = new Date(lastDayDate)
+          dayStart.setHours(0, 0, 0, 0)
+          const dayEnd = new Date(lastDayDate)
+          dayEnd.setHours(23, 59, 59, 999)
+          
+          // 종료 시각이 이 날짜 범위 내에 있는지 확인
+          if (event.endDate >= dayStart && event.endDate <= dayEnd) {
+            const dayDuration = dayEnd.getTime() - dayStart.getTime()
+            const elapsedTime = event.endDate.getTime() - dayStart.getTime()
+            endTimeRatio = Math.max(0, Math.min(1, elapsedTime / dayDuration))
+          }
+        }
         
         // 이미 추가된 이벤트와 겹치지 않는 row 찾기
         let row = 0
@@ -159,7 +180,8 @@ export function useEventCalendar() {
           endCol,
           row,
           showName,
-          isEnding
+          isEnding,
+          endTimeRatio
         })
       }
     }
@@ -178,6 +200,7 @@ export function useEventCalendar() {
    * 계산식:
    * - left: startCol * colWidth + padding
    * - width: (endCol - startCol + 1) * colWidth - padding * 2
+   *   * 종료일이 표시 범위 내일 경우, endTimeRatio에 따라 마지막 컬럼의 너비 조정
    * - top: topOffset + row * barHeight
    * 
    * @example
@@ -198,7 +221,35 @@ export function useEventCalendar() {
     const { colWidth, padding, topOffset, barHeight } = config
     
     const left = eventBar.startCol * colWidth + padding
-    const width = (eventBar.endCol - eventBar.startCol + 1) * colWidth - padding * 2
+    
+    // 기본 너비: 전체 컬럼 개수 * 컬럼 너비
+    let width: number
+    if (eventBar.startCol === eventBar.endCol) {
+      // 같은 날짜 내에서 시작하고 끝나는 경우
+      if (eventBar.endTimeRatio !== undefined) {
+        // 종료 시간 비율에 따라 너비 조정
+        width = colWidth * eventBar.endTimeRatio - padding * 2
+      } else {
+        // 전체 날짜
+        width = colWidth - padding * 2
+      }
+    } else {
+      // 여러 날짜에 걸치는 경우
+      const fullCols = eventBar.endCol - eventBar.startCol + 1
+      let baseWidth = fullCols * colWidth - padding * 2
+      
+      // 종료 시간 비율이 있으면 마지막 컬럼의 일부만 사용
+      if (eventBar.endTimeRatio !== undefined && eventBar.isEnding) {
+        const lastColWidth = colWidth * eventBar.endTimeRatio
+        baseWidth = baseWidth - colWidth + lastColWidth
+      }
+      
+      width = baseWidth
+    }
+    
+    // 너비가 음수가 되지 않도록 보정
+    width = Math.max(0, width)
+    
     const top = topOffset + eventBar.row * barHeight
     
     return `left: ${left}%; width: ${width}%; top: ${top}px;`
