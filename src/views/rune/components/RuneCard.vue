@@ -1,21 +1,10 @@
 <template>
-  <div
-    class="border rounded-lg p-4 cursor-pointer hover:bg-muted/50 transition-colors"
-    @click="$emit('click')"
-  >
+  <div class="border rounded-lg p-4 cursor-pointer hover:bg-muted/50 transition-colors" @click="$emit('click')">
     <div class="flex items-start gap-3">
       <!-- 룬 이미지 -->
       <div class="w-16 h-16 flex-shrink-0 border rounded bg-muted/50 flex items-center justify-center">
-        <img
-          v-if="rune.image"
-          :src="rune.image"
-          :alt="rune.name"
-          class="w-full h-full object-contain"
-        />
-        <span
-          v-else
-          class="text-xs text-muted-foreground"
-        >
+        <img v-if="rune.image" :src="rune.image" :alt="rune.name" class="w-full h-full object-contain" />
+        <span v-else class="text-xs text-muted-foreground">
           이미지 없음
         </span>
       </div>
@@ -28,16 +17,16 @@
               {{ rune.name }}
             </h3>
             <div class="flex items-center gap-2 mt-1">
-              <span class="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">
+              <span :class="getRuneTypeBadgeClass(rune.type)">
                 {{ rune.type }}
               </span>
-              <span class="text-xs px-2 py-0.5 rounded bg-muted text-muted-foreground">
+              <span :class="getRuneGradeBadgeClass(rune.grade)">
                 {{ rune.grade }}
               </span>
             </div>
           </div>
         </div>
-        
+
         <!-- 효과 미리보기 (최대 2줄) -->
         <p class="text-xs text-muted-foreground mt-2 line-clamp-2">
           {{ rune.effect }}
@@ -61,6 +50,7 @@
  * - 클릭 시 상세 정보 열기
  */
 import type { Rune } from '@/data/equip/weapons'
+import { getRuneTypeBadgeClass, getRuneGradeBadgeClass } from '@/utils/runeUtils'
 
 withDefaults(defineProps<{
   rune: Rune
@@ -70,4 +60,3 @@ defineEmits<{
   click: []
 }>()
 </script>
-

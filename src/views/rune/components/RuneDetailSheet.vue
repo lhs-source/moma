@@ -1,37 +1,22 @@
 <template>
-  <Sheet
-    :open="open"
-    :title="rune?.name || '룬 정보'"
-    @update:open="handleOpenChange"
-  >
-    <div
-      v-if="rune"
-      class="space-y-6"
-    >
+  <Sheet :open="open" :title="rune?.name || '룬 정보'" @update:open="handleOpenChange">
+    <div v-if="rune" class="space-y-6">
       <!-- 룬 기본 정보 -->
       <div class="flex items-start gap-4">
         <!-- 룬 이미지 -->
         <div class="w-24 h-24 flex-shrink-0 border rounded bg-muted/50 flex items-center justify-center">
-          <img
-            v-if="rune.image"
-            :src="rune.image"
-            :alt="rune.name"
-            class="w-full h-full object-contain"
-          />
-          <span
-            v-else
-            class="text-xs text-muted-foreground"
-          >
+          <img v-if="rune.image" :src="rune.image" :alt="rune.name" class="w-full h-full object-contain" />
+          <span v-else class="text-xs text-muted-foreground">
             이미지 없음
           </span>
         </div>
 
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mt-2">
-            <span class="text-sm px-2 py-1 rounded bg-muted text-muted-foreground">
+            <span :class="getRuneTypeBadgeClassLarge(rune.type)">
               {{ rune.type }}
             </span>
-            <span class="text-sm px-2 py-1 rounded bg-muted text-muted-foreground">
+            <span :class="getRuneGradeBadgeClassLarge(rune.grade)">
               {{ rune.grade }}
             </span>
           </div>
@@ -54,11 +39,8 @@
           획득처
         </h3>
         <div class="flex flex-wrap gap-2">
-          <span
-            v-for="source in rune.obtainSources"
-            :key="source"
-            class="text-sm px-2 py-1 rounded bg-muted text-muted-foreground"
-          >
+          <span v-for="source in rune.obtainSources" :key="source"
+            class="text-sm px-2 py-1 rounded bg-muted text-muted-foreground">
             {{ source }}
           </span>
         </div>
@@ -101,6 +83,7 @@
  */
 import type { Rune } from '@/data/equip/weapons'
 import Sheet from '@/components/ui/sheet.vue'
+import { getRuneTypeBadgeClassLarge, getRuneGradeBadgeClassLarge } from '@/utils/runeUtils'
 
 withDefaults(defineProps<{
   open: boolean
@@ -118,4 +101,3 @@ function handleOpenChange(value: boolean) {
   emit('update:open', value)
 }
 </script>
-
