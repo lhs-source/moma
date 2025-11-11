@@ -3,7 +3,71 @@ import { EVENT_TYPE, type GameEvent } from './schemas/event'
 // 점검 일정
 export const maintenanceEvents: GameEvent[] = [
   {
-    id: 'maintenance-009',
+    id: 'maintenance-018',
+    name: '11/13(수) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-13T06:00:00'),
+    endDate: new Date('2025-11-13T010:30:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-017',
+    name: '11/9(일) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-09T06:00:00'),
+    endDate: new Date('2025-11-09T07:35:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-016',
+    name: '11/6(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-06T06:00:00'),
+    endDate: new Date('2025-11-06T09:20:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-015',
+    name: '11/4(화) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-04T15:00:00'),
+    endDate: new Date('2025-11-04T17:30:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-014',
+    name: '11/3(월) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-03T09:00:00'),
+    endDate: new Date('2025-11-03T10:10:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-013',
+    name: '10/31(금) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-10-31T15:00:00'),
+    endDate: new Date('2025-10-31T17:30:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-012',
+    name: '10/30(목) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-10-30T14:40:00'),
+    endDate: new Date('2025-10-30T16:10:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-011',
+    name: '10/30(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-10-30T06:00:00'),
+    endDate: new Date('2025-10-30T10:10:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-010',
     name: '10/23(목) 정기점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-10-23T06:00:00'),
@@ -11,7 +75,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '정기점검',
   },
   {
-    id: 'maintenance-010',
+    id: 'maintenance-009',
     name: '10/17(금) 임시점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-10-17T06:00:00'),
@@ -27,7 +91,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '정기점검',
   },
   {
-    id: 'maintenance-001',
+    id: 'maintenance-007',
     name: '10/1(수) 임시점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-10-01T06:00:00'),
@@ -35,7 +99,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '서버 안정화를 위한 임시 점검',
   },
   {
-    id: 'maintenance-002',
+    id: 'maintenance-006',
     name: '9/30(화) 정기점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-09-30T06:00:00'),
@@ -43,7 +107,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '정기점검',
   },
   {
-    id: 'maintenance-003',
+    id: 'maintenance-005',
     name: '9/28(일) 임시점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-09-28T06:00:00'),
@@ -59,7 +123,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '서버 안정화를 위한 임시 점검',
   },
   {
-    id: 'maintenance-005',
+    id: 'maintenance-003',
     name: '9/26(금) 임시점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-09-26T06:00:00'),
@@ -67,7 +131,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '서버 안정화를 위한 임시 점검',
   },
   {
-    id: 'maintenance-006',
+    id: 'maintenance-002',
     name: '9/25(목) 정기점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-09-25T00:00:00'),
@@ -75,7 +139,7 @@ export const maintenanceEvents: GameEvent[] = [
     description: '정기점검',
   },
   {
-    id: 'maintenance-007',
+    id: 'maintenance-001',
     name: '9/22(일) 임시점검',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-09-22T06:00:00'),
@@ -87,7 +151,39 @@ export const maintenanceEvents: GameEvent[] = [
 // 게임 이벤트
 export const inGameEvents: GameEvent[] = [
   {
-    id: 'event-029',
+    id: 'event-034',
+    name: '모험가 길드의 7일 특별 지원',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-06T09:20:00'), // 점검 후 시작
+    endDate: new Date('2025-11-20T05:59:00'),
+    description: '이벤트 기간 동안 7일간 특별 보상을 받을 수 있는 모험가 길드의 지원 이벤트. 매일 접속하여 다양한 혜택을 받아보세요!',
+  },
+  {
+    id: 'event-033',
+    name: '만들고, 모으고, 꾸미고!',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-06T09:20:00'), // 점검 후
+    endDate: new Date('2025-11-27T05:59:00'),
+    description: '이벤트 기간 동안 다양한 아이템을 만들고, 수집하며, 꾸미는 재미를 경험해보세요!',
+  },
+  {
+    id: 'event-032',
+    name: '꼬박꼬박 일일미션 클리어',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-06T09:20:00'), // 점검 후
+    endDate: new Date('2025-11-20T05:59:00'),
+    description: '이벤트 기간 동안 매일 일일미션을 클리어하고 특별한 보상을 받아보세요.',
+  },
+  {
+    id: 'event-031',
+    name: '가을과 함께! 피크타임!',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-07T00:00:00'),
+    endDate: new Date('2025-11-09T23:59:59'),
+    description: '가을과 함께하는 피크타임! 기간 한정 보상 및 특별 혜택을 만나보세요.',
+  },
+  {
+    id: 'event-030',
     name: '11월 베스트 스텔라그램',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-11-01T06:00:00'),
@@ -95,7 +191,7 @@ export const inGameEvents: GameEvent[] = [
     description: '스텔라 픽에 참여하고 베스트 스텔라그램 50인에 선정되어 특별한 선물을 받아보세요'
   },
   {
-    id: 'event-030',
+    id: 'event-029',
     name: '던바튼이 으스스해졌어요!',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -103,7 +199,7 @@ export const inGameEvents: GameEvent[] = [
     description: '할로윈을 맞아 던바튼에 나타난 포토존에서 미션을 완료하고 다양한 선물을 획득하세요'
   },
   {
-    id: "event-025",
+    id: "event-028",
     name: "Trick or 변신! 온타임",
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-30T12:00:00'),
@@ -111,7 +207,7 @@ export const inGameEvents: GameEvent[] = [
     description: "매일 접속 시 변신 물약 등 다양한 아이템 지급 이벤트"
   },
   {
-    id: "event-026",
+    id: "event-027",
     name: "괴도와 파수꾼",
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-30T12:00:00'),
@@ -119,7 +215,7 @@ export const inGameEvents: GameEvent[] = [
     description: "참여형 미니 게임 이벤트, 참여 완료 보상 지급"
   },
   {
-    id: "event-027",
+    id: "event-026",
     name: "한 번 더! 할로윈 고양이! 발바닥 스탬프!",
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-30T12:00:00'),
@@ -127,7 +223,7 @@ export const inGameEvents: GameEvent[] = [
     description: "각종 미션 참여로 이벤트 스탬프와 보상 획득"
   },
   {
-    id: "event-028",
+    id: "event-025",
     name: "할로윈의 한 컷! 스크린샷 콘테스트",
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-30T12:00:00'),
@@ -135,7 +231,7 @@ export const inGameEvents: GameEvent[] = [
     description: "할로윈 기념 스크린샷 콘테스트, 추첨 보상 지급"
   },
   {
-    id: 'event-020',
+    id: 'event-024',
     name: '암흑술사 클래스 성장 지원',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -143,7 +239,7 @@ export const inGameEvents: GameEvent[] = [
     description: '암흑술사 클래스 성장 지원 이벤트',
   },
   {
-    id: 'event-021',
+    id: 'event-023',
     name: '모험 응원의 7일 출석',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -159,7 +255,7 @@ export const inGameEvents: GameEvent[] = [
     description: '던바튼이 으스스해졌어요! 이벤트',
   },
   {
-    id: 'event-023',
+    id: 'event-021',
     name: '반가워하는 할로윈 고양이! 발바닥 스탬프!',
     type: EVENT_TYPE.EVENT, 
     startDate: new Date('2025-10-16T08:35:00'),
@@ -167,7 +263,7 @@ export const inGameEvents: GameEvent[] = [
     description: '반가워하는 할로윈 고양이! 발바닥 스탬프! 이벤트',
   },
   {
-    id: 'event-024',
+    id: 'event-020',
     name: 'Trick or 변신! 온타임',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -175,7 +271,7 @@ export const inGameEvents: GameEvent[] = [
     description: 'Trick or 변신! 온타임 이벤트',
   },
   {
-    id: 'event-001',
+    id: 'event-019',
     name: 'Google Play 코드퀘스트 기념 페이백',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-30T08:35:00'),
@@ -183,7 +279,7 @@ export const inGameEvents: GameEvent[] = [
     description: 'Google Play 코드퀘스트 기념 페이백 이벤트',
   },
   {
-    id: 'event-002',
+    id: 'event-018',
     name: '추석 전야제 온타임',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-30T08:35:00'),
@@ -191,7 +287,7 @@ export const inGameEvents: GameEvent[] = [
     description: '추석 전야제 특별 온타임 이벤트',
   },
   {
-    id: 'event-003',
+    id: 'event-017',
     name: '10월 베스트 스텔라그램',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-01T06:00:00'),
@@ -199,7 +295,7 @@ export const inGameEvents: GameEvent[] = [
     description: '10월 베스트 스텔라그램 이벤트',
   },
   {
-    id: 'event-004',
+    id: 'event-016',
     name: '팔라딘 업데이트 기념 스크린샷',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -207,7 +303,7 @@ export const inGameEvents: GameEvent[] = [
     description: '팔라딘 업데이트 기념 스크린샷 이벤트',
   },
   {
-    id: 'event-005',
+    id: 'event-015',
     name: '팔라딘 업데이트 기념 이벤트 모아보기',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -215,7 +311,7 @@ export const inGameEvents: GameEvent[] = [
     description: '팔라딘 업데이트 기념 다양한 이벤트 모음',
   },
   {
-    id: 'event-006',
+    id: 'event-014',
     name: '팔라딘 업데이트 기념 롤롤 쿠폰',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -223,7 +319,7 @@ export const inGameEvents: GameEvent[] = [
     description: '팔라딘 업데이트 기념 롤롤 쿠폰 이벤트',
   },
   {
-    id: 'event-007',
+    id: 'event-013',
     name: '모험가 길드의 특별 선물',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -231,7 +327,7 @@ export const inGameEvents: GameEvent[] = [
     description: '돌아온 모험가를 위한 특별 선물 이벤트',
   },
   {
-    id: 'event-008',
+    id: 'event-012',
     name: '에린 버닝 챌린지',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -239,7 +335,7 @@ export const inGameEvents: GameEvent[] = [
     description: '에린 버닝 챌린지 이벤트',
   },
   {
-    id: 'event-009',
+    id: 'event-011',
     name: '에린 버닝 챌린지 MAX',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
@@ -255,7 +351,7 @@ export const inGameEvents: GameEvent[] = [
     description: '14일간 출석 체크 이벤트',
   },
   {
-    id: 'event-011',
+    id: 'event-009',
     name: '알쏭달쏭 보름달 상자',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -263,7 +359,7 @@ export const inGameEvents: GameEvent[] = [
     description: '추석 기념 보름달 상자 이벤트',
   },
   {
-    id: 'event-012',
+    id: 'event-008',
     name: '추석맞이 매일매일 출석',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -271,7 +367,7 @@ export const inGameEvents: GameEvent[] = [
     description: '추석 기간 출석 이벤트',
   },
   {
-    id: 'event-013',
+    id: 'event-007',
     name: '추석맞이 집중 플레이',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -279,7 +375,7 @@ export const inGameEvents: GameEvent[] = [
     description: '추석 기간 집중 플레이 이벤트',
   },
   {
-    id: 'event-014',
+    id: 'event-006',
     name: '추석에는 달토끼 모자!',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -287,7 +383,7 @@ export const inGameEvents: GameEvent[] = [
     description: '달토끼 모자 획득 이벤트',
   },
   {
-    id: 'event-015',
+    id: 'event-005',
     name: '뮤리엘의 특별한 선물',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -295,7 +391,7 @@ export const inGameEvents: GameEvent[] = [
     description: '뮤리엘의 특별 선물 이벤트',
   },
   {
-    id: 'event-016',
+    id: 'event-004',
     name: '만들고, 모으고, 꾸미고!',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-02T05:50:00'),
@@ -303,7 +399,7 @@ export const inGameEvents: GameEvent[] = [
     description: '제작 및 수집 이벤트',
   },
   {
-    id: 'event-017',
+    id: 'event-003',
     name: '개천절 온타임',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-03T00:00:00'),
@@ -311,7 +407,7 @@ export const inGameEvents: GameEvent[] = [
     description: '개천절 특별 온타임 이벤트',
   },
   {
-    id: 'event-018',
+    id: 'event-002',
     name: '행복 가득 한가위 잔칫상',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-04T20:00:00'),
@@ -319,7 +415,7 @@ export const inGameEvents: GameEvent[] = [
     description: '한가위 특별 잔칫상 이벤트',
   },
   {
-    id: 'event-019',
+    id: 'event-001',
     name: '한글날 기념 맞춤 접속 선물',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-09T00:00:00'),
@@ -330,8 +426,29 @@ export const inGameEvents: GameEvent[] = [
 
 // 캐시샵 일정
 export const cashShopEvents: GameEvent[] = [
+  
   {
-    id: 'cash-shop-007',
+    id: 'cash-shop-010',
+    name: '모험가 패스 – 프리미엄 티켓',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-06T09:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: '모험가 패스 시즌의 프리미엄 티켓 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [특별]',
+    packages: [
+      {
+        name: '모험가 패스 – 프리미엄 티켓',
+        price: '29,800 M캐시',
+        cashPoint: '2,980',
+        purchaseLimit: '서버당 1회 구매 가능',
+        items: [
+          { name: '모험가 패스 – 프리미엄 티켓', quantity: '1개' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'cash-shop-009',
     name: '할로윈 스페셜 패키지 & 헤어 패키지 판매',
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date('2025-10-30T00:00:00+09:00'),
@@ -526,7 +643,7 @@ export const cashShopEvents: GameEvent[] = [
     ],
   },
   {
-    id: "elegant_muse_set",
+    id: "cash-shop-007",
     name: "[translate:은은한 끌림: 엘레강트 뮤즈 세트]",
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date("2025-10-30T00:00:00+09:00"),
@@ -534,7 +651,7 @@ export const cashShopEvents: GameEvent[] = [
     description: "판매 기간 : 2025년 10월 30일(목) 점검 후 ~ 2025년 11월 27일(목) 05:59까지"
   },
   {
-    id: "timeless_minuet_set",
+    id: "cash-shop-006",
     name: "[translate:연회의 주인: 타임리스 미뉴엣 세트]",
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date("2025-10-30T00:00:00+09:00"),
@@ -542,7 +659,7 @@ export const cashShopEvents: GameEvent[] = [
     description: "판매 기간 : 2025년 10월 30일(목) 점검 후 ~ 2025년 11월 27일(목) 05:59까지"
   },
   {
-    id: 'cash-shop-006',
+    id: 'cash-shop-005',
     name: '펫 럭키박스 : 햄스터',
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date('2025-10-23T08:15:00'),
@@ -560,7 +677,7 @@ export const cashShopEvents: GameEvent[] = [
     ]
   },
   {
-    id: 'cash-shop-005',
+    id: 'cash-shop-004',
     name: '[암흑술사: 클래스 레벨] 미션 패키지',
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -585,7 +702,7 @@ export const cashShopEvents: GameEvent[] = [
     ]
   },
   {
-    id: 'cash-shop-004',
+    id: 'cash-shop-003',
     name: '가을날 성장! 특별 지원 / 인챈트 증폭 패키지 & 급속 성장! 연속 패키지',
     type: EVENT_TYPE.CASH_SHOP,
     startDate: new Date('2025-10-16T08:35:00'),
