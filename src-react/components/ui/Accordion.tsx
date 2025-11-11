@@ -1,4 +1,4 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react'
+import type { HTMLAttributes, PropsWithChildren, KeyboardEvent } from 'react'
 import { useState } from 'react'
 
 import { cn } from '../../lib/utils'
@@ -17,23 +17,33 @@ export function Accordion({
 }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
-  const trigger = Array.isArray(children)
-    ? children.find((child: any) => child?.props?.slot === 'trigger')
-    : null
-  const content = Array.isArray(children)
-    ? children.find((child: any) => child?.props?.slot === 'content')
-    : null
+  const items = Array.isArray(children) ? children : [children]
+  const trigger = items.find((child: any) => child?.type === AccordionTrigger) ?? null
+  const content = items.find((child: any) => child?.type === AccordionContent) ?? null
+
+  const handleToggle = () => {
+    setIsOpen((prev) => !prev)
+  }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      handleToggle()
+    }
+  }
 
   return (
     <div className={cn('border-b border-border', className)} {...props}>
-      <button
-        type="button"
+      <div
         className={cn(
-          'flex w-full items-center justify-between py-4 font-medium transition-all hover:underline',
+          'flex w-full cursor-pointer select-none items-center justify-between py-4 font-medium transition-all hover:underline',
           '[&[data-state=open]>svg]:rotate-180',
         )}
         data-state={isOpen ? 'open' : 'closed'}
-        onClick={() => setIsOpen((prev) => !prev)}
+        role="button"
+        tabIndex={0}
+        onClick={handleToggle}
+        onKeyDown={handleKeyDown}
       >
         {trigger}
         <svg
@@ -50,7 +60,7 @@ export function Accordion({
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
-      </button>
+      </div>
       {isOpen ? (
         <div className="overflow-hidden text-sm transition-all">
           <div className="pb-4 pt-0">{content}</div>
@@ -58,6 +68,14 @@ export function Accordion({
       ) : null}
     </div>
   )
+}
+
+export function AccordionTrigger({ children }: PropsWithChildren<unknown>) {
+  return <>{children}</>
+}
+
+export function AccordionContent({ children }: PropsWithChildren<unknown>) {
+  return <>{children}</>
 }
 
 export default Accordion

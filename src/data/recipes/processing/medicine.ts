@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from '../../schemas/recipe'
 
 // 약품 가공 레시피
 export const medicineProcessingRecipes: Recipe[] = [

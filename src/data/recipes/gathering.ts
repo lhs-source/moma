@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from '../schemas/recipe'
 
 // 채집 레시피 데이터
 export const gatheringRecipes: Recipe[] = [
