@@ -1,5 +1,5 @@
-import { items } from '@/data/items';
-import type { Item } from '@/data/schemas/item';
+import { items } from '../data/items';
+import type { Item } from '../data/schemas/item';
 
 /**
  * 아이템 이름으로 아이템 정보를 찾는 함수

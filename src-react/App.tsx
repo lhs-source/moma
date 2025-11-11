@@ -2,6 +2,7 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 
 import ThemeToggle from './components/ui/ThemeToggle'
 import ComingSoonPage from './pages/ComingSoonPage'
+import CraftingPage from './pages/CraftingPage'
 import HomePage from './pages/HomePage'
 import TradePage from './pages/TradePage'
 
@@ -51,10 +52,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/trade" element={<TradePage />} />
-          <Route
-            path="/crafting"
-            element={<ComingSoonPage title="제작 시스템" />}
-          />
+          <Route path="/crafting" element={<CraftingPage />} />
           <Route
             path="/data"
             element={<ComingSoonPage title="데이터 목록" />}
