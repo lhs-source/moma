@@ -3,5 +3,6 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./src-react/**/*.{js,ts,jsx,tsx}",
   ],
 }
