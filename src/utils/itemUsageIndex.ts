@@ -1,9 +1,9 @@
-import { items } from '@/data/items'
-import { recipes } from '@/data/recipes'
-import { trades } from '@/data/trade'
-import { purchaseData } from '@/data/purchase'
-import { npcs } from '@/data/npcs'
-import { locations } from '@/data/locations'
+import { items } from '../data/items'
+import { recipes } from '../data/recipes'
+import { trades } from '../data/trade'
+import { purchaseData } from '../data/purchase'
+import { npcs } from '../data/npcs'
+import { locations } from '../data/locations'
 
 export interface ItemUsage {
   itemId: string
