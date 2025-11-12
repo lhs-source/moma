@@ -20,7 +20,9 @@
   "include": [
     "env.d.ts",
     "src-react/**/*",
-    "src/styles/**/*"
+    "src/styles/**/*",
+    "src/data/**/*",
+    "src/utils/**/*"
   ],
   "exclude": [
     "node_modules",
