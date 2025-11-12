@@ -5,6 +5,7 @@ import ComingSoonPage from './pages/ComingSoonPage'
 import CookingPage from './pages/CookingPage'
 import CraftingPage from './pages/CraftingPage'
 import DataPage from './pages/DataPage'
+import EventPage from './pages/EventPage'
 import HomePage from './pages/HomePage'
 import TradePage from './pages/TradePage'
 
@@ -57,10 +58,7 @@ function App() {
           <Route path="/crafting" element={<CraftingPage />} />
           <Route path="/data" element={<DataPage />} />
           <Route path="/cooking" element={<CookingPage />} />
-          <Route
-            path="/events"
-            element={<ComingSoonPage title="이벤트 캘린더" />}
-          />
+          <Route path="/events" element={<EventPage />} />
           <Route
             path="/report"
             element={<ComingSoonPage title="보고서 생성" />}
