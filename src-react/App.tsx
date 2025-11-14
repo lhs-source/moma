@@ -7,6 +7,9 @@ import CraftingPage from './pages/CraftingPage'
 import DataPage from './pages/DataPage'
 import EventPage from './pages/EventPage'
 import HomePage from './pages/HomePage'
+import ReportDetailPage from './pages/ReportDetailPage'
+import ReportListPage from './pages/ReportListPage'
+import ReportPage from './pages/ReportPage'
 import RunePage from './pages/RunePage'
 import TradePage from './pages/TradePage'
 
@@ -60,18 +63,9 @@ function App() {
           <Route path="/data" element={<DataPage />} />
           <Route path="/cooking" element={<CookingPage />} />
           <Route path="/events" element={<EventPage />} />
-          <Route
-            path="/report"
-            element={<ComingSoonPage title="보고서 생성" />}
-          />
-          <Route
-            path="/report/list"
-            element={<ComingSoonPage title="보고서 목록" />}
-          />
-          <Route
-            path="/report/:id"
-            element={<ComingSoonPage title="보고서 상세" />}
-          />
+          <Route path="/report" element={<ReportPage />} />
+          <Route path="/report/list" element={<ReportListPage />} />
+          <Route path="/report/:id" element={<ReportDetailPage />} />
           <Route path="/rune" element={<RunePage />} />
         </Routes>
       </main>
