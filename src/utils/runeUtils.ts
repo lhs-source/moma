@@ -2,7 +2,7 @@
  * 룬 관련 유틸리티 함수
  */
 
-import { RuneType, RuneGrade } from '@/data/equip/weapons'
+import { RuneType, RuneGrade } from '../data/equip/weapons'
 
 /**
  * 룬 타입에 따른 Badge 스타일 클래스 반환

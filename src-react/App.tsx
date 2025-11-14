@@ -7,6 +7,7 @@ import CraftingPage from './pages/CraftingPage'
 import DataPage from './pages/DataPage'
 import EventPage from './pages/EventPage'
 import HomePage from './pages/HomePage'
+import RunePage from './pages/RunePage'
 import TradePage from './pages/TradePage'
 
 const navigation = [
@@ -71,10 +72,7 @@ function App() {
             path="/report/:id"
             element={<ComingSoonPage title="보고서 상세" />}
           />
-          <Route
-            path="/rune"
-            element={<ComingSoonPage title="룬 도감" />}
-          />
+          <Route path="/rune" element={<RunePage />} />
         </Routes>
       </main>
     </div>
