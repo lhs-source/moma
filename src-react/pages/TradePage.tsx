@@ -11,8 +11,11 @@ import {
   type WeeklyTrade,
 } from '../lib/tradeCalculations'
 import Accordion, { AccordionContent, AccordionTrigger } from '../components/ui/Accordion'
+import Button from '../components/ui/Button'
+import Card from '../components/ui/Card'
 import CategoryTitle from '../components/ui/CategoryTitle'
 import Input from '../components/ui/Input'
+import PageTitle from '../components/ui/PageTitle'
 import SectionTitle from '../components/ui/SectionTitle'
 import TradeItem from '../components/trade/TradeItem'
 import WeeklySummaryTable from '../components/trade/WeeklySummaryTable'
@@ -63,62 +66,63 @@ export function TradePage() {
   )
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto space-y-6 px-4 py-8">
+      <PageTitle>물물교환</PageTitle>
+
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div>
-          <div className="mb-4 flex items-center justify-between">
-            <SectionTitle>교환 목록</SectionTitle>
-            <div className="w-64">
-              <Input
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="아이템 이름 검색..."
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-4">
-            {Object.entries(filteredTrades).map(([location, trades]) => (
-              <div key={location} className="rounded-lg border border-border bg-card">
-                <Accordion defaultOpen className="px-4">
-                  <AccordionTrigger>
-                    <div className="mr-4 flex flex-1 items-center justify-between">
-                      <CategoryTitle size="lg">{location}</CategoryTitle>
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation()
-                          toggleLocation(
-                            location,
-                            trades.map((trade) => trade.id),
-                          )
-                        }}
-                        className={[
-                          'rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-                          disabledLocations.has(location)
-                            ? 'bg-slate-200 text-slate-600 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
-                            : 'bg-primary text-primary-foreground hover:bg-primary/90',
-                        ].join(' ')}
-                      >
-                        {disabledLocations.has(location) ? '마을 비활성화' : '마을 활성화'}
-                      </button>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="grid grid-cols-1 gap-2 px-4">
-                      {trades.map((trade, index) => (
-                        <TradeItem key={`${trade.id}-${index}`} trade={trade} />
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </Accordion>
+        <div className="space-y-4">
+          <Card className="p-4">
+            <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <SectionTitle>교환 목록</SectionTitle>
+              <div className="w-full sm:w-64">
+                <Input
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="아이템 이름 검색..."
+                />
               </div>
-            ))}
-          </div>
+            </div>
 
-          {Object.keys(filteredTrades).length === 0 ? (
-            <div className="py-8 text-center text-muted-foreground">검색 결과가 없습니다.</div>
-          ) : null}
+            <div className="space-y-4">
+              {Object.entries(filteredTrades).map(([location, trades]) => (
+                <Card key={location}>
+                  <Accordion defaultOpen>
+                    <AccordionTrigger className="px-4">
+                      <div className="mr-4 flex flex-1 items-center justify-between">
+                        <CategoryTitle size="lg">{location}</CategoryTitle>
+                        <Button
+                          variant={disabledLocations.has(location) ? 'secondary' : 'default'}
+                          size="sm"
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            toggleLocation(
+                              location,
+                              trades.map((trade) => trade.id),
+                            )
+                          }}
+                        >
+                          {disabledLocations.has(location) ? '마을 비활성화' : '마을 활성화'}
+                        </Button>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="space-y-2 px-4 pb-4">
+                        {trades.map((trade, index) => (
+                          <TradeItem key={`${trade.id}-${index}`} trade={trade} />
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </Accordion>
+                </Card>
+              ))}
+            </div>
+
+            {Object.keys(filteredTrades).length === 0 ? (
+              <Card className="py-8">
+                <div className="text-center text-muted-foreground">검색 결과가 없습니다.</div>
+              </Card>
+            ) : null}
+          </Card>
         </div>
 
         <div className="lg:sticky lg:top-4 lg:self-start">

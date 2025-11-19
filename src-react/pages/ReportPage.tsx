@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import Alert, { AlertDescription, AlertTitle } from '../components/ui/Alert'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 import CardContent from '../components/ui/CardContent'
@@ -36,13 +37,13 @@ export function ReportPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="container mx-auto space-y-6 px-4 py-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <PageTitle>데이터 제보</PageTitle>
         <p className="text-sm text-muted-foreground">잘못된 정보나 누락된 데이터를 제보해주세요</p>
       </div>
 
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>제보하기</CardTitle>
@@ -54,28 +55,23 @@ export function ReportPage() {
             <ReportForm onSubmit={handleSubmit} disabled={submitting} />
           </CardContent>
         </Card>
-      </div>
 
-      {submitMessage ? (
-        <div className="mx-auto max-w-2xl text-center">
-          <p
-            className={
-              submitMessage.includes('성공') ? 'text-green-600' : 'text-red-600'
-            }
-          >
-            {submitMessage}
-          </p>
-        </div>
-      ) : null}
+        {submitMessage ? (
+          <Alert variant={submitMessage.includes('성공') ? 'default' : 'destructive'}>
+            <AlertTitle>{submitMessage.includes('성공') ? '성공' : '오류'}</AlertTitle>
+            <AlertDescription>{submitMessage}</AlertDescription>
+          </Alert>
+        ) : null}
 
-      <div className="text-center">
-        <Button variant="outline" onClick={() => setShowGuide(true)}>
-          제보 가이드 보기
-        </Button>
-      </div>
+        {!showGuide ? (
+          <div className="text-center">
+            <Button variant="outline" onClick={() => setShowGuide(true)}>
+              제보 가이드 보기
+            </Button>
+          </div>
+        ) : null}
 
-      {showGuide ? (
-        <div className="mx-auto max-w-2xl">
+        {showGuide ? (
           <Card>
             <CardHeader>
               <CardTitle>제보 가이드</CardTitle>
@@ -106,8 +102,8 @@ export function ReportPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   )
 }

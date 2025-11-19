@@ -8,11 +8,11 @@ export function HomePage() {
     <div className="container mx-auto space-y-8 px-4 py-8">
       <PageTitle className="text-center">마비노기 모바일 도우미</PageTitle>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <Card className="border border-border bg-card p-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <Card className="p-6">
           <TimerInfo />
         </Card>
-        <Card className="border border-border bg-card p-6">
+        <Card className="p-6">
           <TodoList />
         </Card>
       </div>

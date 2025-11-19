@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'
 import { cn } from '../../lib/utils'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, PropsWithChildren {
-  variant?: 'default' | 'outline' | 'ghost' | 'link'
+  variant?: 'default' | 'outline' | 'ghost' | 'link' | 'destructive' | 'secondary'
   size?: 'default' | 'sm' | 'lg' | 'icon'
 }
 
@@ -26,6 +26,8 @@ export function Button({
             variant === 'outline',
           'hover:bg-accent hover:text-accent-foreground': variant === 'ghost',
           'text-primary underline-offset-4 hover:underline': variant === 'link',
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90': variant === 'destructive',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80': variant === 'secondary',
         },
         {
           'h-10 px-4 py-2': size === 'default',

@@ -1,6 +1,9 @@
 import type { TradeType } from '../../../src/data/schemas/trade'
 import { getItemById, getNpcById } from '../../lib/dataAccess'
 import type { TradeListItem } from '../../lib/tradeCalculations'
+import Badge from '../ui/Badge'
+import Button from '../ui/Button'
+import Card from '../ui/Card'
 import { useTradeStore } from '../../stores/tradeStore'
 
 const limitTextMap: Record<TradeType, (count: number) => string> = {
@@ -30,41 +33,44 @@ export function TradeItem({ trade }: { trade: TradeListItem }) {
   const isFavorite = favoriteTrades.has(trade.id)
 
   return (
-    <div
+    <Card
       className={[
-        'flex items-center justify-between rounded-lg border border-border p-3 shadow-sm transition-shadow',
-        isDisabled
-          ? 'bg-slate-50 text-slate-600 dark:border-slate-500 dark:bg-slate-400/50 dark:text-slate-500'
-          : '',
-        isFavorite ? 'bg-green-50 dark:border-green-800 dark:bg-green-500/20' : '',
+        'flex items-center justify-between p-3 transition-shadow',
+        isDisabled ? 'opacity-60' : '',
+        isFavorite ? 'ring-2 ring-yellow-500/50' : '',
         !isDisabled ? 'hover:shadow-md' : '',
-      ].join(' ')}
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
-      <div className="flex items-center gap-3">
-        <button
-          type="button"
+      <div className="flex flex-1 items-center gap-3">
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => toggleFavorite(trade.id)}
           className={[
-            'transition-colors',
-            isFavorite ? 'text-yellow-500 hover:text-yellow-600' : 'text-yellow-500/50 hover:text-yellow-500',
+            'h-8 w-8 shrink-0',
+            isFavorite ? 'text-yellow-500 hover:text-yellow-600' : 'text-muted-foreground hover:text-yellow-500',
           ].join(' ')}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
-        </button>
+        </Button>
         <img
           src={item?.imageUrl}
           alt={item?.name}
-          className="h-10 w-10 object-contain"
+          className="h-10 w-10 shrink-0 object-contain"
         />
-        <div>
+        <div className="min-w-0 flex-1">
           <h3
             className={[
               'font-medium text-foreground',
-              isDisabled ? 'text-slate-600 dark:text-slate-500' : '',
+              isDisabled ? 'text-muted-foreground' : '',
               isFavorite ? 'font-bold' : '',
-            ].join(' ')}
+            ]
+              .filter(Boolean)
+              .join(' ')}
           >
             {item?.name ?? trade.itemId} {trade.itemQuantity}개
           </h3>
@@ -79,24 +85,22 @@ export function TradeItem({ trade }: { trade: TradeListItem }) {
               {requiredItem?.name ?? trade.requiredItemId} {trade.requiredQuantity}개
             </span>
             {trade.limitType ? (
-              <span className="ml-1">({getLimitText(trade.limitType, trade.limitCount)})</span>
+              <Badge variant="outline" className="ml-1 text-xs">
+                {getLimitText(trade.limitType, trade.limitCount)}
+              </Badge>
             ) : null}
           </p>
         </div>
       </div>
-      <button
-        type="button"
+      <Button
+        variant={isDisabled ? 'secondary' : 'default'}
+        size="sm"
         onClick={() => toggleTrade(trade.id)}
-        className={[
-          'rounded-full px-3 py-1.5 text-sm transition-colors',
-          isDisabled
-            ? 'bg-slate-200 text-slate-600 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600'
-            : 'bg-primary text-primary-foreground hover:bg-primary/90',
-        ].join(' ')}
+        className="shrink-0"
       >
         {isDisabled ? '비활성화' : '활성화'}
-      </button>
-    </div>
+      </Button>
+    </Card>
   )
 }
 

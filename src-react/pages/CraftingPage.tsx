@@ -36,14 +36,14 @@ export function CraftingPage() {
   )
 
   return (
-    <div className="crafting-view container mx-auto p-4">
-      <div className="mb-6 flex items-center justify-between">
+    <div className="container mx-auto space-y-6 px-4 py-8">
+      <div className="flex items-center justify-between">
         <PageTitle size="md">가공 시스템</PageTitle>
         <MembershipToggle />
       </div>
 
       <Tabs value={activeTab} onValueChange={handleTabChange} defaultValue="processing" className="w-full">
-        <TabsList className="mb-3 flex gap-2">
+        <TabsList className="mb-4 flex gap-2">
           <TabsTrigger value="processing">재료 가공</TabsTrigger>
           <TabsTrigger value="crafting">제작</TabsTrigger>
         </TabsList>

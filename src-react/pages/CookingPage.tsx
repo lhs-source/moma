@@ -6,6 +6,8 @@ import SelectedRecipeList from '../components/cooking/SelectedRecipeList'
 import MaterialsSummary from '../components/cooking/MaterialsSummary'
 import WeeklyBuyableGrid, { type WeeklyBuyableItem } from '../components/cooking/WeeklyBuyableGrid'
 import WeeklyResetTimer from '../components/cooking/WeeklyResetTimer'
+import Button from '../components/ui/Button'
+import Card from '../components/ui/Card'
 import CategoryTitle from '../components/ui/CategoryTitle'
 import PageTitle from '../components/ui/PageTitle'
 import SectionTitle from '../components/ui/SectionTitle'
@@ -226,45 +228,33 @@ export function CookingPage() {
   }, [])
 
   return (
-    <div className="wrapper flex h-screen flex-col overflow-hidden bg-background">
-      <div className="flex flex-shrink-0 flex-col gap-2 border-b border-border bg-card p-2 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex h-screen flex-col overflow-hidden bg-background">
+      <div className="container mx-auto flex flex-shrink-0 flex-col gap-4 border-b border-border bg-card px-4 py-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <PageTitle size="sm">요리 시뮬레이팅</PageTitle>
-        <div className="flex gap-1">
-          <button
-            type="button"
-            className="rounded border border-border bg-background px-2 py-1 text-xs text-foreground hover:bg-accent"
-            onClick={saveCookingPlan}
-          >
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={saveCookingPlan}>
             저장
-          </button>
-          <button
-            type="button"
-            className="rounded border border-border bg-background px-2 py-1 text-xs text-foreground hover:bg-accent"
-            onClick={loadCookingPlan}
-          >
+          </Button>
+          <Button variant="outline" size="sm" onClick={loadCookingPlan}>
             불러오기
-          </button>
-          <button
-            type="button"
-            className="rounded border border-border bg-destructive px-2 py-1 text-xs text-destructive-foreground hover:bg-destructive/90"
-            onClick={resetCookingPlan}
-          >
+          </Button>
+          <Button variant="destructive" size="sm" onClick={resetCookingPlan}>
             초기화
-          </button>
+          </Button>
         </div>
       </div>
 
-      <div className="main-container grid flex-1 grid-cols-1 gap-2 overflow-hidden p-2 lg:grid-cols-2">
-        <div className="column-container flex flex-col overflow-hidden rounded border border-border bg-card shadow-sm">
-          <div className="flex flex-shrink-0 items-center gap-2 border-b border-border bg-muted/50 p-2">
+      <div className="container mx-auto grid flex-1 grid-cols-1 gap-4 overflow-hidden p-4 lg:grid-cols-2">
+        <Card className="flex flex-col overflow-hidden">
+          <div className="flex flex-shrink-0 items-center gap-2 border-b border-border bg-muted/50 p-4">
             <Input
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="요리 이름 검색..."
-              className="h-8 px-2 py-1 text-xs"
+              className="flex-1"
             />
             <Select value={selectedFacilityLevel} onValueChange={setSelectedFacilityLevel}>
-              <SelectTrigger className="h-8 w-32 px-2 py-1 text-xs">
+              <SelectTrigger className="w-32">
                 <SelectValue>{selectedFacilityLevel ? `Lv.${selectedFacilityLevel}` : '모든 레벨'}</SelectValue>
               </SelectTrigger>
               <SelectContent>
@@ -277,7 +267,7 @@ export function CookingPage() {
               </SelectContent>
             </Select>
           </div>
-          <div className="scroll-container min-h-0 flex-1 overflow-y-auto p-2">
+          <div className="min-h-0 flex-1 overflow-y-auto p-4">
             <RecipeGrid
               recipes={filteredRecipes}
               selectedCounts={selectedCounts}
@@ -287,17 +277,17 @@ export function CookingPage() {
               onChangeCount={handleChangeCount}
             />
           </div>
-        </div>
+        </Card>
 
-        <div className="column-container flex flex-col overflow-hidden rounded border border-border bg-card shadow-sm">
-          <div className="flex flex-shrink-0 items-center border-b border-border bg-muted/50 p-2">
+        <Card className="flex flex-col overflow-hidden">
+          <div className="flex flex-shrink-0 items-center border-b border-border bg-muted/50 p-4">
             <SectionTitle size="sm">필요 재료 및 비용</SectionTitle>
           </div>
-          <div className="scroll-container min-h-0 flex-1 space-y-3 overflow-y-auto p-2">
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
             <WeeklyResetTimer />
 
             <div>
-              <CategoryTitle size="xs" className="mb-1 text-muted-foreground">
+              <CategoryTitle size="xs" className="mb-2 text-muted-foreground">
                 선택한 총 제작 요리 목록
               </CategoryTitle>
               <SelectedRecipeList
@@ -322,7 +312,7 @@ export function CookingPage() {
               handleImageError={handleImageError}
             />
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

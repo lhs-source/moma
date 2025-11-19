@@ -7,6 +7,7 @@ import EventBar from '../components/events/EventBar'
 import EventDetailSheet from '../components/events/EventDetailSheet'
 import MonthCalendar from '../components/events/MonthCalendar'
 import WeekCalendar from '../components/events/WeekCalendar'
+import Card from '../components/ui/Card'
 import PageTitle from '../components/ui/PageTitle'
 import SectionTitle from '../components/ui/SectionTitle'
 import { useCalendarView } from '../hooks/useCalendarView'
@@ -61,7 +62,7 @@ export function EventPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="container mx-auto space-y-6 px-4 py-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <PageTitle>이벤트 & 캐시샵 캘린더</PageTitle>
         <CalendarViewToggle value={calendarView} onValueChange={setView} />
@@ -75,48 +76,42 @@ export function EventPage() {
             <WeekCalendar events={gameEvents} onEventClick={handleEventClick} />
           )}
         </div>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <SectionTitle>진행 중인 일정</SectionTitle>
-          </div>
-          <div className="space-y-3">
-            {activeEvents.map((event) => (
-              <EventBar key={event.id} event={event} onClick={handleEventClick} />
-            ))}
-            {activeEvents.length === 0 ? (
-              <div className="rounded-lg border border-border bg-card py-8 text-center text-muted-foreground">
-                진행 중인 일정이 없습니다
-              </div>
-            ) : null}
-          </div>
+        <div className="space-y-6">
+          <Card className="p-4">
+            <SectionTitle className="mb-4">진행 중인 일정</SectionTitle>
+            <div className="space-y-3">
+              {activeEvents.map((event) => (
+                <EventBar key={event.id} event={event} onClick={handleEventClick} />
+              ))}
+              {activeEvents.length === 0 ? (
+                <div className="py-8 text-center text-muted-foreground">진행 중인 일정이 없습니다</div>
+              ) : null}
+            </div>
+          </Card>
 
-          <div className="mt-8">
-            <SectionTitle className="mb-3">예정된 일정</SectionTitle>
+          <Card className="p-4">
+            <SectionTitle className="mb-4">예정된 일정</SectionTitle>
             <div className="space-y-3">
               {upcomingEvents.map((event) => (
                 <EventBar key={event.id} event={event} onClick={handleEventClick} />
               ))}
               {upcomingEvents.length === 0 ? (
-                <div className="rounded-lg border border-border bg-card py-8 text-center text-muted-foreground">
-                  예정된 일정이 없습니다
-                </div>
+                <div className="py-8 text-center text-muted-foreground">예정된 일정이 없습니다</div>
               ) : null}
             </div>
-          </div>
+          </Card>
 
-          <div className="mt-8">
-            <SectionTitle className="mb-3">종료된 일정</SectionTitle>
+          <Card className="p-4">
+            <SectionTitle className="mb-4">종료된 일정</SectionTitle>
             <div className="space-y-3">
               {pastEvents.map((event) => (
                 <EventBar key={event.id} event={event} onClick={handleEventClick} />
               ))}
               {pastEvents.length === 0 ? (
-                <div className="rounded-lg border border-border bg-card py-8 text-center text-muted-foreground">
-                  종료된 일정이 없습니다
-                </div>
+                <div className="py-8 text-center text-muted-foreground">종료된 일정이 없습니다</div>
               ) : null}
             </div>
-          </div>
+          </Card>
         </div>
       </div>
 

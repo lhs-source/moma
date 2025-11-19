@@ -63,7 +63,7 @@ export function DataPage() {
   )
 
   return (
-    <div className="space-y-6">
+    <div className="container mx-auto space-y-6 px-4 py-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <PageTitle>데이터 목록</PageTitle>
       </div>
