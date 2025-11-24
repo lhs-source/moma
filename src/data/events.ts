@@ -4,8 +4,48 @@ import { EVENT_TYPE, type GameEvent } from './schemas/event'
 export const maintenanceEvents: GameEvent[] = [
   // 
   {
+    id: 'maintenance-023',
+    name: '11/20(목) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-20T13:00:00'),
+    endDate: new Date('2025-11-20T14:10:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-022',
+    name: '11/20(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-20T06:00:00'),
+    endDate: new Date('2025-11-20T08:20:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-021',
+    name: '11/18(화) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-18T15:30:00'),
+    endDate: new Date('2025-11-18T17:20:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-020',
+    name: '11/17(월) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-17T06:00:00'),
+    endDate: new Date('2025-11-17T07:35:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-019',
+    name: '11/15(토) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-15T06:00:00'),
+    endDate: new Date('2025-11-15T08:10:00'),
+    description: '임시점검',
+  },
+  {
     id: 'maintenance-018',
-    name: '11/13(목) 임시점검 안내',
+    name: '11/13(목) 정기점검 안내',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-11-13T06:00:00'),
     endDate: new Date('2025-11-13T11:15:00'),
@@ -377,7 +417,7 @@ export const inGameEvents: GameEvent[] = [
     name: '암흑술사 클래스 성장 지원',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
-    endDate: new Date('2025-11-13T05:59:00'), 
+    endDate: new Date('2025-11-13T05:59:00'),
     description: '암흑술사 클래스 성장 지원 이벤트',
   },
   {
@@ -389,7 +429,7 @@ export const inGameEvents: GameEvent[] = [
     description: '모험 응원의 7일 출석 이벤트',
   },
   {
-    id: 'event-022', 
+    id: 'event-022',
     name: '던바튼이 으스스해졌어요!',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -399,7 +439,7 @@ export const inGameEvents: GameEvent[] = [
   {
     id: 'event-021',
     name: '반가워하는 할로윈 고양이! 발바닥 스탬프!',
-    type: EVENT_TYPE.EVENT, 
+    type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
     endDate: new Date('2025-10-30T05:59:00'),
     description: '반가워하는 할로윈 고양이! 발바닥 스탬프! 이벤트',
@@ -689,7 +729,7 @@ export const cashShopEvents: GameEvent[] = [
       },
     ],
   },
-  
+
   {
     id: 'cash-shop-010',
     name: '모험가 패스 – 프리미엄 티켓',
@@ -956,7 +996,7 @@ export const cashShopEvents: GameEvent[] = [
         items: []
       },
       {
-        name: '[암흑술사: 클래스 레벨] 미션 패키지 2', 
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 2',
         price: '3,900 M캐시',
         cashPoint: '390',
         purchaseLimit: '캐릭터당 1회',
@@ -1014,7 +1054,7 @@ export const cashShopEvents: GameEvent[] = [
         ],
       },
       {
-        name: '[암흑술사: 클래스 레벨] 미션 패키지 2', 
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 2',
         price: '5,500 M캐시',
         cashPoint: '550',
         purchaseLimit: '캐릭터당 1회',
