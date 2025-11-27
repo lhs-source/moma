@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from '../../schemas/recipe'
 
 // 옷감 가공 레시피
 export const fabricProcessingRecipes: Recipe[] = [

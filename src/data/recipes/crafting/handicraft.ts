@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from '../../schemas/recipe'
 
 // 핸디크래프트 - 생활도구 제작 레시피
 export const handicraftRecipes: Recipe[] = [

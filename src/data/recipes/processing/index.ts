@@ -1,4 +1,4 @@
-import { type Recipe } from '@/data/schemas/recipe'
+import type { Recipe } from '../../schemas/recipe'
 import { metalProcessingRecipes } from './metal'
 import { woodProcessingRecipes } from './wood'
 import { leatherProcessingRecipes } from './leather'

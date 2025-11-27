@@ -1,4 +1,4 @@
-import { RECIPE_CATEGORY, type Recipe } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from '../schemas/recipe'
 
 // 드랍 레시피 데이터 (몬스터 사냥으로 얻는 아이템)
 export const dropRecipes: Recipe[] = [

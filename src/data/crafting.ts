@@ -1,4 +1,4 @@
-import { type Recipe, RECIPE_CATEGORY } from '@/data/schemas/recipe'
+import { RECIPE_CATEGORY, type Recipe } from './schemas/recipe'
 import { recipes } from './recipes'
 
 // 제작 계열 레시피 (대장기술, 목공, 매직크래프트, 중갑, 경갑, 천옷 제외)

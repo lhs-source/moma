@@ -1,4 +1,4 @@
-import { type Recipe, type RecipeGroup } from '@/data/schemas/recipe'
+import type { Recipe, RecipeGroup } from './schemas/recipe'
 
 // 분리된 레시피 파일들 import
 import { cookingRecipes } from './recipes/crafting/cooking'

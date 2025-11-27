@@ -3,11 +3,59 @@ import { EVENT_TYPE, type GameEvent } from './schemas/event'
 // 점검 일정
 export const maintenanceEvents: GameEvent[] = [
   {
+    id: 'maintenance-024',
+    name: '11/27(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-27T06:00:00'),
+    endDate: new Date('2025-11-27T12:30:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-023',
+    name: '11/20(목) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-20T13:00:00'),
+    endDate: new Date('2025-11-20T14:10:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-022',
+    name: '11/20(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-20T06:00:00'),
+    endDate: new Date('2025-11-20T08:20:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-021',
+    name: '11/18(화) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-18T15:30:00'),
+    endDate: new Date('2025-11-18T17:20:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-020',
+    name: '11/17(월) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-17T06:00:00'),
+    endDate: new Date('2025-11-17T07:35:00'),
+    description: '임시점검',
+  },
+  {
+    id: 'maintenance-019',
+    name: '11/15(토) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-15T06:00:00'),
+    endDate: new Date('2025-11-15T08:10:00'),
+    description: '임시점검',
+  },
+  {
     id: 'maintenance-018',
-    name: '11/13(수) 임시점검 안내',
+    name: '11/13(목) 정기점검 안내',
     type: EVENT_TYPE.MAINTENANCE,
     startDate: new Date('2025-11-13T06:00:00'),
-    endDate: new Date('2025-11-13T010:30:00'),
+    endDate: new Date('2025-11-13T11:15:00'),
     description: '정기점검',
   },
   {
@@ -151,6 +199,307 @@ export const maintenanceEvents: GameEvent[] = [
 // 게임 이벤트
 export const inGameEvents: GameEvent[] = [
   {
+    id: 'event-051',
+    name: '초록 텃밭으로 어서 오세요',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-28T06:00:00'),
+    endDate: new Date('2025-12-15T05:59:00'),
+    description: [
+      '🌱 ‘주말엔 초록 텃밭’ 미니게임 상세 안내',
+      '',
+      '◼ 미니게임 이벤트 기간: 2025년 11월 28일(금) 오전 6시 ~ 2025년 12월 15일(월) 오전 5시 59분까지',
+      '',
+      '- 던바튼 텃밭의 NPC 노아는 이벤트 기간 내 매주 금요일 오전 6시 ~ 월요일 오전 5시 59분에만 등장합니다.',
+      '',
+      '- 던바튼 텃밭의 NPC 노아의 텃밭 상점에서 ‘텃밭 이용권’ 구매 후 게임 입장이 가능합니다.',
+      '',
+      '* 텃밭 이용권: NPC 노아를 통해 주간 최대 8회 구매가 가능합니다. (만료 기간: 2025년 12월 15일(월) 오전 5시 59분까지)',
+      '',
+      '- 이벤트 기간 내 매주 금요일 오전 6시 ~ 월요일 오전 5시 59분 사이에 입장이 가능하며',
+      '',
+      '  한 주간 캐릭터당 최대 8회까지 입장할 수 있습니다. (매주 금요일 ~ 일요일 총 8회 입장 가능)',
+    ].join('\n'),
+  },
+  {
+    id: 'event-050',
+    name: '너구리네 상회',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-27T12:30:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- NPC 텃밭 상점 너구리의 [이벤트] 탭에서 ‘새싹 방울’을 통해 아이템을 교환할 수 있습니다.',
+      '',
+      '- 이벤트 상점은 이벤트 기간동안 이용하실 수 있습니다.',
+      '',
+      '* NPC 텃밭 상점 너구리는 던바튼 동쪽 성문 다리 우측 상단의 텃밭에서 만나실 수 있습니다.',
+      '',
+      '* 이벤트 기간 내 NPC 텃밭 상점 너구리를 통해 원하는 아이템으로 교환해 주세요.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-049',
+    name: '모험가 길드의 보급 상점',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-27T12:30:00'), // 점검 후
+    endDate: new Date('2025-12-11T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 11일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- [게임 내 메뉴(≡)] → [이벤트] → [모험가 길드의 보급상점 이벤트] 탭에서 이벤트 내용을 확인하실 수 있습니다.',
+      '',
+      '- [게임 내 메뉴(≡)] → [캐시샵] → [패키지] → [블랙위크] 탭에서 모험가 길드의 보급 티켓 2개를 매일 1회 100 골드로 구매하실 수 있습니다.',
+      '',
+      '* 모험가 길드의 보급 티켓은 공용 보관함 이용이 가능합니다.',
+      '',
+      '* 모험가 길드의 보급 티켓 1개 판매 시 10,000골드를 획득하실 수 있습니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-048',
+    name: '꼬박꼬박 일일미션',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-27T12:30:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 우측 상단 [메뉴(≡)] → [이벤트] → [꼬박꼬박 일일미션] 탭에서 미션 진행 완료에 따라 선물을 받으실 수 있습니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-047',
+    name: '검은 돛의 난파선',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-27T12:30:00'), // 점검 후
+    endDate: new Date('2025-12-25T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 25일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 이벤트 기간 동안 우측 상단 [메뉴(≡)] → [이벤트] → [검은 돛의 난파선] 탭에서 이벤트 내용을 확인하실 수 있습니다.',
+      '',
+      '- 이벤트 기간 내에 콜헨 앞바다의 블랙레이와 대화하여 ‘검은 돛의 난파선’ 퀘스트를 진행하시면 이벤트 선물을 획득할 수 있습니다.',
+      '',
+      '- 메인 퀘스트 ‘콜헨으로’를 클리어하면 모든 이벤트 퀘스트 시작 조건이 충족됩니다.',
+      '',
+      '- ‘검은 돛의 난파선’ 퀘스트는 총 4개의 퀘스트로 3개의 일차 퀘스트와 1개의 히든 퀘스트로 구성되어 있습니다.',
+      '',
+      '- 해당 퀘스트는 총 3일차로 진행되며, 3일간 매일 1개의 퀘스트가 오픈됩니다.',
+      '',
+      '* 이전 일차 퀘스트를 완료해야 다음 일차 퀘스트를 진행하실 수 있습니다.',
+      '',
+      '* 히든 퀘스트는 특정 조건을 만족한 캐릭터에만 활성화되며 퀘스트 달성 보상으로 ‘전설 재봉가위’ 5개를 획득하실 수 있습니다.',
+      '',
+      '  (💡힌트 : 완전한 해적의 모습을 갖춘 모험가만이 퀘스트를 진행할 수 있습니다.)',
+    ].join('\n'),
+  },
+  {
+    id: 'event-046',
+    name: '도전, 강력해진 타바르타스',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-12-01T06:00:00'),
+    endDate: new Date('2025-12-18T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 12월 1일(월) 오전 6시 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 우측 상단 [메뉴(≡)] → [이벤트] → [도전, 강력해진 타바르타스] 탭에서 미션 달성에 따라 선물을 받으실 수 있습니다.',
+      '',
+      '- 다양한 레이드에 도전하고 이벤트 선물을 받아보세요.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-045',
+    name: '친구 초대!',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-27T12:30:00'), // 점검 후
+    endDate: new Date('2026-02-12T05:59:00'),
+    description: [
+      '모험가님의 성장을 지원하는 ‘안녕, 에린! 환영의 선물 상자’ 선물을 준비했습니다!',
+      '새로운 동료가 45레벨 달성 시, 두 분 모두에게 특별한 선물을 드립니다.',
+      '',
+      '◼ 이벤트 기간: 2025년 11월 27일(목) 점검 후 ~ 2026년 2월 12일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 위치:',
+      '',
+      '- 우측 상단 [메뉴(≡)] → [친구] → 화면 상단의 ‘친구 초대’ 배너를 통해 이동',
+      '',
+      '* 해당 위치에서 나의 초대 코드를 확인하거나, 친구의 초대 코드를 입력할 수 있습니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-044',
+    name: '고마운 모험가님을 위한 출석 선물',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-20T08:20:00'), // 점검 후 시작
+    endDate: new Date('2025-12-04T05:59:00'),
+    description: [
+      "(2025/11/26(수) 18:00 업데이트) 2025년 11월 27일(목) 정기점검을 통해 '몰리 키링 백팩'의 아이템 교환 가능 기간이 2025년 12월 4일(목) 오전 5시 59분까지 연장됩니다.",
+      "아직 교환하지 못하셨다면 연장된 기간 내 냥쿠폰을 모아 교환해 주세요!",
+      "",
+      '◼ 이벤트 기간: 2025년 11월 20일(목) 점검 후 ~ 2025년 12월 4일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 우측 상단 [메뉴(≡)] → [이벤트] → [고마운 모험가님을 위한 출석 선물] 탭에서 누적 출석 일수에 따라 선물을 받으실 수 있습니다.',
+      '',
+      '- 7일간의 출석 미션에 도전하시고 다양한 아이템을 획득해 보세요.',
+      '',
+      '* 게임에 접속하면 자동으로 출석되며, 출석 가능 시간은 매일 오전 6시에 초기화됩니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-043',
+    name: '모이자, 뭉치자 길드! 이벤트 1탄 1주차',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-17T06:00:00'),
+    endDate: new Date('2025-11-24T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 17일(월) 오전 6시 ~ 2025년 11월 24일(월) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 모이자, 뭉치자 길드! 이벤트 1탄 1주차가 진행됩니다.',
+      '- 자세한 내용은 공식 홈페이지 또는 게임 내 이벤트 탭을 참고해 주세요.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-042',
+    name: '모이자, 뭉치자 길드! 이벤트 1탄 2주차',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-24T06:00:00'),
+    endDate: new Date('2025-12-01T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 24일(월) 오전 6시 ~ 2025년 12월 1일(월) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 모이자, 뭉치자 길드! 이벤트 1탄 2주차가 진행됩니다.',
+      '- 자세한 내용은 공식 홈페이지 또는 게임 내 이벤트 탭을 참고해 주세요.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-041',
+    name: '에린 버닝 챌린지 ULTIMATE 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T09:20:00'), // 점검 후 시작
+    endDate: new Date('2026-01-15T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 13일(목) 점검 후 ~ 2026년 1월 15일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 이벤트 기간 동안 우측 상단 [메뉴(≡)] → [이벤트] → [에린 버닝 챌린지 ULTIMATE] 탭에서 미션 진행 완료에 따라 선물을 받으실 수 있습니다.',
+      '',
+      '- 해당 이벤트는 캐릭터 레벨 70 달성 후 해금되어 진행 가능합니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-040',
+    name: '낚고! 열고! 만들고! 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T09:20:00'), // 점검 후 시작
+    endDate: new Date('2025-12-11T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 12월 11일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 이벤트 기간 동안 우측 상단 [메뉴(≡)] → [이벤트] → [낚고! 열고! 만들고!] 탭에서 미션 진행 완료에 따라 선물을 받으실 수 있습니다.',
+      '',
+      "- 이벤트 기간 동안 낚시 시 정해진 확률에 따라 ‘크리스탈 글래스 피쉬’를 낚을 수 있습니다.",
+      '',
+      "* ‘크리스탈 글래스 피쉬’는 ‘시작의 갑판’ 및 ‘미지의 낚시터’를 제외한 모든 낚시터에서 낚을 수 있습니다.",
+      '',
+      "* ‘크리스탈 글래스 피쉬’는 서버 단위로 일일 최대 5개까지 획득 가능하며, 매일 오전 6시에 초기화됩니다.",
+      '',
+      "* 이벤트 기간 동안 우측 상단 [메뉴(≡)] → [이벤트] → [크리스탈 글래스 피쉬를 찾아서] 탭에서 일일 획득 현황을 확인하실 수 있습니다.",
+    ].join('\n'),
+  },
+  {
+    id: 'event-039',
+    name: '가을 녘 고양이! 발바닥 스탬프 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T09:20:00'), // 점검 후 시작
+    endDate: new Date('2025-11-27T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 11월 27일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      "- 우측 상단 [메뉴(≡)] → [이벤트] → [가을 녘 고양이! 발바닥 스탬프] 탭에서 이벤트 내용을 확인하실 수 있습니다.",
+      '',
+      "- 게임 플레이를 통해 ‘가을과 함께하는 발바닥 스탬프’를 획득하고, 이벤트 상점에서 다양한 아이템과 교환해 보세요.",
+      '',
+      "* 가을과 함께하는 발바닥 스탬프는 서버 단위로 일일 최대 120개까지 획득할 수 있습니다. (매일 오전 6시 초기화)",
+      '',
+      "* 가을과 함께하는 발바닥 스탬프는 같은 서버 내 캐릭터 간 공유됩니다.",
+    ].join('\n'),
+  },
+  {
+    id: 'event-038',
+    name: '도전! 어비스 신규 난이도 등장 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-17T06:00:00'),
+    endDate: new Date('2025-12-04T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 17일(월) 오전 6시 ~ 2025년 12월 4일(목) 오전 5시 59분까지',
+      '',
+      '◼ 이벤트 내용',
+      '',
+      '- 우측 상단 [메뉴(≡)] → [이벤트] → [도전! 어비스 신규 난이도 등장] 탭에서 이벤트 진행 완료에 따라 선물을 받으실 수 있습니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-037',
+    name: '도전, 타바르타스 레이드 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T09:20:00'), // 점검 후 시작
+    endDate: new Date('2025-11-27T05:59:00'),
+    description: [
+      '◼ 이벤트 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 11월 27일(목) 오전 5시 59분까지',
+      '◼ 이벤트 내용',
+      '- 우측 상단 [메뉴(≡)] → [이벤트] → [도전, 타바르타스 레이드] 탭에서 이벤트 진행 완료에 따라 선물을 받으실 수 있습니다.',
+      '- 다양한 레이드에 도전하고 이벤트 선물을 받아보세요.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-036',
+    name: '#마비노기모바일 해시태그 공유 이벤트 안내',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T09:20:00'), // 점검 후 시작
+    endDate: new Date('2025-12-17T23:59:00'),
+    description: [
+      '◾이벤트 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 12월 17일(수) 오후 11시 59분까지',
+      '◾이벤트 내용',
+      '- 이벤트 기간 동안 [#마비노기모바일] 해시태그를 포함하여, SNS에 마비노기 모바일과 관련된 게시글을 등록해 주세요.',
+      '- 이벤트에 참여할 게시글 URL을 이벤트 페이지에 제출해 주시면 참여가 완료됩니다.',
+      '* 이벤트 페이지 바로가기는 11월 13일(목) 점검 후 본 공지에 업데이트 될 예정입니다.',
+    ].join('\n'),
+  },
+  {
+    id: 'event-035',
+    name: '🏆고마워요, 모험가님! 롤롤 쿠폰 안내🏆',
+    type: EVENT_TYPE.EVENT,
+    startDate: new Date('2025-11-13T00:00:00'),
+    endDate: new Date('2025-12-17T23:59:00'),
+    description: [
+      "쿠폰 사용 기간: 2025년 11월 13일(목) ~ 2025년 12월 17일(수) 오후 11시 59분까지",
+      "",
+      "롤롤 쿠폰 번호: THANKSTOYOU"
+    ].join('\n'),
+  },
+  {
     id: 'event-034',
     name: '모험가 길드의 7일 특별 지원',
     type: EVENT_TYPE.EVENT,
@@ -235,7 +584,7 @@ export const inGameEvents: GameEvent[] = [
     name: '암흑술사 클래스 성장 지원',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
-    endDate: new Date('2025-11-13T05:59:00'), 
+    endDate: new Date('2025-11-13T05:59:00'),
     description: '암흑술사 클래스 성장 지원 이벤트',
   },
   {
@@ -247,7 +596,7 @@ export const inGameEvents: GameEvent[] = [
     description: '모험 응원의 7일 출석 이벤트',
   },
   {
-    id: 'event-022', 
+    id: 'event-022',
     name: '던바튼이 으스스해졌어요!',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
@@ -257,7 +606,7 @@ export const inGameEvents: GameEvent[] = [
   {
     id: 'event-021',
     name: '반가워하는 할로윈 고양이! 발바닥 스탬프!',
-    type: EVENT_TYPE.EVENT, 
+    type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-10-16T08:35:00'),
     endDate: new Date('2025-10-30T05:59:00'),
     description: '반가워하는 할로윈 고양이! 발바닥 스탬프! 이벤트',
@@ -331,7 +680,7 @@ export const inGameEvents: GameEvent[] = [
     name: '에린 버닝 챌린지',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
-    endDate: new Date('2025-11-27T05:59:00'),
+    endDate: new Date('2026-01-15T05:59:00'),
     description: '에린 버닝 챌린지 이벤트',
   },
   {
@@ -339,7 +688,7 @@ export const inGameEvents: GameEvent[] = [
     name: '에린 버닝 챌린지 MAX',
     type: EVENT_TYPE.EVENT,
     startDate: new Date('2025-09-25T08:35:00'),
-    endDate: new Date('2025-11-27T05:59:00'),
+    endDate: new Date('2026-01-15T05:59:00'),
     description: '에린 버닝 챌린지 MAX 이벤트',
   },
   {
@@ -426,7 +775,205 @@ export const inGameEvents: GameEvent[] = [
 
 // 캐시샵 일정
 export const cashShopEvents: GameEvent[] = [
-  
+  {
+    id: 'cash-shop-021',
+    name: '패션 럭키박스 : 대양의 기상 : 스토미 캡틴 세트 / 자유의 파도 : 제스티 보야지 세트',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-27T12:30:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-020',
+    name: '[블랙위크] 데카 연속 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-27T12:30:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-019',
+    name: '즐거운 항해 액션! 상자',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-27T12:30:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-018',
+    name: '염색약 선택 상자',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-27T12:30:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-017',
+    name: '검은 바다 악기 선택 상자',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-27T12:30:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 27일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-016',
+    name: '[블랙위크] 스페셜 / 던전 탐험 / 각인 강화 / 연금술 재연소 / 증폭 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-20T08:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 20일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-015',
+    name: '성장! 던전 탐험 / 세공 재설정 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-20T08:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 20일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+  },
+  {
+    id: 'cash-shop-014',
+    name: '파라솔 낚시 의자 연속 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-13T09:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-12-18T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 12월 18일(목) 오전 5시 59분까지',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+    packages: [
+      {
+        name: '파라솔 낚시 의자 연속 패키지',
+        price: '32,000 M캐시',
+        cashPoint: '3,200',
+        purchaseLimit: '서버당 1회',
+        items: [
+          { name: '파라솔 낚시 의자(30일)', quantity: '1개' },
+          { name: '고급 던전 입장권', quantity: '8개' },
+          { name: '루미너스 큐브', quantity: '10개' },
+        ],
+      }
+    ],
+  },
+  {
+    id: 'cash-shop-013',
+    name: '투박한 보석 선택 상자',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-13T09:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-11-27T05:59:00+09:00'),
+    description: [
+      '◼ 판매 기간: 2025년 11월 13일(목) 점검 후 ~ 2025년 11월 27일(목) 오전 5시 59분까지',
+      '',
+      '- 투박한 보석 선택 상자 상품이 한정 판매됩니다.',
+    ].join('\n'),
+    saleLocation: '[게임 내 메뉴] → [캐시샵]',
+    packages: [
+      {
+        name: '투박한 보석 선택 상자',
+        price: '1,000 M캐시',
+        cashPoint: '100',
+        purchaseLimit: '서버당 5회',
+        items: [
+          { name: '투박한 보석 선택 상자', quantity: '1개' }
+        ],
+      }
+    ],
+  },
+  {
+    id: 'cash-shop-012',
+    name: '열정의 모험가 패키지 / 열정의 프리즘 지원 패키지 / 열정의 세공기 지원 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-13T09:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-11-27T05:59:00+09:00'),
+    description: '열정의 모험가, 프리즘 지원, 세공기 지원 패키지 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [패키지]',
+    packages: [
+      {
+        name: '열정의 모험가 패키지',
+        price: '15,000 M캐시',
+        cashPoint: '1,500',
+        purchaseLimit: '서버당 1회',
+        items: [
+          { name: '열정의 모험가 상자', quantity: '1개' },
+          { name: '환생석', quantity: '3개' },
+          { name: '고급 던전 입장권', quantity: '5개' },
+        ],
+      },
+      {
+        name: '열정의 프리즘 지원 패키지',
+        price: '7,800 M캐시',
+        cashPoint: '780',
+        purchaseLimit: '서버당 2회',
+        items: [
+          { name: '프리즘 큐브 세트', quantity: '3개' },
+          { name: '정령의 프리즘', quantity: '5개' },
+        ],
+      },
+      {
+        name: '열정의 세공기 지원 패키지',
+        price: '7,800 M캐시',
+        cashPoint: '780',
+        purchaseLimit: '서버당 2회',
+        items: [
+          { name: '세공 도구(상급)', quantity: '10개' },
+          { name: '마법 세공석', quantity: '5개' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'cash-shop-011',
+    name: '도전! 각인 강화 패키지 / 도전! 촉매 지원 패키지',
+    type: EVENT_TYPE.CASH_SHOP,
+    startDate: new Date('2025-11-13T09:20:00+09:00'), // 점검 후
+    endDate: new Date('2025-11-27T05:59:00+09:00'),
+    description: '도전! 각인 강화, 촉매 지원 패키지 판매',
+    saleLocation: '[게임 내 메뉴] → [캐시샵] → [패키지]',
+    packages: [
+      {
+        name: '도전! 각인 강화 패키지',
+        price: '9,900 M캐시',
+        cashPoint: '990',
+        purchaseLimit: '서버당 2회',
+        items: [
+          { name: '강화 각인서', quantity: '10개' },
+          { name: '금빛 각인 도구', quantity: '1개' },
+        ],
+      },
+      {
+        name: '도전! 촉매 지원 패키지',
+        price: '4,900 M캐시',
+        cashPoint: '490',
+        purchaseLimit: '서버당 2회',
+        items: [
+          { name: '합성 촉매제', quantity: '5개' },
+          { name: '마력의 조각', quantity: '10개' },
+        ],
+      },
+    ],
+  },
+
   {
     id: 'cash-shop-010',
     name: '모험가 패스 – 프리미엄 티켓',
@@ -693,7 +1240,7 @@ export const cashShopEvents: GameEvent[] = [
         items: []
       },
       {
-        name: '[암흑술사: 클래스 레벨] 미션 패키지 2', 
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 2',
         price: '3,900 M캐시',
         cashPoint: '390',
         purchaseLimit: '캐릭터당 1회',
@@ -751,7 +1298,7 @@ export const cashShopEvents: GameEvent[] = [
         ],
       },
       {
-        name: '[암흑술사: 클래스 레벨] 미션 패키지 2', 
+        name: '[암흑술사: 클래스 레벨] 미션 패키지 2',
         price: '5,500 M캐시',
         cashPoint: '550',
         purchaseLimit: '캐릭터당 1회',
