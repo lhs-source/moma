@@ -5,7 +5,7 @@ import { cn } from '../../lib/utils'
 
 export interface AccordionProps
   extends HTMLAttributes<HTMLDivElement>,
-    PropsWithChildren {
+  PropsWithChildren {
   defaultOpen?: boolean
 }
 
@@ -70,8 +70,11 @@ export function Accordion({
   )
 }
 
-export function AccordionTrigger({ children }: PropsWithChildren<unknown>) {
-  return <>{children}</>
+export function AccordionTrigger({
+  children,
+  className,
+}: PropsWithChildren<{ className?: string }>) {
+  return <div className={className}>{children}</div>
 }
 
 export function AccordionContent({ children }: PropsWithChildren<unknown>) {

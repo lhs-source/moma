@@ -3,6 +3,22 @@ import { EVENT_TYPE, type GameEvent } from './schemas/event'
 // 점검 일정
 export const maintenanceEvents: GameEvent[] = [
   {
+    id: 'maintenance-026',
+    name: '12/4(목) 정기점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-12-04T06:00:00'),
+    endDate: new Date('2025-12-04T11:50:00'),
+    description: '정기점검',
+  },
+  {
+    id: 'maintenance-025',
+    name: '11/29(토) 임시점검 안내',
+    type: EVENT_TYPE.MAINTENANCE,
+    startDate: new Date('2025-11-29T06:00:00'),
+    endDate: new Date('2025-11-29T08:35:00'),
+    description: '임시점검',
+  },
+  {
     id: 'maintenance-024',
     name: '11/27(목) 정기점검 안내',
     type: EVENT_TYPE.MAINTENANCE,
